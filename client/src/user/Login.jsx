@@ -1,30 +1,35 @@
 import './Style.css';
+import { Link } from 'react-router-dom';
+import { FaArrowLeft } from 'react-icons/fa';
+import React from 'react';
 
 function Login() {
   return (
-      <div class="signinsignup">
-        <div class="rectangle-parent">
-          <div class="frame-child">
-          <b class="image-or-color">Image or color</b>
-          <div class="shape-parent" id="groupContainer1">
-            <div class="home">Home</div>
-          </div>
-          <div class="frame-item">
-          <div class="email-parent">
-            <b class="email">Email</b>
-            <input class="group-child"></input>
-            <b class="password">Password</b>
-            <input class="group-item"></input>
-          </div>
-          <div class="new-user" id="newUserText">New user?</div>
-          <div class="forget-password">Forget Password?</div>
-        </div>
-        <div class="button">
-          <div class="label">SignIn</div>
-        </div>
-        </div>
-        </div>
+    <div className="container">
+    <div className="left">
+      <div>Image or color</div>
+    </div>
+    <Link to="/" className="login-home-link">
+    <FaArrowLeft />
+      Home
+    </Link>
+    <div className="right">
+      <h2>Login</h2>
+      <div className="form-group">
+        <label htmlFor="email">Email</label>
+        <input type="email" id="email" name="email" />
       </div>
+      <div className="form-group">
+        <label htmlFor="password">Password</label>
+        <input type="password" id="password" name="password" />
+      </div>
+      <button type="submit">Signin</button>
+      <div className="links">
+        <a href="/Register">New user?</a>
+        <a href="#">Forget Password?</a>
+      </div>
+    </div>
+  </div>
   );
 }
 
