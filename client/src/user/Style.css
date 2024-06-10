@@ -5,53 +5,67 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     background-color: #f0f2f5;
 }
 
-.container {
+.container, .signup-container {
     display: flex;
-    width: 800px;
-    height: 500px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    width: 90%;
+    max-width: 800px;
+    height: auto;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.208);
     position: relative;
+    margin: 20px;
 }
 
-.left {
-    background-color: #e9eef5; /* Light grey color or you can use an image */
-    width: 50%;
+.left, .right, .signup-left, .signup-right {
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    
+}
+
+.signup-right{
+    background-color: #e9eef5;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
 }
 
-.right {
-    width: 50%;
-    padding: 40px;
+.left {
+    background-color: #e9eef5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.right, .signup-left {
     background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.right h2 {
+.right h2, .signup-left h2 {
     margin-bottom: 20px;
     color: #333;
 }
 
-.form-group {
+.form-group, .signup-form-group {
     margin-bottom: 15px;
 }
 
-.form-group label {
+.form-group label, .signup-form-group label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
-    text-align:left
+    text-align: left;
 }
 
-.form-group input {
+.form-group input, .signup-form-group input {
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
@@ -80,113 +94,216 @@ button:hover {
     justify-content: space-between;
     margin-top: 15px;
 }
+.signup-links{
+    padding-top: 20px ;
+}
 
-.links a {
+.links a, .signup-links a {
     color: #007bff;
     text-decoration: none;
     font-size: 14px;
 }
 
-.links a:hover {
+.links a:hover, .signup-links a:hover {
     text-decoration: underline;
 }
-.login-home-link{
+
+.login-home-link, .signup-home-link {
     position: absolute;
     bottom: 15px;
+    left: 20px;
     color: #007bff;
     text-decoration: none;
     font-size: 16px;
     display: flex;
     align-items: center;
-
-}
-.signup-container {
-    display: flex;
-    width: 800px;
-    height: 500px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    position: relative;
-}
-
-.signup-left {
-    width: 50%;
-    padding: 40px;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.signup-right {
-    background-color: #e9eef5; /* Light grey color or you can use an image */
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.signup-left h2 {
-    margin-bottom: 20px;
-    color: #333;
-}
-
-.signup-form-group {
-    margin-bottom: 15px;
-}
-
-.signup-form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    text-align:left;
-}
-
-.signup-form-group input {
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-.signup-links {
-    margin-top: 15px;
-}
-
-.signup-links a {
-    color: #007bff;
-    text-decoration: none;
-    font-size: 14px;
-}
-
-.signup-links a:hover {
-    text-decoration: underline;
 }
 
 .signup-home-link {
-    position: absolute;
-    bottom: 15px;
     right: 20px;
-    color: #007bff;
-    text-decoration: none;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
+    left: auto;
+}
+
+/* Responsive Styles */
+@media (max-width: 599px) {
+    .container, .signup-container {
+        flex-direction: column;
+        width: 400px;
+        margin: 10px;
+    }
+
+    .right, .left, .signup-right, .signup-left {
+        width: 100%;
+    }
+
+    .right {
+        height: 360px;
+        order: 2; /* Display .right (or .signup-right) second */
+    } 
+    .signup-right{
+        height: 200px;
+    }
+
+
+    .signup-left {
+        height: 520px;
+        order: 1; /* Display .left (or .signup-left) first */
+    }
+
+    .left{
+        height: 200px;
+        order: 1; /* Display .left (or .signup-left) first */
+    }
+
+    .login-home-link, .signup-home-link {
+        bottom: 10px;
+        font-size: 14px;
+    }
+
+    button {
+        font-size: 14px;
+    }
+
+    .links a, .signup-links a {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 599px) and (min-width: 350px) {
+    .container, .signup-container {
+        flex-direction: column;
+        width: 300px; /* Adjust width as needed */
+        margin: 10px;
+    }
+    .right, .left, .signup-right, .signup-left {
+        width: 100%;
+    }
+
+    .right {
+        height: 360px;
+        order: 2; /* Display .right (or .signup-right) second */
+    } 
+    .signup-right{
+        height: 200px;
+    }
+
+
+    .signup-left {
+        height: 520px;
+        order: 1; /* Display .left (or .signup-left) first */
+    }
+
+    .left{
+        height: 200px;
+        order: 1; /* Display .left (or .signup-left) first */
+    }
+
+    .login-home-link, .signup-home-link {
+        bottom: 10px;
+        font-size: 14px;
+    }
+
+    button {
+        font-size: 14px;
+    }
+
+    .links a, .signup-links a {
+        font-size: 12px;
+    }
+}
+
+/* Responsive Styles for Screen Widths below 350px */
+@media (max-width: 349px) {
+    .container, .signup-container {
+        flex-direction: column;
+        width: 280px; /* Adjust width as needed */
+        margin: 10px;
+    }
+
+    .right, .left, .signup-right, .signup-left {
+        width: 100%;
+    }
+
+    .right {
+        height: 350px;
+        order: 2; /* Display .right (or .signup-right) second */
+    } 
+    .signup-right{
+        height: 180px;
+    }
+
+
+    .signup-left {
+        height: 520px;
+        order: 1; /* Display .left (or .signup-left) first */
+    }
+
+    .left{
+        height: 180px;
+        order: 1; /* Display .left (or .signup-left) first */
+    }
+
+    .login-home-link, .signup-home-link {
+        bottom: 10px;
+        font-size: 12px;
+    }
+
+    button {
+        font-size: 12px;
+    }
+
+    .links a, .signup-links a {
+        font-size: 10px;
+    }
+}
+
+
+
+
+@media (min-width: 600px) {
+    .container, .signup-container {
+        flex-direction: row;
+        width: 550px;
+        height: 500px;
+    }
+
+    .left, .right, .signup-left, .signup-right {
+        width: 50%;
+    }
+
+    .login-home-link, .signup-home-link {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 900px) and (max-width: 1199px) {
+    .container, .signup-container {
+        flex-direction: row;
+        width: 700px;
+        height: 500px;
+    }
+
+    .left, .right, .signup-left, .signup-right {
+        width: 50%;
+    }
+
+    .login-home-link, .signup-home-link {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container, .signup-container {
+        flex-direction: row;
+        width: 800px;
+        height: 500px;
+    }
+
+    .left, .right, .signup-left, .signup-right {
+        width: 50%;
+    }
+
+    .login-home-link, .signup-home-link {
+        font-size: 16px;
+    }
 }
