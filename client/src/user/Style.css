@@ -131,11 +131,6 @@ button:hover {
 
 /* Responsive Styles */
 @media (max-width: 599px) {
-    .parent-signup-container{
-        margin-top: 50px;
-        margin-bottom: 50px ;
-    }
-    
     .container, .signup-container {
         flex-direction: column;
         width: 400px;
@@ -179,11 +174,7 @@ button:hover {
     }
 }
 
-@media (max-width: 599px) and (min-width: 350px) {
-    .parent-signup-container{
-        margin-top: 50px;
-        margin-bottom: 50px ;
-    }
+@media (max-width: 599px) and (min-width: 349px) {
 
     .container, .signup-container {
         flex-direction: column;
@@ -228,11 +219,7 @@ button:hover {
 }
 
 /* Responsive Styles for Screen Widths below 350px */
-@media (max-width: 349px) {
-    .parent-signup-container{
-        margin-top: 50px;
-        margin-bottom: 50px ;
-    }
+@media (max-width: 339px) {
     .container, .signup-container {
         flex-direction: column;
         width: 280px; /* Adjust width as needed */
