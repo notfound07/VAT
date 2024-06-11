@@ -78,7 +78,7 @@
     border-radius: 5px;
 }
 
-button {
+.log-res {
     width: 100%;
     padding: 10px;
     background-color: #007bff;
@@ -90,7 +90,7 @@ button {
     margin-top: 10px;
 }
 
-button:hover {
+.log-res:hover {
     background-color: #0056b3;
 }
 
@@ -165,7 +165,7 @@ button:hover {
         font-size: 14px;
     }
 
-    button {
+    .log-res {
         font-size: 14px;
     }
 
@@ -209,7 +209,7 @@ button:hover {
         font-size: 14px;
     }
 
-    button {
+    .log-res {
         font-size: 14px;
     }
 
@@ -254,7 +254,7 @@ button:hover {
         font-size: 12px;
     }
 
-    button {
+    .log-res {
         font-size: 12px;
     }
 

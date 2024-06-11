@@ -45,6 +45,7 @@
 
 .nav-toggle-button {
     display: none;
+    font-size: 22px;
     background-color: #222b51;
     width: 40px;
     color: white;
@@ -69,7 +70,7 @@
 @media screen and (max-width: 1200px) {
     .frame {
         width: 100.1%;
-        font-size: 20px;
+        font-size: 22px;
     }
 
     .nav-child {
@@ -77,14 +78,15 @@
     }
 
     .company-logo {
-        width: 50px;
-        height: 50px;
+        width: 60px;
+        height: 60px;
     }
 }
 
 @media screen and (max-width: 799px) {
     .frame {
         width: 100.1%;
+        font-size: 22px;
     }
     .nav-child {
         display: none;
@@ -121,6 +123,7 @@
 @media screen and (max-width: 599px) {
     .frame {
         width: 100.1%;
+        font-size: 20px;
     }
     .nav-dropdown {
         display: none;

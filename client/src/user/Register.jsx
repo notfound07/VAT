@@ -25,7 +25,7 @@ function Register() {
             <label htmlFor="confirmPassword">Confirm Password</label>
             <input type="password" id="confirmPassword" name="confirmPassword" />
           </div>
-          <button type="submit">Sign Up</button>
+          <button className='log-res' type="submit">Sign Up</button>
           <div className="signup-links">
             <a href="/Login">Already have an account?</a>
           </div>

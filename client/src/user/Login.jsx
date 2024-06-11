@@ -20,7 +20,7 @@ function Login() {
             <label htmlFor="password">Password</label>
             <input type="password" id="password" name="password" />
           </div>
-          <button type="submit">Signin</button>
+          <button className="log-res" type="submit">Signin</button>
           <div className="links">
             <a href="/Register">New user?</a>
             <a href="/#">Forget Password?</a>
