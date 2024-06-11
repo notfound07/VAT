@@ -29,9 +29,9 @@ function Navbar() {
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></link>
             <div className="nav-parent">
                 <img className="company-logo" src={logo} alt="" />
+                <p className='company-name'>VisualArtTechnologies</p>
                 <div className="nav-child">
-                    <Link to="/Home" className="nav-link"><i className="fa-solid fa-house"></i>Home</Link>
-                    <Link className="nav-link"><i className="fa-solid fa-circle-info"></i>Who we are</Link>
+                    <Link to="/Home" className="nav-link"><i className="fa-solid fa-circle-info"></i>Who we are</Link>
                     <Link className="nav-link"><i className="fa-solid fa-store"></i>Product</Link>
                     <Link className="nav-link"><i className="fa-solid fa-users"></i>ContactUs</Link>
                     <Link to="/Login" className="nav-link"><i className="fa-solid fa-right-to-bracket"></i>SignIn</Link>
