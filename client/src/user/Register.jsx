@@ -5,7 +5,7 @@ import './Style.css';
 
 function Register() {
   return (
-    <div class="parent-container">
+    <div class="parent-signup-container">
       <div className="signup-container">
         <div className="signup-left">
           <h2>Sign Up</h2>
