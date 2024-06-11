@@ -28,6 +28,16 @@
     cursor: pointer;
 }
 
+.nav-link {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.nav-link:hover{
+    color: #408EA7;
+}
+
 .company-logo {
     width: 60px;
     height: 60px;
