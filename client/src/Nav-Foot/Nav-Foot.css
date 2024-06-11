@@ -24,6 +24,8 @@
 
 .nav-link {
     color: white;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .company-logo {

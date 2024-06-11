@@ -1,6 +1,7 @@
 import './Nav-Foot.css';
 import logo from '../Assets/logo.png'; // Import the image
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function Navbar() {
     
@@ -29,21 +30,21 @@ function Navbar() {
             <div className="nav-parent">
                 <img className="company-logo" src={logo} alt="" />
                 <div className="nav-child">
-                    <b className="nav-link"><i className="fa-solid fa-house"></i>Home</b>
-                    <b className="nav-link"><i className="fa-solid fa-circle-info"></i>Who we are</b>
-                    <b className="nav-link"><i className="fa-solid fa-store"></i>Product</b>
-                    <b className="nav-link"><i className="fa-solid fa-users"></i>ContactUs</b>
-                    <b className="nav-link"><i className="fa-solid fa-right-to-bracket"></i>SignIn</b>
-                    <b className="nav-link"><i className="fa-solid fa-cart-shopping"></i>Cart</b>
+                    <Link to="/Home" className="nav-link"><i className="fa-solid fa-house"></i>Home</Link>
+                    <Link className="nav-link"><i className="fa-solid fa-circle-info"></i>Who we are</Link>
+                    <Link className="nav-link"><i className="fa-solid fa-store"></i>Product</Link>
+                    <Link className="nav-link"><i className="fa-solid fa-users"></i>ContactUs</Link>
+                    <Link to="/Login" className="nav-link"><i className="fa-solid fa-right-to-bracket"></i>SignIn</Link>
+                    <Link className="nav-link"><i className="fa-solid fa-cart-shopping"></i>Cart</Link>
                 </div>
                 <button className="nav-toggle-button" onClick={toggleDropdown}><i className="fa-solid fa-bars"></i></button>
                 <div className={`nav-dropdown ${dropdownVisible ? 'show' : ''}`}>
-                    <b className="nav-link"><i className="fa-solid fa-house"></i>Home</b>
-                    <b className="nav-link"><i className="fa-solid fa-circle-info"></i>Who we are</b>
-                    <b className="nav-link"><i className="fa-solid fa-store"></i>Product</b>
-                    <b className="nav-link"><i className="fa-solid fa-users"></i>ContactUs</b>
-                    <b className="nav-link"><i className="fa-solid fa-right-to-bracket"></i>SignIn</b>
-                    <b className="nav-link"><i className="fa-solid fa-cart-shopping"></i>Cart</b>
+                    <Link to="/Home" className="nav-link"><i className="fa-solid fa-house"></i>Home</Link>
+                    <Link className="nav-link"><i className="fa-solid fa-circle-info"></i>Who we are</Link>
+                    <Link className="nav-link"><i className="fa-solid fa-store"></i>Product</Link>
+                    <Link className="nav-link"><i className="fa-solid fa-users"></i>ContactUs</Link>
+                    <Link to="/Login" className="nav-link"><i className="fa-solid fa-right-to-bracket"></i>SignIn</Link>
+                    <Link className="nav-link"><i className="fa-solid fa-cart-shopping"></i>Cart</Link>
                 </div>
             </div>
         </div>
