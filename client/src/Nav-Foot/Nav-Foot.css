@@ -1,0 +1,139 @@
+.frame {
+    width: 100.1%;
+    background-color: #222b51;
+    height: 80px;
+    font-size: 22px;
+    border: none;
+}
+
+.nav-parent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    position: relative;
+}
+
+.nav-child {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-link {
+    color: white;
+}
+
+.company-logo {
+    width: 60px;
+    height: 60px;
+}
+
+.nav-toggle-button {
+    display: none;
+    background-color: #222b51;
+    width: 40px;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.nav-dropdown {
+    display: none;
+    flex-direction: column;
+    background-color: #222b51;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: calc(100% - 40px);
+    border: none;
+    border-color: transparent;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (max-width: 1200px) {
+    .frame {
+        width: 100.1%;
+        font-size: 20px;
+    }
+
+    .nav-child {
+        gap: 15px;
+    }
+
+    .company-logo {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media screen and (max-width: 799px) {
+    .frame {
+        width: 100.1%;
+    }
+    .nav-child {
+        display: none;
+    }
+
+    .nav-toggle-button {
+        display: block;
+    }
+
+    .nav-dropdown {
+        display: none;
+        flex-direction: column;
+        background-color: #222b51;
+        position: absolute;
+        top: 80px;
+        right: 20px;
+        width: calc(100% - 40px);
+        border: none;
+        border-color: transparent;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-dropdown .nav-link {
+        padding: 10px;
+        border-bottom: 1px solid #444;
+    }
+
+    .nav-dropdown .nav-link:last-child {
+        border-bottom: none;
+    }
+}
+
+@media screen and (max-width: 599px) {
+    .frame {
+        width: 100.1%;
+    }
+    .nav-dropdown {
+        display: none;
+        flex-direction: column;
+        background-color: #222b51;
+        position: absolute;
+        top: 80px;
+        right: 20px;
+        width: calc(100% - 40px);
+        border: none;
+        border-color: transparent;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-dropdown .nav-link {
+        padding: 10px;
+        border-bottom: 1px solid #444;
+    }
+
+    .nav-dropdown .nav-link:last-child {
+        border-bottom: none;
+    }
+}
+
+.nav-dropdown.show {
+    display: flex;
+}
