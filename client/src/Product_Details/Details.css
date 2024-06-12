@@ -1,0 +1,26 @@
+.container {
+    display: grid;
+    grid-template-columns: 130% 60%;
+    gap: 150px; /* Space between main and side columns */
+    padding: 10px;
+  }
+  .art-item{
+    border: black solid 2px;
+    padding: 10px;
+    width: 100%;
+    height: 80%;
+  }
+  .art-image {
+    width: 100%;
+    height: 80%;
+  }
+  .suggestions{
+    width: 100%;
+  }
+.sugg-img{
+    width: 40%;
+    height: 40%;
+}
+.sugg-title{
+    font-size: small;
+}

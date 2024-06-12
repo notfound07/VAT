@@ -5,6 +5,8 @@ import Register from './user/Register.jsx';
 import Home from './Home/Home.jsx';
 import Navbar from './Nav-Foot/Navbar.jsx';
 import Footer from './Nav-Foot/Footer.jsx';
+import Shopping from './Shopping/Shopping.jsx';
+import Detail from './Product_Details/Detail.jsx';
 
 
 function App() {
@@ -15,6 +17,8 @@ function App() {
       <Route path='/Home' element={<Home/>}/>
       <Route path='/Navbar' element={<Navbar/>}/>
       <Route path='/Footer' element={<Footer/>}/>
+      <Route path='/Shopping' element={<Shopping/>}/>
+      <Route path='/Details/:id' element={<Detail/>}/>
       <Route path='/Login' element={<Login/>}/>
       <Route path='/Register' element={<Register/>}/>
       </Routes>

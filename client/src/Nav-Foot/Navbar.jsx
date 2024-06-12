@@ -32,7 +32,7 @@ function Navbar() {
                 <p className='company-name'>VisualArtTechnologies</p>
                 <div className="nav-child">
                     <Link to="/Home" className="nav-link"><i className="fa-solid fa-circle-info"></i>Who we are</Link>
-                    <Link className="nav-link"><i className="fa-solid fa-store"></i>Product</Link>
+                    <Link to='/Shopping' className="nav-link"><i className="fa-solid fa-store"></i>Product</Link>
                     <Link className="nav-link"><i className="fa-solid fa-users"></i>ContactUs</Link>
                     <Link to="/Login" className="nav-link"><i className="fa-solid fa-right-to-bracket"></i>SignIn</Link>
                     <Link className="nav-link"><i className="fa-solid fa-cart-shopping"></i>Cart</Link>
