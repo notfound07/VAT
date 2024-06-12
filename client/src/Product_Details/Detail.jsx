@@ -21,7 +21,7 @@ const Detail = () => {
   return (
     <div>
     <Navbar />
-    <div className="container">
+    <div className="detail-container">
       <div className="main-column">
         {product.map((art) => (
           <div className="art-item" key={art.id}>

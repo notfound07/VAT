@@ -1,4 +1,4 @@
-.container {
+.detail-container {
     display: grid;
     grid-template-columns: 130% 60%;
     gap: 150px; /* Space between main and side columns */
