@@ -2,7 +2,6 @@ import './Home.css';
 import React from 'react';
 import Navbar from '../Nav-Foot/Navbar';
 import Footer from '../Nav-Foot/Footer';
-import { Link } from 'react-router-dom';
 import { products } from '../Resources/Products';
 import machine from '../Assets/machine.png';
 import mission from '../Assets/mission.png';
@@ -10,6 +9,7 @@ import mission from '../Assets/mission.png';
   const filteredProducts = products.filter(product =>
     product.id === 1 || product.id === 6 || product.id===7
   );
+  
 function Home() {
   return (
     <div>
@@ -19,7 +19,7 @@ function Home() {
       </div>
       <div className='product-display'>
         <div className="product-showcase">
-          {products.map((product, index) => (
+          {filteredProducts.map((product, index) => (
             <div className="product-card" key={index}>
               <img src={product.image} alt={product.title} className="product-image" />
               <h3 className="product-title">{product.title}</h3>

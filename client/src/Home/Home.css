@@ -39,12 +39,13 @@
 .view-more-button {
   background-color: darkblue;
   color: #ffffff;
-  border: yellow solid 4px;
+  border: 3px solid transparent;
+  border-image: linear-gradient(to right, yellow, orange) 2;
+
   padding: 10px 20px;
   cursor: pointer;
   margin-top: 10px;
-  border-radius: 5px;
-  transition: background-color 0.3s;
+  transition: 0.3s;
 }
 
 .view-more-button:hover {
@@ -62,6 +63,7 @@
   display: flex;
   background-color: #f0f0f0;
   gap: 20px;
+  padding: 20px;
 }
 
 .display-info {
@@ -88,12 +90,19 @@
 }
 
 .desc-btn {
-  margin-top: 50px;
+  margin-top: 20px;
+  width: 100px;
   font-size: larger;
-  border: black solid 2px;
-  background-color: red;
+  background-color: #ee2400;
   color: white;
   padding: 5px;
+  border: 3px solid transparent;
+  border-image: linear-gradient(to right, darkblue, lightblue) 2 round;
+  transition: 0.3s;
+}
+
+.desc-btn:hover{
+  background-color: #900000;
 }
 
 .heading-client {
@@ -106,7 +115,7 @@
   .product-showcase {
     flex-wrap: wrap;
   }
-  
+
   .product-card {
     flex: 1 1 45%;
     margin: 10px 0;

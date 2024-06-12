@@ -7,6 +7,8 @@
     position: fixed;
     font-family: Arial, sans-serif;
     z-index: 999;
+    border-bottom: 3px solid transparent;
+    border-image: linear-gradient(to right, yellow, orange) 2 round;
 }
 
 .nav-parent {
@@ -37,7 +39,7 @@
     cursor: pointer;
 }
 
-.nav-link:hover{
+.nav-link:hover {
     color: #408EA7;
 }
 
@@ -45,7 +47,8 @@
     width: 60px;
     height: 60px;
 }
-.company-name{
+
+.company-name {
     color: white;
 }
 
@@ -94,6 +97,7 @@
         width: 100.1%;
         font-size: 22px;
     }
+
     .nav-child {
         display: none;
     }
@@ -131,6 +135,7 @@
         width: 100.1%;
         font-size: 20px;
     }
+
     .nav-dropdown {
         display: none;
         flex-direction: column;

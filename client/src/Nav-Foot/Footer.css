@@ -4,6 +4,8 @@
     color: #FFFFFF;
     font-family: Arial, sans-serif;
     width: 100%;
+    border-top: 3px solid transparent;
+    border-image: linear-gradient(to right, yellow, orange) 2 round;
 }
 
 .footer-content {
