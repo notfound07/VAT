@@ -1,5 +1,5 @@
-import './Nav-Foot.css';
-import logo from '../Assets/logo.png'; // Import the image
+import './Navbar.css';
+import logo from '../Assets/logo.png';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -12,7 +12,6 @@ function Navbar() {
 
     useEffect(() => {
         const handleResize = () => {
-            // Hide dropdown when screen size increases beyond 799px
             if (window.innerWidth > 799) {
                 setDropdownVisible(false);
             }

@@ -1,9 +1,12 @@
 .frame {
-    width: 100.1%;
+    width: 100%;
     background-color: #222b51;
     height: 80px;
     font-size: 22px;
     border: none;
+    position: fixed;
+    font-family: Arial, sans-serif;
+    z-index: 999;
 }
 
 .nav-parent {
@@ -86,7 +89,7 @@
     }
 }
 
-@media screen and (max-width: 799px) {
+@media screen and (max-width: 999px) {
     .frame {
         width: 100.1%;
         font-size: 22px;
@@ -155,49 +158,3 @@
 .nav-dropdown.show {
     display: flex;
 }
-.footer {
-    background-color: #1D2951; /* Dark blue background */
-    color: #FFFFFF; /* White text color */
-    padding: 20px;
-    text-align: left;
-    font-family: Arial, sans-serif;
-  }
-  
-  .footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-  .footer-company-logo {
-    width: 40%;
-    height: 40%;
-    align-items: center;
-}
-  .footer-section {
-    flex: 1;
-    margin: 10px;
-  }
-  
-  .footer-section h2 {
-    margin-bottom: 10px;
-  }
-  
-  .footer-section p {
-    margin: 5px 0;
-  }
-  
-  .social-icons {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .social-icons img {
-    width: 24px;
-    height: 24px;
-  }
-  
-  .footer-bottom {
-    text-align: center;
-    margin-top: 20px;
-  }
-  
