@@ -23,7 +23,7 @@ function Home() {
             <div className="product-card" key={index}>
               <img src={product.image} alt={product.title} className="product-image" />
               <h3 className="product-title">{product.title}</h3>
-              <button className="view-more-button">{product.button}</button>
+              <button onClick={() => window.location.href = `/Details/${product.id}`} className="view-more-button">{product.button}</button>
             </div>
           ))}
         </div>

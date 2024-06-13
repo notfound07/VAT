@@ -1,26 +1,65 @@
-.detail-container {
-    display: grid;
-    grid-template-columns: 130% 60%;
-    gap: 150px; /* Space between main and side columns */
-    padding: 10px;
-  }
-  .art-item{
-    border: black solid 2px;
-    padding: 10px;
-    width: 100%;
-    height: 80%;
-  }
-  .art-image {
-    width: 100%;
-    height: 80%;
-  }
-  .suggestions{
-    width: 100%;
-  }
-.sugg-img{
-    width: 40%;
-    height: 40%;
+.detail-page {
+  box-sizing: border-box;
 }
-.sugg-title{
-    font-size: small;
+
+.detail-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  column-gap: 50px;
+  padding: 100px 20px 20px 20px;
+}
+
+.main-column {
+  width: 100%;
+}
+
+.art-item {
+  border: black solid 2px;
+  padding: 10px;
+  width: 100%;
+  height: 80%;
+}
+
+.art-image {
+  width: 100%;
+  height: 80%; 
+  mix-blend-mode: multiply;
+}
+
+.suggestions {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 5px;
+  box-shadow: 0 0 15px #222b51;
+}
+
+.sugg-img {
+  width: 100%;
+  mix-blend-mode: multiply;
+}
+
+.sugg-title {
+  font-size: medium;
+  padding: 20px;
+}
+
+.side-column {
+  text-align: center;
+  width: 30%;
+}
+.suggestions-container {
+  width: 30ch;
+  margin: 20px;
+}
+
+.sugg-btn {
+  background-color: darkblue;
+  color: #ffffff;
+  border: 3px solid transparent;
+  border-image: linear-gradient(to right, yellow, orange) 2;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s;
 }
