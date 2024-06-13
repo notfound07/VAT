@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { products } from '../Resources/Products';
-import {  useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import './Details.css';
 import Navbar from '../Nav-Foot/Navbar';
 import Footer from '../Nav-Foot/Footer';
@@ -26,11 +26,13 @@ const Detail = () => {
         <div className="main-column">
           {product.map((art) => (
             <div className="art-item" key={art.id}>
-              <img src={art.image} alt={art.title} className="art-image" />
-              <h2 className="art-name">{art.title}</h2>
-              <div className="purchase-options">
-                <button className="buy-now">Buy Now</button>
-                <button className="add-to-cart">Add to Cart</button>
+              <div className='art-image-detail'>
+                <img src={art.image} alt={art.title} />
+              </div>
+              <div className='art-details-text-btn'>
+                <h2 className="art-name">{art.title}</h2>
+                <button className="buy-now-btn">Buy Now</button>
+                <button className="add-to-cart-btn">Add to Cart</button>
               </div>
             </div>
           ))}
@@ -42,7 +44,7 @@ const Detail = () => {
               <div className='suggestions' key={articles.id}>
                 <img src={articles.image} className="sugg-img" alt={articles.title} />
                 <h2 className='sugg-title'>{articles.title}</h2>
-                <button className='sugg-btn'>{articles.button}</button>
+                <button className='sugg-btn'onClick={() => window.location.href = `/Details/${articles.id}`}>{articles.button}</button>
               </div>
             ))}
           </div>

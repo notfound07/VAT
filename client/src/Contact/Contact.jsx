@@ -3,10 +3,10 @@ import Navbar from '../Nav-Foot/Navbar';
 import './Contact.css';
 
 function Contact() {
-    return (
-        <div>
-            <Navbar/>
-        <div className="contact-container">
+  return (
+    <div>
+      <Navbar />
+      <div className="contact-container">
         <h1>Contact Us</h1>
         <div className="form-wrapper">
           <div className="image-placeholder">Image or color</div>
@@ -30,13 +30,13 @@ function Contact() {
               <label>Comment Message</label>
               <textarea></textarea>
             </div>
-            <button type="submit">Submit</button>
+            <button className="submit-btn" type="submit">Submit</button>
           </form>
         </div>
       </div>
-      <Footer/>
-      </div>
-    );
+      <Footer />
+    </div>
+  );
 }
 
 export default Contact;

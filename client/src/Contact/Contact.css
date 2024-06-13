@@ -1,72 +1,71 @@
 .contact-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 7%;
-    padding-bottom: 3%;
-  }
-  
-  h1 {
-    margin-bottom: 20px;
-  }
-  
-  .form-wrapper {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 800px;
-  }
-  
-  .image-placeholder {
-    width: 50%;
-    height: 450px;
-    background-color: #ccc;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .contact-form {
-    width: 45%;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .name-fields {
-    display: flex;
-    gap: 10px;
-  }
-  
-  input[type="text"],
-  input[type="email"],
-  input[type="tel"],
-  textarea {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  textarea {
-    resize: none;
-    height: 100px;
-  }
-  
-  button {
-    padding: 10px 20px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 7%;
+  padding-bottom: 3%;
+}
+
+.contact-container h1 {
+  margin-bottom: 20px;
+}
+
+.form-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 800px;
+}
+
+.image-placeholder {
+  width: 50%;
+  height: 450px;
+  background-color: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-form {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.name-fields {
+  display: flex;
+  gap: 10px;
+}
+
+.name-fields input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-group textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+.submit-btn {
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
