@@ -1,20 +1,20 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import Navbar from '../Nav-Foot/Navbar'
 import Footer from '../Nav-Foot/Footer'
 import './Shopping.css'
-import { products } from '../Resources/Products';
+import { CartContext } from '../Resources/CartContext'
+// import { products } from '../Resources/Products';
 import { Link } from 'react-router-dom';
 
-const Shopping = () => {
+const Shopping = ({products}) => {
+    const { addToCart } = useContext(CartContext);
+
   return (
     <div>
         <Navbar/>
         <div className="gallery-container">
             <div className="filter">
                 <h3>Filter</h3>
-                <label>
-                    <input type="checkbox" /> Artist
-                </label>
                 <label>
                     <input type="checkbox" /> Low Price
                 </label>
@@ -32,7 +32,7 @@ const Shopping = () => {
                             <h4 className='art-title'>{art.title}</h4>
                             <div className='all-btn'>
                             <Link to={`/Details/${art.id}`} className='art-btn' >{art.button}</Link>
-                            <Link className='art-btn' style={{backgroundColor:"red"}}>{art.button2}</Link>
+                            <button className='art-btn'  onClick={() => addToCart(art)} style={{backgroundColor:"red"}}>{art.button2}</button>
                         </div>
                         </div>
                     </div>

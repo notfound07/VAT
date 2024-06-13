@@ -32,9 +32,9 @@ function Navbar() {
                 <div className="nav-child">
                     <Link to="/Home" className="nav-link"><i className="fa-solid fa-circle-info"></i>Who we are</Link>
                     <Link to='/Shopping' className="nav-link"><i className="fa-solid fa-store"></i>Product</Link>
-                    <Link className="nav-link"><i className="fa-solid fa-users"></i>ContactUs</Link>
+                    <Link to="/Contact" className="nav-link"><i className="fa-solid fa-users"></i>ContactUs</Link>
                     <Link to="/Login" className="nav-link"><i className="fa-solid fa-right-to-bracket"></i>SignIn</Link>
-                    <Link className="nav-link"><i className="fa-solid fa-cart-shopping"></i>Cart</Link>
+                    <Link to='/Cart' className="nav-link"><i className="fa-solid fa-cart-shopping"></i>Cart</Link>
                 </div>
                 <button className="nav-toggle-button" onClick={toggleDropdown}><i className="fa-solid fa-bars"></i></button>
                 <div className={`nav-dropdown ${dropdownVisible ? 'show' : ''}`}>

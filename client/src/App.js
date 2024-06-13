@@ -1,3 +1,4 @@
+import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Login from './user/Login.jsx';
@@ -7,22 +8,29 @@ import Navbar from './Nav-Foot/Navbar.jsx';
 import Footer from './Nav-Foot/Footer.jsx';
 import Shopping from './Shopping/Shopping.jsx';
 import Detail from './Product_Details/Detail.jsx';
-
+import Contact from './Contact/Contact.jsx';
+import { products } from './Resources/Products.js';
+import Cart from './Cart/Cart.jsx';
+import { CartProvider } from './Resources/CartContext.jsx';
 
 function App() {
   return (
-    <div className="App">
-      <Routes>
-      <Route path='/' element={<Home/>}/>
-      <Route path='/Home' element={<Home/>}/>
-      <Route path='/Navbar' element={<Navbar/>}/>
-      <Route path='/Footer' element={<Footer/>}/>
-      <Route path='/Shopping' element={<Shopping/>}/>
-      <Route path='/Details/:id' element={<Detail/>}/>
-      <Route path='/Login' element={<Login/>}/>
-      <Route path='/Register' element={<Register/>}/>
-      </Routes>
-    </div>
+    <CartProvider>
+      <div className="App">
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/Home' element={<Home />} />
+          <Route path='/Navbar' element={<Navbar />} />
+          <Route path='/Footer' element={<Footer />} />
+          <Route path='/Shopping' element={<Shopping products={products} />} />
+          <Route path='/Cart' element={<Cart />} />
+          <Route path='/Details/:id' element={<Detail />} />
+          <Route path='/Contact' element={<Contact />} />
+          <Route path='/Login' element={<Login />} />
+          <Route path='/Register' element={<Register />} />
+        </Routes>
+      </div>
+    </CartProvider>
   );
 }
 
