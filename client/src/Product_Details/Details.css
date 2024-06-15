@@ -76,44 +76,40 @@
   width: 100%;
   padding: 10px;
   margin-bottom: 20px;
-  background-color: blue;
+  background-color: green;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: 0.3s;
-  border: 3px solid transparent;
-  border-image: linear-gradient(to right, yellow, orange) 2;
 }
 
 .buy-now-btn:hover {
-  background-color: #0056b3;
+  background-color: lightseagreen
 }
 
 .add-to-cart-btn {
   width: 100%;
   padding: 10px;
   margin-bottom: 20px;
-  background-color: red;
+  background-color: blue;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: 0.3s;
-  border: 3px solid transparent;
-  border-image: linear-gradient(to right, blue, lightblue) 2;
 }
 
 .add-to-cart-btn:hover {
-  background-color: #b30000;
+  background-color: #0056b3;
 }
 
 
 .suggestions {
   width: 100%;
   margin-bottom: 20px;
-  padding: 5px;
-  border-radius: 5px;
+  padding: 5px 5px 10px 5px;
+  border-radius: 10px;
   box-shadow: 0 0 10px #222b51;
 }
 
@@ -146,4 +142,8 @@
   cursor: pointer;
   margin-top: 10px;
   transition: 0.3s;
+}
+
+.sugg-btn:hover{
+  background-color: #0056b3;
 }

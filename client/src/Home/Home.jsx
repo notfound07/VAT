@@ -30,12 +30,12 @@ const Home = () => {
       <div className='product-display'>
         <div className="product-showcase">
           {shuffledProducts.map((product) => (
-            <div className="product-card" key={product.id}>
+            <div className="product-card" onClick={() => window.location.href = `/Details/${product.id}`}>
               <div className="product-image">
                 <img src={product.image} alt={product.title} />
               </div>
               <h3 className="product-title">{product.title}</h3>
-              <button onClick={() => window.location.href = `/Details/${product.id}`} className="view-more-button">{product.button}</button>
+              {/* <button onClick={() => window.location.href = `/Details/${product.id}`} className="view-more-button">{product.button}</button> */}
             </div>
           ))}
         </div>
@@ -45,7 +45,9 @@ const Home = () => {
       </div>
       <div className="custom-showcase">
         <div className="display-info">
-          <img src={machine} alt="machine" className='info-img' />
+          <div  className='info-img'>
+          <img src={machine} alt="machine"/>
+          </div>
           <div className='desc'>
             <p className='desc-info'>
               We are offering Furnished Turned Components in all sizes, Threading, Drilling, Slotting, Milling etc.

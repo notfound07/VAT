@@ -9,7 +9,9 @@ function Contact() {
       <div className="contact-container">
         <h1>Contact Us</h1>
         <div className="form-wrapper">
-          <div className="image-placeholder">Image or color</div>
+          <div className="contact-image">
+            <div className="image-placeholder">Image or color</div>
+          </div>
           <form className="contact-form">
             <div className="form-group">
               <label>Full Name</label>

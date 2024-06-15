@@ -85,7 +85,7 @@ body {
     margin-top: 20px;
 }
 
-.art-btn {
+.art-btn-cart{
     flex: 1 1 auto;
     min-width: 120px; 
     box-sizing: border-box;
@@ -96,31 +96,11 @@ body {
     border-radius: 5px;
     cursor: pointer;
     font-size: small;
-    text-decoration: none;
-    white-space: nowrap; 
-}
-
-.art-btn:hover {
-    background-color: #0056b3;
-}
-
-.art-btn-cart{
-    flex: 1 1 auto;
-    min-width: 120px; 
-    box-sizing: border-box;
-    padding: 10px;
-    border: none;
-    background-color: red;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: small;
-    text-decoration: none;
-    white-space: nowrap; 
+    transition: 0.3s;
 }
 
 .art-btn-cart:hover {
-    background-color: #b30000;
+    background-color: #0056b3;
 }
 
 /* Media Queries for Responsiveness */

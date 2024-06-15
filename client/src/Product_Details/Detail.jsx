@@ -4,10 +4,13 @@ import { useParams } from 'react-router-dom';
 import './Details.css';
 import Navbar from '../Nav-Foot/Navbar';
 import Footer from '../Nav-Foot/Footer';
+
 const Detail = () => {
   const { id } = useParams();
-  const product = products.filter(p => p.id === parseInt(id));
-  const [shuffledProducts, setShuffledProducts] = useState([])
+  const productId = parseInt(id);
+  const product = products.filter(p => p.id === productId);
+  const [shuffledProducts, setShuffledProducts] = useState([]);
+
   function shuffleArray(array) {
     let shuffledArray = array.slice(); // Create a copy of the array
     for (let i = shuffledArray.length - 1; i > 0; i--) {
@@ -16,9 +19,12 @@ const Detail = () => {
     }
     return shuffledArray;
   }
+
   useEffect(() => {
-    setShuffledProducts(shuffleArray(products).slice(0, 3));
-  }, []);
+    const filteredProducts = products.filter(p => p.id !== productId); // Exclude the current product
+    setShuffledProducts(shuffleArray(filteredProducts).slice(0, 3));
+  }, [productId]);
+
   return (
     <div className='detail-page'>
       <Navbar />
@@ -39,12 +45,12 @@ const Detail = () => {
         </div>
         <div className="side-column">
           <h2>Suggestions</h2>
-          <div className='suggestions-container'>
+          <div className='suggestions-container' >
             {shuffledProducts.map((articles) => (
-              <div className='suggestions' key={articles.id}>
+              <div className='suggestions' key={articles.id} onClick={() => window.location.href = `/Details/${articles.id}`}>
                 <img src={articles.image} className="sugg-img" alt={articles.title} />
                 <h2 className='sugg-title'>{articles.title}</h2>
-                <button className='sugg-btn'onClick={() => window.location.href = `/Details/${articles.id}`}>{articles.button}</button>
+                {/* <button className='sugg-btn' onClick={() => window.location.href = `/Details/${articles.id}`}>{articles.button}</button> */}
               </div>
             ))}
           </div>
@@ -53,7 +59,6 @@ const Detail = () => {
       <Footer />
     </div>
   );
-
 }
 
-export default Detail
+export default Detail;

@@ -16,76 +16,66 @@ export const products = [
       id:1,
       title: 'Museum Glass Case',
       image: product1,
-      button: 'View More',
       button2:'Add to Cart'
     },
     {
       id:2,
       title: 'Laser Cut Panels Screen',
       image: product2,
-      button: 'View More',
       button2:'Add to Cart'
     },
     {
       id:3,
       title: 'Glass Showcase Design',
       image: product3,
-      button: 'View More',
       button2:'Add to Cart'
     },
     {
       id:4,
       title: 'Aluminum Framed Glass Counter',
       image: product4,
-      button: 'View More',
       button2:'Add to Cart'
     },{
       id:5,
       title: 'Aluminium Frame Glass Tower Showcase',
       image: product5,
-      button: 'View More',
       button2:'Add to Cart'
     },
     {
       id:6,
         title: 'Arrow Metal',
         image: product6,
-        button: 'View More',
+
         button2:'Add to Cart'
       },
     {
       id:7,
       title: 'Modern Balcony Railing Design',
       image: product7,
-      button: 'View More',
       button2:'Add to Cart'
     },
     {
       id:8,
       title: 'Jewelry Vitrine Showcase',
       image: product8,
-      button: 'View More',
       button2:'Add to Cart'
     },
     {
       id:9,
       title: 'Jewelry Kiosk',
       image: product9,
-      button: 'View More',
       button2:'Add to Cart'
     },
     {
       id:10,
       title: 'Carbon Steel Perforated Metal Fence Panel',
       image: product10,
-      button: 'View More',
       button2:'Add to Cart'
     },
     {
       id:11,
       title: 'Laser Cutting Fence',
       image: product11,
-      button: 'View More',
       button2:'Add to Cart'
 
     },
