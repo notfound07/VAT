@@ -20,21 +20,21 @@ const Shopping = ({ products }) => {
                         <input type="checkbox" /> High Price
                     </label>
                 </div>
-                <div className="art-grid">
-                    {products.map((art) => (
-                        <div className="art-card" key={art.id}>
-                            <div className="art-image">
-                                <img src={art.image} alt="Art"/>
-                            </div>
-                            <div className="art-details">
-                                <h4 className='art-title'>{art.title}</h4>
-                                <div className='all-btn'>
-                                    <button onClick={() => window.location.href = `/Details/${art.id}`} className='art-btn' >{art.button}</button>
-                                    <button className='art-btn-cart' onClick={() => addToCart(art)}>{art.button2}</button>
+                    <div className="art-grid">
+                        {products.map((art) => (
+                            <div className="art-card" key={art.id}>
+                                <div className="art-image">
+                                    <img src={art.image} alt="Art" />
+                                </div>
+                                <div className="art-details">
+                                    <h4 className='art-title'>{art.title}</h4>
+                                    <div className='all-btn'>
+                                        <button onClick={() => window.location.href = `/Details/${art.id}`} className='art-btn' >{art.button}</button>
+                                        <button className='art-btn-cart' onClick={() => addToCart(art)}>{art.button2}</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
                 </div>
             </div>
             <Footer />

@@ -1,27 +1,39 @@
 import './Home.css';
-import React from 'react';
+import React, { useState, useEffect } from 'react'
 import Navbar from '../Nav-Foot/Navbar';
 import Footer from '../Nav-Foot/Footer';
 import { products } from '../Resources/Products';
 import machine from '../Assets/machine.png';
 import mission from '../Assets/mission.png';
 
-  const filteredProducts = products.filter(product =>
-    product.id === 1 || product.id === 6 || product.id===7
-  );
-  
-function Home() {
+const Home = () => {
+  const [shuffledProducts, setShuffledProducts] = useState([])
+  function shuffleArray(array) {
+    let shuffledArray = array.slice(); // Create a copy of the array
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+    }
+    return shuffledArray;
+  }
+  useEffect(() => {
+    setShuffledProducts(shuffleArray(products).slice(0, 4));
+  }, []);
+
+
   return (
     <div>
       <Navbar />
       <div className='main-image'>
-        Image
+        Image of client
       </div>
       <div className='product-display'>
         <div className="product-showcase">
-          {filteredProducts.map((product, index) => (
-            <div className="product-card" key={index}>
-              <img src={product.image} alt={product.title} className="product-image" />
+          {shuffledProducts.map((product) => (
+            <div className="product-card" key={product.id}>
+              <div className="product-image">
+                <img src={product.image} alt={product.title} />
+              </div>
               <h3 className="product-title">{product.title}</h3>
               <button onClick={() => window.location.href = `/Details/${product.id}`} className="view-more-button">{product.button}</button>
             </div>
@@ -51,10 +63,10 @@ function Home() {
           </div>
         </div>
       </div>
-      <div style={{ backgroundColor: 'gray', height: '15px' }}></div>
-      <div className='heading-client'>
-        <h1>Our Clients Trusted Us</h1>
+      <div className='heading-client' style={{ backgroundColor: 'lightgray' }}>
+        <h2>Our Clients Trusted Us</h2>
         <div className='client-scroller'>
+          Client scroller
         </div>
       </div>
       <Footer />

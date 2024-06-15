@@ -31,11 +31,13 @@ body {
     margin: 10px 0;
 }
 
+
 .art-grid {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
     gap: 20px;
+    padding-left: 20px;
 }
 
 .art-card {
@@ -43,13 +45,13 @@ body {
     max-width: calc(20% - 20px);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     background-color: #fff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     box-sizing: border-box;
+    margin-bottom: 20px;
 }
 
 .art-image {
