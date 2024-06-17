@@ -31,7 +31,7 @@ function Footer() {
         </div>
       </div>
       <div className="footer-bottom">
-        <p>© 2024. All Rights Reserved</p>
+        <p>VisualArtTechnologies © 2024. All Rights Reserved</p>
       </div>
     </footer>
   );

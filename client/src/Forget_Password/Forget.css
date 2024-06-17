@@ -1,0 +1,65 @@
+.forget-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
+.fr-container {
+    display: flex;
+    margin: 20px;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.208);
+}
+
+.middel{ 
+    padding: 30px;
+    text-align: center;
+}
+.middel h2{
+    text-align: center;
+    padding: 30px 0;
+}
+
+.rec-btn{
+    width: 40%;
+    padding: 10px;
+    background-color: #2666c5;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.forget-company-logo{
+    width: 100px;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+}
+
+.recover-form-group, .forget-form-group {
+    margin-bottom: 15px;
+}
+
+.recover-form-group label, .forget-form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.recover-form-group input, .forget-form-group input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}

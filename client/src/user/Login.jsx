@@ -24,7 +24,7 @@ function Login() {
           <button className="log-res" type="submit">Signin <i class="fa-solid fa-right-long"></i></button>
           <div className="links">
             <a href="/Register">New user?</a>
-            <a href="/#">Forget Password?</a>
+            <a href="/Forget">Forget Password?</a>
           </div>
           <Link to="/Home" className="login-home-link"><FaArrowLeft />Home</Link>
         </div>

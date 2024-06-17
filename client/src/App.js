@@ -9,6 +9,8 @@ import Footer from './Nav-Foot/Footer.jsx';
 import Shopping from './Shopping/Shopping.jsx';
 import Detail from './Product_Details/Detail.jsx';
 import Contact from './Contact/Contact.jsx';
+import Forget from './Forget_Password/Forget.jsx';
+import Recover from './Forget_Password/Recover.jsx';
 import { products } from './Resources/Products.js';
 import Cart from './Cart/Cart.jsx';
 import { CartProvider } from './Resources/CartContext.jsx';
@@ -28,6 +30,8 @@ function App() {
           <Route path='/Contact' element={<Contact />} />
           <Route path='/Login' element={<Login />} />
           <Route path='/Register' element={<Register />} />
+          <Route path='/Forget' element={<Forget />} />
+          <Route path='/Recover' element={<Recover />} />
         </Routes>
       </div>
     </CartProvider>
