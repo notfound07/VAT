@@ -11,6 +11,7 @@ const Shopping = ({ products }) => {
         <div>
             <Navbar />
             <div className="gallery-container">
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></link>
                 <div className="filter">
                     <h3>Filter</h3>
                     <label>
@@ -20,21 +21,24 @@ const Shopping = ({ products }) => {
                         <input type="checkbox" /> High Price
                     </label>
                 </div>
-                    <div className="art-grid">
-                        {products.map((art) => (
-                            <div className="art-card" onClick={() => window.location.href = `/Details/${art.id}`}>
-                                <div className="art-image">
-                                    <img src={art.image} alt="Art" />
-                                </div>
-                                <div className="art-details">
-                                    <h4 className='art-title'>{art.title}</h4>
-                                    <div className='all-btn'>
-                                        {/* <button onClick={() => window.location.href = `/Details/${art.id}`} className='art-btn' >{art.button}</button> */}
-                                        <button className='art-btn-cart' onClick={() => addToCart(art)}>{art.button2}</button>
-                                    </div>
+                <div className="art-grid">
+                    {products.map((art) => (
+                        <div className="art-card" onClick={() => window.location.href = `/Details/${art.id}`}>
+                            <div className="art-image">
+                                <img src={art.image} alt="Art" />
+                            </div>
+                            <div className="art-details">
+                                <h4 className='art-title'>{art.title}</h4>
+                                <div className='all-btn'>
+                                    {/* <button onClick={() => window.location.href = `/Details/${art.id}`} className='art-btn' >{art.button}</button> */}
+                                    <button className='art-btn-cart' onClick={(e) => {
+                                        e.stopPropagation();
+                                        addToCart(art);
+                                    }}><i class="fa-solid fa-cart-plus"></i> {art.button2}</button>
                                 </div>
                             </div>
-                        ))}
+                        </div>
+                    ))}
                 </div>
             </div>
             <Footer />

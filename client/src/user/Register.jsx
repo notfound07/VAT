@@ -6,6 +6,7 @@ import './Style.css';
 function Register() {
   return (
     <div class="parent-signup-container">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></link>
       <div className="signup-container">
         <div className="signup-left">
           <h2>Sign Up</h2>
@@ -25,7 +26,7 @@ function Register() {
             <label htmlFor="confirmPassword">Confirm Password</label>
             <input type="password" id="confirmPassword" name="confirmPassword" />
           </div>
-          <button className='log-res' type="submit">Sign Up</button>
+          <button className='log-res' type="submit">Sign Up <i class="fa-solid fa-right-long"></i></button>
           <div className="signup-links">
             <a href="/Login">Already have an account?</a>
           </div>

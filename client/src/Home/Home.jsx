@@ -22,7 +22,7 @@ const Home = () => {
 
 
   return (
-    <div>
+    <div className='home-page'>
       <Navbar />
       <div className='main-image'>
         Image of client

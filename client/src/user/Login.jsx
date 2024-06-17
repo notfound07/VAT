@@ -6,6 +6,7 @@ import React from 'react';
 function Login() {
   return (
     <div class="parent-container">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></link>
       <div className="container">
         <div className="left">
           <div>Image or color</div>
@@ -20,7 +21,7 @@ function Login() {
             <label htmlFor="password">Password</label>
             <input type="password" id="password" name="password" />
           </div>
-          <button className="log-res" type="submit">Signin</button>
+          <button className="log-res" type="submit">Signin <i class="fa-solid fa-right-long"></i></button>
           <div className="links">
             <a href="/Register">New user?</a>
             <a href="/#">Forget Password?</a>

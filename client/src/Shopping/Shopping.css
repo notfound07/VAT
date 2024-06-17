@@ -52,6 +52,7 @@ body {
     text-align: center;
     box-sizing: border-box;
     margin-bottom: 20px;
+    cursor: pointer;
 }
 
 .art-image {
@@ -91,7 +92,7 @@ body {
     box-sizing: border-box;
     padding: 10px;
     border: none;
-    background-color: blue;
+    background-color: #2666c5;
     color: white;
     border-radius: 5px;
     cursor: pointer;

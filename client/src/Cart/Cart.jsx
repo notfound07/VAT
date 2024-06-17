@@ -1,10 +1,12 @@
-import React, { useContext } from 'react'
+import React, { useContext } from 'react';
 import { CartContext } from '../Resources/CartContext';
 import Navbar from '../Nav-Foot/Navbar';
 import Footer from '../Nav-Foot/Footer';
-import './Cart.css'
+import './Cart.css';
+
 const Cart = () => {
-  const { cart } = useContext(CartContext);
+  const { cart, removeFromCart } = useContext(CartContext);
+
   return (
     <div>
       <Navbar />
@@ -26,8 +28,8 @@ const Cart = () => {
                   <h2 className="cart-item-title">{item.title}</h2>
                 </div>
                 <div className="cart-item-actions">
-                  <button className="cart-btn">Remove</button>
-                  <button className="cart-btn">Proceed to Buy</button>
+                  <button className="cart-btn" onClick={() => removeFromCart(index)}>Remove</button>
+                  <button className="cart-btn-buy">Proceed to Buy</button>
                 </div>
               </li>
             ))}
@@ -36,7 +38,7 @@ const Cart = () => {
       </div>
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default Cart
+export default Cart;

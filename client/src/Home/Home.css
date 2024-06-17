@@ -25,6 +25,7 @@
   text-align: center;
   padding: 10px;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .product-display {
@@ -130,6 +131,19 @@
 }
 
 /* Responsive Styles */
+
+@media (max-width: 1920px) {
+  .product-card {
+    flex: 1 1 30%;
+  }
+}
+
+@media (max-width: 1600px) {
+  .product-card {
+    flex: 1 1 30%;
+  }
+}
+
 @media (max-width: 1200px) {
   .product-showcase {
     flex-wrap: wrap;
