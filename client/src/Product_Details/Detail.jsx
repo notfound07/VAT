@@ -88,6 +88,7 @@ const Detail = () => {
         <div className='art-details-text'>
           <div className="art-name">{product.title}</div>
           <h2 className="art-price">{product.price}</h2>
+          <h3>Description</h3>
           <div className="art-description">{product.description}</div>
         </div>
         <div className="side-column">

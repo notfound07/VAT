@@ -17,8 +17,8 @@ function Recover() {
             <input type="retypepassword" id="retypepassword" name="retypepassword" />
             <label htmlFor="otp">Enter OTP</label>
             <input type="otp" id="otp" name="otp" />
+            <button className="rec-btn" type="submit">Submit <i class="fa-solid fa-right-long"></i></button>
           </div>
-          <button className="rec-btn" type="submit">Submit <i class="fa-solid fa-right-long"></i></button>
         </div>
       </div>
     </div>
