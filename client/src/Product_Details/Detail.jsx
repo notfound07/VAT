@@ -83,7 +83,7 @@ const Detail = () => {
             </div>
           </div>
           <div className="art-item-placeholder" style={{ height: isFixed ? artItemRef.current.clientHeight + 'px' : '0' }} />
-      <div ref={footerRef}></div>
+          <div ref={footerRef}></div>
         </div>
         <div className='art-details-text'>
           <div className="art-name">{product.title}</div>

@@ -12,19 +12,20 @@
 
 .main-column {
   width: 100%;
+  border: 2px solid rgba(0, 0, 0, 0.1);
 }
 
 .art-item {
   position: sticky;
   top: 40px;
-  padding: 10px;
+  padding: 20px;
   width: 100%; 
 }
 
 .art-item.fixed {
   position: fixed;
   top: 40px;
-  left: 20px;
+  padding: 20px;
   width: 100%;
   transition: top 0.5s ease;
 }
@@ -163,9 +164,7 @@
 }
 
 .suggestions-container {
-  width: 30ch;
-  margin: 20px;
-  justify-content: center;
+  width: 25ch;
 }
 
 .suggestions-container h2 {
