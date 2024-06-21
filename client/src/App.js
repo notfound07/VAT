@@ -14,6 +14,7 @@ import Recover from './Forget_Password/Recover.jsx';
 import { products } from './Resources/Products.js';
 import Cart from './Cart/Cart.jsx';
 import { CartProvider } from './Resources/CartContext.jsx';
+import Payment from './Payment/Payment.jsx';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path='/Register' element={<Register />} />
           <Route path='/Forget' element={<Forget />} />
           <Route path='/Recover' element={<Recover />} />
+          <Route path='/Payment' element={<Payment />} />
         </Routes>
       </div>
     </CartProvider>
