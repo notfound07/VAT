@@ -15,6 +15,11 @@ function Payment() {
     const handleUpiChange = (e) => setUpiId(e.target.value);
     const handleCardChange = (e) => setCardDetails({ ...cardDetails, [e.target.name]: e.target.value });
 
+    const items=5;
+    const total=500;
+    const delivery=1;
+    const order_total=total+delivery;
+
     return (
         <div>
             <div className="payment-frame">
@@ -54,24 +59,35 @@ function Payment() {
                             <button type="submit" className="save-button">Save</button>
                         </form>
                     </div>
+                    <br/>
+                    <h2>Payment method</h2>
                     <div className="payment-method">
-                        <h2>Payment method</h2>
-                        <div>
+                        <div >
+                            <div className='other-upis'>
                             <input type="checkbox" id="upi" />
                             <label htmlFor="upi">Other UPI Apps</label>
-                            <div>
+                            </div>
+                            <div className='verify-upi'>
                                 <label>Please enter your UPI ID</label>
-                                <input type="text" value={upiId} onChange={handleUpiChange} />
+                                <input className='user-upi' type="text" value={upiId} onChange={handleUpiChange} />
                                 <button className="verify-button">Verify</button>
                             </div>
-                            <p>The UPI ID is in the format of name/phone number@bankname</p>
-                            <p>Cash on Delivery/Pay on Delivery Cash, UPI and Cards accepted.</p>
-                        </div>
-
-                        <div>
-                            <input type="checkbox" id="card" />
-                            <label htmlFor="card">Debit and Credit Card</label>
+                            <p style={{marginBottom:10}}>The UPI ID is in the format of name/phone number@bankname</p>
                             <div>
+                            <div className='other-upis'>
+                            <input type="checkbox" id="upi" />
+                            <label htmlFor="upi">Cash on Delivery/Pay on Delivery Cash, UPI and Cards accepted.</label>
+                            </div>
+                            </div>
+                        </div>
+                        <div >
+                            <form>
+                                <div className='verify-upi'>
+                                <input type='checkbox' className='dnc'></input>
+                                <label>Debit And Credit Card</label>
+                                </div>
+                            <div className="payment-method-field">
+                                <div>
                                 <label>Full Name</label>
                                 <input type="text" name="fullName" value={cardDetails.fullName} onChange={handleCardChange} />
                             </div>
@@ -80,34 +96,45 @@ function Payment() {
                                 <input type="text" name="cardNumber" value={cardDetails.cardNumber} onChange={handleCardChange} />
                             </div>
                             <div className="expiry-cvv">
-                                <div>
                                     <label>Expiry Date</label>
                                     <input type="text" name="expiryDate" value={cardDetails.expiryDate} onChange={handleCardChange} />
-                                </div>
-                                <div>
                                     <label>CVV</label>
                                     <input type="text" name="cvv" value={cardDetails.cvv} onChange={handleCardChange} />
-                                </div>
                             </div>
                             <button className="verify-button">Verify</button>
+                            </div>
+                            </form>
                         </div>
                     </div>
-
+                    <br/>
+                    <h2>Item and Delivery</h2>
                     <div className="final-order">
-                        <h2>Item and Delivery</h2>
-                        <p>Order Summary</p>
-                        <p>Items: ₹500</p>
-                        <p>Delivery: ₹1</p>
-                        <h3>Order Total: ₹501</h3>
+                    <label>Items:</label>
+                        <input disabled='disabled'value={items}/>
+                        <label>Total:</label>
+                        <input  disabled='disabled' value={total}/>
+                        <label>Delivery Charges:</label>
+                        <input disabled='disabled' value={delivery}/>
+                        <hr/>
+                        <label style={{fontSize:25}}>Order Total:</label>
+                        <input disabled='disabled' style={{fontSize:25,fontWeight:'bold'}} value={order_total}/>
                         <button className="order-button">Order now</button>
                     </div>
                 </div>
                 <div className="order-summary">
                     <h3>Order Summary</h3>
-                    <p>Items: ₹500</p>
-                    <p>Delivery: ₹1</p>
-                    <hr />
-                    <h3>Order Total: ₹501</h3>
+                    <hr/>
+                    <div className='order-fields'>
+                        <label>Items:</label>
+                        <input disabled='disabled'value={items}/>
+                        <label>Total:</label>
+                        <input  disabled='disabled' value={total}/>
+                        <label>Delivery Charges:</label>
+                        <input disabled='disabled' value={delivery}/>
+                        <hr/>
+                        <label style={{fontSize:25}}>Order Total:</label>
+                        <input disabled='disabled' style={{fontSize:25,fontWeight:'bold'}} value={order_total}/>
+                    </div>
                 </div>
             </div>
             <Footer />
