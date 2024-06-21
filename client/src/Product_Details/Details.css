@@ -11,7 +11,13 @@
 }
 
 .main-column {
-  width: 120%;
+  width: 100%;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.art-flex-contaner{
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
 }
 
 .art-item {

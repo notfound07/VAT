@@ -21,6 +21,7 @@ const Detail = () => {
     }
     return shuffledArray;
   }
+  
 
   useEffect(() => {
     const filteredProducts = products.filter(p => p.id !== productId); // Exclude the current product
@@ -67,6 +68,7 @@ const Detail = () => {
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></link>
       <Navbar />
       <div className="detail-container">
+        <div className='art-flex-contaner'>
         <div className="main-column">
           <div ref={artItemRef} className={`art-item ${isFixed ? 'fixed' : ''}`} key={product.id}>
             <div className='art-img-btn'>
@@ -74,22 +76,25 @@ const Detail = () => {
                 <img src={product.image} alt={product.title} />
               </div>
               <div className="art-cart-buy-btn">
-                <button className="buy-now-btn">Buy Now <i className="fa-solid fa-right-long"></i></button>
+                <button className="buy-now-btn" onClick={() => window.location.href = `/Payment`}>Buy Now <i className="fa-solid fa-right-long"></i></button>
                 <button className="add-to-cart-btn" onClick={(e) => {
                   e.stopPropagation();
                   addToCart(product);
                 }}><i className="fa-solid fa-cart-plus"></i> Add to Cart</button>
               </div>
             </div>
+            <div class="hidden-box">
+              {/* <!-- content that should appear after art-item gets fixed --> */}
+            </div>
           </div>
           <div className="art-item-placeholder" style={{ height: isFixed ? artItemRef.current.clientHeight + 'px' : '0' }} />
-          <div ref={footerRef}></div>
         </div>
         <div className='art-details-text'>
           <div className="art-name">{product.title}</div>
           <h2 className="art-price">{product.price}</h2>
           <h3>Description</h3>
           <div className="art-description">{product.description}</div>
+        </div>
         </div>
         <div className="side-column">
           <div className='suggestions-container'>
