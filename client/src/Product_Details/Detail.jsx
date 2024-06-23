@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useRef } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { products } from '../Resources/Products';
 import { useParams } from 'react-router-dom';
 import './Details.css';
@@ -21,56 +21,19 @@ const Detail = () => {
     }
     return shuffledArray;
   }
-  
 
   useEffect(() => {
     const filteredProducts = products.filter(p => p.id !== productId); // Exclude the current product
     setShuffledProducts(shuffleArray(filteredProducts).slice(0, 3));
   }, [productId]);
 
-  const [boxInitialTop, setBoxInitialTop] = useState(0);
-  const [isFixed, setIsFixed] = useState(false);
-  const [footerTop, setFooterTop] = useState(0);
-  const artItemRef = useRef(null);
-  const footerRef = useRef(null);
-
-  useEffect(() => {
-    const imageElement = document.querySelector('.art-item');
-    const footerElement = document.querySelector('.footer');
-
-    if (imageElement) {
-      setBoxInitialTop(imageElement.offsetTop);
-    }
-
-    if (footerElement) {
-      setFooterTop(footerElement.offsetTop);
-    }
-
-    const handleScroll = () => {
-      const scrollY = window.pageYOffset;
-
-      if (scrollY >= boxInitialTop && scrollY + artItemRef.current.clientHeight <= footerTop) {
-        setIsFixed(true);
-      } else {
-        setIsFixed(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [boxInitialTop, footerTop]);
-
   return (
     <div className='detail-page'>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></link>
       <Navbar />
       <div className="detail-container">
-        <div className='art-flex-contaner'>
         <div className="main-column">
-          <div ref={artItemRef} className={`art-item ${isFixed ? 'fixed' : ''}`} key={product.id}>
+          <div className="art-item" key={product.id}>
             <div className='art-img-btn'>
               <div className='art-image-detail'>
                 <img src={product.image} alt={product.title} />
@@ -83,11 +46,7 @@ const Detail = () => {
                 }}><i className="fa-solid fa-cart-plus"></i> Add to Cart</button>
               </div>
             </div>
-            <div class="hidden-box">
-              {/* <!-- content that should appear after art-item gets fixed --> */}
-            </div>
           </div>
-          <div className="art-item-placeholder" style={{ height: isFixed ? artItemRef.current.clientHeight + 'px' : '0' }} />
         </div>
         <div className='art-details-text'>
           <div className="art-name">{product.title}</div>
@@ -95,22 +54,19 @@ const Detail = () => {
           <h3>Description</h3>
           <div className="art-description">{product.description}</div>
         </div>
-        </div>
         <div className="side-column">
+          <h2>Suggestions</h2>
           <div className='suggestions-container'>
-            <h2>Suggestions</h2>
             {shuffledProducts.map((articles) => (
               <div className='suggestions' key={articles.id} onClick={() => window.location.href = `/Details/${articles.id}`}>
-                <img src={articles.image} className="sugg-img" alt={articles.title} />
+                <img src={articles.image} alt={articles.title} />
                 <h2 className='sugg-title'>{articles.title}</h2>
               </div>
             ))}
           </div>
         </div>
       </div>
-      <div ref={footerRef}>
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 };
