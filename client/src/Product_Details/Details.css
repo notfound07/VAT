@@ -1,3 +1,4 @@
+
 .detail-page {
   box-sizing: border-box;
 }
@@ -159,35 +160,29 @@
   padding-bottom: 20px;
 }
 
-/* For screens between 1200px and 769px */
+
+/* For screens between 1200px and 350px */
 @media (max-width: 1200px) {
   .detail-container {
     padding: 100px 30px 30px 30px;
-    /* Adjust padding */
   }
 
   .art-image-detail {
     width: 550px;
-    /* Decrease width for smaller screens */
     height: 500px;
-    /* Adjust height accordingly */
   }
 
   .art-details-text {
     margin-top: 50px;
-    /* Adjust margin top */
     padding: 25px;
-    /* Adjust padding */
   }
 }
 
-/* For screens between 768px and 481px */
 @media (max-width: 1168px) {
   .detail-container {
     display: flex;
     flex-wrap: wrap;
     padding: 80px 20px 20px 20px;
-    /* Adjust padding */
   }
 
   .detail-container>* {
@@ -196,30 +191,22 @@
 
   .main-column {
     order: 0;
-    /* Ensure main content appears below image on small screens */
   }
 
   .art-item {
     top: 40;
-    /* Remove sticky positioning on smaller screens */
     padding: 20px 20px 20px 0px;
-    /* Adjust padding */
   }
 
   .art-image-detail {
     width: 500px;
-    /* Full width for smaller screens */
     height: 400px;
-    /* Auto height */
     margin-bottom: 15px;
-    /* Adjust margin */
   }
 
   .art-details-text {
     margin-top: 40px;
-    /* Adjust margin top */
     padding: 20px;
-    /* Adjust padding */
   }
 
   .side-column {
@@ -252,30 +239,22 @@
   }
 }
 
-/* For screens between 999px and 350px */
 @media (max-width: 899px) and (min-width: 599px) {
   .detail-container {
     flex-direction: column;
-    /* Change flex direction to column */
     align-items: center;
-    /* Center align items */
     padding: 60px 10px 10px 10px;
-    /* Adjust padding */
   }
 
   .main-column,
   .side-column {
     width: 100%;
-    /* Make both columns take full width */
     order: unset;
-    /* Reset order if it was previously set */
   }
 
   .art-item {
     top: 0;
-    /* Remove sticky positioning */
-    padding:20px 20px 0px 20px;;
-    /* Adjust padding */
+    padding: 20px 20px 0px 20px;
   }
 
   .art-details-text {
@@ -284,24 +263,19 @@
 
   .art-image-detail {
     width: 100%;
-    /* Full width for smaller screens */
     height: auto;
-    /* Auto height */
   }
 
   .suggestions-container {
     display: flex;
     flex-direction: row;
-    /* Change to column */
     width: 100%;
     gap: 20px;
-    /* Adjust gap */
   }
 
   .suggestions {
     width: 100%;
     height: auto;
-    /* Auto height */
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -319,62 +293,46 @@
   }
 }
 
-@media (max-width: 599px)  and (min-width: 350px) {
+@media (max-width: 599px) and (min-width: 350px) {
   .detail-container {
     flex-direction: column;
-    /* Change flex direction to column */
     align-items: center;
-    /* Center align items */
     padding: 50px 5px 5px 5px;
-    /* Adjust padding */
   }
 
   .main-column,
   .side-column {
     width: 100%;
-    /* Make both columns take full width */
     order: unset;
-    /* Reset order if it was previously set */
   }
 
   .art-item {
     top: 0;
-    /* Remove sticky positioning */
     padding: 15px 15px 0px 15px;
-    /* Adjust padding */
   }
 
   .art-image-detail {
     width: 100%;
-    /* Full width for smaller screens */
     height: auto;
-    /* Auto height */
     margin-bottom: 10px;
-    /* Adjust margin */
   }
 
   .art-details-text {
     margin-top: 0px;
-    /* Adjust margin top */
     padding: 10px;
-    /* Adjust padding */
   }
 
   .suggestions-container {
     display: flex;
     flex-direction: row;
-    /* Changed from row to column */
     flex-wrap: wrap;
     width: 100%;
     gap: 10px;
-    /* Adjusted gap */
   }
 
   .suggestions-container>* {
     flex: 1 1 calc(50% - 5px);
-    /* Adjusted flex-basis */
     max-width: calc(50% - 5px);
-    /* Adjusted max-width */
 
   }
 
@@ -382,7 +340,6 @@
   .suggestions {
     width: 100%;
     height: auto;
-    /* Auto height */
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -400,55 +357,40 @@
   }
 }
 
-/* For screens 349px and below */
 @media (max-width: 349px) {
   .detail-container {
     flex-direction: column;
-    /* Change flex direction to column */
     align-items: center;
-    /* Center align items */
     padding: 50px 5px 5px 5px;
-    /* Adjust padding */
   }
 
   .main-column,
   .side-column {
     width: 100%;
-    /* Make both columns take full width */
     order: unset;
-    /* Reset order if it was previously set */
   }
 
   .art-item {
     top: 0;
-    /* Remove sticky positioning */
     padding: 15px 0;
-    /* Adjust padding */
   }
 
   .art-image-detail {
     width: 100%;
-    /* Full width for smaller screens */
     height: auto;
-    /* Auto height */
     margin-bottom: 10px;
-    /* Adjust margin */
   }
 
   .art-details-text {
     margin-top: 20px;
-    /* Adjust margin top */
     padding: 10px;
-    /* Adjust padding */
   }
 
   .suggestions-container {
     display: flex;
     flex-direction: column;
-    /* Change to column */
     width: 100%;
     gap: 10px;
-    /* Adjust gap */
   }
 
   .suggestions-container>* {
@@ -458,7 +400,6 @@
   .suggestions {
     width: 100%;
     height: auto;
-    /* Auto height */
     border-radius: 10px;
     display: flex;
     flex-direction: column;

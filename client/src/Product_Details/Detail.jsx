@@ -6,6 +6,8 @@ import './Details.css';
 import { CartContext } from '../Resources/CartContext';
 import Navbar from '../Nav-Foot/Navbar';
 import Footer from '../Nav-Foot/Footer';
+import { CartContext } from '../Resources/CartContext';
+import Review from './Review';
 
 const Detail = () => {
   const { id } = useParams();
@@ -29,9 +31,6 @@ const Detail = () => {
     setShuffledProducts(shuffleArray(filteredProducts).slice(0, 3));
   }, [productId]);
 
-  const handleEditClick = () => {
-    setIsEditing(!isEditing);
-  };
 
   return (
     <div className='detail-page'>
@@ -57,10 +56,8 @@ const Detail = () => {
         <div className='art-details-text'>
           <div className="art-name">{product.title}</div>
           <h3>Description</h3>
-          {show?(<button onClick={handleEditClick}> {isEditing ? 'Save' : 'Edit'}</button>):('')}
-          <textarea rows='20' value={product.description} 
-        readOnly={!isEditing}
-        className={`art-description ${!isEditing ? 'readonly' : ''}`}/>
+          <div className="art-description">{product.description}</div>
+          <Review />
         </div>
         <div className="side-column">
           <h2>Suggestions</h2>

@@ -1,0 +1,212 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    color: #545454;
+    font-family: "Open Sans", sans-serif;
+}
+
+.wrapper {
+    margin: 0 auto;
+    max-width: 960px;
+    width: 100%;
+}
+
+.master {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 40px;
+}
+
+.master h1 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.master h2 {
+    line-height: 160%;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.rating-component {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.rating-component .status-msg {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.rating-component .status-msg strong {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.rating-component .stars-box {
+    align-self: center;
+    margin-bottom: 15px;
+}
+
+.rating-component .stars-box .star {
+    color: #ccc;
+    cursor: pointer;
+}
+
+.rating-component .stars-box .star.hover,
+.rating-component .stars-box .star.selected {
+    color: #ff5a49;
+}
+
+.feedback-tags {
+    min-height: 119px;
+}
+
+.feedback-tags .tags-container {
+    display: none;
+}
+
+.feedback-tags .tags-container.active {
+    display: block;
+}
+
+.feedback-tags .tags-container .question-tag {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.feedback-tags .tags-box {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.feedback-tags .tags-container .make-compliment {
+    padding-bottom: 20px;
+}
+
+.feedback-tags .tags-container .make-compliment .compliment-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+}
+
+.feedback-tags .tags-container .make-compliment .compliment-container .fa-smile-wink {
+    color: #ff5a49;
+    cursor: pointer;
+    font-size: 40px;
+    animation-name: compliment;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+}
+
+.feedback-tags .tags-container .make-compliment .compliment-container .list-of-compliment {
+    display: none;
+    margin-top: 15px;
+}
+
+.feedback-tags .tag {
+    border: 1px solid #ff5a49;
+    border-radius: 5px;
+    color: #ff5a49;
+    cursor: pointer;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    padding: 10px;
+}
+
+.feedback-tags .tag.choosed {
+    background-color: #ff5a49;
+    color: #fff;
+}
+
+.list-of-compliment ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.list-of-compliment ul li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    min-width: 90px;
+}
+
+.list-of-compliment ul li:first-child {
+    margin-left: 0;
+}
+
+.list-of-compliment ul li .icon-compliment {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #ff5a49;
+    border-radius: 50%;
+    height: 70px;
+    width: 70px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    padding: 0 10px;
+    transition: 0.5s;
+}
+
+.list-of-compliment ul li .icon-compliment i {
+    color: #ff5a49;
+    font-size: 30px;
+    transition: 0.5s;
+}
+
+.list-of-compliment ul li.actived .icon-compliment {
+    background-color: #ff5a49;
+}
+
+.list-of-compliment ul li.actived .icon-compliment i {
+    color: #fff;
+}
+
+.button-box {
+    align-self: center;
+}
+
+.submited-box {
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.success-message {
+    background-color: #009e66;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 15px;
+}
+
+.loader,
+.loader:after {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+}

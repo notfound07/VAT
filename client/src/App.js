@@ -16,8 +16,8 @@ import Cart from './Cart/Cart.jsx';
 import { CartProvider } from './Resources/CartContext.jsx';
 import { createContext } from "react";
 import Payment from './Payment/Payment.jsx';
-import Add from './New/Add.jsx';
-
+import Add from './Add/Add.jsx';
+import Review from './Review/Review.jsx';
 export const RecoveryContext = createContext();
 function App() {
   const [email,setEmail]=useState();
@@ -32,6 +32,7 @@ function App() {
           <Route path='/Home' element={<Home />} />
           <Route path='/Navbar' element={<Navbar />} />
           <Route path='/Footer' element={<Footer />} />
+          <Route path='/Review' element={<Review />} />
           <Route path='/Shopping' element={<Shopping products={products} />} />
           <Route path='/Add' element={<Add/>}/>
           <Route path='/Cart' element={<Cart />} />
