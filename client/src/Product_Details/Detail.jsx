@@ -1,18 +1,20 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { products } from '../Resources/Products';
 import { useParams } from 'react-router-dom';
+import { RecoveryContext } from '../App';
 import './Details.css';
+import { CartContext } from '../Resources/CartContext';
 import Navbar from '../Nav-Foot/Navbar';
 import Footer from '../Nav-Foot/Footer';
-import { CartContext } from '../Resources/CartContext';
 
 const Detail = () => {
   const { id } = useParams();
   const productId = parseInt(id);
   const product = products.find(p => p.id === productId);
   const [shuffledProducts, setShuffledProducts] = useState([]);
+  const [isEditing, setIsEditing] = useState(false);
   const { addToCart } = useContext(CartContext);
-
+  const { show } = useContext(RecoveryContext);
   function shuffleArray(array) {
     let shuffledArray = array.slice(); // Create a copy of the array
     for (let i = shuffledArray.length - 1; i > 0; i--) {
@@ -26,6 +28,10 @@ const Detail = () => {
     const filteredProducts = products.filter(p => p.id !== productId); // Exclude the current product
     setShuffledProducts(shuffleArray(filteredProducts).slice(0, 3));
   }, [productId]);
+
+  const handleEditClick = () => {
+    setIsEditing(!isEditing);
+  };
 
   return (
     <div className='detail-page'>
@@ -50,9 +56,11 @@ const Detail = () => {
         </div>
         <div className='art-details-text'>
           <div className="art-name">{product.title}</div>
-          <h2 className="art-price">{product.price}</h2>
           <h3>Description</h3>
-          <div className="art-description">{product.description}</div>
+          {show?(<button onClick={handleEditClick}> {isEditing ? 'Save' : 'Edit'}</button>):('')}
+          <textarea rows='20' value={product.description} 
+        readOnly={!isEditing}
+        className={`art-description ${!isEditing ? 'readonly' : ''}`}/>
         </div>
         <div className="side-column">
           <h2>Suggestions</h2>

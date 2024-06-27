@@ -1,15 +1,16 @@
 import './Navbar.css';
 import logo from '../Assets/logo.png';
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect,useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { RecoveryContext } from '../App';
 
 function Navbar() {
-    
+    const { setShow } = useContext(RecoveryContext);
     const [dropdownVisible, setDropdownVisible] = useState(false);
+    const navigate=useNavigate();
     const toggleDropdown = () => {
         setDropdownVisible(!dropdownVisible);
     };
-
     useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth > 799) {
@@ -22,6 +23,10 @@ function Navbar() {
             window.removeEventListener('resize', handleResize);
         };
     }, []);
+    const editing=()=>{
+        setShow(false)
+        navigate('/Login')
+    }
 
     return (
         <div className="frame">
@@ -33,7 +38,7 @@ function Navbar() {
                     <Link to="/Home" className="nav-link"><i className="fa-solid fa-circle-info"></i>Who we are</Link>
                     <Link to='/Shopping' className="nav-link"><i className="fa-solid fa-store"></i>Product</Link>
                     <Link to="/Contact" className="nav-link"><i className="fa-solid fa-users"></i>ContactUs</Link>
-                    <Link to="/Login" className="nav-link"><i className="fa-solid fa-right-to-bracket"></i>SignIn</Link>
+                    <button className="nav-link" onClick={editing}><i className="fa-solid fa-right-to-bracket"></i>SignIn</button>
                     <Link to='/Cart' className="nav-link"><i className="fa-solid fa-cart-shopping"></i>Cart</Link>
                 </div>
                 <button className="nav-toggle-button" onClick={toggleDropdown}><i className="fa-solid fa-bars"></i></button>
@@ -41,8 +46,8 @@ function Navbar() {
                     <Link to="/Home" className="nav-link"><i className="fa-solid fa-circle-info"></i>Who we are</Link>
                     <Link to="/Shopping"className="nav-link"><i className="fa-solid fa-store"></i>Product</Link>
                     <Link to="/Contact" className="nav-link"><i className="fa-solid fa-users"></i>ContactUs</Link>
-                    <Link to="/Login" className="nav-link"><i className="fa-solid fa-right-to-bracket"></i>SignIn</Link>
-                    <Link to='/Cart' className="nav-link"><i className="fa-solid fa-cart-shopping"></i>Cart</Link>
+                    <Link to="/Login" className="nav-link"><i className="fa-solid fa-right-to-bracket"></i>SignIn</Link>          
+     <Link to='/Cart' className="nav-link"><i className="fa-solid fa-cart-shopping"></i>Cart</Link>
                 </div>
             </div>
         </div>

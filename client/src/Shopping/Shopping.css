@@ -6,6 +6,27 @@ body {
     box-sizing: border-box;
 }
 
+.new-product {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .new-product button {
+    background-color: #007bff; 
+    color: white;
+    border: none;
+    padding: 10px 20px; 
+    font-size: 16px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s; 
+  }
+  
+  .new-product button:hover {
+    background-color: #0056b3; 
+  }
+  
+  
 .gallery-container {
     display: flex;
     padding: 100px 20px 20px 20px;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Login from './user/Login.jsx';
@@ -14,11 +14,18 @@ import Recover from './Forget_Password/Recover.jsx';
 import { products } from './Resources/Products.js';
 import Cart from './Cart/Cart.jsx';
 import { CartProvider } from './Resources/CartContext.jsx';
+import { createContext } from "react";
 import Payment from './Payment/Payment.jsx';
+import Add from './New/Add.jsx';
 
+export const RecoveryContext = createContext();
 function App() {
+  const [email,setEmail]=useState();
+  const [show,setShow]=useState(false);
   return (
     <CartProvider>
+        <RecoveryContext.Provider
+      value={{email,setEmail,show,setShow}}>
       <div className="App">
         <Routes>
           <Route path='/' element={<Home />} />
@@ -26,6 +33,7 @@ function App() {
           <Route path='/Navbar' element={<Navbar />} />
           <Route path='/Footer' element={<Footer />} />
           <Route path='/Shopping' element={<Shopping products={products} />} />
+          <Route path='/Add' element={<Add/>}/>
           <Route path='/Cart' element={<Cart />} />
           <Route path='/Details/:id' element={<Detail />} />
           <Route path='/Contact' element={<Contact />} />
@@ -36,6 +44,7 @@ function App() {
           <Route path='/Payment' element={<Payment />} />
         </Routes>
       </div>
+      </RecoveryContext.Provider>
     </CartProvider>
   );
 }
