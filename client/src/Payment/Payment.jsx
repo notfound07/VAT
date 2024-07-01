@@ -4,21 +4,21 @@ import React, { useState } from 'react';
 import Footer from '../Nav-Foot/Footer';
 
 function Payment() {
-    const [upiId, setUpiId] = useState('');
-    const [cardDetails, setCardDetails] = useState({
-        fullName: '',
-        cardNumber: '',
-        expiryDate: '',
-        cvv: ''
-    });
+    // const [upiId, setUpiId] = useState('');
+    // const [cardDetails, setCardDetails] = useState({
+    //     fullName: '',
+    //     cardNumber: '',
+    //     expiryDate: '',
+    //     cvv: ''
+    // });
 
-    const handleUpiChange = (e) => setUpiId(e.target.value);
-    const handleCardChange = (e) => setCardDetails({ ...cardDetails, [e.target.name]: e.target.value });
+    // const handleUpiChange = (e) => setUpiId(e.target.value);
+    // const handleCardChange = (e) => setCardDetails({ ...cardDetails, [e.target.name]: e.target.value });
 
-    const items=5;
-    const total=500;
-    const delivery=1;
-    const order_total=total+delivery;
+    // const items=5;
+    // const total=500;
+    // const delivery=1;
+    // const order_total=total+delivery;
 
     return (
         <div>
@@ -59,7 +59,7 @@ function Payment() {
                             <button type="submit" className="save-button">Save</button>
                         </form>
                     </div>
-                    <br/>
+                    {/* <br/>
                     <h2>Payment method</h2>
                     <div className="payment-method">
                         <div >
@@ -134,8 +134,8 @@ function Payment() {
                         <hr/>
                         <label style={{fontSize:25}}>Order Total:</label>
                         <input disabled='disabled' style={{fontSize:25,fontWeight:'bold'}} value={order_total}/>
-                    </div>
-                </div>
+                    </div>*/}
+                </div> 
             </div>
             <Footer />
         </div>

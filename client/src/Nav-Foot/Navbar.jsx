@@ -38,7 +38,7 @@ function Navbar() {
                     <Link to="/Home" className="nav-link"><i className="fa-solid fa-circle-info"></i>Who we are</Link>
                     <Link to='/Shopping' className="nav-link"><i className="fa-solid fa-store"></i>Product</Link>
                     <Link to="/Contact" className="nav-link"><i className="fa-solid fa-users"></i>ContactUs</Link>
-                    <button className="nav-link" onClick={editing}><i className="fa-solid fa-right-to-bracket"></i>SignIn</button>
+                    <button className="nav-button-link" onClick={editing}><i className="fa-solid fa-right-to-bracket"></i>SignIn</button>
                     <Link to='/Cart' className="nav-link"><i className="fa-solid fa-cart-shopping"></i>Cart</Link>
                 </div>
                 <button className="nav-toggle-button" onClick={toggleDropdown}><i className="fa-solid fa-bars"></i></button>

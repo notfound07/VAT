@@ -16,8 +16,8 @@ import Cart from './Cart/Cart.jsx';
 import { CartProvider } from './Resources/CartContext.jsx';
 import { createContext } from "react";
 import Payment from './Payment/Payment.jsx';
-import Add from './Add/Add.jsx';
-import Review from './Review/Review.jsx';
+import Add from './New/Add.jsx';
+import Review from './Product_Details/Review.jsx';
 export const RecoveryContext = createContext();
 function App() {
   const [email,setEmail]=useState();

@@ -38,10 +38,17 @@
     text-decoration: none;
     cursor: pointer;
 }
-
-.nav-link:hover {
+.nav-button-link{
+    background-color: #222b51;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 22px;
+}
+.nav-link:hover,.nav-button-link:hover {
     color: #408EA7;
 }
+
 
 .company-logo {
     width: 60px;

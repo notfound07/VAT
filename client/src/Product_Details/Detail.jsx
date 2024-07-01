@@ -3,7 +3,6 @@ import { products } from '../Resources/Products';
 import { useParams } from 'react-router-dom';
 import { RecoveryContext } from '../App';
 import './Details.css';
-import { CartContext } from '../Resources/CartContext';
 import Navbar from '../Nav-Foot/Navbar';
 import Footer from '../Nav-Foot/Footer';
 import { CartContext } from '../Resources/CartContext';

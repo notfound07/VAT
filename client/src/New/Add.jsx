@@ -1,5 +1,4 @@
 import React from 'react'
-import Navbar from '../Nav-Foot/Navbar'
 import Footer from '../Nav-Foot/Footer'
 const Add = () => {
   return (
