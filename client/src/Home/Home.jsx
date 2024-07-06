@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import Navbar from '../Nav-Foot/Navbar';
 import Footer from '../Nav-Foot/Footer';
 import { products } from '../Resources/Products';
+import frontimg from '../Assets/front_img.jpeg';
 import machine from '../Assets/machine.png';
 import mission from '../Assets/mission.png';
 
@@ -25,7 +26,7 @@ const Home = () => {
     <div className='home-page'>
       <Navbar />
       <div className='main-image'>
-        Image of client
+        <img  src={frontimg}/>
       </div>
       <div className='product-display'>
         <div className="product-showcase">
@@ -35,7 +36,6 @@ const Home = () => {
                 <img src={product.image} alt={product.title} />
               </div>
               <h3 className="product-title">{product.title}</h3>
-              {/* <button onClick={() => window.location.href = `/Details/${product.id}`} className="view-more-button">{product.button}</button> */}
             </div>
           ))}
         </div>
