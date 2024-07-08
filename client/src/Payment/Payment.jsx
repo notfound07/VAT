@@ -1,6 +1,6 @@
 import './Payment.css';
 import logo from '../Assets/logo.png';
-import React, { useState } from 'react';
+import React from 'react';
 import Footer from '../Nav-Foot/Footer';
 
 function Payment() {

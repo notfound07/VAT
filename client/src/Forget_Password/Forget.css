@@ -14,7 +14,7 @@
     width: 100%;
     max-width: 400px;
     height: auto;
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.208);
+    box-shadow: 10px 10px 20px #babecc, -10px -10px 20px #ffffff;
 }
 
 .middel {

@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { products } from '../Resources/Products';
 import { useParams } from 'react-router-dom';
-import { RecoveryContext } from '../App';
 import './Details.css';
 import Navbar from '../Nav-Foot/Navbar';
 import Footer from '../Nav-Foot/Footer';
@@ -13,9 +12,7 @@ const Detail = () => {
   const productId = parseInt(id);
   const product = products.find(p => p.id === productId);
   const [shuffledProducts, setShuffledProducts] = useState([]);
-  const [isEditing, setIsEditing] = useState(false);
   const { addToCart } = useContext(CartContext);
-  const { show } = useContext(RecoveryContext);
   function shuffleArray(array) {
     let shuffledArray = array.slice(); // Create a copy of the array
     for (let i = shuffledArray.length - 1; i > 0; i--) {

@@ -26,7 +26,7 @@ const Home = () => {
     <div className='home-page'>
       <Navbar />
       <div className='main-image'>
-        <img  src={frontimg}/>
+        <img className='front-img' alt='' src={frontimg} />
       </div>
       <div className='product-display'>
         <div className="product-showcase">
@@ -45,8 +45,8 @@ const Home = () => {
       </div>
       <div className="custom-showcase">
         <div className="display-info">
-          <div  className='info-img'>
-          <img src={machine} alt="machine"/>
+          <div className='info-img'>
+            <img src={machine} alt="machine" />
           </div>
           <div className='desc'>
             <p className='desc-info'>
