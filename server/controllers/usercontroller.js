@@ -1,6 +1,6 @@
 const User = require("../model/userSchema");
 const validator = require("validator");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 const signup = async (req, res) => {
   try {

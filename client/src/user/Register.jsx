@@ -1,20 +1,31 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { RecoveryContext } from "../App";
 import { FaArrowRight } from "react-icons/fa";
+import axios from "axios";
 import "./Style.css";
 
 function Register() {
   const [name, setName] = useState("");
   const {email, setEmail}= useContext(RecoveryContext);
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [confirmpassword, setConfirmPassword] = useState("");
+  const navigate = useNavigate();
 
   const submit = async (e)=>{
     e.preventDefault();
     try{
-    console.log(name, email, password, confirmPassword)
+      const response = await axios.post("http://localhost:5000/vat/signup",{
+        name,
+        email,
+        password,
+        confirmpassword,
+      });
+
+      if(response.status === 201){
+        navigate('/login')
+      }
     }
     catch(err){
       console.log(err)
@@ -59,11 +70,11 @@ function Register() {
               />
             </div>
             <div className="signup-form-group">
-              <label htmlFor="confirmPassword">Confirm Password</label>
+              <label htmlFor="confirmpassword">Confirm Password</label>
               <input
                 type="password"
-                id="confirmPassword"
-                name="confirmPassword"
+                id="confirmpassword"
+                name="confirmpassword"
                 onChange={(e) => setConfirmPassword(e.target.value)}
               />
             </div>

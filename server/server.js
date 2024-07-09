@@ -8,6 +8,10 @@ app.use(bodyParser.json());
 
 const connectedDB = require("./connection");
 
+const userroute = require("./routes/userroute")
+
+app.use("/vat",userroute)
+
 const PORT = 5000;
 
 app.listen(PORT, async () => {
