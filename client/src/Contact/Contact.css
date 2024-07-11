@@ -38,7 +38,7 @@
   flex-direction: column;
 }
 
-.form-group {
+.form-group-contact {
   margin-bottom: 15px;
 }
 
@@ -48,9 +48,9 @@
 }
 
 .name-fields input[type="text"],
-.form-group input[type="email"],
-.form-group input[type="tel"],
-.form-group textarea {
+.form-group-contact input[type="email"],
+.form-group-contact input[type="tel"],
+.form-group-contact textarea {
   width: 100%;
   padding: 10px;
   margin-top: 5px;
@@ -58,7 +58,7 @@
   border-radius: 4px;
 }
 
-.form-group textarea {
+.form-group-contact textarea {
   resize: vertical;
   height: 100px;
 }
@@ -135,10 +135,10 @@
     padding: 6px 12px;
   }
 
-  .form-group input[type="text"],
-  .form-group input[type="email"],
-  .form-group input[type="tel"],
-  .form-group textarea {
+  .form-group-contact input[type="text"],
+  .form-group-contact input[type="email"],
+  .form-group-contact input[type="tel"],
+  .form-group-contact textarea {
     padding: 8px;
   }
 }
@@ -157,10 +157,10 @@
     padding: 5px 10px;
   }
 
-  .form-group input[type="text"],
-  .form-group input[type="email"],
-  .form-group input[type="tel"],
-  .form-group textarea {
+  .form-group-contact input[type="text"],
+  .form-group-contact input[type="email"],
+  .form-group-contact input[type="tel"],
+  .form-group-contact textarea {
     padding: 6px;
   }
 }

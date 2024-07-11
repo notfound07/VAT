@@ -13,22 +13,22 @@ function Contact() {
             <div className="image-placeholder">Image or color</div>
           </div>
           <form className="contact-form">
-            <div className="form-group">
+            <div className="form-group-contact">
               <label>Full Name</label>
               <div className="name-fields">
                 <input type="text" placeholder="First" />
                 <input type="text" placeholder="Last" />
               </div>
             </div>
-            <div className="form-group">
+            <div className="form-group-contact">
               <label>Email</label>
               <input type="email" />
             </div>
-            <div className="form-group">
+            <div className="form-group-contact">
               <label>Mobile Number</label>
               <input type="tel" />
             </div>
-            <div className="form-group">
+            <div className="form-group-contact">
               <label>Comment Message</label>
               <textarea></textarea>
             </div>

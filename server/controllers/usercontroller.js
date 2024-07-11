@@ -61,4 +61,41 @@ const signup = async (req, res) => {
     return res.status(500).json({ message: err.message });
   }
 };
-module.exports = { signup };
+
+
+const login = async (req, res) => {
+  try {
+    const { email, password } = req.query; // Retrieve email and password from query parameters
+    
+    if (!email) {
+      return res.status(400).json({ message: "Email is required" });
+    }
+
+    if (!password) {
+      return res.status(400).json({ message: "Password is required" });
+    }
+
+    if (!validator.isEmail(email)) {
+      return res.status(400).json({ message: "Email is invalid" });
+    }
+
+    const user = await User.findOne({ email });
+    
+    const isMatch = await bcrypt.compare(password, user.password);
+
+    if (!user) {
+      return res.status(401).json({ message: "Invalid email" });
+    }
+
+    if (!isMatch) {
+      return res.status(401).json({ message: "Invalid password" });
+    }
+    res.status(200).json({ message: "Login successful" });
+  } catch (err) {
+    console.log(err.message);
+    return res.status(500).json({ message: err.message });
+  }
+};
+module.exports = { 
+  signup,
+  login };

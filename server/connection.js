@@ -1,7 +1,16 @@
 const mongoose = require('mongoose');
 const URL = "mongodb+srv://alisbahhina:fgsFFdhKne5F3BRV@cluster0.7vmoebe.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const connectDb = async () => {
+  try {
+    await mongoose.connect(URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log('Database connected');
+  } catch (err) {
+    console.error('Database connection error', err);
+    throw err;
+  }
+};
 
-async function connectDb() {
-        return mongoose.connect(URL);
-}
 module.exports = connectDb;

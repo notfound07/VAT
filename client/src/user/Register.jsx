@@ -16,7 +16,7 @@ function Register() {
   const submit = async (e)=>{
     e.preventDefault();
     try{
-      const response = await axios.post("http://localhost:5000/vat/signup",{
+      const response = await axios.post("http://localhost:3001/vat/signup",{
         name,
         email,
         password,

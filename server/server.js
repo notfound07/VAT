@@ -12,7 +12,7 @@ const userroute = require("./routes/userroute")
 
 app.use("/vat",userroute)
 
-const PORT = 5000;
+const PORT = 3001;
 
 app.listen(PORT, async () => {
   try {
