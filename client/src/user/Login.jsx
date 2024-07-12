@@ -12,7 +12,7 @@ function Login() {
 
   const submit = async (e) => {
     e.preventDefault();
-    if (email === "visualartech@gmail.com" && password === "123456") {
+    if (email === "visualartech@gmail.com" && password === "Visual@123") {
       navigate('/Shopping');
       console.log("i m working");
       setShow(true);

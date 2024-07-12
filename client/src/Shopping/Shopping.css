@@ -8,29 +8,29 @@ body {
 
 .new-product {
     text-align: center;
-    margin-top: 20px;
-  }
-  
-  .new-product button {
-    background-color: #007bff; 
+    margin: 20px;
+}
+
+.new-product button {
+    background-color: #007bff;
     color: white;
     border: none;
-    padding: 10px 20px; 
-    font-size: 16px; 
-    border-radius: 5px; 
-    cursor: pointer; 
-    transition: background-color 0.3s; 
-  }
-  
-  .new-product button:hover {
-    background-color: #0056b3; 
-  }
-  
-  
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.new-product button:hover {
+    background-color: #0056b3;
+}
+
+
 .gallery-container {
     display: flex;
     padding: 100px 20px 20px 20px;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
 }
 
@@ -102,14 +102,14 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px; 
+    gap: 10px;
     width: 100%;
     margin-top: 20px;
 }
 
-.art-btn-cart{
+.art-btn-cart {
     flex: 1 1 auto;
-    min-width: 120px; 
+    min-width: 120px;
     box-sizing: border-box;
     padding: 10px;
     border: none;
@@ -159,7 +159,8 @@ body {
 
     .all-btn {
         flex-direction: column;
-        gap: 10px; /* Adjust gap for smaller screens */
+        gap: 10px;
+        /* Adjust gap for smaller screens */
     }
 }
 
@@ -176,6 +177,7 @@ body {
 
     .all-btn {
         flex-direction: column;
-        gap: 10px; /* Adjust gap for smaller screens */
+        gap: 10px;
+        /* Adjust gap for smaller screens */
     }
 }
