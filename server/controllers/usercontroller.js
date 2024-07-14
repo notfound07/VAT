@@ -1,4 +1,5 @@
 const User = require("../model/userSchema");
+const Feed = require("../model/feedSchema");
 const validator = require("validator");
 const bcrypt = require("bcryptjs");
 
@@ -96,6 +97,56 @@ const login = async (req, res) => {
     return res.status(500).json({ message: err.message });
   }
 };
+
+const contact = async (req, res) => {
+  try {
+    const { firstName, lastName, email, phoneNumber, commentMessage } = req.body;
+
+    if (!firstName) {
+      return res.status(400).json({ message: "First Name is required" });
+    }
+
+    if (!lastName) {
+      return res.status(400).json({ message: "Last Name is required" });
+    }
+
+    if (!email) {
+      return res.status(400).json({ message: "Email is required" });
+    }
+
+    if (!phoneNumber) {
+      return res.status(400).json({ message: "Phone Number is required" });
+    }
+
+    if (!commentMessage) {
+      return res.status(400).json({ message: "Comment Message is required" });
+    }
+
+    if (!validator.isEmail(email)) {
+      return res.status(400).json({ message: "Email is invalid" });
+    }
+
+    if (!validator.isMobilePhone(phoneNumber)) {
+      return res.status(400).json({ message: "Phone Number is invalid" });
+    }
+
+    const newContact = await Feed.create({
+      firstName,
+      lastName,
+      email,
+      phoneNumber,
+      commentMessage
+    });
+
+    res.status(201).json({ message: "Contact form submitted successfully", data: newContact });
+  } catch (err) {
+    console.log(err.message);
+    return res.status(500).json({ message: err.message });
+  }
+};
+
+
 module.exports = { 
   signup,
-  login };
+  login,
+  contact};
