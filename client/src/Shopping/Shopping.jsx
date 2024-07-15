@@ -16,7 +16,9 @@ const Shopping = ({ products }) => {
             <div className="gallery-container">
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></link>
                 <div className="new-product">
-                    {show ? (<button onClick={() => { navigate('/Add') }}>Add</button>) : ('')}
+                    {show ? (<h1>Shop</h1>) : ('')}
+                    {show ? (<h4>Add New collection of art in shop</h4>) : ('')}
+                    {show ? (<button className='art-btn-cart' onClick={() => { navigate('/Add') }}><i class="fa-solid fa-plus"></i> Add</button>) : ('')}
                 </div>
                 <div className="art-grid">
                     {products.map((art) => (

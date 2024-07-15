@@ -8,24 +8,15 @@ body {
 
 .new-product {
     text-align: center;
-    margin: 20px;
+    padding: 0px 20px 20px 20px;
 }
 
-.new-product button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+.new-product h1 {
+    margin-bottom: 10px;
 }
-
-.new-product button:hover {
-    background-color: #0056b3;
+.new-product h4 {
+    margin-bottom: 20px;
 }
-
 
 .gallery-container {
     display: flex;

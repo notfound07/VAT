@@ -6,20 +6,26 @@ const Add = () => {
   return (
     <div >
       <Navbar />
-      <form className='add-form'>
-        <h2 className=''>Add New Product</h2>
-        <label>Title</label>
-        <input className='upload' type='text' />
-        <label>Image</label>
-        <div className='file-upload'>
-          <input type='file' accept='image/*' />
-        </div>
-        <button>Upload</button>
-        <label>Description</label>
-        <textarea type='text' />
-        <button>New</button>
-        <button>Cancel</button>
-      </form>
+      <div className='add-container'>
+        <form className='add-form'>
+          <h1>Add New Product</h1>
+          <h3>Title</h3>
+          <input className='upload-title' type='text' />
+          <h3>Image</h3>
+          <div className='upload-box'>
+            <div className='file-upload'>
+              <input className='upload-file' type='file' accept='image/*' />
+            </div>
+            <button className='upnew-btn'><i class="fa-solid fa-upload"></i> Upload</button>
+          </div>
+          <h3>Description</h3>
+          <textarea type='text' className='description' />
+          <div className='new-btn'>
+            <button className='upnew-btn'><i class="fa-solid fa-shop"></i> New</button>
+            <button className='upnew-btn'>Cancel</button>
+          </div>
+        </form>
+      </div>
       <Footer />
     </div>
   )

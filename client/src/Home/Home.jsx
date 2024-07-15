@@ -31,7 +31,7 @@ const Home = () => {
       <div className='product-display'>
         <div className="product-showcase">
           {shuffledProducts.map((product) => (
-            <div className="product-card" onClick={() => window.location.href = `/Details/${product.id}`}>
+            <div className="product-card" key={product.id} onClick={() => window.location.href = `/Details/${product.id}`}>
               <div className="product-image">
                 <img src={product.image} alt={product.title} />
               </div>
@@ -40,6 +40,7 @@ const Home = () => {
           ))}
         </div>
       </div>
+
       <div className='slogan-section' style={{ backgroundColor: 'lightgray' }}>
         <p className='slogan'>“We understand the value of asset and timeline”</p>
       </div>
