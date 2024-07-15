@@ -27,7 +27,6 @@ const Detail = () => {
     setShuffledProducts(shuffleArray(filteredProducts).slice(0, 3));
   }, [productId]);
 
-
   return (
     <div className='detail-page'>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></link>
@@ -40,7 +39,7 @@ const Detail = () => {
                 <img src={product.image} alt={product.title} />
               </div>
               <div className="art-cart-buy-btn">
-                <button className="buy-now-btn" onClick={() => window.location.href = `/Payment`}>Buy Now <i className="fa-solid fa-right-long"></i></button>
+                <button className="buy-now-btn" onClick={() => window.location.href = `/Order`}>Buy Now <i className="fa-solid fa-right-long"></i></button>
                 <button className="add-to-cart-btn" onClick={(e) => {
                   e.stopPropagation();
                   addToCart(product);

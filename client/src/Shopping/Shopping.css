@@ -116,6 +116,7 @@ body {
     background-color: #0056b3;
 }
 
+
 /* Media Queries for Responsiveness */
 @media (max-width: 1200px) {
     .art-card {

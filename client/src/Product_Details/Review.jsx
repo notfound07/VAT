@@ -38,7 +38,6 @@ const Review = () => {
             <div className="master">
                 <h1>Review And Rating</h1>
                 <h2>How was your experience with our product?</h2>
-
                 <div className="rating-component">
                     <div className="status-msg">
                         <label>
@@ -101,19 +100,17 @@ const Review = () => {
                                 )}
                             </div>
                         )}
-
                         <div className="tags-box">
                             <input type="text" className="tag form-control" name="comment" id="inlineFormInputName" placeholder="Please enter your review" />
                             <input type="hidden" name="product_id" value="1" />
                         </div>
                     </div>
                 )}
-
                 <div className="button-box">
                     <input
                         type="submit"
-                        className="done btn btn-warning"
-                        disabled={rating !== 5}
+                        className="done-btn-warning"
+                        disabled={rating <= 0}
                         value="Add review"
                         onClick={handleSubmit}
                     />

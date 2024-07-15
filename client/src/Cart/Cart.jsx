@@ -6,6 +6,7 @@ import './Cart.css';
 
 const Cart = () => {
   const { cart, removeFromCart } = useContext(CartContext);
+  const validCartItems = cart.filter(item => item && item.image && item.title);
 
   return (
     <div>
@@ -15,11 +16,11 @@ const Cart = () => {
         <hr />
       </div>
       <div className="cart-page">
-        {cart.length === 0 ? (
+        {validCartItems.length === 0 ? (
           <p>Your cart is empty</p>
         ) : (
           <ul className="cart-list">
-            {cart.map((item, index) => (
+            {validCartItems.map((item, index) => (
               <li key={index} className="cart-item">
                 <div className="cart-item-image">
                   <img src={item.image} alt="Art" className="cart-img" />
@@ -29,7 +30,7 @@ const Cart = () => {
                 </div>
                 <div className="cart-item-actions">
                   <button className="cart-btn" onClick={() => removeFromCart(index)}>Remove</button>
-                  <button className="cart-btn-buy">Proceed to Buy</button>
+                  <button className="cart-btn-buy" onClick={() => window.location.href = `/Details/${item.id}`}>Proceed to Buy</button>
                 </div>
               </li>
             ))}

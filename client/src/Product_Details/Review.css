@@ -1,212 +1,163 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
-
-* {
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-body {
-    color: #545454;
-    font-family: "Open Sans", sans-serif;
-}
+/* Review.css */
 
 .wrapper {
-    margin: 0 auto;
-    max-width: 960px;
-    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
 }
 
 .master {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding-top: 40px;
+    background: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
 }
 
 .master h1 {
-    font-size: 20px;
     margin-bottom: 20px;
+    font-size: 24px;
 }
 
 .master h2 {
-    line-height: 160%;
     margin-bottom: 20px;
-    text-align: center;
+    font-size: 18px;
+    color: #666;
 }
 
 .rating-component {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.status-msg {
     margin-bottom: 10px;
 }
 
-.rating-component .status-msg {
-    margin-bottom: 10px;
-    text-align: center;
+.status-msg strong {
+    font-size: 16px;
+    color: #333;
 }
 
-.rating-component .status-msg strong {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 10px;
+.stars-box {
+    margin-bottom: 20px;
 }
 
-.rating-component .stars-box {
-    align-self: center;
-    margin-bottom: 15px;
-}
-
-.rating-component .stars-box .star {
+.stars-box .star {
+    font-size: 24px;
     color: #ccc;
     cursor: pointer;
+    margin: 0 5px;
+    transition: color 0.3s;
 }
 
-.rating-component .stars-box .star.hover,
-.rating-component .stars-box .star.selected {
-    color: #ff5a49;
+.stars-box .star.selected,
+.stars-box .star:hover {
+    color: #f5b301;
 }
 
 .feedback-tags {
-    min-height: 119px;
+    margin-bottom: 20px;
 }
 
 .feedback-tags .tags-container {
-    display: none;
-}
-
-.feedback-tags .tags-container.active {
-    display: block;
-}
-
-.feedback-tags .tags-container .question-tag {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.feedback-tags .tags-box {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-.feedback-tags .tags-container .make-compliment {
-    padding-bottom: 20px;
-}
-
-.feedback-tags .tags-container .make-compliment .compliment-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #000;
-}
-
-.feedback-tags .tags-container .make-compliment .compliment-container .fa-smile-wink {
-    color: #ff5a49;
-    cursor: pointer;
-    font-size: 40px;
-    animation-name: compliment;
-    animation-duration: 2s;
-    animation-iteration-count: 1;
-}
-
-.feedback-tags .tags-container .make-compliment .compliment-container .list-of-compliment {
-    display: none;
-    margin-top: 15px;
-}
-
-.feedback-tags .tag {
-    border: 1px solid #ff5a49;
-    border-radius: 5px;
-    color: #ff5a49;
-    cursor: pointer;
     margin-bottom: 10px;
-    margin-left: 10px;
-    padding: 10px;
 }
 
-.feedback-tags .tag.choosed {
-    background-color: #ff5a49;
-    color: #fff;
+.feedback-tags .question-tag {
+    font-size: 16px;
+    color: #333;
+}
+
+.make-compliment {
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.compliment-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f5b301;
+    font-size: 16px;
+}
+
+.compliment-container .far {
+    margin-left: 10px;
 }
 
 .list-of-compliment ul {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+    list-style: none;
+    padding: 0;
 }
 
-.list-of-compliment ul li {
+.list-of-compliment li {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    cursor: pointer;
     margin-bottom: 10px;
-    margin-left: 20px;
-    min-width: 90px;
 }
 
-.list-of-compliment ul li:first-child {
-    margin-left: 0;
+.icon-compliment {
+    margin-right: 10px;
+    color: #f5b301;
 }
 
-.list-of-compliment ul li .icon-compliment {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid #ff5a49;
-    border-radius: 50%;
-    height: 70px;
-    width: 70px;
-    margin-bottom: 15px;
-    overflow: hidden;
-    padding: 0 10px;
-    transition: 0.5s;
+.tags-box {
+    margin-bottom: 20px;
 }
 
-.list-of-compliment ul li .icon-compliment i {
-    color: #ff5a49;
-    font-size: 30px;
-    transition: 0.5s;
-}
-
-.list-of-compliment ul li.actived .icon-compliment {
-    background-color: #ff5a49;
-}
-
-.list-of-compliment ul li.actived .icon-compliment i {
-    color: #fff;
+.tag {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
 
 .button-box {
-    align-self: center;
+    margin-bottom: 20px;
+}
+
+.done-btn-warning {
+    padding: 10px 20px;
+    border: none;
+    background-color: #f5b301;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.done-btn-warning:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.done-btn-warning:not(:disabled):hover {
+    background-color: #e0a800;
 }
 
 .submited-box {
-    align-self: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-top: 20px;
+}
+
+.loader {
+    border: 4px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 4px solid #f5b301;
+    width: 20px;
+    height: 20px;
+    animation: spin 2s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 .success-message {
-    background-color: #009e66;
-    border-radius: 5px;
-    color: #fff;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 10px 15px;
-}
-
-.loader,
-.loader:after {
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
+    color: #4CAF50;
+    font-size: 18px;
 }

@@ -15,7 +15,7 @@ import { products } from "./Resources/Products.js";
 import Cart from "./Cart/Cart.jsx";
 import { CartProvider } from "./Resources/CartContext.jsx";
 import { createContext } from "react";
-import Payment from "./Payment/Payment.jsx";
+import Order from "./Order/Order.jsx";
 import Add from "./New/Add.jsx";
 import Review from "./Product_Details/Review.jsx";
 export const RecoveryContext = createContext();
@@ -41,7 +41,7 @@ function App() {
             <Route path="/Register" element={<Register />} />
             <Route path="/Forget" element={<Forget />} />
             <Route path="/Recover" element={<Recover />} />
-            <Route path="/Payment" element={<Payment />} />
+            <Route path="/Order" element={<Order />} />
           </Routes>
         </div>
       </RecoveryContext.Provider>
