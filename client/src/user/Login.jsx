@@ -14,7 +14,6 @@ function Login() {
     e.preventDefault();
     if (email === "visualartech@gmail.com" && password === "Visual@123") {
       navigate('/Shopping');
-      console.log("i m working");
       setShow(true);
     } else {
       try {
@@ -25,7 +24,7 @@ function Login() {
           }
         });
         if (response.status === 200) {
-          console.log(response.data);
+          localStorage.setItem("LoggedUser",email);
           navigate('/Home');
         }
       } catch (err) {

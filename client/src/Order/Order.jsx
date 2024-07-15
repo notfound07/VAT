@@ -1,9 +1,18 @@
 import './Order.css';
 import logo from '../Assets/logo.png';
-import React from 'react';
+import React,{ useState, useContext }from 'react';
 import Footer from '../Nav-Foot/Footer';
+import { RecoveryContext } from '../App';
+
 
 function Order() {
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const { email, setEmail } = useContext(RecoveryContext);
+    const [phoneNumber, setPhoneNumber] = useState("");
+    const [address, setAddress] = useState("");
+    const [pin, setPin] = useState("");
+    const LoggedUser=localStorage.getItem("LoggedUser")
     return (
         <div>
             <div className="payment-frame">
@@ -21,24 +30,26 @@ function Order() {
                             <div className="name-fields">
                                 <div>
                                     <label>Full Name</label>
-                                    <input type="text" placeholder="First" />
+                                    <input type="text" placeholder="First" onChange={(e) => setFirstName(e.target.value)}/>
                                 </div>
                                 <div>
                                     <label>&nbsp;</label>
-                                    <input type="text" placeholder="Last" />
+                                    <input type="text" placeholder="Last" onChange={(e) => setLastName(e.target.value)} />
                                 </div>
                             </div>
+                            <label>Email</label>
+                            <input type="email" name='email' defaultValue={LoggedUser} onChange={(e) => setEmail(e.target.value)} disabled />
                             <div>
                                 <label>Mobile Number</label>
-                                <input type="text" />
+                                <input type="number" onChange={(e) => setPhoneNumber(e.target.value)} />
                             </div>
                             <div>
                                 <label>Address</label>
-                                <textarea />
+                                <textarea onChange={(e) => setAddress(e.target.value)}/>
                             </div>
                             <div>
                                 <label>PinCode</label>
-                                <input type="text" />
+                                <input type="number" onChange={(e) => setPin(e.target.value)}/>
                             </div>
                             <button type="submit" className="save-button">Save</button>
                         </form>

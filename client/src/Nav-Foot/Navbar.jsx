@@ -5,9 +5,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { RecoveryContext } from '../App';
 
 function Navbar() {
-    const { setShow } = useContext(RecoveryContext);
+    // const { setShow } = useContext(RecoveryContext);
     const [dropdownVisible, setDropdownVisible] = useState(false);
-    const navigate=useNavigate();
+    // const navigate=useNavigate();
+    const LoggedUser=localStorage.getItem("LoggedUser")
     const toggleDropdown = () => {
         setDropdownVisible(!dropdownVisible);
     };
@@ -23,10 +24,11 @@ function Navbar() {
             window.removeEventListener('resize', handleResize);
         };
     }, []);
-    const editing=()=>{
-        setShow(false)
-        navigate('/Login')
-    }
+    const handleLogout = () => {
+        // Remove the user's token from local storage
+        localStorage.clear();
+        window.location.href = '/Home';
+    };
 
     return (
         <div className="frame">
@@ -38,8 +40,14 @@ function Navbar() {
                     <Link to="/Home" className="nav-link"><i className="fa-solid fa-circle-info"></i>Who we are</Link>
                     <Link to='/Shopping' className="nav-link"><i className="fa-solid fa-store"></i>Product</Link>
                     <Link to="/Contact" className="nav-link"><i className="fa-solid fa-users"></i>ContactUs</Link>
-                    <button className="nav-button-link" onClick={editing}><i className="fa-solid fa-right-to-bracket"></i>SignIn</button>
-                    <Link to='/Cart' className="nav-link"><i className="fa-solid fa-cart-shopping"></i>Cart</Link>
+                    <div className="get-in">
+                    {LoggedUser === null ? <Link to='/Login' className='nav-link'><i class="fa-solid fa-right-to-bracket"></i>SignIn</Link> :
+                        <>
+                            <p className="userlogo" style={{ backgroundColor: 'blue', color: 'white', paddingRight: "3px", paddingLeft: "3px", fontSize: "20px", fontFamily: 'Times New Roman' }}>Hello, {LoggedUser.split("@").reverse().pop()}</p>
+                            <Link to="/Home" className='nav-link' onClick={handleLogout}>SignOut</Link>
+                        </>
+                    }
+                </div>                    <Link to='/Cart' className="nav-link"><i className="fa-solid fa-cart-shopping"></i>Cart</Link>
                 </div>
                 <button className="nav-toggle-button" onClick={toggleDropdown}><i className="fa-solid fa-bars"></i></button>
                 <div className={`nav-dropdown ${dropdownVisible ? 'show' : ''}`}>

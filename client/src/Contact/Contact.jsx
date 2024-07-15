@@ -11,6 +11,7 @@ function Contact() {
   const { email, setEmail } = useContext(RecoveryContext);
   const [phoneNumber, setPhoneNumber] = useState("");
   const [message, setMessage] = useState("");
+  const LoggedUser=localStorage.getItem("LoggedUser")
 
   const submitForm = async (e) => {
     e.preventDefault();
@@ -54,11 +55,11 @@ function Contact() {
             </div>
             <div className="form-group-contact">
               <label>Email</label>
-              <input type="email" name='email' onChange={(e) => setEmail(e.target.value)} />
+              <input type="email" name='email' defaultValue={LoggedUser} onChange={(e) => setEmail(e.target.value)} disabled />
             </div>
             <div className="form-group-contact">
               <label>Mobile Number</label>
-              <input type="tel" name='phoneNumber' onChange={(e) => setPhoneNumber(e.target.value)} />
+              <input type="number" name='phoneNumber' onChange={(e) => setPhoneNumber(e.target.value)} />
             </div>
             <div className="form-group-contact">
               <label>Comment Message</label>
