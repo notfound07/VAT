@@ -59,7 +59,7 @@ function Contact() {
             </div>
             <div className="form-group-contact">
               <label>Mobile Number</label>
-              <input type="number" name='phoneNumber' onChange={(e) => setPhoneNumber(e.target.value)} />
+              <input name='phoneNumber' onChange={(e) => setPhoneNumber(e.target.value)} />
             </div>
             <div className="form-group-contact">
               <label>Comment Message</label>

@@ -1,6 +1,6 @@
 import './Order.css';
 import logo from '../Assets/logo.png';
-import React,{ useState, useContext }from 'react';
+import React, { useState, useContext } from 'react';
 import Footer from '../Nav-Foot/Footer';
 import { RecoveryContext } from '../App';
 
@@ -12,12 +12,12 @@ function Order() {
     const [phoneNumber, setPhoneNumber] = useState("");
     const [address, setAddress] = useState("");
     const [pin, setPin] = useState("");
-    const LoggedUser=localStorage.getItem("LoggedUser")
+    const LoggedUser = localStorage.getItem("LoggedUser")
     return (
         <div>
             <div className="payment-frame">
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></link>
-                <div className="payment-nav">
+                <div className="payment-nav" onClick={() => window.location.href = '/Home'}>
                     <img className="company-payment-logo" src={logo} alt="" />
                     <p className='payment-title'>CHECKOUT</p>
                 </div>
@@ -27,34 +27,35 @@ function Order() {
                     <div className="delivery-address">
                         <h1>Delivery address</h1>
                         <form>
-                            <div className="name-fields">
+                            <div className="name-enter-fields">
                                 <div>
-                                    <label>Full Name</label>
-                                    <input type="text" placeholder="First" onChange={(e) => setFirstName(e.target.value)}/>
+                                    <h4>Full Name</h4>
+                                    <div className='name-enter'>
+                                        <input className="dettails-enter" type="text" placeholder="First" onChange={(e) => setFirstName(e.target.value)} />
+                                        <input className="dettails-enter" type="text" placeholder="Last" onChange={(e) => setLastName(e.target.value)} />
+                                    </div>
                                 </div>
                                 <div>
-                                    <label>&nbsp;</label>
-                                    <input type="text" placeholder="Last" onChange={(e) => setLastName(e.target.value)} />
+                                    <h4>Email</h4>
+                                    <input className="dettails-enter" type="email" name='email' defaultValue={LoggedUser} onChange={(e) => setEmail(e.target.value)} disabled />
                                 </div>
+                                <div>
+                                    <h4>Mobile Number</h4>
+                                    <input className="dettails-enter" type="tel" onChange={(e) => setPhoneNumber(e.target.value)} />
+                                </div>
+                                <div>
+                                    <h4>Address</h4>
+                                    <textarea className='address' onChange={(e) => setAddress(e.target.value)} />
+                                </div>
+                                <div>
+                                    <h4>PinCode</h4>
+                                    <input className="dettails-enter" onChange={(e) => setPin(e.target.value)} />
+                                </div>
+                                <button type="submit" className="save-button">Save</button>
                             </div>
-                            <label>Email</label>
-                            <input type="email" name='email' defaultValue={LoggedUser} onChange={(e) => setEmail(e.target.value)} disabled />
-                            <div>
-                                <label>Mobile Number</label>
-                                <input type="number" onChange={(e) => setPhoneNumber(e.target.value)} />
-                            </div>
-                            <div>
-                                <label>Address</label>
-                                <textarea onChange={(e) => setAddress(e.target.value)}/>
-                            </div>
-                            <div>
-                                <label>PinCode</label>
-                                <input type="number" onChange={(e) => setPin(e.target.value)}/>
-                            </div>
-                            <button type="submit" className="save-button">Save</button>
                         </form>
                     </div>
-                </div> 
+                </div>
             </div>
             <Footer />
         </div>

@@ -48,8 +48,17 @@
 }
 
 .name-fields input[type="text"],
+
 .form-group-contact input[type="email"],
-.form-group-contact input[type="tel"],
+
+.form-group-contact input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
 .form-group-contact textarea {
   width: 100%;
   padding: 10px;
