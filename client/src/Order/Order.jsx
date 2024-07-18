@@ -2,8 +2,8 @@ import './Order.css';
 import logo from '../Assets/logo.png';
 import React, { useState, useContext } from 'react';
 import Footer from '../Nav-Foot/Footer';
+import axios from 'axios';
 import { RecoveryContext } from '../App';
-
 
 function Order() {
     const [firstName, setFirstName] = useState("");
@@ -12,7 +12,32 @@ function Order() {
     const [phoneNumber, setPhoneNumber] = useState("");
     const [address, setAddress] = useState("");
     const [pin, setPin] = useState("");
-    const LoggedUser = localStorage.getItem("LoggedUser")
+    const LoggedUser = localStorage.getItem("LoggedUser");
+
+    const submitForm = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post("http://localhost:3001/vat/order", {
+                firstName,
+                lastName,
+                email: LoggedUser,
+                phoneNumber,
+                address,
+                pin
+            });
+            if (response.status === 201) {
+                console.log("Order submitted successfully");
+                console.log("Response Data", response.data);
+            }
+        } catch (err) {
+            if (err.response) {
+                console.log("Error Response Data", err.response.data);
+            } else {
+                console.log(err);
+            }
+        }
+    };
+
     return (
         <div>
             <div className="payment-frame">
@@ -26,7 +51,7 @@ function Order() {
                 <div className='final-order'>
                     <div className="delivery-address">
                         <h1>Delivery address</h1>
-                        <form>
+                        <form onSubmit={submitForm}>
                             <div className="name-enter-fields">
                                 <div>
                                     <h4>Full Name</h4>
@@ -51,7 +76,7 @@ function Order() {
                                     <h4>PinCode</h4>
                                     <input className="dettails-enter" onChange={(e) => setPin(e.target.value)} />
                                 </div>
-                                <button type="submit" className="save-button">Save</button>
+                                <button className="save-button" type="submit">Save</button>
                             </div>
                         </form>
                     </div>

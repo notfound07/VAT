@@ -43,17 +43,25 @@ function Navbar() {
                         {LoggedUser === null ? <Link to='/Login' className='nav-link'><i class="fa-solid fa-right-to-bracket"></i>SignIn</Link> :
                             <>
                                 <p className="userlogo" style={{ backgroundColor: 'blue', color: 'white', paddingRight: "3px", paddingLeft: "3px", fontSize: "20px", fontFamily: 'Times New Roman' }}>Hello, {LoggedUser.split("@").reverse().pop()}</p>
-                                <Link to="/Home" className='nav-link' onClick={handleLogout}>SignOut</Link>
+                                <Link to="/Home" className='nav-logout' onClick={handleLogout}><i className="fa-solid fa-right-from-bracket"></i>SignOut</Link>
                             </>
                         }
-                    </div>                    <Link to='/Cart' className="nav-link"><i className="fa-solid fa-cart-shopping"></i>Cart</Link>
+                    </div>
+                    <Link to='/Cart' className="nav-link"><i className="fa-solid fa-cart-shopping"></i>Cart</Link>
                 </div>
                 <button className="nav-toggle-button" onClick={toggleDropdown}><i className="fa-solid fa-bars"></i></button>
                 <div className={`nav-dropdown ${dropdownVisible ? 'show' : ''}`}>
+                    <div className="nav-link">
+                        {LoggedUser === null ? <Link to='/Login' className='nav-sign'><i className="fa-solid fa-right-to-bracket"></i>SignIn</Link> :
+                            <>
+                                <p className="userlogo" style={{ backgroundColor: 'blue', color: 'white', paddingRight: "3px", paddingLeft: "3px", fontSize: "20px", fontFamily: 'Times New Roman' }}>Hello, {LoggedUser.split("@").reverse().pop()}</p>
+                                <Link to="/Home" className='nav-link' onClick={handleLogout}><i className="fa-solid fa-right-from-bracket"></i>SignOut</Link>
+                            </>
+                        }
+                    </div>
                     <Link to="/Home" className="nav-link"><i className="fa-solid fa-circle-info"></i>Who we are</Link>
                     <Link to="/Shopping" className="nav-link"><i className="fa-solid fa-store"></i>Product</Link>
                     <Link to="/Contact" className="nav-link"><i className="fa-solid fa-users"></i>ContactUs</Link>
-                    <Link to="/Login" className="nav-link"><i className="fa-solid fa-right-to-bracket"></i>SignIn</Link>
                     <Link to='/Cart' className="nav-link"><i className="fa-solid fa-cart-shopping"></i>Cart</Link>
                 </div>
             </div>

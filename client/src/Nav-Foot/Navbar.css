@@ -27,17 +27,25 @@
     gap: 20px;
 }
 
-.nav-link {
-    color: white;
-    text-decoration: none;
-    cursor: pointer;
-}
 
 .nav-link {
     color: white;
     text-decoration: none;
     cursor: pointer;
 }
+
+.nav-sign {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.nav-logout {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 .nav-button-link{
     background-color: #222b51;
     border: none;

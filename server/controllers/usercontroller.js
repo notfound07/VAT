@@ -1,5 +1,6 @@
 const User = require("../model/userSchema");
 const Feed = require("../model/feedSchema");
+const Order = require("../model/orderSchema");
 const validator = require("validator");
 const bcrypt = require("bcryptjs");
 
@@ -145,8 +146,54 @@ const contact = async (req, res) => {
   }
 };
 
+const order = async (req, res) => {
+  try {
+    const { firstName, lastName, email, phoneNumber, address, pin } = req.body;
 
-module.exports = { 
+    if (!firstName) {
+      return res.status(400).json({ message: "First Name is required" });
+    }
+    if (!lastName) {
+      return res.status(400).json({ message: "Last Name is required" });
+    }
+    if (!email) {
+      return res.status(400).json({ message: "Email is required" });
+    }
+    if (!phoneNumber) {
+      return res.status(400).json({ message: "Phone Number is required" });
+    }
+    if (!address) {
+      return res.status(400).json({ message: "Address is required" });
+    }
+    if (!pin) {
+      return res.status(400).json({ message: "Pin is required" });
+    }
+    if (!validator.isEmail(email)) {
+      return res.status(400).json({ message: "Email is invalid" });
+    }
+    if (!validator.isMobilePhone(phoneNumber)) {
+      return res.status(400).json({ message: "Phone Number is invalid" });
+    }
+
+    const newOrder = await Order.create({
+      firstName,
+      lastName,
+      email,
+      phoneNumber,
+      address,
+      pin
+    });
+
+    res.status(201).json({ message: "Order submitted successfully", data: newOrder });
+  } catch (err) {
+    console.log(err.message);
+    return res.status(500).json({ message: err.message });
+  }
+};
+
+module.exports = {
   signup,
   login,
-  contact};
+  contact,
+  order
+};

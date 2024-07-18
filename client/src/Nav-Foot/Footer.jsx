@@ -14,8 +14,8 @@ function Footer() {
         </div>
         <div className="footer-section-contact">
           <h2>GET IN TOUCH</h2>
-          <p><i class="fa-solid fa-location-pin"></i> KH NO.-745 GALI NO.-12,SADDIQ<br/>
-          <span class="spaced">NAGAR, GHAZIABAD, U.P.-201017 (INDIA)</span>
+          <p><i className="fa-solid fa-location-pin"></i> KH NO.-745 GALI NO.-12,SADDIQ<br/>
+          <span className="spaced">NAGAR, GHAZIABAD, U.P.-201017 (INDIA)</span>
           </p>
           <p><IoCall /> 8800026077</p>
           <p><IoCall /> 999222303</p>

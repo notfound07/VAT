@@ -6,7 +6,7 @@ import logo from '../Assets/logo.png'; // Import the image
 
 function Forget() {
   return (
-    <div class="forget-container">
+    <div className="forget-container">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></link>
       <div className="fr-container">
         <div className="middel">
