@@ -32,7 +32,7 @@ const Shopping = ({ products }) => {
                                     <button className='art-btn-cart' onClick={(e) => {
                                         e.stopPropagation();
                                         addToCart(art);
-                                    }}><i className="fa-solid fa-cart-plus"></i> {art.button2}</button>
+                                    }}><i className="fa-solid fa-cart-plus"></i> Add to Cart</button>
                                 </div>
                             </div>
                         </div>

@@ -1,8 +1,10 @@
 const User = require("../model/userSchema");
 const Feed = require("../model/feedSchema");
 const Order = require("../model/orderSchema");
+const Booking=require("../model/bookingSchema");
 const validator = require("validator");
 const bcrypt = require("bcryptjs");
+
 
 const signup = async (req, res) => {
   try {
@@ -190,10 +192,22 @@ const order = async (req, res) => {
     return res.status(500).json({ message: err.message });
   }
 };
+const booking = async (req, res) => {
+  try {
+    const { items } = req.body;
+    const newOrder = new Booking({ items });
+    const savedOrder = await newOrder.save();
+    res.status(201).json(savedOrder);
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to create order', error: error.message });
+  }
+
+};
 
 module.exports = {
   signup,
   login,
   contact,
-  order
+  order,
+  booking
 };

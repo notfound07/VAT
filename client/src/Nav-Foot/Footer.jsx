@@ -24,7 +24,7 @@ function Footer() {
         <div className="footer-section-social">
           <h2>Follow US</h2>
           <div className="social-icons">
-            <a href='https://www.instagram.com/' target="_blank" rel="noopener noreferrer" className="foot-button"><i class="fa-brands fa-instagram"></i></a>
+            <a href='https://www.instagram.com/visionart.tech24/?hl=en' target="_blank" rel="noopener noreferrer" className="foot-button"><i class="fa-brands fa-instagram"></i></a>
             <a href='https://www.facebook.com/' target="_blank" rel="noopener noreferrer" className="foot-button"><i class="fa-brands fa-facebook"></i></a>
             <a href='https://x.com/' target="_blank" rel="noopener noreferrer" className="foot-button"><i class="fa-brands fa-x-twitter"></i></a>
           </div>
