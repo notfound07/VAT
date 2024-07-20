@@ -6,13 +6,14 @@ import { RecoveryContext } from '../App';
 import axios from 'axios';
 
 function Login() {
-  const { email, setEmail, setShow } = useContext(RecoveryContext);
+  const { email, setEmail,setShow} = useContext(RecoveryContext);
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const submit = async (e) => {
     e.preventDefault();
-    if (email === "visualartech@gmail.com" && password === "Visual@123") {
+    if (email === "visionaryart.tech24@gmail.com" && password === "Visionary.24") {
+      localStorage.setItem("LoggedUser",email);
       navigate('/Shopping');
       setShow(true);
     } else {

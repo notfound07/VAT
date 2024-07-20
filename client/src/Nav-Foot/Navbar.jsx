@@ -1,10 +1,11 @@
 import './Navbar.css';
 import logo from '../Assets/logo.png';
-import { useState, useEffect } from 'react';
+import { useState, useEffect,useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { RecoveryContext } from '../App';
 
 function Navbar() {
-    // const { setShow } = useContext(RecoveryContext);
+    const { setShow } = useContext(RecoveryContext);
     const [dropdownVisible, setDropdownVisible] = useState(false);
     // const navigate=useNavigate();
     const LoggedUser = localStorage.getItem("LoggedUser")
@@ -25,7 +26,8 @@ function Navbar() {
     }, []);
     const handleLogout = () => {
         // Remove the user's token from local storage
-        localStorage.clear();
+        localStorage.removeItem("LoggedUser");
+        setShow(false);
         window.location.href = '/Home';
     };
 

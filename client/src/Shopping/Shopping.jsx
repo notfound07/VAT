@@ -1,7 +1,8 @@
-import React, { useContext } from 'react'
+import React, { useContext,useEffect, useState } from 'react'
 import Navbar from '../Nav-Foot/Navbar'
 import Footer from '../Nav-Foot/Footer'
 import './Shopping.css'
+import axios from 'axios'
 import { CartContext } from '../Resources/CartContext';
 import { RecoveryContext } from '../App';
 import { useNavigate } from 'react-router-dom';
@@ -9,7 +10,34 @@ import { useNavigate } from 'react-router-dom';
 const Shopping = ({ products }) => {
     const { addToCart } = useContext(CartContext);
     const { show } = useContext(RecoveryContext);
+    const [order,setOrder]=useState();
     const navigate = useNavigate();
+    useEffect(() => {
+        const fetchAllResponses = async () => {
+          try {
+            const response = await axios.get("http://localhost:3001/vat/getAllProducts");
+            if (response.status === 200) {
+              // Return the array of feedback responses
+              setOrder(response.data);
+              localStorage.setItem('AllOrder', JSON.stringify(response.data));
+            }
+          } catch (error) {
+            console.error("Error fetching All responses:", error);
+          }
+        };
+        const cachedRecords = localStorage.getItem('AllOrder');
+        if (cachedRecords) {
+          // If cached records exist, parse and set them into state
+          setOrder(JSON.parse(cachedRecords));
+        } else {
+          // If no cached records, fetch them
+          fetchAllResponses();
+        }
+        const interval = setInterval(() => {
+          fetchAllResponses()
+        }, 1000)
+        return () => clearInterval(interval)
+      }, [])
     return (
         <div>
             <Navbar />

@@ -14,6 +14,7 @@ import Recover from "./Forget_Password/Recover.jsx";
 import { products } from "./Resources/Products.js";
 import Cart from "./Cart/Cart.jsx";
 import { CartProvider } from "./Resources/CartContext.jsx";
+import useLocalStorage from './Resources/useLoaclStorage';
 import { createContext } from "react";
 import Order from "./Order/Order.jsx";
 import Add from "./New/Add.jsx";
@@ -21,10 +22,11 @@ import Review from "./Product_Details/Review.jsx";
 export const RecoveryContext = createContext();
 function App() {
   const [email, setEmail] = useState();
-  const [show, setShow] = useState(false);
+  const [show,setShow]=useLocalStorage('show',false)
+
   return (
     <CartProvider>
-      <RecoveryContext.Provider value={{ email, setEmail, show, setShow }}>
+      <RecoveryContext.Provider value={{ email, setEmail,setShow,show }}>
         <div className="App">
           <Routes>
             <Route path="/" element={<Home />} />

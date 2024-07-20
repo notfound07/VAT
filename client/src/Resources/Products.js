@@ -8,7 +8,6 @@ import product7 from '../Assets/product7.jpg';
 import product8 from '../Assets/product8.jpg';
 import product9 from '../Assets/product9.jpg';
 import product10 from '../Assets/product10.jpg';
-import product11 from '../Assets/product11.jpg';
 
 
 export const products = [
@@ -71,12 +70,5 @@ export const products = [
       image: product10,
       description:'A perforated metal fence. The fence panels are composed of metal sheets with uniformly distributed circular holes. The panels are attached to a robust framework of metal posts and crossbars. This type of fencing is likely used for both security and aesthetic purposes, providing a degree of privacy while allowing for air circulation and visibility through the holes.',
     },
-    {
-      id:11,
-      title: 'Laser Cutting Fence',
-      image: product11,
-      description:'A decorative perforated metal railing, possibly used as a balcony or terrace barrier. The panels have an intricate design with irregularly shaped perforations, creating an artistic pattern. The railing is affixed to a metal frame with a horizontal top rail for added stability and safety. The setting appears to be an elevated outdoor area, with a scenic view of a landscape in the background. The shadows cast by the perforations create an interesting visual effect on the ground, adding to the aesthetic appeal of the design.',
 
-    },
-   
 ];
