@@ -1,71 +1,97 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { products } from '../Resources/Products';
 import { useParams } from 'react-router-dom';
 import './Details.css';
 import Navbar from '../Nav-Foot/Navbar';
 import Footer from '../Nav-Foot/Footer';
 import { CartContext } from '../Resources/CartContext';
+import { RecoveryContext } from '../App';
 import Review from './Review';
+import axios from 'axios';
+import { Buffer } from 'buffer';
 
 const Detail = () => {
+  const [item, setItem] = useState(null);
   const { id } = useParams();
-  const productId = parseInt(id);
-  const product = products.find(p => p.id === productId);
-  const [shuffledProducts, setShuffledProducts] = useState([]);
-  const { addToCart } = useContext(CartContext);
-  function shuffleArray(array) {
-    let shuffledArray = array.slice(); // Create a copy of the array
-    for (let i = shuffledArray.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
-    }
-    return shuffledArray;
-  }
+  const { show,orders } = useContext(RecoveryContext);
 
   useEffect(() => {
-    const filteredProducts = products.filter(p => p.id !== productId); // Exclude the current product
-    setShuffledProducts(shuffleArray(filteredProducts).slice(0, 3));
-  }, [productId]);
+    const fetchAllResponses = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3001/vat/getById/${id}`);
+        if (response.status === 200) {
+          setItem(response.data);
+        }
+      } catch (error) {
+        console.error("Error fetching All responses:", error);
+      }
+    };  
+    fetchAllResponses()
+  }, [id]);
+  const [shuffledProducts, setShuffledProducts] = useState([]);
+  function shuffleArray(array) {
+      let shuffledArray = array.slice(); // Create a copy of the array
+      for (let i = shuffledArray.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+      }
+      return shuffledArray;
+    }
+  
+    useEffect(() => {
+        setShuffledProducts(shuffleArray(orders).slice(0, 3));
+    }, []);
+  const { addToCart } = useContext(CartContext);
 
+  console.log(shuffleArray)
   return (
     <div className='detail-page'>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></link>
       <Navbar />
       <div className="detail-container">
         <div className="main-column">
-          <div className="art-item" key={product.id}>
-            <div className='art-img-btn'>
-              <div className='art-image-detail'>
-                <img src={product.image} alt={product.title} />
-              </div>
-              <div className="art-cart-buy-btn">
-                <button className="buy-now-btn" onClick={() => window.location.href = `/Order`}>Buy Now <i className="fa-solid fa-right-long"></i></button>
-                <button className="add-to-cart-btn" onClick={(e) => {
-                  e.stopPropagation();
-                  addToCart(product);
-                }}><i className="fa-solid fa-cart-plus"></i> Add to Cart</button>
+          {item && (
+            <div className="art-item">
+              <div className='art-img-btn'>
+                <div className='art-image-detail'>
+                  <img 
+                    src={`data:${item.image.contentType};base64,${Buffer.from(item.image.data.data).toString('base64')}`} 
+                    alt={item.title} 
+                  />
+                </div>
+                <div className="art-cart-buy-btn">
+                  <button className="buy-now-btn" onClick={() => window.location.href = `/Order`}>Buy Now <i className="fa-solid fa-right-long"></i></button>
+                  <button className="add-to-cart-btn" onClick={(e) => {
+                    e.stopPropagation();
+                    addToCart(item);
+                  }}><i className="fa-solid fa-cart-plus"></i> Add to Cart</button>
+                </div>
               </div>
             </div>
+          )}
+        </div>
+        {item && (
+          <div className='art-details-text'>
+            <div className="art-name">{item.title}</div>
+            <h3>Description</h3>
+            <div className="art-description">{item.description}</div>
+            {show?(<button>Edit</button>):('')}
+            <Review />
           </div>
-        </div>
-        <div className='art-details-text'>
-          <div className="art-name">{product.title}</div>
-          <h3>Description</h3>
-          <div className="art-description">{product.description}</div>
-          <Review />
-        </div>
-        <div className="side-column">
+        )}
+      </div>
+      <div className="side-column">
           <h2>Suggestions</h2>
           <div className='suggestions-container'>
-            {shuffledProducts.map((articles) => (
-              <div className='suggestions' key={articles.id} onClick={() => window.location.href = `/Details/${articles.id}`}>
-                <img src={articles.image} alt={articles.title} />
-                <h2 className='sugg-title'>{articles.title}</h2>
+          {shuffledProducts.map((product) => (
+            <div className="product-card" key={product.id} onClick={() => window.location.href = `/Details/${product.id}`}>
+              <div className="product-image">
+              <img src={`data:${product.image.contentType};base64,${Buffer.from(product.image.data).toString('base64')}`}  alt={product.title} />
               </div>
-            ))}
+              <h3 className="product-title">{product.title}</h3>
+            </div>
+          ))}
           </div>
         </div>
-      </div>
       <Footer />
     </div>
   );

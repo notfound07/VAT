@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
+import axios from "axios";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Login from "./user/Login.jsx";
@@ -19,14 +20,28 @@ import { createContext } from "react";
 import Order from "./Order/Order.jsx";
 import Add from "./New/Add.jsx";
 import Review from "./Product_Details/Review.jsx";
+import Dashboard from "./Dashboard/Dashboard.jsx";
 export const RecoveryContext = createContext();
 function App() {
   const [email, setEmail] = useState();
   const [show,setShow]=useLocalStorage('show',false)
-
+  const [orders,setOrder]=useState([]);
+  useEffect(() => {
+    const fetchAllResponses = async () => {
+      try {
+        const response = await axios.get("http://localhost:3001/vat/getAllProducts");
+        if (response.status === 200) {
+          setOrder(response.data);
+        }
+      } catch (error) {
+        console.error("Error fetching All responses:", error);
+      }
+    };  
+    fetchAllResponses()
+  }, [])
   return (
     <CartProvider>
-      <RecoveryContext.Provider value={{ email, setEmail,setShow,show }}>
+      <RecoveryContext.Provider value={{ email, setEmail,setShow,show,orders,setOrder }}>
         <div className="App">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -44,6 +59,7 @@ function App() {
             <Route path="/Forget" element={<Forget />} />
             <Route path="/Recover" element={<Recover />} />
             <Route path="/Order" element={<Order />} />
+            <Route path='/Dashboard' element={<Dashboard/>}/>
           </Routes>
         </div>
       </RecoveryContext.Provider>

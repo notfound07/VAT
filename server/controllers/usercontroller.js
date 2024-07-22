@@ -202,8 +202,15 @@ const booking = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: 'Failed to create order', error: error.message });
   }
-
 };
+const Allbooking=async(req,res)=>{
+  try {
+    const allBooking = await Booking.find();
+    res.status(200).json(allBooking);
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to fetch products', error: error.message });
+  }
+}
 const product= async (req, res) => {
   try {
     const { title, description } = req.body;
@@ -235,12 +242,25 @@ const getAllProducts = async (req, res) => {
     res.status(500).json({ message: 'Failed to fetch products', error: error.message });
   }
 };
+const getById=async(req,res)=>{
+  try {
+    const productbyid=await Product.findById(req.params.id);
+    if(!productbyid){
+      return res.status(400).json({message:"product not found"})
+    }
+    res.json(productbyid);
+  } catch (error) {
+    res.status(500).send(err);
+  }
+}
 module.exports = {
   signup,
   login,
   contact,
   order,
   booking,
+  Allbooking,
   product,
-  getAllProducts
+  getAllProducts,
+  getById
 };

@@ -5,10 +5,6 @@ import product4 from '../Assets/product4.jpg';
 import product5 from '../Assets/product5.jpg';
 import product6 from '../Assets/product6.jpg';
 import product7 from '../Assets/product7.jpg';
-import product8 from '../Assets/product8.jpg';
-import product9 from '../Assets/product9.jpg';
-import product10 from '../Assets/product10.jpg';
-
 
 export const products = [
     {
@@ -52,23 +48,4 @@ export const products = [
       image: product7,
       description:'A long stretch of black perforated metal fencing along a pedestrian walkway. The fencing has a modern design with small, geometric cutouts, providing both security and aesthetic appeal. It is installed next to a building entrance and a lift.',
     },
-    {
-      id:8,
-      title: 'Jewelry Vitrine Showcase',
-      image: product8,
-      description:'Multiple glass display cabinets arranged in a warehouse or manufacturing facility. Each cabinet features several glass shelves and is equipped with lighting, likely intended for retail or museum use.',
-    },
-    {
-      id:9,
-      title: 'Jewelry Kiosk',
-      image: product9,
-      description:'A white perforated metal fence, which serves as a secure boundary while allowing some visibility through its circular cutouts. The fence is installed outdoors, alongside a paved area and near palm trees, indicating it could be used for residential or commercial property protection.',
-    },
-    {
-      id:10,
-      title: 'Carbon Steel Perforated Metal Fence Panel',
-      image: product10,
-      description:'A perforated metal fence. The fence panels are composed of metal sheets with uniformly distributed circular holes. The panels are attached to a robust framework of metal posts and crossbars. This type of fencing is likely used for both security and aesthetic purposes, providing a degree of privacy while allowing for air circulation and visibility through the holes.',
-    },
-
 ];

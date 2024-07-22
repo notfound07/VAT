@@ -1,13 +1,15 @@
 import './Home.css';
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect,useContext } from 'react'
 import Navbar from '../Nav-Foot/Navbar';
 import Footer from '../Nav-Foot/Footer';
-import { products } from '../Resources/Products';
 import frontimg from '../Assets/front_img.jpeg';
 import machine from '../Assets/machine.png';
 import mission from '../Assets/mission.png';
+import { RecoveryContext } from '../App';
+import { Buffer } from 'buffer'
 
 const Home = () => {
+  const { orders } = useContext(RecoveryContext);
   const [shuffledProducts, setShuffledProducts] = useState([])
   function shuffleArray(array) {
     let shuffledArray = array.slice(); // Create a copy of the array
@@ -18,7 +20,7 @@ const Home = () => {
     return shuffledArray;
   }
   useEffect(() => {
-    setShuffledProducts(shuffleArray(products).slice(0, 4));
+    setShuffledProducts(shuffleArray(orders).slice(0, 4));
   }, []);
 
 
@@ -33,7 +35,7 @@ const Home = () => {
           {shuffledProducts.map((product) => (
             <div className="product-card" key={product.id} onClick={() => window.location.href = `/Details/${product.id}`}>
               <div className="product-image">
-                <img src={product.image} alt={product.title} />
+              <img src={`data:${product.image.contentType};base64,${Buffer.from(product.image.data).toString('base64')}`}  alt={product.title} />
               </div>
               <h3 className="product-title">{product.title}</h3>
             </div>

@@ -4,6 +4,8 @@ import Navbar from '../Nav-Foot/Navbar';
 import axios from 'axios';
 import Footer from '../Nav-Foot/Footer';
 import './Cart.css';
+import { Buffer } from 'buffer';
+
 
 const Cart = () => {
   const { cart, removeFromCart } = useContext(CartContext);
@@ -41,7 +43,8 @@ const Cart = () => {
             {validCartItems.map((item, index) => (
               <li key={index} className="cart-item">
                 <div className="cart-item-image">
-                  <img src={item.image} alt="Art" className="cart-img" />
+                  <img src={`data:${item.image.contentType};base64,${Buffer.from(item.image.data.data).toString('base64')}`} 
+                    alt={item.title}  className="cart-img" />
                 </div>
                 <div className="cart-item-details">
                   <h2 className="cart-item-title">{item.title}</h2>

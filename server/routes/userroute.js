@@ -1,5 +1,5 @@
 const express = require("express");
-const { signup, login, contact, order,booking,product,getAllProducts } = require("../controllers/usercontroller");
+const { signup, login, contact, order,booking,Allbooking,product,getAllProducts,getById } = require("../controllers/usercontroller");
 const router = express.Router();
 const multer = require('multer');
 
@@ -12,7 +12,9 @@ router.route("/login").get(login);
 router.route("/contact").post(contact);
 router.route("/order").post(order);
 router.route("/booking").post(booking);
+router.route('/allBooking').get(Allbooking);
 router.post('/product', upload.single('image'), product)
 router.route("/getAllProducts").get(getAllProducts);
+router.route("/getById/:id").get(getById);
 
 module.exports = router;

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { RecoveryContext } from '../App';
 
 function Navbar() {
-    const { setShow } = useContext(RecoveryContext);
+    const { show,setShow } = useContext(RecoveryContext);
     const [dropdownVisible, setDropdownVisible] = useState(false);
     // const navigate=useNavigate();
     const LoggedUser = localStorage.getItem("LoggedUser")
@@ -38,6 +38,7 @@ function Navbar() {
                 <img className="company-logo" onClick={() => window.location.href = '/Home'} src={logo} alt="" />
                 <p className='company-name'>VisualArtTechnologies</p>
                 <div className="nav-child">
+                    {show?(<Link to="/Dashboard" className='nav-link'><i class="fa-solid fa-table-columns"></i>Dashboard</Link>):('')}
                     <Link to="/Home" className="nav-link"><i className="fa-solid fa-circle-info"></i>Who we are</Link>
                     <Link to='/Shopping' className="nav-link"><i className="fa-solid fa-store"></i>Product</Link>
                     <Link to="/Contact" className="nav-link"><i className="fa-solid fa-users"></i>ContactUs</Link>
