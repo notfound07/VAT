@@ -1,13 +1,12 @@
-import React,{useState} from 'react'
+import React,{useContext} from 'react'
 import Footer from '../Nav-Foot/Footer'
 import axios from 'axios'
+import { RecoveryContext } from '../App';
 import Navbar from '../Nav-Foot/Navbar'
 import './Add.css'
 const Add = () => {
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [image, setImage] = useState(null);  
- 
+  const { title,setTitle,image,setImage,description,setDescription } = useContext(RecoveryContext);
+
   const handleFileChange = (e) => {
     setImage(e.target.files[0]);
   };

@@ -234,6 +234,26 @@ const product= async (req, res) => {
     res.status(500).json({ message: 'Failed to create product', error: error.message });
   }
 };
+//update product
+
+const update_product=async(req,res)=>{
+  const {title, description } = req.body;
+  try {
+    const product = await Product.findById(req.params.id);
+    if (!product) {
+      return res.status(404).json({ error: 'Product not found' });
+    }
+
+    product.title = title;
+    product.description = description;
+    await product.save();
+
+    res.json({ success: true, product });
+  } catch (error) {
+    console.error('Error updating product:', error);
+    res.status(500).json({ error: 'Server error' });
+  }
+}
 const getAllProducts = async (req, res) => {
   try {
     const products = await Product.find();
@@ -261,6 +281,7 @@ module.exports = {
   booking,
   Allbooking,
   product,
+  update_product,
   getAllProducts,
   getById
 };

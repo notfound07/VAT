@@ -26,6 +26,10 @@ function App() {
   const [email, setEmail] = useState();
   const [show,setShow]=useLocalStorage('show',false)
   const [orders,setOrder]=useState([]);
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [image, setImage] = useState(null);  
+
   useEffect(() => {
     const fetchAllResponses = async () => {
       try {
@@ -41,7 +45,7 @@ function App() {
   }, [])
   return (
     <CartProvider>
-      <RecoveryContext.Provider value={{ email, setEmail,setShow,show,orders,setOrder }}>
+      <RecoveryContext.Provider value={{ email, setEmail,setShow,show,orders,setOrder,title,setTitle,description,setDescription,image,setImage }}>
         <div className="App">
           <Routes>
             <Route path="/" element={<Home />} />

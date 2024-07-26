@@ -4,7 +4,6 @@ import product3 from '../Assets/product3.jpg';
 import product4 from '../Assets/product4.jpg';
 import product5 from '../Assets/product5.jpg';
 import product6 from '../Assets/product6.jpg';
-import product7 from '../Assets/product7.jpg';
 
 export const products = [
     {
@@ -42,10 +41,5 @@ export const products = [
         image: product6,
         description:'A series of colorful, perforated metal panels installed along a walkway. Each panel has a unique geometric pattern, creating a visually appealing and decorative barrier. The vibrant colors and intricate designs add an artistic touch to the setting.',
       },
-    {
-      id:7,
-      title: 'Modern Balcony Railing Design',
-      image: product7,
-      description:'A long stretch of black perforated metal fencing along a pedestrian walkway. The fencing has a modern design with small, geometric cutouts, providing both security and aesthetic appeal. It is installed next to a building entrance and a lift.',
-    },
+   
 ];
