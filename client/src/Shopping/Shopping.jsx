@@ -1,4 +1,4 @@
-import React, { useContext,} from 'react'
+import React, { useContext, } from 'react'
 import Navbar from '../Nav-Foot/Navbar'
 import Footer from '../Nav-Foot/Footer'
 import './Shopping.css'
@@ -8,9 +8,9 @@ import { useNavigate } from 'react-router-dom';
 import { Buffer } from 'buffer'
 const Shopping = () => {
     const { addToCart } = useContext(CartContext);
-    const { show,orders } = useContext(RecoveryContext);
+    const { show, orders } = useContext(RecoveryContext);
     const navigate = useNavigate();
-  
+
     return (
         <div>
             <Navbar />
@@ -22,15 +22,14 @@ const Shopping = () => {
                     {show ? (<button className='art-btn-cart' onClick={() => { navigate('/Add') }}><i class="fa-solid fa-plus"></i> Add</button>) : ('')}
                 </div>
                 <div className='art-grid'>
-                {orders.map((item) => (
-        <div className='art-card' key={item._id}>
-          <div onClick={() => window.location.href = `/Details/${item._id}`}>
-                            <div className='art-image' >
-                                <img src={`data:${item.image.contentType};base64,${Buffer.from(item.image.data).toString('base64')}`}  alt={item.title} />
-                            </div>
-                            <div className="art-details">
-                                <h4 className='art-title'>{item.title}</h4>
-                                <div className='all-btn'>
+                    {orders.map((item) => (
+                        <div className='art-card' key={item._id}>
+                            <div onClick={() => window.location.href = `/Details/${item._id}`}>
+                                <div className='art-image' >
+                                    <img src={`data:${item.image.contentType};base64,${Buffer.from(item.image.data).toString('base64')}`} alt={item.title} />
+                                </div>
+                                <div className="art-details">
+                                    <h4 className='art-title'>{item.title}</h4>
                                     <button className='art-btn-cart' onClick={(e) => {
                                         e.stopPropagation();
                                         addToCart(item);
@@ -38,8 +37,7 @@ const Shopping = () => {
                                 </div>
                             </div>
                         </div>
-        </div>
-      ))}
+                    ))}
                 </div>
             </div>
             <Footer />
