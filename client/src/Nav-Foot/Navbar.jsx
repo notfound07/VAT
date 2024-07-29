@@ -38,7 +38,7 @@ function Navbar() {
                 <img className="company-logo" onClick={() => window.location.href = '/Home'} src={logo} alt="" />
                 <p className='company-name'>VisualArtTechnologies</p>
                 <div className="nav-child">
-                    {show?(<Link to="/Dashboard" className='nav-link'><i class="fa-solid fa-table-columns"></i>Dashboard</Link>):('')}
+                    {show?(<Link to="/Dashboard" className='nav-link'><i class="fa-solid fa-table-columns"></i>Dashboard</Link>):null}
                     <Link to="/Home" className="nav-link"><i className="fa-solid fa-circle-info"></i>Who we are</Link>
                     <Link to='/Shopping' className="nav-link"><i className="fa-solid fa-store"></i>Product</Link>
                     <Link to="/Contact" className="nav-link"><i className="fa-solid fa-users"></i>ContactUs</Link>
@@ -50,7 +50,7 @@ function Navbar() {
                             </>
                         }
                     </div>
-                    <Link to='/Cart' className="nav-link"><i className="fa-solid fa-cart-shopping"></i>Cart</Link>
+                    {show?(<Link to='/Cart' className="nav-link"><i className="fa-solid fa-cart-shopping"></i>Cart</Link>):null}
                 </div>
                 <button className="nav-toggle-button" onClick={toggleDropdown}><i className="fa-solid fa-bars"></i></button>
                 <div className={`nav-dropdown ${dropdownVisible ? 'show' : ''}`}>

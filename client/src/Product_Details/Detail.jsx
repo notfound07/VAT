@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import './Details.css';
 import Navbar from '../Nav-Foot/Navbar';
 import Footer from '../Nav-Foot/Footer';
@@ -12,21 +12,35 @@ import { Buffer } from 'buffer';
 const Detail = () => {
   const [item, setItem] = useState(null);
   const [edit,setEdit]=useState(false);
+  const [edittitle, setEditTitle] = useState('');
+  const [editdescription, setEditDescription] = useState('');
   const { id } = useParams();
-  const {setTitle,setDescription,show,title,description,orders } = useContext(RecoveryContext);
+  const {show } = useContext(RecoveryContext);
+  const navigate=useNavigate();
 
   const handleEditClick = () => {
+    setEditTitle(item.title);
+    setEditDescription(item.description);
     setEdit(true);
   };
 
   const handleSaveClick=async()=>{
     try {
-      await axios.put(`http://localhost:3001/vat/updateproduct/${id}`,{title,description})
-      setEdit(false);
+      await axios.put(`http://localhost:3001/vat/updateproduct/${id}`, { title: edittitle, description: editdescription });
+      setItem({ ...item, title: edittitle, description: editdescription }); 
+      setEdit(false)
     } catch (error) {
-      console.log(error)
+      console.error('Error updating product:', error);
     }
-
+  }
+  const handleDelete=async()=>{
+    try {
+      await axios.delete(`http://localhost:3001/vat/deleteById/${id}`);
+      navigate('/Shopping', { replace: true }); 
+      window.location.reload();
+    } catch (error) {
+      console.error('Error deleting product:', error);
+    }
   }
   useEffect(() => {
     const fetchAllResponses = async () => {
@@ -59,7 +73,6 @@ const Detail = () => {
     <div className='detail-page'>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></link>
       <Navbar />
-      
       <div className="detail-container">
         <div className="main-column">
           {item && (
@@ -71,7 +84,7 @@ const Detail = () => {
                     alt={item.title} 
                   />
                 </div>
-                {show?(<button className='delete-from-cart-btn'>Delete</button>):( <div className="art-cart-buy-btn">
+                {show?(<button className='delete-from-cart-btn' onClick={handleDelete}>Delete</button>):( <div className="art-cart-buy-btn">
                   <button className="buy-now-btn" onClick={() => window.location.href = `/Order`}>Buy Now <i className="fa-solid fa-right-long"></i></button>
                   <button className="add-to-cart-btn" onClick={(e) => {
                     e.stopPropagation();
@@ -85,28 +98,28 @@ const Detail = () => {
         {item && (
           <div className='art-details-text'>
             {edit ? (
-              <div>
-                <input 
-                  className="art-name" 
-                  value={item.title} 
-                  onChange={(e) => setTitle(e.target.value)} 
-                />
-                <h3>Description</h3>
-                <textarea 
-                rows="20"
-                  className="description-edit" 
-                  value={item.description} 
-                  onChange={(e) => setDescription(e.target.value)} 
-                />
-                <button onClick={handleSaveClick} className="add-to-cart-btn">Save</button>
-                <button className='delete-from-cart-btn'>Cancel</button>
-              </div>
+             <div>
+             <input 
+               className="art-name" 
+               value={edittitle} 
+               onChange={(e) => setEditTitle(e.target.value)} 
+             />
+             <h3>Description</h3>
+             <textarea 
+               rows="20"
+               className="description-edit" 
+               value={editdescription} 
+               onChange={(e) => setEditDescription(e.target.value)} 
+             />
+             <button onClick={handleSaveClick} className="add-to-cart-btn">Save</button>
+             <button className='delete-from-cart-btn' onClick={() => setEdit(false)}>Cancel</button>
+           </div>
             ) : (
               <div className='art-details-text'>
                 <div className='"art-name"'>{item.title}</div>
                 <h3>Description</h3>
                 <div className="art-description" >{item.description}</div>
-                {show?(<button onClick={handleEditClick} className="add-to-cart-btn">Edit</button>):('')}
+                {show?(<button onClick={handleEditClick} className="add-to-cart-btn">Edit</button>):null}
               </div>
             )}
             <Review />

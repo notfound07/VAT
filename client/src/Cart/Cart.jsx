@@ -12,20 +12,20 @@ const Cart = () => {
   const validCartItems = cart.filter(item => item && item.image && item.title);
   const bookings = JSON.parse(localStorage.getItem('cart'));
 
-  const orderSelected = async (e) => {
-    e.preventDefault();
-    console.log(bookings);
-    try {
-      const response = await axios.post('http://localhost:3001/vat/booking',{
-        items:bookings}
-      );
-      console.log(response.data);
-      alert('Order placed successfully!');
-    } catch (error) {
-      console.error('Error placing order:', error);
-      alert('Failed to place order');
-    }
-  };
+  // const orderSelected = async (e) => {
+  //   e.preventDefault();
+  //   console.log(bookings);
+  //   try {
+  //     const response = await axios.post('http://localhost:3001/vat/booking',{
+  //       items:bookings}
+  //     );
+  //     console.log(response.data);
+  //     alert('Order placed successfully!');
+  //   } catch (error) {
+  //     console.error('Error placing order:', error);
+  //     alert('Failed to place order');
+  //   }
+  // };
 
   return (
     <div>
@@ -34,7 +34,7 @@ const Cart = () => {
         <h1>Shopping Cart</h1>
         <hr />
       </div>
-      <form onSubmit={orderSelected}>
+      <form>
       <div className="cart-page">
         {validCartItems.length === 0 ? (
           <p>Your cart is empty</p>
@@ -56,8 +56,7 @@ const Cart = () => {
             ))}
           </ul>
         )}
-                <button className="cart-btn" type='submit'>Place Order</button>
-
+                {/* <button className="cart-btn" type='submit'>Place Order</button> */}
       </div>
       </form>
       <Footer />

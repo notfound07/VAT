@@ -1,5 +1,5 @@
 const express = require("express");
-const { signup, login, contact, order,booking,Allbooking,product,update_product,getAllProducts,getById } = require("../controllers/usercontroller");
+const { signup, login, contact, order,booking,Allbooking,product,update_product,getAllProducts,getById,deleteById } = require("../controllers/usercontroller");
 const router = express.Router();
 const multer = require('multer');
 
@@ -17,5 +17,5 @@ router.post('/product', upload.single('image'), product);
 router.route('/updateproduct/:id').put(update_product);
 router.route("/getAllProducts").get(getAllProducts);
 router.route("/getById/:id").get(getById);
-
+router.route("/deleteById/:id").delete(deleteById);
 module.exports = router;
