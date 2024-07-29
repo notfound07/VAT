@@ -13,7 +13,7 @@ const Detail = () => {
   const [item, setItem] = useState(null);
   const [edit,setEdit]=useState(false);
   const { id } = useParams();
-  const {setTitle,setDescription,show,title,description } = useContext(RecoveryContext);
+  const {setTitle,setDescription,show,title,description,orders } = useContext(RecoveryContext);
 
   const handleEditClick = () => {
     setEdit(true);

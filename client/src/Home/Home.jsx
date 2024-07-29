@@ -104,17 +104,19 @@ const Home = () => {
     return null;
   };
 
-  const handlers = useSwipeable({
-    onSwipedLeft: () => handleNext(),
-    onSwipedRight: () => handlePrev(),
-    preventDefaultTouchmoveEvent: true,
-    trackMouse: true
-  });
+  // const handlers=()=> useSwipeable({
+  //   onSwipedLeft: () => handleNext(),
+  //   onSwipedRight: () => handlePrev(),
+  //   preventDefaultTouchmoveEvent: true,
+  //   trackMouse: true
+  // });
 
   return (
     <div className='home-page'>
       <Navbar />
-      <div className='slider' {...handlers} onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}>
+      <div className='slider'
+      //  {...handlers} 
+       onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}>
         <div className="slider-container">
           {mediaItems.map((item, index) => (
             <div
@@ -143,7 +145,7 @@ const Home = () => {
             <div
               className="product-card"
               key={product.id}
-              onClick={() => window.location.href = `/Details/${product.id}`}
+              onClick={() => window.location.href = `/Details/${product._id}`}
             >
               <div className="product-image">
                 <img
