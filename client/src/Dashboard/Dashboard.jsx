@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Dashboard.css'
-
+import logo from '../Assets/logo.png';
 const Dashboard = () => {
   // const [items, setItems] = useState([]);
   const [allCont,setCont]=useState();
@@ -63,7 +63,13 @@ const Dashboard = () => {
     //   )}
     // </div>
     <div>
-      <div className='dashboard-heading'>Dashboard</div>
+    <div className="dashboard-frame">
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></link>
+                <div className="dashboard-nav" onClick={() => window.location.href = '/Home'}>
+                    <img className="company-dashboard-logo" src={logo} alt="" />
+                    <p className='dashboard-title'>Dashboard</p>
+                </div>
+                </div>
       {
         allCont.map((value)=>(
           <div key={value._id}>

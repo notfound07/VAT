@@ -1,6 +1,33 @@
-.dashboard-heading{
-    background-color: blue;
-    height: 50px;
-    font-size: 45px;
-    text-align: center;
+.dashboard-frame {
+    width: 100%;
+    background-color: #222b51;
+    height: 80px;
+    font-size: 22px;
+    border: none;
+    position: fixed;
+    font-family: Arial, sans-serif;
+    z-index: 999;
+    border-bottom: 3px solid transparent;
+    border-image: linear-gradient(to right, yellow, orange) 2 round;
 }
+
+.dashboard-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    position: relative;
+    cursor: pointer;
+}
+
+.company-dashboard-logo {
+    width: 60px;
+    height: 60px;
+}
+.dashboard-title {
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+}
+
