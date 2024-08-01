@@ -1,7 +1,7 @@
 import React, { useContext} from 'react';
 import { CartContext } from '../Resources/CartContext';
 import Navbar from '../Nav-Foot/Navbar';
-import axios from 'axios';
+// import axios from 'axios';
 import Footer from '../Nav-Foot/Footer';
 import './Cart.css';
 import { Buffer } from 'buffer';
@@ -10,7 +10,7 @@ import { Buffer } from 'buffer';
 const Cart = () => {
   const { cart, removeFromCart } = useContext(CartContext);
   const validCartItems = cart.filter(item => item && item.image && item.title);
-  const bookings = JSON.parse(localStorage.getItem('cart'));
+  // const bookings = JSON.parse(localStorage.getItem('cart'));
 
   // const orderSelected = async (e) => {
   //   e.preventDefault();

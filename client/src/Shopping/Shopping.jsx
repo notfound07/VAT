@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { Buffer } from 'buffer';
 
 const Shopping = () => {
-    const { addToCart } = useContext(CartContext);
+    // const { addToCart } = useContext(CartContext);
     const { show, orders } = useContext(RecoveryContext);
     const navigate = useNavigate();
 

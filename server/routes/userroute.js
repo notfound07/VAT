@@ -1,5 +1,5 @@
 const express = require("express");
-const { signup, login, contact, order,booking,Allbooking,product,update_product,getAllProducts,getById,deleteById } = require("../controllers/usercontroller");
+const { signup, login, contact,getAllcontacts,order,booking,Allbooking,product,update_product,getAllProducts,getById,deleteById } = require("../controllers/usercontroller");
 const router = express.Router();
 const multer = require('multer');
 
@@ -10,6 +10,7 @@ const upload = multer({ storage });
 router.route("/signup").post(signup);
 router.route("/login").get(login);
 router.route("/contact").post(contact);
+router.route("/getAllcontacts").get(getAllcontacts);
 router.route("/order").post(order);
 router.route("/booking").post(booking);
 router.route('/allBooking').get(Allbooking);

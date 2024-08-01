@@ -148,7 +148,14 @@ const contact = async (req, res) => {
     return res.status(500).json({ message: err.message });
   }
 };
-
+const getAllcontacts=async(req,res)=>{
+  try {
+    const allcontacts=await Feed.find();
+    res.status(200).json(allcontacts);
+  } catch (error) {
+    return res.status(500).json({ message: err.message });
+  }
+}
 const order = async (req, res) => {
   try {
     const { firstName, lastName, email, phoneNumber, address, pin } = req.body;
@@ -290,6 +297,7 @@ module.exports = {
   signup,
   login,
   contact,
+  getAllcontacts,
   order,
   booking,
   Allbooking,
