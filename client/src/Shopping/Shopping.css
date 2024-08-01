@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: #00CCFF;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -29,7 +29,7 @@ body {
 .art-grid {
     width: 100%;
     padding: 10px;
-    background-color: #f0f0f0;
+    background-color:#00CCFF;
     display: flex;
     flex-direction: column;
     margin-left: 10px;
@@ -118,7 +118,7 @@ body {
 .art-title {
     font-size: 1.2em;
     margin: 10px 0;
-    color: #333;
+    color: darkblue;
 }
 
 /* Media Queries for responsiveness */

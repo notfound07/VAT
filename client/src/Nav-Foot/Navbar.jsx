@@ -36,7 +36,7 @@ function Navbar() {
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></link>
             <div className="nav-parent">
                 <img className="company-logo" onClick={() => window.location.href = '/Home'} src={logo} alt="" />
-                <p className='company-name'>VisualArtTechnologies</p>
+                <p className='company-name'>VisionaryArt Technologies Pvt Ltd</p>
                 <div className="nav-child">
                     {show?(<Link to="/Dashboard" className='nav-link'><i class="fa-solid fa-table-columns"></i>Dashboard</Link>):null}
                     <Link to="/Home" className="nav-link"><i className="fa-solid fa-circle-info"></i>Who we are</Link>

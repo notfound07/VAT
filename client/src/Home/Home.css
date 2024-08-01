@@ -20,7 +20,9 @@ body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
 }
-
+.front-img{
+  width: 150%;
+}
 /* Item Display */
 .item-display {
   width: 100%;

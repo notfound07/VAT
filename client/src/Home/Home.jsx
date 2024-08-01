@@ -10,6 +10,7 @@ import { mediaItems } from './mediaData';
 import { useSwipeable } from 'react-swipeable';
 import Workslider from './workslider';
 import VLogo from '../Assets/V-Logo.png';
+import front1 from '../Assets/front1.jpg'
 import { Link, Element } from 'react-scroll';
 
 const Home = () => {
@@ -71,7 +72,7 @@ const Home = () => {
 
   const renderMedia = (item) => {
     if (item.type === 'image') {
-      return <img src={item.src} alt={item.alt} />;
+      return <img src={front2} alt={item.alt} />;
     } else if (item.type === 'video') {
       return (
         <video autoPlay loop muted>
@@ -95,11 +96,12 @@ const Home = () => {
       <Navbar />
       <div className='slider' {...handlers}>
         <div className="slider-container" style={{ transform: `translateX(${-100 * currentIndex}%)` }}>
-          {mediaItems.map((item, index) => (
+          {/* {mediaItems.map((item, index) => (
             <div key={index} className={`slide ${currentIndex === index ? 'active' : ''}`}>
               {renderMedia(item)}
             </div>
-          ))}
+          ))} */}
+          <img  className='front-img' src={front1} />
         </div>
         <div className='headline-container'>
           <p>This is a overview of our work!</p>
