@@ -2,12 +2,12 @@ import React, { useContext, } from 'react'
 import Navbar from '../Nav-Foot/Navbar'
 import Footer from '../Nav-Foot/Footer'
 import './Shopping.css'
-import { CartContext } from '../Resources/CartContext';
+// import { CartContext } from '../Resources/CartContext';
 import { RecoveryContext } from '../App';
 import { useNavigate } from 'react-router-dom';
 import { Buffer } from 'buffer'
 const Shopping = () => {
-    const { addToCart } = useContext(CartContext);
+    // const { addToCart } = useContext(CartContext);
     const { show, orders } = useContext(RecoveryContext);
     const navigate = useNavigate();
 
@@ -30,10 +30,10 @@ const Shopping = () => {
                                 </div>
                                 <div className="art-details">
                                     <h4 className='art-title'>{item.title}</h4>
-                                    <button className='art-btn-cart' onClick={(e) => {
+                                    {/* <button className='art-btn-cart' onClick={(e) => {
                                         e.stopPropagation();
-                                        addToCart(item);
-                                    }}><i className="fa-solid fa-cart-plus"></i> Add to Cart</button>
+                                        addToCart(item);}}
+                                    ><i className="fa-solid fa-cart-plus"></i> Add to Cart</button> */}
                                 </div>
                             </div>
                         </div>

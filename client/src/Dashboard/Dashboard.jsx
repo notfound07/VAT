@@ -1,50 +1,78 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import './Dashboard.css'
 
 const Dashboard = () => {
-  const [items, setItems] = useState([]);
+  // const [items, setItems] = useState([]);
+  const [allCont,setCont]=useState();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchItems = async () => {
+  // useEffect(() => {
+  //   const fetchItems = async () => {
+  //     try {
+  //       const response = await axios.get('http://localhost:3001/vat/allBooking');
+  //       if (response.status === 200) {
+  //         const data = response.data[0]?.items;
+  //         if (Array.isArray(data)) {
+  //           setItems(data);
+  //         } else {
+  //           throw new Error('Unexpected response structure');
+  //         }
+  //       }
+  //       setLoading(false);
+  //     } catch (error) {
+  //       console.error('Error fetching all responses:', error);
+  //       setError(error);
+  //       setLoading(false);
+  //     }
+  //   };
+  //   fetchItems();
+  // }, []);
+
+  useEffect(()=>{
+    const fetchAll=async()=>{
       try {
-        const response = await axios.get('http://localhost:3001/vat/allBooking');
-        if (response.status === 200) {
-          // Extract items from the first object in the response array
-          const data = response.data[0]?.items;
-          if (Array.isArray(data)) {
-            setItems(data);
-          } else {
-            throw new Error('Unexpected response structure');
-          }
+        const response=await axios.get('http://localhost:3001/vat/getAllcontacts');
+        if(response.status===200){
+          setCont(response.data)
+          setLoading(false)
         }
-        setLoading(false);
       } catch (error) {
         console.error('Error fetching all responses:', error);
-        setError(error);
-        setLoading(false);
       }
-    };
+    }
+    fetchAll()
+  },[])
 
-    fetchItems();
-  }, []);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <div id="items-container">
-      {items.length > 0 ? (
-        items.map(item => (
-          <div key={item._id} className="item">
-            <h2>{item.title}</h2>
-            <p>{item.description}</p>
+    // <div id="items-container">
+    //   {items.length > 0 ? (
+    //     items.map(item => (
+    //       <div key={item._id} className="item">
+    //         <h2>{item.title}</h2>
+    //         <p>{item.description}</p>
+    //       </div>
+    //     ))
+    //   ) : (
+    //     <p>No items available</p>
+    //   )}
+    // </div>
+    <div>
+      <div className='dashboard-heading'>Dashboard</div>
+      {
+        allCont.map((value)=>(
+          <div key={value._id}>
+            <h1>{value.firstName}</h1>
+            <p>{value.email}</p>
+            <p>{value.phoneNumber}</p>
+            <p>{value.commentMessage}</p>
           </div>
-        ))
-      ) : (
-        <p>No items available</p>
-      )}
+        ))}
     </div>
   );
 };

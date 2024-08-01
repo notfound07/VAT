@@ -85,11 +85,11 @@ const Detail = () => {
                   />
                 </div>
                 {show?(<button className='delete-from-cart-btn' onClick={handleDelete}>Delete</button>):( <div className="art-cart-buy-btn">
-                  <button className="buy-now-btn" onClick={() => window.location.href = `/Order`}>Buy Now <i className="fa-solid fa-right-long"></i></button>
-                  <button className="add-to-cart-btn" onClick={(e) => {
+                  {/* <button className="buy-now-btn" onClick={() => window.location.href = `/Order`}>Buy Now <i className="fa-solid fa-right-long"></i></button> */}
+                  {/* <button className="add-to-cart-btn" onClick={(e) => {
                     e.stopPropagation();
                     addToCart(item);
-                  }}><i className="fa-solid fa-cart-plus"></i> Add to Cart</button>
+                  }}><i className="fa-solid fa-cart-plus"></i> Add to Cart</button> */}
                 </div>)}
               </div>
             </div>

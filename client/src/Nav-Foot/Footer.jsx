@@ -24,9 +24,10 @@ function Footer() {
         <div className="footer-section-social">
           <h2>Follow US</h2>
           <div className="social-icons">
-            <a href='https://www.instagram.com/visionart.tech24/?hl=en' target="_blank" rel="noopener noreferrer" className="foot-button"><i class="fa-brands fa-instagram"></i></a>
+            <a href='https://www.instagram.com/visionaryart.tech24/?hl=en' target="_blank" rel="noopener noreferrer" className="foot-button"><i class="fa-brands fa-instagram"></i></a>
             <a href='https://www.facebook.com/' target="_blank" rel="noopener noreferrer" className="foot-button"><i class="fa-brands fa-facebook"></i></a>
-            <a href='https://x.com/' target="_blank" rel="noopener noreferrer" className="foot-button"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href='https://x.com/technologies08' target="_blank" rel="noopener noreferrer" className="foot-button"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href='https://www.linkedin.com/in/visionary-artttechnology-a47b49320/' target="_blank" rel="noopener noreferrer" className="foot-button"><i class="fa-brands fa-linkedin"></i></a>
           </div>
         </div>
       </div>
