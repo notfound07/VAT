@@ -1,21 +1,15 @@
-import machine from '../Assets/machine.png';
-import mission from '../Assets/mission.png';
-import product1 from '../Assets/product1.jpg';
+import slide8 from '../Assets/slide8.mp4';
+import slide2 from '../Assets/slide2.mp4';
 
 export const mediaItems = [
     {
-      type: 'image',
-      src: machine, // Local image file path
+      type: 'video',
+      src: slide2, // Local image file path
       alt: '',
     },
     {
-        type: 'image',
-        src: mission, // Local image file path
-        alt: '',
-      },
-      {
-        type: 'image',
-        src: product1, // Local image file path
+        type: 'video',
+        src: slide8, // Local image file path
         alt: '',
       },
     // Add more media items as needed
