@@ -1,0 +1,72 @@
+.product-card {
+    width: 100%;
+    display: flex;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    justify-content: center;
+    /* Center contents */
+}
+
+.product-media {
+    width: 100%;
+    /* Full width of the card */
+    height: 450px;
+    /* Fixed height for images/videos */
+    border-radius: 10px;
+    object-fit: cover;
+    /* Cover the container without distortion */
+}
+
+.slick-slide {
+    padding: 0 10px;
+    /* Adjust gap between slides */
+    display: flex;
+    justify-content: center;
+    /* Center slide content */
+}
+
+.slick-prev,
+.slick-next {
+    width: 50px;
+    height: 50px;
+    background: rgb(54, 53, 53);
+    z-index: 1;
+    border-radius: 50%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    top: 50%;
+    position: absolute;
+    transform: translateY(-50%);
+}
+
+.slick-prev {
+    left: 0;
+}
+
+.slick-next {
+    right: 0;
+}
+
+.slick-prev:focus,
+.slick-next:focus,
+.slick-prev:hover,
+.slick-next:hover {
+    color: transparent;
+    outline: none;
+    background: rgb(54, 53, 53);
+}
+
+/* Hide default video controls */
+.product-media::-webkit-media-controls {
+    display: none !important;
+}
+
+.work-heading {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: xx-large;
+    text-align: center;
+    background-color: #a3a3a3;
+    color: white;
+    padding: 5px;
+    margin: 0;
+    border-radius: 5px;
+}

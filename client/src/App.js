@@ -21,6 +21,7 @@ import Order from "./Order/Order.jsx";
 import Add from "./New/Add.jsx";
 import Review from "./Product_Details/Review.jsx";
 import Dashboard from "./Dashboard/Dashboard.jsx";
+import Workslider from "./Home/workslider.jsx";
 export const RecoveryContext = createContext();
 function App() {
   const [email, setEmail] = useState();
@@ -64,6 +65,7 @@ function App() {
             <Route path="/Recover" element={<Recover />} />
             <Route path="/Order" element={<Order />} />
             <Route path='/Dashboard' element={<Dashboard/>}/>
+            <Route path='/workslider' element={<Workslider/>}/>
           </Routes>
         </div>
       </RecoveryContext.Provider>
