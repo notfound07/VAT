@@ -29,31 +29,31 @@ const Shopping = () => {
                     )}
                 </div>
                 <div className='art-grid'>
-    <div className="art-showcase">
-        {orders.map((item) => (
-            <div
-                className="art-card"
-                key={item._id}
-                onClick={() => window.location.href = `/Details/${item._id}`}
-                role="button"
-                tabIndex={0}
-                onKeyPress={() => window.location.href = `/Details/${item._id}`}
-            >
-                <div className="art-image-wrapper">
-                    <img
-                        src={`data:${item.image.contentType};base64,${Buffer.from(item.image.data).toString('base64')}`}
-                        alt={item.title}
-                        className="art-image"
-                    />
-                    <div className="overlay">
-                        <button className="view-details-button">View Details</button>
+                    <div className="art-showcase">
+                        {orders.map((item) => (
+                            <div
+                                className="art-card"
+                                key={item._id}
+                                onClick={() => window.location.href = `/Details/${item._id}`}
+                                role="button"
+                                tabIndex={0}
+                                onKeyPress={() => window.location.href = `/Details/${item._id}`}
+                            >
+                                <div className="art-image-wrapper">
+                                    <img
+                                        src={`data:${item.image.contentType};base64,${Buffer.from(item.image.data).toString('base64')}`}
+                                        alt={item.title}
+                                        className="art-image"
+                                    />
+                                    <div className="overlay">
+                                        <button className="view-details-button">View Details</button>
+                                    </div>
+                                </div>
+                                <h3 className="art-title">{item.title}</h3>
+                            </div>
+                        ))}
                     </div>
                 </div>
-                <h3 className="art-title">{item.title}</h3>
-            </div>
-        ))}
-    </div>
-</div>
 
             </div>
             <Footer />
