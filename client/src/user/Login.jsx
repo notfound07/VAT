@@ -39,7 +39,6 @@ function Login() {
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></link>
       <div className="container">
         <div className="left">
-          <div>Image or color</div>
         </div>
         <div className="right">
           <h2>Login</h2>

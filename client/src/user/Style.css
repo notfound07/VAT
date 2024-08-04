@@ -20,9 +20,10 @@
     width: 90%;
     max-width: 800px;
     height: auto;
-    box-shadow: 10px 10px 20px #babecc, -10px -10px 20px #ffffff;
+    box-shadow: 10px 10px 20px #204d60, -10px 10px 20px #204d60, 10px -10px 20px #204d60, -10px -10px 20px #204d60;
     position: relative;
     margin: 20px;
+    border-radius: 10px;
 }
 
 .left, .right, .signup-left, .signup-right {
@@ -31,20 +32,33 @@
     width: 100%;
     box-sizing: border-box;
     
+    
+}
+
+.right{
+    border-radius: 0px 10px 10px 0px;
+}
+
+.signup-left{
+    border-radius: 10px 0px 0px 10px;
 }
 
 .signup-right{
-    background-color: #e9eef5;
+    background: url('../Assets/collage.png') no-repeat center center;
+    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 0px 10px 10px 0px;
 }
 
 .left {
-    background-color: #e9eef5;
+    background: url('../Assets/collage.png') no-repeat center center;
+    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 10px 0px 0px 10px;
 }
 
 .right, .signup-left {
@@ -60,7 +74,7 @@
 }
 
 .form-group, .signup-form-group {
-    margin-bottom: 15px;
+    margin-bottom: 5px;
 }
 
 .form-group label, .signup-form-group label {
@@ -118,7 +132,7 @@
     position: absolute;
     bottom: 15px;
     left: 20px;
-    color: #2666c5;
+    color: #ffffff;
     text-decoration: none;
     font-size: 16px;
     display: flex;

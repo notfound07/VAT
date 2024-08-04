@@ -1,12 +1,12 @@
 .frame {
     width: 100%;
-    background-color: #352f81;
     height: 80px;
     font-size: 22px;
-    border: none;
     position: fixed;
     font-family: Arial, sans-serif;
     z-index: 999;
+    background: url('../Assets/light.png') no-repeat center center;
+    background-size: cover;
     border-bottom: 3px solid transparent;
     border-image: linear-gradient(to right, yellow, orange) 2 round;
 }
@@ -20,6 +20,13 @@
     position: relative;
 }
 
+.nav-space {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 100px;
+}
+
 .nav-child {
     display: flex;
     flex-direction: row;
@@ -27,36 +34,15 @@
     gap: 20px;
 }
 
-
-.nav-link {
+.nav-link, .nav-sign, .nav-logout {
     color: white;
     text-decoration: none;
     cursor: pointer;
 }
 
-.nav-sign {
-    color: white;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.nav-logout {
-    color: white;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.nav-button-link{
-    background-color: #222b51;
-    border: none;
-    color: white;
-    cursor: pointer;
-    font-size: 22px;
-}
-.nav-link:hover,.nav-button-link:hover {
+.nav-link:hover, .nav-button-link:hover {
     color: #408EA7;
 }
-
 
 .company-logo {
     width: 60px;
@@ -87,14 +73,12 @@
     right: 0;
     width: calc(100% - 40px);
     border: none;
-    border-color: transparent;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 @media screen and (max-width: 1200px) {
     .frame {
-        width: 100.1%;
         font-size: 22px;
     }
 
@@ -110,7 +94,6 @@
 
 @media screen and (max-width: 999px) {
     .frame {
-        width: 100.1%;
         font-size: 22px;
     }
 
@@ -123,7 +106,6 @@
     }
 
     .nav-dropdown {
-        display: none;
         flex-direction: column;
         background-color: #222b51;
         position: absolute;
@@ -131,7 +113,6 @@
         right: 20px;
         width: calc(100% - 40px);
         border: none;
-        border-color: transparent;
         border-radius: 5px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
@@ -148,12 +129,10 @@
 
 @media screen and (max-width: 599px) {
     .frame {
-        width: 100.1%;
         font-size: 20px;
     }
 
     .nav-dropdown {
-        display: none;
         flex-direction: column;
         background-color: #222b51;
         position: absolute;
@@ -161,7 +140,6 @@
         right: 20px;
         width: calc(100% - 40px);
         border: none;
-        border-color: transparent;
         border-radius: 5px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }

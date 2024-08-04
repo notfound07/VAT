@@ -2,25 +2,24 @@ import './Home.css';
 import React, { useState, useEffect, useContext } from 'react';
 import Navbar from '../Nav-Foot/Navbar';
 import Footer from '../Nav-Foot/Footer';
-import machine from '../Assets/machine.png';
-import mission from '../Assets/mission.png';
 import { RecoveryContext } from '../App';
-import { Buffer } from 'buffer';
-import { mediaItems } from './mediaData';
-import { useSwipeable } from 'react-swipeable';
 import Workslider from './workslider';
-import VLogo from '../Assets/V-Logo.png';
-import front1 from '../Assets/front1.jpg'
 import { Link, Element } from 'react-scroll';
+import VLogo from '../Assets/V-Logo.png';
+import mission from '../Assets/mission.png';
+import machine from '../Assets/machine.png';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { Buffer } from 'buffer';
+import CustomCarousel, { images } from './slider';
+
 
 const Home = () => {
   const { orders } = useContext(RecoveryContext);
   const [shuffledItems, setShuffledItems] = useState([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Shuffle orders to display random items
   const shuffleArray = (array) => {
-    const shuffledArray = array.slice(); // Create a copy of the array
+    const shuffledArray = array.slice();
     for (let i = shuffledArray.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
@@ -28,103 +27,22 @@ const Home = () => {
     return shuffledArray;
   };
 
-  // Update shuffled items when orders change
   useEffect(() => {
     setShuffledItems(shuffleArray(orders).slice(0, 4));
   }, [orders]);
 
-  // Handle key navigation for the slider
-  useEffect(() => {
-    const handleKeyDown = (event) => {
-      if (event.key === 'ArrowRight') {
-        handleNext();
-      } else if (event.key === 'ArrowLeft') {
-        handlePrev();
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, []);
-
-  // Autoplay feature for slider
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      handleNext();
-    }, 20000); // Change slide every 10 seconds
-
-    return () => clearInterval(intervalId);
-  }, []);
-
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % mediaItems.length);
-  };
-
-  const handlePrev = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + mediaItems.length) % mediaItems.length);
-  };
-
-  const handleDotClick = (index) => {
-    setCurrentIndex(index);
-  };
-
-  const renderMedia = (item) => {
-    if (item.type === 'image') {
-      return <img src={front2} alt={item.alt} />;
-    } else if (item.type === 'video') {
-      return (
-        <video autoPlay loop muted>
-          <source src={item.src} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      );
-    }
-    return null;
-  };
-
-  const handlers = useSwipeable({
-    onSwipedLeft: handleNext,
-    onSwipedRight: handlePrev,
-    preventDefaultTouchmoveEvent: true,
-    trackMouse: true,
-  });
-
   return (
     <div className='home-page'>
       <Navbar />
-      <div className='slider' {...handlers}>
-        <div className="slider-container" style={{ transform: `translateX(${-100 * currentIndex}%)` }}>
-          {/* {mediaItems.map((item, index) => (
-            <div key={index} className={`slide ${currentIndex === index ? 'active' : ''}`}>
-              {renderMedia(item)}
-            </div>
-          ))} */}
-          <img  className='front-img' src={front1} />
-        </div>
-        <div className='headline-container'>
-          <p>This is a overview of our work!</p>
-          <Link to="work-slider" smooth={true} duration={500}>
-            <h3>Check out more....<i className="fa-solid fa-chevron-right"></i></h3>
-          </Link>
-        </div>
-        <div className="dot-container">
-          {mediaItems.map((_, index) => (
-            <div
-              key={index}
-              className={`dot ${currentIndex === index ? 'active' : ''}`}
-              onClick={() => handleDotClick(index)}
-              aria-label={`Go to slide ${index + 1}`}
-              role="button"
-              tabIndex={0}
-              onKeyPress={() => handleDotClick(index)}
-            />
+      {/* CustomCarousel Slider Integration */}
+      <div className="custom-carousel-section">
+        <CustomCarousel>
+          {images.map((image, index) => (
+            <img key={index} src={image.imgURL} alt={image.imgAlt} />
           ))}
-        </div>
+        </CustomCarousel>
       </div>
-
-      {/* Enhanced item Display */}
+      
       <div className='item-display'>
         <div className="item-showcase">
           {shuffledItems.map((item) => (
@@ -151,15 +69,10 @@ const Home = () => {
           ))}
         </div>
       </div>
-      {/* End of Enhanced item Display */}
 
-      {/* New Section Below */}
-      <Element name="work-slider">
-        <div className='back-color'>
+      <Element className='work-slider' name="work-slider">
           <Workslider />
-        </div>
       </Element>
-      {/* End of New Section */}
 
       <div className='slogan-section'>
         <p className='slogan'>“We understand the value of asset and timeline”</p>
