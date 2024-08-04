@@ -93,7 +93,7 @@ function CustomCarousel({ children }) {
           slideNext();
         }}
       >
-        {">"}
+        <i class="fa-solid fa-greater-than"></i>
       </button>
       <button
         className="slider__btn-prev"
@@ -102,7 +102,7 @@ function CustomCarousel({ children }) {
           slidePrev();
         }}
       >
-        {"<"}
+        <i class="fa-solid fa-less-than"></i>
       </button>
     </div>
   );
@@ -111,11 +111,11 @@ function CustomCarousel({ children }) {
 
 export const images = [
   {
-    imgURL: img1,
+    imgURL: img2,
     imgAlt: "img-1"
   },
   {
-    imgURL: img2,
+    imgURL: img1,
     imgAlt: "img-2"
   },
 ];

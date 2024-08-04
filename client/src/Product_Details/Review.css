@@ -9,12 +9,11 @@
 }
 
 .master {
-    background: #f0f0f0;
     padding: 20px;
-    border-radius: 10px;
     text-align: center;
     width: 100%;
     max-width: 500px;
+    background-color: #00CCFF;
 }
 
 .master h1 {
