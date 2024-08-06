@@ -44,8 +44,8 @@ function Navbar() {
             <div className="nav-parent">
                 <div className='nav-space'>
                     <img className="company-logo" onClick={() => window.location.href = '/Home'} src={logo} alt="" />
+                    <p className='company-name'>VisionaryArt Technologies Pvt Ltd</p>
                 </div>
-                <p className='company-name'>VisionaryArt Technologies Pvt Ltd</p>
                 <div className="nav-child">
                     {show ? <Link to="/Dashboard" className='nav-link'><i className="fa-solid fa-table-columns"></i>Dashboard</Link> : null}
                     <Link to="/Home" className="nav-link"><i className="fa-solid fa-circle-info"></i>Who we are</Link>
@@ -69,8 +69,8 @@ function Navbar() {
                     <div className="nav-link">
                         {LoggedUser === null ? <Link to='/Login' className='nav-sign'><i className="fa-solid fa-right-to-bracket"></i>SignIn</Link> :
                             <div className="user-dropdown">
-                                    <p className="userlogo" style={{ backgroundColor: 'blue', color: 'white', paddingRight: "3px", paddingLeft: "3px", fontSize: "20px", fontFamily: 'Times New Roman' }}>Hello, {LoggedUser.split("@").reverse().pop()}</p>
-                                    <Link to="/Home" className='nav-link' onClick={handleLogout}><i className="fa-solid fa-right-from-bracket"></i>SignOut</Link>
+                                <p className="userlogo" style={{ backgroundColor: 'blue', color: 'white', paddingRight: "3px", paddingLeft: "3px", fontSize: "20px", fontFamily: 'Times New Roman' }}>Hello, {LoggedUser.split("@").reverse().pop()}</p>
+                                <Link to="/Home" className='nav-link' onClick={handleLogout}><i className="fa-solid fa-right-from-bracket"></i>SignOut</Link>
                             </div>
                         }
                     </div>
