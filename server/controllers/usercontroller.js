@@ -1,36 +1,20 @@
 const User = require("../model/userSchema");
 const Feed = require("../model/feedSchema");
 const Order = require("../model/orderSchema");
-const Booking=require("../model/bookingSchema");
+const Booking = require("../model/bookingSchema");
 const Product = require('../model/productSchema'); 
 const validator = require("validator");
 const bcrypt = require("bcryptjs");
-
 
 const signup = async (req, res) => {
   try {
     const { name, email, password, confirmpassword } = req.body;
 
-    if (!name) {
-      return res.status(400).json({ message: "Full Name is required" });
-    }
-
-    if (!email) {
-      return res.status(400).json({ message: "Email is required" });
-    }
-
-    if (!password) {
-      return res.status(400).json({ message: "Password is required" });
-    }
-
-    if (!confirmpassword) {
-      return res.status(400).json({ message: "Confirm Password is required" });
+    if (!name || !email || !password || !confirmpassword) {
+      return res.status(400).json({ message: "All fields are required" });
     }
 
     const duplicateEmail = await User.findOne({ email });
-
-    const hashedPassword = await bcrypt.hash(password, 10);
-
     if (duplicateEmail) {
       return res.status(409).json({ message: "Email already exists" });
     }
@@ -43,14 +27,11 @@ const signup = async (req, res) => {
       return res.status(400).json({ message: "Email is invalid" });
     }
 
-    if (
-      !validator.matches(
-        password,
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
-      )
-    ) {
+    if (!validator.matches(password, /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)) {
       return res.status(400).json({ message: "Password is invalid" });
     }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = await User.create({
       name,
@@ -58,26 +39,20 @@ const signup = async (req, res) => {
       password: hashedPassword,
       confirmpassword: hashedPassword,
     });
-    if (newUser) {
-      res.status(201).json({ message: "User created successfully" });
-    }
+
+    res.status(201).json({ message: "User created successfully" });
   } catch (err) {
-    console.log(err.message);
-    return res.status(500).json({ message: err.message });
+    console.error(err.message);
+    res.status(500).json({ message: "Server error" });
   }
 };
 
-
 const login = async (req, res) => {
   try {
-    const { email, password } = req.query; // Retrieve email and password from query parameters
-    
-    if (!email) {
-      return res.status(400).json({ message: "Email is required" });
-    }
+    const { email, password } = req.query;
 
-    if (!password) {
-      return res.status(400).json({ message: "Password is required" });
+    if (!email || !password) {
+      return res.status(400).json({ message: "Email and password are required" });
     }
 
     if (!validator.isEmail(email)) {
@@ -85,20 +60,19 @@ const login = async (req, res) => {
     }
 
     const user = await User.findOne({ email });
-    
-    const isMatch = await bcrypt.compare(password, user.password);
-
     if (!user) {
       return res.status(401).json({ message: "Invalid email" });
     }
 
+    const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       return res.status(401).json({ message: "Invalid password" });
     }
+
     res.status(200).json({ message: "Login successful" });
   } catch (err) {
-    console.log(err.message);
-    return res.status(500).json({ message: err.message });
+    console.error(err.message);
+    res.status(500).json({ message: "Server error" });
   }
 };
 
@@ -106,24 +80,8 @@ const contact = async (req, res) => {
   try {
     const { firstName, lastName, email, phoneNumber, commentMessage } = req.body;
 
-    if (!firstName) {
-      return res.status(400).json({ message: "First Name is required" });
-    }
-
-    if (!lastName) {
-      return res.status(400).json({ message: "Last Name is required" });
-    }
-
-    if (!email) {
-      return res.status(400).json({ message: "Email is required" });
-    }
-
-    if (!phoneNumber) {
-      return res.status(400).json({ message: "Phone Number is required" });
-    }
-
-    if (!commentMessage) {
-      return res.status(400).json({ message: "Comment Message is required" });
+    if (!firstName || !lastName || !email || !phoneNumber || !commentMessage) {
+      return res.status(400).json({ message: "All fields are required" });
     }
 
     if (!validator.isEmail(email)) {
@@ -134,53 +92,49 @@ const contact = async (req, res) => {
       return res.status(400).json({ message: "Phone Number is invalid" });
     }
 
-    const newContact = await Feed.create({
+    const newContact = new Feed({
       firstName,
       lastName,
       email,
       phoneNumber,
-      commentMessage
+      commentMessage,
     });
 
+    await newContact.save();
     res.status(201).json({ message: "Contact form submitted successfully", data: newContact });
   } catch (err) {
-    console.log(err.message);
-    return res.status(500).json({ message: err.message });
+    if (err.code === 11000) {
+      res.status(409).json({ message: "Email already exists" });
+    } else {
+      console.error(err.message);
+      res.status(500).json({ message: "Server error" });
+    }
   }
 };
-const getAllcontacts=async(req,res)=>{
+
+
+const getAllcontacts = async (req, res) => {
   try {
-    const allcontacts=await Feed.find();
+    const allcontacts = await Feed.find();
     res.status(200).json(allcontacts);
   } catch (error) {
-    return res.status(500).json({ message: err.message });
+    console.error(error.message);
+    res.status(500).json({ message: "Server error" });
   }
-}
+};
+
 const order = async (req, res) => {
   try {
     const { firstName, lastName, email, phoneNumber, address, pin } = req.body;
 
-    if (!firstName) {
-      return res.status(400).json({ message: "First Name is required" });
+    if (!firstName || !lastName || !email || !phoneNumber || !address || !pin) {
+      return res.status(400).json({ message: "All fields are required" });
     }
-    if (!lastName) {
-      return res.status(400).json({ message: "Last Name is required" });
-    }
-    if (!email) {
-      return res.status(400).json({ message: "Email is required" });
-    }
-    if (!phoneNumber) {
-      return res.status(400).json({ message: "Phone Number is required" });
-    }
-    if (!address) {
-      return res.status(400).json({ message: "Address is required" });
-    }
-    if (!pin) {
-      return res.status(400).json({ message: "Pin is required" });
-    }
+
     if (!validator.isEmail(email)) {
       return res.status(400).json({ message: "Email is invalid" });
     }
+
     if (!validator.isMobilePhone(phoneNumber)) {
       return res.status(400).json({ message: "Phone Number is invalid" });
     }
@@ -196,34 +150,45 @@ const order = async (req, res) => {
 
     res.status(201).json({ message: "Order submitted successfully", data: newOrder });
   } catch (err) {
-    console.log(err.message);
-    return res.status(500).json({ message: err.message });
+    console.error(err.message);
+    res.status(500).json({ message: "Server error" });
   }
 };
+
 const booking = async (req, res) => {
   try {
     const { items } = req.body;
+
+    if (!items || items.length === 0) {
+      return res.status(400).json({ message: "Items are required" });
+    }
+
     const newOrder = new Booking({ items });
     const savedOrder = await newOrder.save();
+
     res.status(201).json(savedOrder);
   } catch (error) {
-    res.status(500).json({ message: 'Failed to create order', error: error.message });
+    console.error(error.message);
+    res.status(500).json({ message: "Failed to create order" });
   }
 };
-const Allbooking=async(req,res)=>{
+
+const Allbooking = async (req, res) => {
   try {
     const allBooking = await Booking.find();
     res.status(200).json(allBooking);
   } catch (error) {
-    res.status(500).json({ message: 'Failed to fetch products', error: error.message });
+    console.error(error.message);
+    res.status(500).json({ message: "Failed to fetch bookings" });
   }
-}
-const product= async (req, res) => {
+};
+
+const product = async (req, res) => {
   try {
     const { title, description } = req.body;
 
-    if (!req.file) {
-      return res.status(400).json({ message: 'No file uploaded' });
+    if (!title || !description || !req.file) {
+      return res.status(400).json({ message: "All fields are required" });
     }
 
     const newProduct = new Product({
@@ -238,17 +203,18 @@ const product= async (req, res) => {
     const savedProduct = await newProduct.save();
     res.status(201).json(savedProduct);
   } catch (error) {
-    res.status(500).json({ message: 'Failed to create product', error: error.message });
+    console.error(error.message);
+    res.status(500).json({ message: "Failed to create product" });
   }
 };
-//update product
 
-const update_product=async(req,res)=>{
-  const {title, description } = req.body;
+const update_product = async (req, res) => {
   try {
+    const { title, description } = req.body;
     const product = await Product.findById(req.params.id);
+
     if (!product) {
-      return res.status(404).json({ error: 'Product not found' });
+      return res.status(404).json({ message: "Product not found" });
     }
 
     product.title = title;
@@ -257,42 +223,48 @@ const update_product=async(req,res)=>{
 
     res.json({ success: true, product });
   } catch (error) {
-    console.error('Error updating product:', error);
-    res.status(500).json({ error: 'Server error' });
+    console.error(error.message);
+    res.status(500).json({ message: "Server error" });
   }
-}
+};
+
 const getAllProducts = async (req, res) => {
   try {
     const products = await Product.find();
     res.status(200).json(products);
   } catch (error) {
-    res.status(500).json({ message: 'Failed to fetch products', error: error.message });
+    console.error(error.message);
+    res.status(500).json({ message: "Failed to fetch products" });
   }
 };
-const getById=async(req,res)=>{
+
+const getById = async (req, res) => {
   try {
-    const productbyid=await Product.findById(req.params.id);
-    if(!productbyid){
-      return res.status(400).json({message:"product not found"})
+    const productbyid = await Product.findById(req.params.id);
+    if (!productbyid) {
+      return res.status(404).json({ message: "Product not found" });
     }
     res.json(productbyid);
   } catch (error) {
-    res.status(500).send(err);
+    console.error(error.message);
+    res.status(500).json({ message: "Server error" });
   }
-}
-const deleteById=async (req, res) => {
+};
+
+const deleteById = async (req, res) => {
   try {
     const { id } = req.params;
     const product = await Product.findByIdAndDelete(id);
     if (!product) {
-      return res.status(404).json({ error: 'Product not found' });
+      return res.status(404).json({ message: "Product not found" });
     }
-    res.json({ success: true, message: 'Product deleted successfully' });
+    res.json({ success: true, message: "Product deleted successfully" });
   } catch (error) {
-    console.error('Error deleting product:', error);
-    res.status(500).json({ error: 'Server error' });
+    console.error(error.message);
+    res.status(500).json({ message: "Server error" });
   }
 };
+
 module.exports = {
   signup,
   login,

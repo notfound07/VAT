@@ -16,6 +16,8 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    background: url('../Assets/lightfoot.png') no-repeat center center;
+    background-size: cover;
     padding: 10px 20px;
     position: relative;
     cursor: pointer;
@@ -28,6 +30,8 @@
 
 .payment-title {
     color: white;
+    font-size: xx-large;
+    font-weight: bold;
     margin-left: auto;
     margin-right: auto;
 }

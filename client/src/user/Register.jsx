@@ -8,27 +8,39 @@ import "./Style.css";
 
 function Register() {
   const [name, setName] = useState("");
-  const {email, setEmail}= useContext(RecoveryContext);
+  const { email, setEmail } = useContext(RecoveryContext);
   const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
 
-  const submit = async (e)=>{
+  const submit = async (e) => {
     e.preventDefault();
-    try{
-      const response = await axios.post("http://localhost:3001/vat/signup",{
+
+    if (!name || !email || !password || !confirmpassword) {
+      window.alert("Please fill in all fields.");
+      return;
+    }
+
+    if (password !== confirmpassword) {
+      window.alert("Passwords do not match.");
+      return;
+    }
+
+    try {
+      const response = await axios.post("http://localhost:3001/vat/signup", {
         name,
         email,
         password,
         confirmpassword,
       });
 
-      if(response.status === 201){
-        navigate('/login')
+      if (response.status === 201) {
+        window.alert("Registration successful! Please log in.");
+        navigate('/login');
       }
-    }
-    catch(err){
-      console.log(err)
+    } catch (err) {
+      console.log(err);
+      window.alert("Registration failed. Please try again.");
     }
   }
 
@@ -79,7 +91,7 @@ function Register() {
               />
             </div>
             <button className="log-res" onClick={submit}>
-              Sign Up <i class="fa-solid fa-right-long"></i>
+              Sign Up <i className="fa-solid fa-right-long"></i>
             </button>
             <div className="signup-links">
               <a href="/Login">Already have an account?</a>

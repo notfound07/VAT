@@ -118,6 +118,21 @@ body {
     margin: 10px 0;
 }
 
+.art-add{
+    background-color: #ff4d4d;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.art-add:hover {
+    background-color: #e60000;
+}
+
 /* Media Queries for responsiveness */
 @media (max-width: 1300px) {
     .gallery-container {

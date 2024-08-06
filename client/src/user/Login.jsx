@@ -6,14 +6,14 @@ import { RecoveryContext } from '../App';
 import axios from 'axios';
 
 function Login() {
-  const { email, setEmail,setShow} = useContext(RecoveryContext);
+  const { email, setEmail, setShow } = useContext(RecoveryContext);
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const submit = async (e) => {
     e.preventDefault();
     if (email === "visionaryart.tech24@gmail.com" && password === "Visionary.24") {
-      localStorage.setItem("LoggedUser",email);
+      localStorage.setItem("LoggedUser", email);
       navigate('/Shopping');
       setShow(true);
     } else {
@@ -25,11 +25,13 @@ function Login() {
           }
         });
         if (response.status === 200) {
-          localStorage.setItem("LoggedUser",email);
+          localStorage.setItem("LoggedUser", email);
           navigate('/Home');
+          window.alert('Login successful!');
         }
       } catch (err) {
         console.log(err);
+        window.alert('Login failed! Please check your email and password.');
       }
     }
   }

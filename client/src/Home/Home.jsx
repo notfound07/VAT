@@ -42,7 +42,7 @@ const Home = () => {
           ))}
         </CustomCarousel>
       </div>
-      
+
       <div className='item-display'>
         <div className="item-showcase">
           {shuffledItems.map((item) => (
@@ -71,7 +71,7 @@ const Home = () => {
       </div>
 
       <Element className='work-slider' name="work-slider">
-          <Workslider />
+        <Workslider />
       </Element>
 
       <div className='slogan-section'>

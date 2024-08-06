@@ -4,8 +4,10 @@ import Footer from '../Nav-Foot/Footer';
 import './Shopping.css';
 import { CartContext } from '../Resources/CartContext';
 import { RecoveryContext } from '../App';
+import { Link, Element } from 'react-scroll';
 import { useNavigate } from 'react-router-dom';
 import { Buffer } from 'buffer';
+import Workslider from '../Home/workslider';
 
 const Shopping = () => {
     // const { addToCart } = useContext(CartContext);
@@ -22,7 +24,7 @@ const Shopping = () => {
                         <>
                             <h1>Shop</h1>
                             <h4>Add New collection of art in shop</h4>
-                            <button className='art-btn-cart' onClick={() => navigate('/Add')}>
+                            <button className='art-add' onClick={() => navigate('/Add')}>
                                 <i className="fa-solid fa-plus" aria-hidden="true"></i> Add
                             </button>
                         </>
@@ -56,6 +58,9 @@ const Shopping = () => {
                 </div>
 
             </div>
+            <Element className='work-slider' name="work-slider">
+        <Workslider />
+      </Element>
             <Footer />
         </div>
     );
