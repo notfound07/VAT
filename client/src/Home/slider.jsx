@@ -1,7 +1,7 @@
 // slider.js
 import React, { useState, useEffect } from "react";
 import "./slider.css";
-import img1 from '../Assets/front_img.jpeg';
+import img1 from '../Assets/front2.jpeg';
 import img2 from '../Assets/front1.jpg';
 
 function CustomCarousel({ children }) {

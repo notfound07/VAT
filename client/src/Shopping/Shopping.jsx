@@ -22,8 +22,8 @@ const Shopping = () => {
                 <div className="new-product">
                     {show && (
                         <>
-                            <h1>Shop</h1>
-                            <h4>Add New collection of art in shop</h4>
+                            <h1>Manufacturing Unit</h1>
+                            <h4>Add New Manufacturing Item</h4>
                             <button className='art-add' onClick={() => navigate('/Add')}>
                                 <i className="fa-solid fa-plus" aria-hidden="true"></i> Add
                             </button>
@@ -58,9 +58,9 @@ const Shopping = () => {
                 </div>
 
             </div>
-            <Element className='work-slider' name="work-slider">
+            {/* <Element className='work-slider' name="work-slider">
         <Workslider />
-      </Element>
+      </Element> */}
             <Footer />
         </div>
     );

@@ -3,6 +3,8 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+
 }
 
 img {
@@ -15,7 +17,7 @@ img {
 body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
-  background-color: #00CCFF;
+  background-color: #7b888d;
   color: #333;
 }
 
@@ -28,7 +30,7 @@ body {
 .item-display {
   width: 100%;
   padding: 10px;
-  background-color: #00CCFF;
+  background-color: #7b888d;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -117,27 +119,40 @@ body {
   margin: 10px 0;
   color: #333;
 }
-
+.logo-img1{
+  height: 50%;
+  width: 50%;
+}
 /* Slogan Section */
 .slogan {
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  font-size: xx-large;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: xxx-large;
   text-align: center;
   background-color: #a3a3a3;
-  color: white;
+  background: url('../Assets/slogan_bg.jpg') center center ;
+  text-shadow: 2px 2px yellow;
+  color: rgb(255, 255, 249);
   padding: 5px;
   margin: 0;
   border-radius: 5px;
 }
-
-/* Custom Showcase */
+.slogan_client{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: xxx-large;
+  text-align: center;
+  background-color: #7b888d;
+  text-shadow: 2px 2px yellow;
+  color: rgb(255, 255, 249);
+  padding: 5px;
+  margin: 0;
+}* Custom Showcase */
 .custom-showcase {
   display: flex;
   flex-direction: row;
   gap: 20px;
   width: 100%;
   padding: 20px;
-  background-color: #00CCFF;
+  background-color: #7b888d;
 }
 
 .display-info {
@@ -197,26 +212,36 @@ body {
   padding: 10px;
   text-align: center;
   font-size: xx-large;
-  background-color: #00CCFF;
+  background-color: #7b888d;
   color: white;
 }
 
 .client-logo {
-  width: fit-content;
-  height: fit-content;
-  background-color: white;
+  width: 100%;
+  height: 70%;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1), -1px -1px 5px #fff;
   color: #333;
   font-size: 1em;
   font-weight: bold;
   padding: 10px;
 }
+.client-logo1 {
+  width: fit-content;
+  height: fit-content;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  font-size: 1em;
+  font-weight: bold;
+  margin-top: 5%;
+}
 
-.client-logo:hover {
+.client-logo:hover,.client-logo1:hover {
   cursor: pointer;
   transform: translateY(-5px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);

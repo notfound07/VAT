@@ -73,7 +73,7 @@ const Detail = () => {
   }, [id]);
 
 
-  const { addToCart } = useContext(CartContext);
+  // const { addToCart } = useContext(CartContext);
   return (
     <div className='detail-page'>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></link>
@@ -127,7 +127,7 @@ const Detail = () => {
                 {show ? (<button onClick={handleEditClick} className="add-to-cart-btn">Edit</button>) : null}
               </div>
             )}
-            <Review />
+            {/* <Review /> */}
           </div>
         )}
         <div className='suggetion-display'>

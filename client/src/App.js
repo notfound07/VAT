@@ -23,6 +23,7 @@ import Review from "./Product_Details/Review.jsx";
 import Dashboard from "./Dashboard/Dashboard.jsx";
 import Workslider from "./Home/workslider.jsx";
 import CustomCarousel from "./Home/slider.jsx";
+import Design from "./Design/Design.jsx";
 
 export const RecoveryContext = createContext();
 function App() {
@@ -69,6 +70,7 @@ function App() {
             <Route path='/Dashboard' element={<Dashboard/>}/>
             <Route path='/workslider' element={<Workslider/>}/>
             <Route path='/customcarousel' element={<CustomCarousel/>}/>
+            <Route path='/Design' element={<Design/>}/>
           </Routes>
         </div>
       </RecoveryContext.Provider>

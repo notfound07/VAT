@@ -6,6 +6,8 @@ import { RecoveryContext } from '../App';
 import Workslider from './workslider';
 import { Link, Element } from 'react-scroll';
 import VLogo from '../Assets/V-Logo.png';
+import VLogo2 from '../Assets/V-Logo2.jpg';
+import VLogo3 from '../Assets/V-Logo3.png';
 import mission from '../Assets/mission.png';
 import machine from '../Assets/machine.png';
 import "slick-carousel/slick/slick.css";
@@ -70,12 +72,12 @@ const Home = () => {
         </div>
       </div>
 
-      <Element className='work-slider' name="work-slider">
+      {/* <Element className='work-slider' name="work-slider">
         <Workslider />
-      </Element>
+      </Element> */}
 
       <div className='slogan-section'>
-        <p className='slogan'>“We understand the value of asset and timeline”</p>
+        <p className='slogan'>WE CUSTOMIZE YOUR DESIGN FOR YOURSELF</p>
       </div>
       <div className="custom-showcase">
         <div className="display-info">
@@ -101,12 +103,18 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="slogan">
-        <p>Our Clients Trusted Us</p>
+      <div className="slogan_client">
+        Clients Corner
       </div>
       <div className='heading-client'>
-        <div className='client-logo' onClick={() => window.location.href = 'https://vishalaakshiconsultants.com/'}>
-          <img src={VLogo} alt="Client Logo" />
+        <div className='client-logo'>
+          <img className="logo-img1" src={VLogo2} alt="Client Logo" />
+        </div>
+        <div className='client-logo1' onClick={() => window.location.href = 'https://vishalaakshiconsultants.com/'}>
+          <img className="logo-img" src={VLogo} alt="Client Logo" />
+        </div>
+        <div className='client-logo'>
+          <img className="logo-img1" src={VLogo3} alt="Client Logo" />
         </div>
       </div>
       <Footer />
