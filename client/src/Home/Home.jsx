@@ -110,7 +110,7 @@ const Home = () => {
         <div className='client-logo'>
           <img className="logo-img1" src={VLogo2} alt="Client Logo" />
         </div>
-        <div className='client-logo1' onClick={() => window.location.href = 'https://vishalaakshiconsultants.com/'}>
+        <div className='client-logo' onClick={() => window.location.href = 'https://vishalaakshiconsultants.com/'}>
           <img className="logo-img" src={VLogo} alt="Client Logo" />
         </div>
         <div className='client-logo'>

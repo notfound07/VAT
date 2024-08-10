@@ -8,10 +8,14 @@
 }
 
 img {
-  -webkit-user-drag: none; /* Safari */
-  -khtml-user-drag: none; /* Konqueror */
-  -moz-user-drag: none; /* Old versions of Firefox */
-  -ms-user-drag: none; /* Internet Explorer/Edge */
+  -webkit-user-drag: none;
+  /* Safari */
+  -khtml-user-drag: none;
+  /* Konqueror */
+  -moz-user-drag: none;
+  /* Old versions of Firefox */
+  -ms-user-drag: none;
+  /* Internet Explorer/Edge */
 }
 
 body {
@@ -119,24 +123,27 @@ body {
   margin: 10px 0;
   color: #333;
 }
-.logo-img1{
+
+.logo-img1 {
   height: 50%;
   width: 50%;
 }
+
 /* Slogan Section */
 .slogan {
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: xxx-large;
   text-align: center;
   background-color: #a3a3a3;
-  background: url('../Assets/slogan_bg.jpg') center center ;
+  background: url('../Assets/slogan_bg.jpg') center center;
   text-shadow: 2px 2px yellow;
   color: rgb(255, 255, 249);
   padding: 5px;
   margin: 0;
   border-radius: 5px;
 }
-.slogan_client{
+
+.slogan_client {
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: xxx-large;
   text-align: center;
@@ -145,7 +152,9 @@ body {
   color: rgb(255, 255, 249);
   padding: 5px;
   margin: 0;
-}* Custom Showcase */
+}
+
+/* Custom Showcase */
 .custom-showcase {
   display: flex;
   flex-direction: row;
@@ -211,9 +220,9 @@ body {
   justify-content: center;
   padding: 10px;
   text-align: center;
+  align-items: center;
   font-size: xx-large;
   background-color: #7b888d;
-  color: white;
 }
 
 .client-logo {
@@ -228,20 +237,9 @@ body {
   font-weight: bold;
   padding: 10px;
 }
-.client-logo1 {
-  width: fit-content;
-  height: fit-content;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #333;
-  font-size: 1em;
-  font-weight: bold;
-  margin-top: 5%;
-}
 
-.client-logo:hover,.client-logo1:hover {
+
+.client-logo:hover{
   cursor: pointer;
   transform: translateY(-5px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);

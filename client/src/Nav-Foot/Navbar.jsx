@@ -50,7 +50,7 @@ function Navbar() {
                     {show ? <Link to="/Dashboard" className='nav-link'><i className="fa-solid fa-table-columns"></i>Dashboard</Link> : null}
                     <Link to="/Home" className="nav-link"><i className="fa-solid fa-circle-info"></i>Who we are</Link>
                     <Link to='/Shopping' className="nav-link"><i className="fa-solid fa-store"></i>Product</Link>
-                    <Link to="/Design" className='nav-link'>Design</Link>
+                    <Link to="/Design" className='nav-link'><i class="fa-solid fa-pencil"></i>Design</Link>
                     <Link to="/Contact" className="nav-link"><i className="fa-solid fa-users"></i>ContactUs</Link>
                     <div className="get-in">
                         {LoggedUser === null ?
@@ -78,6 +78,7 @@ function Navbar() {
                     {show ? <Link to="/Dashboard" className='nav-link'><i className="fa-solid fa-table-columns"></i>Dashboard</Link> : null}
                     <Link to="/Home" className="nav-link"><i className="fa-solid fa-circle-info"></i>Who we are</Link>
                     <Link to="/Shopping" className="nav-link"><i className="fa-solid fa-store"></i>Product</Link>
+                    <Link to="/Design" className='nav-link'><i class="fa-solid fa-pencil"></i>Design</Link>
                     <Link to="/Contact" className="nav-link"><i className="fa-solid fa-users"></i>ContactUs</Link>
                 </div>
             </div>
