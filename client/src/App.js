@@ -33,6 +33,8 @@ function App() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [image, setImage] = useState(null);  
+  const [video, setVideo] = useState(null); // New video state
+
 
   useEffect(() => {
     const fetchAllResponses = async () => {
@@ -49,7 +51,7 @@ function App() {
   }, [])
   return (
     <CartProvider>
-      <RecoveryContext.Provider value={{ email, setEmail,setShow,show,orders,setOrder,title,setTitle,description,setDescription,image,setImage }}>
+      <RecoveryContext.Provider value={{ email, setEmail,setShow,show,orders,setOrder,title,setTitle,description,setDescription,image,setImage, video, setVideo }}>
         <div className="App">
           <Routes>
             <Route path="/" element={<Home />} />

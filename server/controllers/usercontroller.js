@@ -183,30 +183,69 @@ const Allbooking = async (req, res) => {
   }
 };
 
+
 const product = async (req, res) => {
   try {
     const { title, description } = req.body;
 
-    if (!title || !description || !req.file) {
-      return res.status(400).json({ message: "All fields are required" });
+    // Check if title and description are provided
+    if (!title || !description) {
+      return res.status(400).json({ message: "Title and description are required" });
     }
 
+    // Check if at least one media file (image or video) is provided
+    if (!req.files || (!req.files.image && !req.files.video)) {
+      return res.status(400).json({ message: "At least one media file (image or video) is required" });
+    }
+
+    // Construct the product object
     const newProduct = new Product({
       title,
       description,
-      image: {
-        data: req.file.buffer,
-        contentType: req.file.mimetype,
-      },
+      image: req.files.image
+        ? {
+            data: req.files.image[0].buffer,
+            contentType: req.files.image[0].mimetype,
+          }
+        : undefined,
+      video: req.files.video
+        ? {
+            data: req.files.video[0].buffer,
+            contentType: req.files.video[0].mimetype,
+          }
+        : undefined,
     });
 
+    // Save the product to the database
     const savedProduct = await newProduct.save();
     res.status(201).json(savedProduct);
   } catch (error) {
-    console.error(error.message);
+    console.error("Error creating product:", error.message);
     res.status(500).json({ message: "Failed to create product" });
   }
 };
+
+const media = async (req, res) => {
+  const { type } = req.query;
+
+  try {
+    let media;
+    if (type === 'image') {
+      media = await Product.find({ 'image.data': { $exists: true } }, 'title description image');
+    } else if (type === 'video') {
+      media = await Product.find({ 'video.data': { $exists: true } }, 'title description video');
+    } else {
+      media = await Product.find({}, 'title description image video'); // Fetch all products with their media
+    }
+    res.status(200).json(media);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+
+ 
+
 
 const update_product = async (req, res) => {
   try {
@@ -277,5 +316,6 @@ module.exports = {
   update_product,
   getAllProducts,
   getById,
-  deleteById
+  deleteById,
+  media
 };

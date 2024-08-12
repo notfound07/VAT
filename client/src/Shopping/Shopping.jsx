@@ -2,12 +2,9 @@ import React, { useContext } from 'react';
 import Navbar from '../Nav-Foot/Navbar';
 import Footer from '../Nav-Foot/Footer';
 import './Shopping.css';
-import { CartContext } from '../Resources/CartContext';
 import { RecoveryContext } from '../App';
-import { Link, Element } from 'react-scroll';
 import { useNavigate } from 'react-router-dom';
 import { Buffer } from 'buffer';
-import Workslider from '../Home/workslider';
 
 const Shopping = () => {
     // const { addToCart } = useContext(CartContext);

@@ -302,12 +302,13 @@ body {
   }
 
   .custom-showcase {
-    flex-direction: column;
+    flex-direction: row;
   }
 
   .display-info {
-    padding-top: 20px;
-    flex-direction: column;
+
+    padding: 20px 10px;
+    flex-direction: row;
     width: 100%;
   }
 

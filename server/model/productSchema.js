@@ -7,8 +7,13 @@ const productSchema = new mongoose.Schema({
     data: Buffer,
     contentType: String,
   },
+  video: { // Add video field
+    data: Buffer,
+    contentType: String,
+  },
 });
 
 const Product = mongoose.model('Product', productSchema);
 
 module.exports = Product;
+

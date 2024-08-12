@@ -3,9 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import './Details.css';
 import Navbar from '../Nav-Foot/Navbar';
 import Footer from '../Nav-Foot/Footer';
-import { CartContext } from '../Resources/CartContext';
 import { RecoveryContext } from '../App';
-import Review from './Review';
 import axios from 'axios';
 import { Buffer } from 'buffer';
 
@@ -44,11 +42,12 @@ const Detail = () => {
     try {
       await axios.put(`http://localhost:3001/vat/updateproduct/${id}`, { title: edittitle, description: editdescription });
       setItem({ ...item, title: edittitle, description: editdescription });
-      setEdit(false)
+      setEdit(false);
     } catch (error) {
       console.error('Error updating product:', error);
     }
-  }
+  };
+
   const handleDelete = async () => {
     try {
       await axios.delete(`http://localhost:3001/vat/deleteById/${id}`);
@@ -57,7 +56,8 @@ const Detail = () => {
     } catch (error) {
       console.error('Error deleting product:', error);
     }
-  }
+  };
+
   useEffect(() => {
     const fetchAllResponses = async () => {
       try {
@@ -66,14 +66,12 @@ const Detail = () => {
           setItem(response.data);
         }
       } catch (error) {
-        console.error("Error fetching All responses:", error);
+        console.error("Error fetching product details:", error);
       }
     };
-    fetchAllResponses()
+    fetchAllResponses();
   }, [id]);
 
-
-  // const { addToCart } = useContext(CartContext);
   return (
     <div className='detail-page'>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></link>
@@ -84,18 +82,37 @@ const Detail = () => {
             <div className="art-item">
               <div className='art-img-btn'>
                 <div className='art-image-detail'>
-                  <img
-                    src={`data:${item.image.contentType};base64,${Buffer.from(item.image.data.data).toString('base64')}`}
-                    alt={item.title}
-                  />
+                  {item.image ? (
+                    <img
+                      src={`data:${item.image.contentType};base64,${Buffer.from(item.image.data.data).toString('base64')}`}
+                      alt={item.title}
+                    />
+                  ) : (
+                    null
+                  )}
+                  {item.video ? (
+                    <video autoPlay muted loop playsInline>
+                      <source
+                        src={`data:${item.video.contentType};base64,${Buffer.from(item.video.data.data).toString('base64')}`}
+                        type={item.video.contentType}
+                      />
+                    </video>
+                  ) : (
+                    null
+                  )}
                 </div>
-                {show?(<button className='delete-from-cart-btn' onClick={handleDelete}>Delete</button>):( <div className="art-cart-buy-btn">
-                  <button className="buy-now-btn" onClick={() => window.location.href = `/Contact`}>Order Now <i className="fa-solid fa-right-long"></i></button>
-                  {/* <button className="add-to-cart-btn" onClick={(e) => {
-                    e.stopPropagation();
-                    addToCart(item);
-                  }}><i className="fa-solid fa-cart-plus"></i> Add to Cart</button> */}
-                </div>)}
+                {show ? (
+                  <button className='delete-from-cart-btn' onClick={handleDelete}>Delete</button>
+                ) : (
+                  <div className="art-cart-buy-btn">
+                    <button
+                      className="buy-now-btn"
+                      onClick={() => window.location.href = `/Contact`}
+                    >
+                      Order Now <i className="fa-solid fa-right-long"></i>
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           )}
@@ -121,37 +138,36 @@ const Detail = () => {
               </div>
             ) : (
               <div className='art-details-text'>
-                <div className='"art-name"'>{item.title}</div>
+                <div className="art-name">{item.title}</div>
                 <h3>Description</h3>
-                <div className="art-description" >{item.description}</div>
-                {show ? (<button onClick={handleEditClick} className="add-to-cart-btn">Edit</button>) : null}
+                <div className="art-description">{item.description}</div>
+                {show && <button onClick={handleEditClick} className="add-to-cart-btn">Edit</button>}
               </div>
             )}
-            {/* <Review /> */}
           </div>
         )}
         <div className='suggetion-display'>
           <div className="suggetion-showcase">
-            {shuffledItems.map((item) => (
+            {shuffledItems.map((suggestedItem) => (
               <div
                 className="suggetion-card"
-                key={item._id}
-                onClick={() => window.location.href = `/Details/${item._id}`}
+                key={suggestedItem._id}
+                onClick={() => window.location.href = `/Details/${suggestedItem._id}`}
                 role="button"
                 tabIndex={0}
-                onKeyPress={() => window.location.href = `/Details/${item._id}`}
+                onKeyPress={() => window.location.href = `/Details/${suggestedItem._id}`}
               >
                 <div className="suggetion-image-wrapper">
                   <img
-                    src={`data:${item.image.contentType};base64,${Buffer.from(item.image.data).toString('base64')}`}
-                    alt={item.title}
+                    src={`data:${suggestedItem.image.contentType};base64,${Buffer.from(suggestedItem.image.data).toString('base64')}`}
+                    alt={suggestedItem.title}
                     className="suggetion-image"
                   />
                   <div className="overlay">
                     <button className="suggetion-details-button">View Details</button>
                   </div>
                 </div>
-                <h3 className="suggetion-title">{item.title}</h3>
+                <h3 className="suggetion-title">{suggestedItem.title}</h3>
               </div>
             ))}
           </div>
