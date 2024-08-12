@@ -71,8 +71,8 @@ const Home = () => {
           ))}
         </div>
       </div>
-
-      {/* <Element className='work-slider' name="work-slider">
+      {/* 
+      <Element className='work-slider' name="work-slider">
         <Workslider />
       </Element> */}
 
