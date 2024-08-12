@@ -1,4 +1,3 @@
-// slider.js
 import React, { useState, useEffect } from "react";
 import "./slider.css";
 import img1 from '../Assets/front2.jpeg';
@@ -8,18 +7,6 @@ function CustomCarousel({ children }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [slideDone, setSlideDone] = useState(true);
   const [timeID, setTimeID] = useState(null);
-
-  useEffect(() => {
-    if (slideDone) {
-      setSlideDone(false);
-      setTimeID(
-        setTimeout(() => {
-          slideNext();
-          setSlideDone(true);
-        }, 5000)
-      );
-    }
-  }, [slideDone]);
 
   const slideNext = () => {
     setActiveIndex((val) => {
@@ -40,6 +27,18 @@ function CustomCarousel({ children }) {
       }
     });
   };
+
+  useEffect(() => {
+    if (slideDone) {
+      setSlideDone(false);
+      setTimeID(
+        setTimeout(() => {
+          slideNext();
+          setSlideDone(true);
+        }, 5000)
+      );
+    }
+  }, [slideDone, slideNext]); // Add slideNext as a dependency
 
   const AutoPlayStop = () => {
     if (timeID > 0) {
@@ -93,7 +92,7 @@ function CustomCarousel({ children }) {
           slideNext();
         }}
       >
-        <i class="fa-solid fa-greater-than"></i>
+        <i className="fa-solid fa-greater-than"></i>
       </button>
       <button
         className="slider__btn-prev"
@@ -102,12 +101,11 @@ function CustomCarousel({ children }) {
           slidePrev();
         }}
       >
-        <i class="fa-solid fa-less-than"></i>
+        <i className="fa-solid fa-less-than"></i>
       </button>
     </div>
   );
 }
-
 
 export const images = [
   {
@@ -121,5 +119,3 @@ export const images = [
 ];
 
 export default CustomCarousel;
-
-

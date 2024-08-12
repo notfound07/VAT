@@ -21,8 +21,10 @@
 }
 
 .contact-image {
+  background: url('../Assets/collage.jpg') no-repeat center center;
+  background-size: cover;
+  display: flex;
   width: 100%;
-  background-color: #f2f2f2;
 }
 
 .contact-logo {

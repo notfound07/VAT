@@ -44,14 +44,12 @@
 
 .slider-container img {
   width: 100%;
-  height: 490px;
-  padding: 20px;
+  height: 500px;
 }
 
 .slider-container video {
   width: 600px;
-  height: 490px;
-  padding: 20px;
+  height: 500px;
   object-fit: cover;
   border-radius: 10px;
 }
@@ -151,6 +149,7 @@ input[type="radio"]:checked ~ .navigation label {
 
 .buy-now-btn {
   width: 200px;
+  height: 100%;
   padding: 10px;
   background-color: green;
   color: white;
@@ -158,6 +157,7 @@ input[type="radio"]:checked ~ .navigation label {
   border-radius: 5px;
   cursor: pointer;
   transition: 0.3s;
+  margin-top: 20px;
 }
 
 .buy-now-btn:hover {
@@ -167,6 +167,7 @@ input[type="radio"]:checked ~ .navigation label {
 .add-to-cart-btn {
   width: 200px;
   margin-top: 20px;
+  height: 100%;
   padding: 10px;
   background-color: #2666c5;
   color: white;
@@ -179,6 +180,7 @@ input[type="radio"]:checked ~ .navigation label {
 .delete-from-cart-btn {
   width: 200px;
   margin-top: 20px;
+  height: 100%;
   padding: 10px;
   background-color: red;
   color: white;

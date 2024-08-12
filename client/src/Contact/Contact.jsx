@@ -56,7 +56,6 @@ function Contact() {
         <h1>Contact Us</h1>
         <div className="form-wrapper">
           <div className="contact-image">
-            <img className="contact-logo" src={logo} alt="" />
           </div>
           <form className="contact-form" onSubmit={submitForm}>
             <div className="form-group-contact">
