@@ -80,49 +80,65 @@ const Detail = () => {
         <div className="main-column">
           {item && (
             <div className="art-item">
-              <div className='art-img-btn'>
-                <div className="slider-container">
-                  <input type="radio" name="slider" id="slide1" checked />
-                  {item.video && <input type="radio" name="slider" id="slide2" />}
-
-                  <div className="slides">
-                    <div className="slide">
+              <div className='art-img-container'>
+                <div className="art-scroll-handle">
+                  <div className="thumbnails">
+                    <label htmlFor="slide1">
                       {item.image ? (
-                        <img
+                        <img className="thumbnail"
                           src={`data:${item.image.contentType};base64,${Buffer.from(item.image.data.data).toString('base64')}`}
                           alt={item.title}
                         />
                       ) : null}
-                    </div>
+                    </label>
                     {item.video && (
-                      <div className="slide">
-                        <video autoPlay muted loop playsInline>
+                      <label htmlFor="slide2">
+                        <video className="thumbnail" autoPlay muted loop playsInline>
                           <source
                             src={`data:${item.video.contentType};base64,${Buffer.from(item.video.data.data).toString('base64')}`}
                             type={item.video.contentType}
                           />
                         </video>
+                      </label>
+                    )}
+                  </div>
+                  <div className="slider-buttons">
+                    <div className="slider-container">
+                      <input type="radio" name="slider" id="slide1" checked />
+                      {item.video && <input type="radio" name="slider" id="slide2" />}
+                      <div className="slides">
+                        <div className="slide">
+                          {item.image ? (
+                            <img
+                              src={`data:${item.image.contentType};base64,${Buffer.from(item.image.data.data).toString('base64')}`}
+                              alt={item.title}
+                            />
+                          ) : null}
+                        </div>
+                        {item.video && (
+                          <div className="slide">
+                            <video autoPlay muted loop playsInline>
+                              <source
+                                src={`data:${item.video.contentType};base64,${Buffer.from(item.video.data.data).toString('base64')}`}
+                                type={item.video.contentType}
+                              />
+                            </video>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                    {show ? (
+                      <button className='delete-from-cart-btn' onClick={handleDelete}>Delete</button>
+                    ) : (
+                      <div className="art-cart-buy-btn">
+                        <button
+                          className="buy-now-btn"
+                          onClick={() => window.location.href = `/Contact`}>Order Now <i className="fa-solid fa-right-long"></i>
+                        </button>
                       </div>
                     )}
                   </div>
-
-                  {item.video && (
-                    <div className="navigation">
-                      <label htmlFor="slide1"></label>
-                      <label htmlFor="slide2"></label>
-                    </div>
-                  )}
                 </div>
-                {show ? (
-                  <button className='delete-from-cart-btn' onClick={handleDelete}>Delete</button>
-                ) : (
-                  <div className="art-cart-buy-btn">
-                    <button
-                      className="buy-now-btn"
-                      onClick={() => window.location.href = `/Contact`}>Order Now <i className="fa-solid fa-right-long"></i>
-                    </button>
-                  </div>
-                )}
               </div>
             </div>
           )}
