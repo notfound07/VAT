@@ -1,5 +1,6 @@
 const express = require("express");
-const { signup, login, contact,getAllcontacts,order,booking,Allbooking,product,update_product,getAllProducts,getById,deleteById,media } = require("../controllers/usercontroller");
+const { signup, login, contact,getAllcontacts,order,booking,Allbooking,product,update_product,
+getAllProducts,getById,deleteById,media} = require("../controllers/usercontroller");
 const router = express.Router();
 const multer = require('multer');
 
