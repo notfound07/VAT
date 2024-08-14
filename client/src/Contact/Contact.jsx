@@ -4,7 +4,6 @@ import Navbar from '../Nav-Foot/Navbar';
 import axios from 'axios';
 import { RecoveryContext } from '../App';
 import './Contact.css';
-import logo from '../Assets/logo.png'; // Import the image
 
 function Contact() {
   const [firstName, setFirstName] = useState("");

@@ -1,3 +1,4 @@
+/* Base styles for large screens (1920px and above) */
 .detail-page {
   box-sizing: border-box;
 }
@@ -17,9 +18,11 @@
 
 .art-item {
   position: sticky;
-  top: 50px;
-  padding: 20px 0;
+  top: 50px; /* Adjust sticky position */
+  padding: 20px 0; /* Vertical padding */
   width: 100%;
+  max-width: 100%; /* Prevents overflow beyond the container */
+  box-sizing: border-box; /* Include padding in width calculation */
   transition: top 0.5s ease;
 }
 
@@ -33,6 +36,12 @@
   width: 80px;
   height: 80px;
   cursor: pointer;
+}
+
+.edit-flex-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
 }
 
 .thumbnail:hover,
@@ -54,7 +63,7 @@ input[type="radio"]:checked + .thumbnail {
 }
 
 .slide {
-  flex: 1 0 100%; /* Ensure each slide takes up the full width of the container */
+  flex: 1 0 100%;
   box-sizing: border-box;
   height: 100%;
 }
@@ -70,6 +79,7 @@ input[type="radio"]:checked + .thumbnail {
   object-fit: cover;
   border-radius: 10px;
 }
+
 input[type="radio"] {
   display: none;
 }
@@ -81,7 +91,6 @@ input[type="radio"] {
 #slide2:checked ~ .slides {
   transform: translateX(-100%);
 }
-
 
 .slider-container::before {
   content: '';
@@ -100,13 +109,10 @@ input[type="radio"] {
   z-index: 1;
 }
 
-
-
-.art-scroll-handle{
+.art-scroll-handle {
   display: flex;
   gap: 20px;
 }
-
 
 .art-img-container {
   width: 100%;
@@ -167,6 +173,32 @@ input[type="radio"] {
 
 .add-to-cart-btn {
   width: 200px;
+  height: 100%;
+  padding: 10px;
+  background-color: #2666c5;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 20px;
+}
+
+.delete-from-cart-btn {
+  width: 200px;
+  height: 100%;
+  padding: 10px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 20px;
+}
+
+.cancel-to-btn {
+  width: 100px;
   margin-top: 20px;
   height: 100%;
   padding: 10px;
@@ -178,8 +210,8 @@ input[type="radio"] {
   transition: 0.3s;
 }
 
-.delete-from-cart-btn {
-  width: 200px;
+.save-from-btn {
+  width: 100px;
   margin-top: 20px;
   height: 100%;
   padding: 10px;
@@ -291,22 +323,16 @@ input[type="radio"] {
   color: #333;
 }
 
-
-
-/* For screens between 1200px and 350px */
-@media (max-width: 1200px) {
+/* Responsive styles */
+@media (max-width: 1920px) and (min-width: 1200px) {
   .detail-container {
     padding: 100px 30px 30px 30px;
   }
 
-  .art-image-detail {
-    width: 550px;
-    height: 500px;
-  }
-
-  .art-details-text {
-    margin-top: 50px;
-    padding: 25px;
+  .art-item {
+    top: 60px; /* Adjust sticky position for medium-large screens */
+    padding: 20px 10px; /* Adjust padding for medium-large screens */
+    max-width: 100%; /* Ensure it fits within container */
   }
 }
 
@@ -326,8 +352,9 @@ input[type="radio"] {
   }
 
   .art-item {
-    top: 40;
-    padding: 20px 20px 20px 0px;
+    top: 50px; /* Adjust sticky position for smaller screens */
+    padding: 15px 10px; /* Adjust padding for smaller screens */
+    max-width: 100%; /* Ensure it fits within container */
   }
 
   .art-image-detail {
@@ -340,8 +367,6 @@ input[type="radio"] {
     margin-top: 40px;
     padding: 20px;
   }
-
-
 }
 
 @media (max-width: 899px) and (min-width: 599px) {
@@ -358,8 +383,9 @@ input[type="radio"] {
   }
 
   .art-item {
-    top: 0;
-    padding: 20px 20px 0px 20px;
+    top: 20px; /* Adjust sticky position for even smaller screens */
+    padding: 10px 10px;
+    max-width: 100%; /* Ensure it fits within container */
   }
 
   .art-details-text {
@@ -371,7 +397,17 @@ input[type="radio"] {
     height: auto;
   }
 
+  .art-scroll-handle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
 
+  .thumbnails {
+    display: flex;
+    flex-direction: row;
+  }
 }
 
 @media (max-width: 599px) and (min-width: 350px) {
@@ -388,8 +424,9 @@ input[type="radio"] {
   }
 
   .art-item {
-    top: 0;
-    padding: 15px 15px 0px 15px;
+    top: 0; /* Remove sticky positioning for very small screens */
+    padding: 15px 5px;
+    max-width: 100%; /* Ensure it fits within container */
   }
 
   .art-image-detail {
@@ -402,7 +439,6 @@ input[type="radio"] {
     margin-top: 0px;
     padding: 10px;
   }
-
 
 }
 
@@ -420,8 +456,9 @@ input[type="radio"] {
   }
 
   .art-item {
-    top: 0;
+    top: 0; /* Remove sticky positioning for extra small screens */
     padding: 15px 0;
+    max-width: 100%; /* Ensure it fits within container */
   }
 
   .art-image-detail {
@@ -434,6 +471,4 @@ input[type="radio"] {
     margin-top: 20px;
     padding: 10px;
   }
-
-
 }

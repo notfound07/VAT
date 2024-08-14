@@ -33,12 +33,13 @@ function CustomCarousel({ children }) {
       setSlideDone(false);
       setTimeID(
         setTimeout(() => {
-          slideNext();
+          setActiveIndex((val) => (val >= children.length - 1 ? 0 : val + 1));
           setSlideDone(true);
-        }, 5000)
+        }, 10000)
       );
     }
-  }, [slideDone, slideNext]); // Add slideNext as a dependency
+  }, [slideDone, children.length]);
+  
 
   const AutoPlayStop = () => {
     if (timeID > 0) {

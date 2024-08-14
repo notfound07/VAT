@@ -11,7 +11,8 @@
   height: 80vh;
   margin: 100px 20px 20px 20px;
   background-repeat: no-repeat;
-  background-size: 100%; /* Initially normal size */
+  background-size: 100%;
+  position: relative; /* Added to ensure absolute positioning of ::before works */
 }
 
 .design-container img {
@@ -24,20 +25,59 @@
 }
 
 .design-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: inherit;
-    padding: 3px;
-    background: linear-gradient(45deg, red, darkblue, blue, red);
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask-composite: destination-out;
-    mask-composite: exclude;
-    pointer-events: none;
-    z-index: 1;
-    margin: 100px 20px 35px 20px;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  padding: 3px;
+  background: linear-gradient(45deg, red, darkblue, blue, red);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: destination-out;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 1;
+  margin: 0; /* Adjusted margin to 0 to avoid conflicts with ::before positioning */
+}
+
+/* Responsive styles */
+
+/* For screens larger than 1920px */
+@media (min-width: 1920px) {
+  .design-container {
+    margin: 100px 20px 20px 20px;
   }
-  
+}
+
+/* For screens between 1200px and 1920px */
+@media (max-width: 1919px) and (min-width: 1200px) {
+  .design-container {
+    margin: 100px 20px 20px 20px;
+  }
+}
+
+/* For screens between 768px and 1199px (tablets and small desktops) */
+@media (max-width: 1199px) and (min-width: 768px) {
+  .design-container {
+    margin: 100px 20px 20px 20px;
+    height: 60vh; /* Adjust height for smaller screens */
+  }
+}
+
+/* For screens between 480px and 767px (phones in landscape) */
+@media (max-width: 767px) and (min-width: 480px) {
+  .design-container {
+    margin: 100px 15px 15px 15px;
+    height: 50vh; /* Adjust height for smaller screens */
+  }
+}
+
+/* For screens smaller than 480px (phones in portrait) */
+@media (max-width: 479px) {
+  .design-container {
+    margin: 100px 10px 10px 10px;
+    height: 40vh; /* Adjust height for smaller screens */
+  }
+}
