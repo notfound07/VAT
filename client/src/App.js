@@ -24,6 +24,7 @@ import Dashboard from "./Dashboard/Dashboard.jsx";
 import Workslider from "./Home/workslider.jsx";
 import CustomCarousel from "./Home/slider.jsx";
 import Design from "./Design/Design.jsx";
+import Kiosk from "./Shopping/Kiosk.jsx";
 
 export const RecoveryContext = createContext();
 function App() {
@@ -60,6 +61,7 @@ function App() {
             <Route path="/Footer" element={<Footer />} />
             <Route path="/Review" element={<Review />} />
             <Route path="/Shopping"element={<Shopping products={products} />}/>
+            <Route path='/Kiosk' element={<Kiosk/>}/>
             <Route path="/Add" element={<Add />} />
             <Route path="/Cart" element={<Cart />} />
             <Route path="/Details/:id" element={<Detail />} />

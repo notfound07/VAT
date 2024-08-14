@@ -14,6 +14,7 @@ const Shopping = () => {
     return (
         <div>
             <Navbar />
+            <br></br>
             <div className="gallery-container">
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></link>
                 <div className="new-product">
@@ -29,14 +30,12 @@ const Shopping = () => {
                 </div>
                 <div className='art-grid'>
                     <div className="art-showcase">
-                        {orders.map((item) => (
+                        {orders.filter(item => !/Kiosks$/i.test(item.title))
+                        .map((item) => 
+                        (
                             <div
                                 className="art-card"
                                 key={item._id}
-                                onClick={() => window.location.href = `/Details/${item._id}`}
-                                role="button"
-                                tabIndex={0}
-                                onKeyPress={() => window.location.href = `/Details/${item._id}`}
                             >
                                 <div className="art-image-wrapper">
                                     <img
@@ -45,12 +44,17 @@ const Shopping = () => {
                                         className="art-image"
                                     />
                                     <div className="overlay">
-                                        <button className="view-details-button">View Details</button>
+                                    {
+        item.title === "Kiosk" 
+        ? <button className="view-details-button" onClick={() => window.location.href ='/Kiosk'} >View All Products</button>
+        : <button className="view-details-button" onClick={() => window.location.href = `/Details/${item._id}`}>View Details</button>
+    }
                                     </div>
                                 </div>
                                 <h3 className="art-title">{item.title}</h3>
                             </div>
-                        ))}
+                        )
+                        )}
                     </div>
                 </div>
 

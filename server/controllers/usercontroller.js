@@ -243,10 +243,6 @@ const media = async (req, res) => {
   }
 };
 
-
- 
-
-
 const update_product = async (req, res) => {
   try {
     const { title, description } = req.body;
@@ -277,6 +273,7 @@ const getAllProducts = async (req, res) => {
   }
 };
 
+//details
 const getById = async (req, res) => {
   try {
     const productbyid = await Product.findById(req.params.id);
@@ -314,7 +311,7 @@ module.exports = {
   Allbooking,
   product,
   update_product,
-  getAllProducts,
+   getAllProducts,
   getById,
   deleteById,
   media
