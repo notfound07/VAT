@@ -76,6 +76,7 @@ const login = async (req, res) => {
   }
 };
 
+
 const contact = async (req, res) => {
   try {
     const { firstName, lastName, email, phoneNumber, commentMessage } = req.body;

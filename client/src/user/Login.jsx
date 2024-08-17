@@ -6,7 +6,7 @@ import { RecoveryContext } from '../App';
 import axios from 'axios';
 
 function Login() {
-  const { email, setEmail, setShow } = useContext(RecoveryContext);
+  const { email, setEmail, setShow,setOTP } = useContext(RecoveryContext);
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
@@ -35,7 +35,32 @@ function Login() {
       }
     }
   }
-
+  function navigateToOtp() {
+    try {
+      if (email) {
+        const OTP = Math.floor(Math.random() * 9000 + 1000);
+        console.log(OTP);
+        setOTP(OTP);
+        axios.post("http://localhost:3001/send_recovery_email", {
+          OTP,
+          recipient_email: email,
+        })
+        .then(() => navigate('/Forget'))
+        .catch((error) => {
+          if (error.response && error.response.data && error.response.data.message) {
+            alert(error.response.data.message);
+          } else {
+            alert('An unexpected error occurred while sending the OTP. Please try again.');
+          }
+        });
+      } else {
+        alert("Please enter your email");
+      }
+    } catch (error) {
+      alert('An unexpected error occurred. Please try again.');
+    }
+  }
+    
   return (
     <div className="parent-container">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></link>
@@ -56,8 +81,8 @@ function Login() {
             <button className="log-res" onClick={submit}>Signin <i className="fa-solid fa-right-long"></i></button>
             <div className="links">
               <a href="/Register">New user?</a>
-              <a href="/Forget">Forget Password?</a>
-            </div>
+              <a href="#" onClick={navigateToOtp}>Forget Password?</a>
+              </div>
           </form>
           <Link to="/Home" className="login-home-link"><FaArrowLeft />Home</Link>
         </div>

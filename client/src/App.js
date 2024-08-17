@@ -29,6 +29,7 @@ import Kiosk from "./Shopping/Kiosk.jsx";
 export const RecoveryContext = createContext();
 function App() {
   const [email, setEmail] = useState();
+  const [otp,setOtp]=useState();
   const [show,setShow]=useLocalStorage('show',false)
   const [orders,setOrder]=useState([]);
   const [title, setTitle] = useState('');
@@ -52,7 +53,7 @@ function App() {
   }, [])
   return (
     <CartProvider>
-      <RecoveryContext.Provider value={{ email, setEmail,setShow,show,orders,setOrder,title,setTitle,description,setDescription,image,setImage, video, setVideo }}>
+      <RecoveryContext.Provider value={{ email, setEmail,otp,setOtp,setShow,show,orders,setOrder,title,setTitle,description,setDescription,image,setImage, video, setVideo }}>
         <div className="App">
           <Routes>
             <Route path="/" element={<Home />} />
