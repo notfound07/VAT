@@ -25,11 +25,12 @@ import Workslider from "./Home/workslider.jsx";
 import CustomCarousel from "./Home/slider.jsx";
 import Design from "./Design/Design.jsx";
 import Kiosk from "./Shopping/Kiosk.jsx";
+import EmailInput from "./Forget_Password/EmailInput.jsx";
 
 export const RecoveryContext = createContext();
 function App() {
   const [email, setEmail] = useState();
-  const [otp,setOtp]=useState();
+  const [otp,setOTP]=useState();
   const [show,setShow]=useLocalStorage('show',false)
   const [orders,setOrder]=useState([]);
   const [title, setTitle] = useState('');
@@ -53,7 +54,7 @@ function App() {
   }, [])
   return (
     <CartProvider>
-      <RecoveryContext.Provider value={{ email, setEmail,otp,setOtp,setShow,show,orders,setOrder,title,setTitle,description,setDescription,image,setImage, video, setVideo }}>
+      <RecoveryContext.Provider value={{ email, setEmail,otp,setOTP,setShow,show,orders,setOrder,title,setTitle,description,setDescription,image,setImage, video, setVideo }}>
         <div className="App">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -69,6 +70,7 @@ function App() {
             <Route path="/Contact" element={<Contact />} />
             <Route path="/Login" element={<Login />} />
             <Route path="/Register" element={<Register />} />
+            <Route path="/EmailInput" element={<EmailInput/>}/>
             <Route path="/Forget" element={<Forget />} />
             <Route path="/Recover" element={<Recover />} />
             <Route path="/Order" element={<Order />} />

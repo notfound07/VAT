@@ -2,12 +2,12 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const bodyParser = require('body-parser');
-require('dotenv').config();
 require("dotenv").config({ path: './.env' });
 const nodemailer = require("nodemailer");
 
 app.use(cors());
 app.use(bodyParser.json());
+app.use(express.json())
 
 const connectedDB = require("./connection");
 const userroute = require("./routes/userroute");
@@ -15,6 +15,9 @@ const userroute = require("./routes/userroute");
 app.use("/vat", userroute);
 
 function sendEmail({ recipient_email, OTP }) {
+  if (!recipient_email) {
+    return Promise.reject({ message: "No recipient_email email provided" });
+  }
   return new Promise((resolve, reject) => {
     var transporter = nodemailer.createTransport({
       service: "gmail",
@@ -34,8 +37,6 @@ function sendEmail({ recipient_email, OTP }) {
 <head>
   <meta charset="UTF-8">
   <title>CodePen - OTP Email Template</title>
-  
-
 </head>
 <body>
 <!-- partial:index.partial.html -->
@@ -74,11 +75,18 @@ app.get("/", (req, res) => {
 });
 
 app.post("/send_recovery_email", (req, res) => {
-  sendEmail(req.body)
+  console.log("Request body received:", req.body); 
+
+  const { recipient_email, OTP } = req.body;
+  
+  if (!recipient_email) {
+    return res.status(400).send("No recipient_email email provided");
+  }
+
+  sendEmail({ recipient_email, OTP })
     .then((response) => res.send(response.message))
     .catch((error) => res.status(500).send(error.message));
 });
-
 const PORT = 3001;
 
 app.listen(PORT, async () => {

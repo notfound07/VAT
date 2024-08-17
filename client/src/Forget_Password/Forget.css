@@ -48,14 +48,16 @@
 }
 .verify_button {
     margin-top: 40px;
-    background-color: #219ebc;
+    background-color: #2666c5;
     padding: 15px;
     font-size: medium;
     font-weight: 600;
     border-radius: 5px;
     cursor: pointer;
+    text-decoration: none;
     border: 2px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 0 5px rgba(8, 7, 16, 0.6);
+    color: white;
 }
 
 .verify_button:hover {

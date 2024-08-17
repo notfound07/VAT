@@ -1,6 +1,4 @@
 import './Forget.css';
-import { Link } from 'react-router-dom';
-import { FaArrowLeft } from 'react-icons/fa';
 import React,{useContext,useState} from 'react';
 import { RecoveryContext } from "../App";
 import { useNavigate } from 'react-router-dom';
@@ -18,7 +16,7 @@ function Forget() {
     axios
       .post("http://localhost:3001/send_recovery_email", {
         OTP: otp,
-        recipient_email: email,
+        recipient_email:email,
       })
       .then(() => setDisable(true))
       .then(() => alert("A new OTP has successfully been sent to your email."))
@@ -142,7 +140,6 @@ function Forget() {
           </a>
         </div>
         </div>
-            <Link to="/Home" className="rec-home-link"><FaArrowLeft />Home</Link>
       </div>
     </div>
   );

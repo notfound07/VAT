@@ -5,6 +5,9 @@ const Booking = require("../model/bookingSchema");
 const Product = require('../model/productSchema'); 
 const validator = require("validator");
 const bcrypt = require("bcryptjs");
+const jwt = require('jsonwebtoken');
+
+const JWT_SECRET = "your_secret_key";
 
 const signup = async (req, res) => {
   try {
@@ -68,6 +71,9 @@ const login = async (req, res) => {
     if (!isMatch) {
       return res.status(401).json({ message: "Invalid password" });
     }
+    const token = jwt.sign({ id: user._id, email: user.email }, JWT_SECRET, { expiresIn: '1h' });
+
+    res.status(200).json({ message: "Login successful", token });
 
     res.status(200).json({ message: "Login successful" });
   } catch (err) {
@@ -75,7 +81,42 @@ const login = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
+const reset_password = async (req, res) => {
+  const { email, password, confirmpassword } = req.body;
+  try {
+      if (!email) {
+          return res.status(400).json({ message: "Email is required" });
+      }
+      // Check if user exists
+      const user = await User.findOne({ email });
+      if (!user) {
+          return res.status(404).json({ message: 'User not found' });
+      }
 
+      if (!password || !confirmpassword) {
+          return res.status(400).json({ message: "Both password and confirm password are required" });
+      }
+
+      // Hash the new password
+      const hashedPassword = await bcrypt.hash(password, 10);
+
+      if (password !== confirmpassword) {
+          return res.status(400).json({ message: "Passwords don't match" });
+      }
+      if (!validator.matches(password, /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/)) {
+        return res.status(400).json({ message: "Password must be exactly 8 characters long and contain at least one lowercase letter, one uppercase letter, and one number" });
+    }
+
+    // Update user's password in the database
+    await User.updateOne({ email }, { $set: { password: hashedPassword, confirmpassword: hashedPassword } });
+
+    // Respond with success message
+    res.status(200).json({ message: 'Password reset successfully' });
+} catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal server error' });
+}
+}
 
 const contact = async (req, res) => {
   try {
@@ -305,6 +346,7 @@ const deleteById = async (req, res) => {
 module.exports = {
   signup,
   login,
+  reset_password,
   contact,
   getAllcontacts,
   order,
