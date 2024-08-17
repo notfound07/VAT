@@ -118,7 +118,7 @@ body {
     margin: 10px 0;
 }
 
-.art-add{
+.art-add {
     background-color: #ff4d4d;
     color: #fff;
     padding: 10px 20px;
@@ -134,130 +134,44 @@ body {
 }
 
 /* Media Queries for responsiveness */
+
+/* Larger screens (Desktop) */
+@media (min-width: 1920px) {
+    .art-showcase {
+        grid-template-columns: repeat(4, 1fr); /* 4 items per row */
+    }
+
+    .art-image-wrapper {
+        width: 300px;
+        height: 250px;
+    }
+}
+
+/* Slightly smaller screens */
 @media (max-width: 1300px) {
-    .gallery-container {
-        padding: 100px 20px 20px 20px;
-    }
-
-    .art-showcase {
-        grid-template-columns: repeat(4, 1fr); /* 3 items per row */
-    }
-
-    .art-image-wrapper {
-        width: 230px;
-        height: 210px;
-    }
-}
-@media (max-width: 1200px) {
-    .gallery-container {
-        padding: 100px 20px 20px 20px;
-    }
-
-    .art-showcase {
-        grid-template-columns: repeat(4, 1fr); /* 3 items per row */
-    }
-
-    .art-image-wrapper {
-        width: 220px;
-        height: 200px;
-    }
-}
-
-@media (max-width: 1150px) {
-    .gallery-container {
-        padding: 100px 20px 20px 20px;
-    }
-
-    .art-showcase {
-        grid-template-columns: repeat(4, 1fr); /* 3 items per row */
-    }
-
-    .art-image-wrapper {
-        width: 200px;
-        height: 180px;
-    }
-}
-
-@media (max-width: 1100px) {
-    .gallery-container {
-        padding: 100px 20px 20px 20px;
-    }
-
-    .art-showcase {
-        grid-template-columns: repeat(4, 1fr); /* 3 items per row */
-    }
-
-    .art-image-wrapper {
-        width: 200px;
-        height: 180px;
-    }
-}
-
-@media (max-width: 1050px) {
-    .gallery-container {
-        padding: 100px 20px 20px 20px;
-    }
-
-    .art-showcase {
-        grid-template-columns: repeat(4, 1fr); /* 3 items per row */
-    }
-
-    .art-image-wrapper {
-        width: 180px;
-        height: 170px;
-    }
-}
-
-@media (max-width: 992px) {
-    .gallery-container {
-        padding: 100px 20px 20px 20px;
-    }
-
     .art-showcase {
         grid-template-columns: repeat(3, 1fr); /* 3 items per row */
     }
-
-    .art-image-wrapper {
-        width: 200px;
-        height: 180px;
-    }
 }
-@media (max-width: 878px) {
-    .gallery-container {
-        padding: 100px 20px 20px 20px;
-    }
 
+/* Medium screens */
+@media (max-width: 992px) {
     .art-showcase {
-        grid-template-columns: repeat(3, 1fr); /* 2 items per row */
+        grid-template-columns: repeat(2, 1fr); /* 2 items per row */
         gap: 15px;
     }
-
-    .art-image-wrapper {
-        width: 150px;
-        height: 140px;
-    }
 }
 
+/* Smaller screens */
 @media (max-width: 768px) {
-    .gallery-container {
-        padding: 100px 20px 20px 20px;
-    }
-
-    .art-showcase {
-        grid-template-columns: repeat(3, 1fr); /* 2 items per row */
-        gap: 15px;
-    }
-
     .art-image-wrapper {
         width: 140px;
         height: 130px;
     }
 }
-@media (max-width: 676px) {
-    .gallery-container {
-        padding: 100px 20px 20px 20px;
-    }
 
+/* Extra small screens */
+@media (max-width: 676px) {
     .art-showcase {
         grid-template-columns: repeat(2, 1fr); /* 2 items per row */
         gap: 10px;
@@ -270,22 +184,13 @@ body {
 }
 
 @media (max-width: 600px) {
-    .gallery-container {
-        padding: 100px 20px 20px 20px;
-    }
-
-    .art-showcase {
-        grid-template-columns: repeat(2, 1fr); /* 2 items per row */
-        gap: 10px;
-    }
-
     .art-image-wrapper {
         width: 120px;
         height: 110px;
     }
 }
 
-
+/* Very small screens */
 @media (max-width: 480px) {
     .new-product {
         padding: 0 10px 10px 10px;
@@ -293,16 +198,6 @@ body {
 
     .gallery-container {
         padding: 10px 5px 5px 5px;
-    }
-
-    .art-showcase {
-        grid-template-columns: repeat(2, 1fr); /* 2 items per row */
-        gap: 10px;
-    }
-
-    .art-card {
-        padding: 15px;
-        max-width: 100%;
     }
 
     .art-image-wrapper {
@@ -316,14 +211,11 @@ body {
     }
 }
 
+/* Extra extra small screens */
 @media (max-width: 350px) {
     .art-showcase {
         grid-template-columns: repeat(1, 1fr); /* 1 item per row */
         gap: 5px;
-    }
-
-    .art-card {
-        padding: 10px;
     }
 
     .art-image-wrapper {

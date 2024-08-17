@@ -127,16 +127,18 @@ const Detail = () => {
                         )}
                       </div>
                     </div>
-                    {show ? (
-                      <button className='delete-from-cart-btn' onClick={handleDelete}>Delete</button>
-                    ) : (
-                      <div className="art-cart-buy-btn">
-                        <button
-                          className="buy-now-btn"
-                          onClick={() => window.location.href = `/Contact`}>Order Now <i className="fa-solid fa-right-long"></i>
-                        </button>
-                      </div>
-                    )}
+                    <div>
+                      {show ? (
+                        <button className='delete-from-cart-btn' onClick={handleDelete}>Delete</button>
+                      ) : (
+                        <div className="art-cart-buy-btn">
+                          <button
+                            className="buy-now-btn"
+                            onClick={() => window.location.href = `/Contact`}>Order Now <i className="fa-solid fa-right-long"></i>
+                          </button>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -159,8 +161,10 @@ const Detail = () => {
                   value={editdescription}
                   onChange={(e) => setEditDescription(e.target.value)}
                 />
-                <button onClick={handleSaveClick} className="add-to-cart-btn">Save</button>
-                <button className='delete-from-cart-btn' onClick={() => setEdit(false)}>Cancel</button>
+                <div className='edit-flex-buttons'>
+                  <button onClick={handleSaveClick} className="save-from-btn">Save</button>
+                  <button className='cancel-to-btn' onClick={() => setEdit(false)}>Cancel</button>
+                </div>
               </div>
             ) : (
               <div className='art-details-text'>

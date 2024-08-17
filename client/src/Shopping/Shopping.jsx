@@ -14,7 +14,6 @@ const Shopping = () => {
     return (
         <div>
             <Navbar />
-            <br></br>
             <div className="gallery-container">
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></link>
                 <div className="new-product">
@@ -31,30 +30,30 @@ const Shopping = () => {
                 <div className='art-grid'>
                     <div className="art-showcase">
                         {orders.filter(item => !/Kiosks$/i.test(item.title))
-                        .map((item) => 
-                        (
-                            <div
-                                className="art-card"
-                                key={item._id}
-                            >
-                                <div className="art-image-wrapper">
-                                    <img
-                                        src={`data:${item.image.contentType};base64,${Buffer.from(item.image.data).toString('base64')}`}
-                                        alt={item.title}
-                                        className="art-image"
-                                    />
-                                    <div className="overlay">
-                                    {
-        item.title === "Kiosk" 
-        ? <button className="view-details-button" onClick={() => window.location.href ='/Kiosk'} >View All Products</button>
-        : <button className="view-details-button" onClick={() => window.location.href = `/Details/${item._id}`}>View Details</button>
-    }
+                            .map((item) =>
+                            (
+                                <div
+                                    className="art-card"
+                                    key={item._id}
+                                >
+                                    <div className="art-image-wrapper">
+                                        <img
+                                            src={`data:${item.image.contentType};base64,${Buffer.from(item.image.data).toString('base64')}`}
+                                            alt={item.title}
+                                            className="art-image"
+                                        />
+                                        <div className="overlay">
+                                            {
+                                                item.title === "Kiosk"
+                                                    ? <button className="view-details-button" onClick={() => window.location.href = '/Kiosk'} >View All Products</button>
+                                                    : <button className="view-details-button" onClick={() => window.location.href = `/Details/${item._id}`}>View Details</button>
+                                            }
+                                        </div>
                                     </div>
+                                    <h3 className="art-title">{item.title}</h3>
                                 </div>
-                                <h3 className="art-title">{item.title}</h3>
-                            </div>
-                        )
-                        )}
+                            )
+                            )}
                     </div>
                 </div>
 

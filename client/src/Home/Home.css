@@ -4,18 +4,13 @@
   margin: 0;
   padding: 0;
   font-family: Georgia, 'Times New Roman', Times, serif;
-
 }
 
 img {
   -webkit-user-drag: none;
-  /* Safari */
   -khtml-user-drag: none;
-  /* Konqueror */
   -moz-user-drag: none;
-  /* Old versions of Firefox */
   -ms-user-drag: none;
-  /* Internet Explorer/Edge */
 }
 
 body {
@@ -23,6 +18,13 @@ body {
   line-height: 1.6;
   background-color: #7b888d;
   color: #333;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* Custom Carousel Section */
@@ -38,12 +40,16 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .item-showcase {
   display: flex;
   gap: 20px;
   margin-top: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* Center items horizontally */
 }
 
 .item-card {
@@ -59,6 +65,8 @@ body {
   transition: transform 0.3s, box-shadow 0.3s;
   max-width: 300px;
   position: relative;
+  flex: 1 1 30%;
+  /* Adjusted for responsiveness */
 }
 
 .item-card:hover {
@@ -124,11 +132,6 @@ body {
   color: #333;
 }
 
-.logo-img1 {
-  height: 50%;
-  width: 50%;
-}
-
 /* Slogan Section */
 .slogan {
   font-family: Georgia, 'Times New Roman', Times, serif;
@@ -158,6 +161,7 @@ body {
 .custom-showcase {
   display: flex;
   flex-direction: row;
+  /* Default to row layout */
   gap: 20px;
   width: 100%;
   padding: 20px;
@@ -167,6 +171,7 @@ body {
 .display-info {
   display: flex;
   flex-direction: row;
+  /* Default to row layout */
   width: 100%;
   align-items: center;
   gap: 20px;
@@ -227,7 +232,6 @@ body {
 
 .client-logo {
   width: 100%;
-  height: 70%;
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -238,16 +242,22 @@ body {
   padding: 10px;
 }
 
-
-.client-logo:hover{
+.client-logo:hover {
   cursor: pointer;
   transform: translateY(-5px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.work-slider {
-  background-color: #00CCFF;
+.logo-img1 {
+  height: 100%;
+  width: 100%;
 }
+
+.logo-img2 {
+  height: 50%;
+  width: 50%;
+}
+
 
 /* Slider Section */
 .headline-container p {
@@ -284,6 +294,7 @@ body {
 @media (max-width: 1200px) {
   .item-showcase {
     flex-wrap: wrap;
+    justify-content: center;
   }
 
   .item-card {
@@ -303,18 +314,24 @@ body {
 
   .custom-showcase {
     flex-direction: row;
+    /* Column layout for tablets */
   }
 
   .display-info {
-
     padding: 20px 10px;
-    flex-direction: row;
+    flex-direction: column;
+    /* Column layout for tablets */
     width: 100%;
   }
 
   .desc-btn {
     text-align: center;
     margin-top: 20px;
+  }
+
+  .heading-client {
+    flex-direction: row;
+    /* Ensure row layout on large tablets and desktops */
   }
 }
 
@@ -342,6 +359,21 @@ body {
     font-size: medium;
     padding: 8px 16px;
   }
+
+  .custom-showcase {
+    flex-direction: column;
+    /* Column layout for tablets and phones */
+  }
+
+  .display-info {
+    flex-direction: column;
+    /* Column layout for tablets and phones */
+  }
+
+  .heading-client {
+    flex-direction: column;
+    /* Switch to column layout for tablets and smaller screens */
+  }
 }
 
 @media (max-width: 480px) {
@@ -368,30 +400,36 @@ body {
     font-size: small;
     padding: 8px 12px;
   }
+
+  .heading-client {
+    flex-direction: column;
+    /* Ensure column layout for very small screens */
+  }
 }
 
 @media (max-width: 350px) {
-  .item-card {
-    flex: 1 1 100%;
-  }
-
   .slogan {
     font-size: medium;
     padding: 8px;
   }
 
+  .item-card {
+    flex: 1 1 100%;
+    padding: 10px;
+  }
+
   .desc {
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: 2%;
+    margin-right: 2%;
   }
 
   .info-img {
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
   }
 
   .desc-btn {
     font-size: small;
-    padding: 6px 10px;
+    padding: 5px 10px;
   }
 }

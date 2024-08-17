@@ -108,13 +108,13 @@ const Home = () => {
       </div>
       <div className='heading-client'>
         <div className='client-logo'>
-          <img className="logo-img1" src={VLogo2} alt="Client Logo" />
+          <img className="logo-img2" src={VLogo2} alt="Client Logo" />
         </div>
         <div className='client-logo' onClick={() => window.location.href = 'https://vishalaakshiconsultants.com/'}>
-          <img className="logo-img" src={VLogo} alt="Client Logo" />
+          <img className="logo-img1" src={VLogo} alt="Client Logo" />
         </div>
         <div className='client-logo'>
-          <img className="logo-img1" src={VLogo3} alt="Client Logo" />
+          <img className="logo-img2" src={VLogo3} alt="Client Logo" />
         </div>
       </div>
       <Footer />

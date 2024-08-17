@@ -27,7 +27,7 @@
 
 .slider__btn-next {
   position: absolute;
-  right: 0;
+  right: 10px;
   width: 50px;
   height: 50px;
   cursor: pointer;
@@ -35,7 +35,7 @@
 
 .slider__btn-prev {
   position: absolute;
-  left: 0;
+  left: 10px;
   width: 50px;
   height: 50px;
   cursor: pointer;
@@ -55,10 +55,9 @@
   padding: 0;
   border-radius: 50%;
   outline: none;
-  border: 0;
-  background-color: white;
   border: 1px solid grey;
-  transition: background-color 1s ease;
+  background-color: white;
+  transition: background-color 0.3s ease;
   margin: 0 2px;
   cursor: pointer;
 }
@@ -102,4 +101,120 @@
 .slider__item img {
   width: 100%;
   height: auto;
+}
+
+/* Media Queries for responsiveness */
+
+/* Larger screens (Desktop) */
+@media (min-width: 1920px) {
+  .container__slider {
+    height: 80vh;
+  }
+
+  .slider__btn-next,
+  .slider__btn-prev {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+/* Slightly smaller screens */
+@media (max-width: 1300px) {
+  .slider__btn-next,
+  .slider__btn-prev {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+/* Medium screens */
+@media (max-width: 992px) {
+  .slider__btn-next,
+  .slider__btn-prev {
+    width: 40px;
+    height: 40px;
+  }
+
+  .container__slider {
+    height: 70vh;
+  }
+}
+
+/* Smaller screens */
+@media (max-width: 768px) {
+  .slider__btn-next,
+  .slider__btn-prev {
+    width: 35px;
+    height: 35px;
+  }
+
+  .container__slider {
+    height: 60vh;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 600px) {
+  .slider__btn-next,
+  .slider__btn-prev {
+    width: 30px;
+    height: 30px;
+  }
+
+  .container__slider {
+    height: 50vh;
+  }
+
+  .container__slider__links {
+    bottom: 10%;
+  }
+
+  .container__slider__links-small {
+    width: 6px;
+    height: 6px;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+  .slider__btn-next,
+  .slider__btn-prev {
+    width: 25px;
+    height: 25px;
+  }
+
+  .container__slider {
+    height: 40vh;
+  }
+
+  .container__slider__links {
+    bottom: 15%;
+  }
+
+  .container__slider__links-small {
+    width: 5px;
+    height: 5px;
+  }
+}
+
+/* Extra extra small screens */
+@media (max-width: 350px) {
+  .slider__btn-next,
+  .slider__btn-prev {
+    width: 20px;
+    height: 20px;
+  }
+
+  .container__slider {
+    height: 30vh;
+  }
+
+  .container__slider__links {
+    bottom: 20%;
+  }
+
+  .container__slider__links-small {
+    width: 4px;
+    height: 4px;
+  }
 }
