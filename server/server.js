@@ -7,7 +7,6 @@ const nodemailer = require("nodemailer");
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use(express.json())
 
 const connectedDB = require("./connection");
 const userroute = require("./routes/userroute");

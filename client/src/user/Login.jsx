@@ -6,7 +6,7 @@ import { RecoveryContext } from '../App';
 import axios from 'axios';
 
 function Login() {
-  const { email, setEmail, setShow } = useContext(RecoveryContext);
+  const { email, setEmail, setShow} = useContext(RecoveryContext);
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
@@ -24,8 +24,12 @@ function Login() {
             password
           }
         });
+        console.log(response);
         if (response.status === 200) {
+          const token = response.data.token;
+        setShow(true);
           localStorage.setItem("LoggedUser", email);
+          localStorage.setItem('authToken', token)
           navigate('/Home');
           window.alert('Login successful!');
         }

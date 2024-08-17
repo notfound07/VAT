@@ -3,9 +3,9 @@ import logo from '../Assets/logo.png';
 import { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { RecoveryContext } from '../App';
-
+import { jwtDecode } from 'jwt-decode'
 function Navbar() {
-    const { show, setShow } = useContext(RecoveryContext);
+    const { show, setShow,} = useContext(RecoveryContext);
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [userDropdownVisible, setUserDropdownVisible] = useState(false);
     const LoggedUser = localStorage.getItem("LoggedUser");
@@ -34,9 +34,26 @@ function Navbar() {
 
     const handleLogout = () => {
         localStorage.removeItem("LoggedUser");
+        localStorage.removeItem('authToken');
         setShow(false);
         window.location.href = '/Home';
     };
+    useEffect(() => {
+        // Check if the user is already logged in by checking for the auth token
+        const authToken = localStorage.getItem('authToken');
+        if (authToken) {
+          const decodedToken = jwtDecode(authToken);
+          const currentTime = Date.now() / 1000; // Current time in seconds
+    
+          if (decodedToken.exp > currentTime) {
+            setShow(true);
+            const timeLeft = (decodedToken.exp * 1000) - Date.now(); // Time left until token expires
+            setTimeout(handleLogout, timeLeft); // Set a timeout to log out the user when the token expires
+          } else {
+            handleLogout(); // If the token has expired, log out the user immediately
+          }
+        }
+      }, []);
 
     return (
         <div className="frame">
