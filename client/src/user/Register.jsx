@@ -5,6 +5,8 @@ import { RecoveryContext } from "../App";
 import { FaArrowRight } from "react-icons/fa";
 import axios from "axios";
 import "./Style.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 function Register() {
   const [name, setName] = useState("");
@@ -12,6 +14,17 @@ function Register() {
   const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const toggleConfirmPasswordVisibility = () => {
+    setShowConfirmPassword(!showConfirmPassword);
+  };
 
   const submit = async (e) => {
     e.preventDefault();
@@ -73,23 +86,35 @@ function Register() {
               />
             </div>
             <div className="signup-form-group">
-              <label htmlFor="password">Password</label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
-            <div className="signup-form-group">
-              <label htmlFor="confirmpassword">Confirm Password</label>
-              <input
-                type="password"
-                id="confirmpassword"
-                name="confirmpassword"
-                onChange={(e) => setConfirmPassword(e.target.value)}
-              />
-            </div>
+        <label htmlFor="password">Password</label>
+        <div className="password-wrapper">
+          <input
+            type={showPassword ? 'text' : 'password'}
+            id="password"
+            name="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button type="button" onClick={togglePasswordVisibility} className="password-toggle">
+            <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+          </button>
+        </div>
+      </div>
+      <div className="signup-form-group">
+        <label htmlFor="confirmpassword">Confirm Password</label>
+        <div className="password-wrapper">
+          <input
+            type={showConfirmPassword ? 'text' : 'password'}
+            id="confirmpassword"
+            name="confirmpassword"
+            value={confirmpassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+          <button type="button" onClick={toggleConfirmPasswordVisibility} className="password-toggle">
+            <FontAwesomeIcon icon={showConfirmPassword ? faEyeSlash : faEye} />
+          </button>
+        </div>
+      </div>
             <button className="log-res" onClick={submit}>
               Sign Up <i className="fa-solid fa-right-long"></i>
             </button>

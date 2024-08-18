@@ -144,6 +144,30 @@
     left: auto;
 }
 
+.password-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  
+  .password-wrapper input {
+    flex: 1;
+    padding-right: 40px; /* Adjust padding to make room for the icon */
+  }
+  
+  .password-toggle {
+    position: absolute;
+    right: 10px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .password-toggle svg {
+    font-size: 1rem; /* Adjust icon size */
+  }
+  
+
 /* Responsive Styles */
 @media (max-width: 599px) {
     .container, .signup-container {

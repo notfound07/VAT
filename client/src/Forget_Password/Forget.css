@@ -96,6 +96,12 @@
     align-items: center;
 }
 
+.forget-company-logo-two {
+    width: 200px;
+    height: 200px;
+    justify-content: center;
+    align-items: center;
+}
 .recover-form-group, .forget-form-group {
     margin-bottom: 15px;
 }
@@ -126,6 +132,31 @@
     display: flex;
     align-items: center;
 }
+
+.password-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  
+  .password-wrapper input {
+    flex: 1;
+    padding-right: 40px; /* Adjust padding to make room for the icon */
+  }
+  
+  .password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .password-toggle svg {
+    font-size: 1rem; /* Adjust icon size */
+  }
+  
 
 /* Responsive styles */
 @media (max-width: 1200px) {

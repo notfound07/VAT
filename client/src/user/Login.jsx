@@ -4,11 +4,18 @@ import { FaArrowLeft } from 'react-icons/fa';
 import React, { useState, useContext } from 'react';
 import { RecoveryContext } from '../App';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 function Login() {
-  const { email, setEmail, setShow} = useContext(RecoveryContext);
+  const { email, setEmail, setShow } = useContext(RecoveryContext);
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = async () => {
+    setShowPassword(!showPassword);
+  }
 
   const submit = async (e) => {
     e.preventDefault();
@@ -27,7 +34,7 @@ function Login() {
         console.log(response);
         if (response.status === 200) {
           const token = response.data.token;
-        setShow(true);
+          setShow(true);
           localStorage.setItem("LoggedUser", email);
           localStorage.setItem('authToken', token)
           navigate('/Home');
@@ -39,8 +46,8 @@ function Login() {
       }
     }
   }
-  
-    
+
+
   return (
     <div className="parent-container">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></link>
@@ -56,13 +63,24 @@ function Login() {
             </div>
             <div className="form-group">
               <label htmlFor="password">Password</label>
-              <input type="password" id="password" name="password" onChange={(e) => setPassword(e.target.value)} />
+              <div className="password-wrapper">
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  id="password"
+                  name="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                <button type="button" onClick={togglePasswordVisibility} className="password-toggle">
+                  <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+                </button>
+              </div>
             </div>
             <button className="log-res" onClick={submit}>Signin <i className="fa-solid fa-right-long"></i></button>
             <div className="links">
               <a href="/Register">New user?</a>
               <a href="/EmailInput">Forget Password?</a>
-              </div>
+            </div>
           </form>
           <Link to="/Home" className="login-home-link"><FaArrowLeft />Home</Link>
         </div>
