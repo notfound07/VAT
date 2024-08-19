@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { RecoveryContext } from '../App';
 import { jwtDecode } from 'jwt-decode'
 function Navbar() {
-    const { show, setShow,} = useContext(RecoveryContext);
+    const { show,} = useContext(RecoveryContext);
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [userDropdownVisible, setUserDropdownVisible] = useState(false);
     const LoggedUser = localStorage.getItem("LoggedUser");
@@ -35,7 +35,6 @@ function Navbar() {
     const handleLogout = () => {
         localStorage.removeItem("LoggedUser");
         localStorage.removeItem('authToken');
-        setShow(false);
         window.location.href = '/Home';
     };
     useEffect(() => {
@@ -46,7 +45,6 @@ function Navbar() {
           const currentTime = Date.now() / 1000; // Current time in seconds
     
           if (decodedToken.exp > currentTime) {
-            setShow(true);
             const timeLeft = (decodedToken.exp * 1000) - Date.now(); // Time left until token expires
             setTimeout(handleLogout, timeLeft); // Set a timeout to log out the user when the token expires
           } else {

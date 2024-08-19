@@ -32,6 +32,7 @@ function App() {
   const [email, setEmail] = useState();
   const [otp,setOTP]=useState();
   const [show,setShow]=useLocalStorage('show',false)
+  const [logged,setLogged]=useState(false)
   const [token, setToken] = useState(null);
   const [orders,setOrder]=useState([]);
   const [title, setTitle] = useState('');
@@ -55,7 +56,7 @@ function App() {
   }, [])
   return (
     <CartProvider>
-      <RecoveryContext.Provider value={{ email, setEmail,otp,setOTP,setShow,show,token,setToken,orders,setOrder,title,setTitle,description,setDescription,image,setImage, video, setVideo }}>
+      <RecoveryContext.Provider value={{ email, setEmail,otp,setOTP,logged,setLogged,setShow,show,token,setToken,orders,setOrder,title,setTitle,description,setDescription,image,setImage, video, setVideo }}>
         <div className="App">
           <Routes>
             <Route path="/" element={<Home />} />

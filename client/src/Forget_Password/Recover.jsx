@@ -9,8 +9,8 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 function Recover() {
   const { email } = useContext(RecoveryContext);
-  const [password, setPassword] = useState("");
-  const [confirmpassword, setConfirmpassword] = useState("");
+  const [password, setPassword] = useState();
+  const [confirmpassword, setConfirmpassword] = useState();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const navigate = useNavigate();
@@ -51,7 +51,8 @@ function Recover() {
           <img className="forget-company-logo" src={logo} alt="Company Logo" />
           <h2>Recover Password</h2>
           <div className="recover-form-group">
-            <input defaultValue={email} disabled />
+            <form>
+            <input  defaultValue={email} disabled />
             <label htmlFor="password">New Password</label>
             <div className="password-wrapper">
               <input
@@ -89,6 +90,7 @@ function Recover() {
             <button className="rec-btn" onClick={submit}>
               Submit <i className="fa-solid fa-right-long"></i>
             </button>
+            </form>
           </div>
         </div>
       </div>

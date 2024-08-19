@@ -31,14 +31,11 @@ function Login() {
             password
           }
         });
-        console.log(response);
         if (response.status === 200) {
           const token = response.data.token;
-          setShow(true);
           localStorage.setItem("LoggedUser", email);
           localStorage.setItem('authToken', token)
           navigate('/Home');
-          window.alert('Login successful!');
         }
       } catch (err) {
         console.log(err);

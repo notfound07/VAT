@@ -30,9 +30,9 @@ const signup = async (req, res) => {
       return res.status(400).json({ message: "Email is invalid" });
     }
 
-    if (!validator.matches(password, /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)) {
-      return res.status(400).json({ message: "Password is invalid" });
-    }
+    if (!validator.matches(password, /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z_.@]{9,}$/)) {
+      return res.status(400).json({ message: "Password must be more than 8 characters long and contain at least one lowercase letter, one uppercase letter, and one number" });
+  }
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -96,14 +96,14 @@ const reset_password = async (req, res) => {
           return res.status(400).json({ message: "Both password and confirm password are required" });
       }
 
-      // Hash the new password
-      const hashedPassword = await bcrypt.hash(password, 10);
-
       if (password !== confirmpassword) {
           return res.status(400).json({ message: "Passwords don't match" });
       }
-      if (!validator.matches(password, /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/)) {
-        return res.status(400).json({ message: "Password must be exactly 8 characters long and contain at least one lowercase letter, one uppercase letter, and one number" });
+
+      // Hash the new password
+      const hashedPassword = await bcrypt.hash(password, 10);
+      if (!validator.matches(password, /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z_.@]{9,}$/)) {
+        return res.status(400).json({ message: "Password must be more than 8 characters long and contain at least one lowercase letter, one uppercase letter, and one number" });
     }
 
     // Update user's password in the database
