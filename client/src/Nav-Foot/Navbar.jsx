@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { RecoveryContext } from '../App';
 import { jwtDecode } from 'jwt-decode'
 function Navbar() {
-    const { show,} = useContext(RecoveryContext);
+    const { show,setShow} = useContext(RecoveryContext);
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [userDropdownVisible, setUserDropdownVisible] = useState(false);
     const LoggedUser = localStorage.getItem("LoggedUser");
@@ -35,6 +35,7 @@ function Navbar() {
     const handleLogout = () => {
         localStorage.removeItem("LoggedUser");
         localStorage.removeItem('authToken');
+        setShow(false);
         window.location.href = '/Home';
     };
     useEffect(() => {

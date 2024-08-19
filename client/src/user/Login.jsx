@@ -19,11 +19,6 @@ function Login() {
 
   const submit = async (e) => {
     e.preventDefault();
-    if (email === "visionaryart.tech24@gmail.com" && password === "Visionary.24") {
-      localStorage.setItem("LoggedUser", email);
-      navigate('/Shopping');
-      setShow(true);
-    } else {
       try {
         const response = await axios.get("http://localhost:3001/vat/login", {
           params: {
@@ -33,6 +28,9 @@ function Login() {
         });
         if (response.status === 200) {
           const token = response.data.token;
+          if(email==="visionaryart.tech24@gmail.com"){
+            setShow(true);
+          }
           localStorage.setItem("LoggedUser", email);
           localStorage.setItem('authToken', token)
           navigate('/Home');
@@ -41,7 +39,6 @@ function Login() {
         console.log(err);
         window.alert('Login failed! Please check your email and password.');
       }
-    }
   }
 
 
