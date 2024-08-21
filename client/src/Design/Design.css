@@ -5,23 +5,36 @@
   text-align: center;
 }
 
+.overlay-design {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  margin: 100px 20px 20px 20px;
+}
+
 .design-container {
   display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 80vh;
-  margin: 100px 20px 20px 20px;
-  background-repeat: no-repeat;
-  background-size: 100%;
-  position: relative; /* Added to ensure absolute positioning of ::before works */
+  position: relative;
+  overflow: hidden; /* Ensure the zoomed image stays within the container */
 }
 
 .design-container img {
   width: 100%;
-  pointer-events: none;
+  height: 100%;
+  transition: transform 0.3s ease; /* Smooth transition for zoom effect */
+  cursor: zoom-in; /* Change cursor to indicate zoom action */
 }
 
-.design-container:hover img {
-  opacity: 0;
+.design-container img.zoomed {
+  transform: scale(2); /* Zoom in by scaling the image */
+  cursor: zoom-out; /* Change cursor to indicate zoom out action */
 }
 
 .design-container::before {
@@ -39,45 +52,52 @@
   mask-composite: exclude;
   pointer-events: none;
   z-index: 1;
-  margin: 0; /* Adjusted margin to 0 to avoid conflicts with ::before positioning */
+  margin: 0;
 }
 
-/* Responsive styles */
+/* Responsive styles (no changes needed, already handled) */
 
 /* For screens larger than 1920px */
 @media (min-width: 1920px) {
-  .design-container {
+  .overlay-design {
     margin: 100px 20px 20px 20px;
   }
 }
 
 /* For screens between 1200px and 1920px */
 @media (max-width: 1919px) and (min-width: 1200px) {
-  .design-container {
+  .overlay-design {
     margin: 100px 20px 20px 20px;
   }
+
 }
 
 /* For screens between 768px and 1199px (tablets and small desktops) */
 @media (max-width: 1199px) and (min-width: 768px) {
-  .design-container {
+  .overlay-design {
     margin: 100px 20px 20px 20px;
+  }
+  .design-container {
     height: 60vh; /* Adjust height for smaller screens */
   }
 }
 
 /* For screens between 480px and 767px (phones in landscape) */
 @media (max-width: 767px) and (min-width: 480px) {
+  .overlay-design {
+    margin: 100px 20px 20px 20px;
+  }
   .design-container {
-    margin: 100px 15px 15px 15px;
     height: 50vh; /* Adjust height for smaller screens */
   }
 }
 
 /* For screens smaller than 480px (phones in portrait) */
 @media (max-width: 479px) {
+  .overlay-design {
+    margin: 100px 20px 20px 20px;
+  }
   .design-container {
-    margin: 100px 10px 10px 10px;
     height: 40vh; /* Adjust height for smaller screens */
   }
 }

@@ -4,7 +4,7 @@
     font-size: 22px;
     position: fixed;
     font-family: Arial, sans-serif;
-    z-index: 999;
+    z-index: 1000;
     background: url('../Assets/light.png') no-repeat center center;
     background-size: cover;
     border-bottom: 3px solid transparent;
