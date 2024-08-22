@@ -58,7 +58,7 @@ function Contact() {
           </div>
           <form className="contact-form" onSubmit={submitForm}>
             <div className="form-group-contact">
-              <label>Full Name</label>
+              <label className='contact_label'>Full Name</label>
               <div className="name-fields">
                 <input
                   type="text"
@@ -75,7 +75,7 @@ function Contact() {
               </div>
             </div>
             <div className="form-group-contact">
-              <label>Email</label>
+              <label className='contact_label'>Email</label>
               <input
                 type="email"
                 name='email'
@@ -85,14 +85,14 @@ function Contact() {
               />
             </div>
             <div className="form-group-contact">
-              <label>Mobile Number</label>
+              <label className='contact_label'>Mobile Number</label>
               <input
                 name='phoneNumber'
                 onChange={(e) => setPhoneNumber(e.target.value)}
               />
             </div>
             <div className="form-group-contact">
-              <label>Comment Message</label>
+              <label className='contact_label'>Comment Message</label>
               <textarea
                 name='commentMessage'
                 onChange={(e) => setMessage(e.target.value)}

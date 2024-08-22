@@ -1,6 +1,10 @@
 import './Footer.css';
 import logo from '../Assets/logo.png'; // Import the image
 import { IoCall } from "react-icons/io5"
+import linkedin from '../Assets/linkedin.png';
+import facebook from '../Assets/facebook.png';
+import twitter from '../Assets/twitter.png';
+import instagram from '../Assets/instagram.png';
 import { MdOutlineAlternateEmail } from "react-icons/md";
 import React from 'react';
 
@@ -17,17 +21,17 @@ function Footer() {
           <p><i className="fa-solid fa-location-pin"></i> KH NO.-745 GALI NO.-12,SADDIQ<br/>
           <span className="spaced">NAGAR, GHAZIABAD, U.P.-201017 (INDIA)</span>
           </p>
-          <p><IoCall /> 8800026077</p>
-          <p><IoCall /> 999222303</p>
+          <p className='number'><IoCall /> 8800026077</p>
+          <p className='number'><IoCall /> 999222303</p>
           <p><MdOutlineAlternateEmail /> visionart.tech24@gmail.com</p>
         </div>
         <div className="footer-section-social">
           <h2>Follow US</h2>
           <div className="social-icons">
-            <a href='https://www.instagram.com/visionaryart.tech24/?hl=en' target="_blank" rel="noopener noreferrer" className="foot-button"><i class="fa-brands fa-instagram"></i></a>
-            <a href='https://www.facebook.com/' target="_blank" rel="noopener noreferrer" className="foot-button"><i class="fa-brands fa-facebook"></i></a>
-            <a href='https://x.com/technologies08' target="_blank" rel="noopener noreferrer" className="foot-button"><i class="fa-brands fa-x-twitter"></i></a>
-            <a href='https://www.linkedin.com/in/visionary-artttechnology-a47b49320/' target="_blank" rel="noopener noreferrer" className="foot-button"><i class="fa-brands fa-linkedin"></i></a>
+            <a href='https://www.instagram.com/visionaryart.tech24/?hl=en' target="_blank" rel="noopener noreferrer" className="foot-button"><img className="footer-logo" src={instagram}/></a>
+            <a href='https://www.facebook.com/' target="_blank" rel="noopener noreferrer" className="foot-button"><img className="footer-logo" src={facebook}/></a>
+            <a href='https://x.com/technologies08' target="_blank" rel="noopener noreferrer" className="foot-button"><img className="footer-logo" src={twitter}/></a>
+            <a href='https://www.linkedin.com/in/visionary-artttechnology-a47b49320/' target="_blank" rel="noopener noreferrer" className="foot-button"><img className="footer-logo" src={linkedin}/></a>
           </div>
         </div>
       </div>

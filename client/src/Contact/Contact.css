@@ -54,6 +54,9 @@
   gap: 10px;
 }
 
+.contact_label{
+  font-weight: bold;
+}
 .name-fields input[type="text"],
 .form-group-contact input[type="email"],
 .form-group-contact input {
