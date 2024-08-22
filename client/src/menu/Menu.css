@@ -1,0 +1,90 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    scroll-behavior: smooth;
+}
+
+.nav-hotel-menu {
+    display: flex;
+    width: 100%;
+    margin-top: auto;
+    padding: 0px 15px;
+    padding-top: 80px;
+    box-shadow: 0px 0px 20px black;
+    background-color:white;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 100;
+
+}
+
+.hotel {
+    list-style: none;
+    display: inline-block;
+    padding: 5px 20px;
+
+}
+
+.hotel .tag {
+    display: block;
+    padding: 20px 10px;
+    font-size: 16px;
+    color: black;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+.hotel .tag:hover{
+    color: white;
+    background-color:blue;
+}
+
+
+.main{
+    padding-top: 150px;
+}
+.container-menu{
+    margin: 20px auto;
+    max-width: 90%;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 0px 0px 20px black;
+}
+
+.inside-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.main-main-menu{
+    padding-top: 40px;
+    width: 50%;
+}
+.menu-head{
+    text-align: center;
+}
+
+.main-menu{
+    display: flex;
+    flex-direction: row;
+    padding: 10px 40px;
+}
+
+
+.Breakfast_Combos{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.amount{
+    display: flex;
+    flex-direction: column;
+}
+
+.text-menu{
+    padding: 10px;
+}
+
+

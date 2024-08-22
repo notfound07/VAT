@@ -1,0 +1,132 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+
+.want {
+  font-size: x-large;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.buttonIn {
+  width: 300px;
+  left: 50px;
+  position: relative;
+}
+
+.phone-sign {
+  margin-top: 10px;
+  width: 70%;
+  margin-left: 17%;
+}
+
+.phone-sign-input {
+  font-size: x-large;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.send-phone-otp {
+  display: flex;
+  gap: 10px;
+
+}
+
+.send-phone-otp-button {
+  border-radius: 5px;
+  padding: 5px;
+  border: none;
+  cursor: pointer;
+  background-color: #1e90ff;
+  box-shadow: 0px 0px 8px rgba(8, 7, 16, 0.6);
+}
+
+.send-phone-otp-button:hover {
+  background-color: lightgreen;
+}
+
+
+.send-phone-verify-button {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  font-size: large;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  background-color: #1e90ff;
+  box-shadow: 0px 0px 8px rgba(8, 7, 16, 0.6);
+}
+
+.send-phone-verify-button:hover {
+  background-color: lightgreen;
+}
+
+
+
+.send-phone-otp input {
+  font-size: x-large;
+  margin-left: 20px;
+  width: 60%;
+}
+
+
+.please-log {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+.popup-close {
+  font-size: x-large;
+  margin-left: 90%;
+  text-decoration: none;
+  color: red;
+}
+
+
+.message{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+.proceed-button {
+  margin-top: 20px;
+  width: 30%;
+  background-color: #219ebc;
+  color: #000000;
+  padding: 15px;
+  font-size: medium;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 5px rgba(8, 7, 16, 0.6);
+}
+
+.proceed-button:hover {
+  background-color: #8ecae6;
+}

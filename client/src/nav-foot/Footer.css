@@ -1,0 +1,35 @@
+*{
+    margin: 0px;
+    padding: 0px;
+
+}
+
+footer{
+    display: grid;
+    width: 100%;
+    text-align: center;
+	justify-content: center;
+	align-items: center;
+    
+}
+.icon{
+    display: inline-flex;
+	justify-content: center;
+	align-items: center;
+    font-size:xx-large;
+    padding: 10px;
+}
+.help{
+    display: inline-flex;
+	justify-content: center;
+	align-items: center;
+    font-size:large;
+    padding-left: 10px;
+}
+
+.desc{
+    display: inline-flex;
+	justify-content: center;
+	align-items: center;
+    font-size:xx-large;
+}

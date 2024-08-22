@@ -1,4 +1,61 @@
 * {
-    margin: 0;
-    padding: 0;
-  }
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-hotel {
+  display: flex;
+  width: 100%;
+  margin-top: auto;
+  padding: 0px 15px;
+  padding-top: 80px;
+  box-shadow: 0px 0px 20px black;
+  background-color: white;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 100;
+
+}
+
+.hotel {
+  list-style: none;
+  display: inline-block;
+  padding: 5px 20px;
+
+}
+
+.hotel .tag {
+  display: block;
+  padding: 20px 10px;
+  font-size: 16px;
+  color: black;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.hotel .tag:hover {
+  color: white;
+  background-color: blue;
+}
+
+.hotel.active .tag {
+  color: #007bff;
+  font-weight: bold;
+}
+
+.nav-hotel .tag:hover:not(.disabled) {
+  background-color: blue; /* Darker color on hover */
+  color: white; /* Text color on hover */
+}
+
+/* Disabled link styles */
+.nav-hotel .tag.disabled {
+  background-color: white; /* Disabled background color */
+  color: #666666; /* Disabled text color */
+  pointer-events: none; /* Disable pointer events */
+  border-color: white;
+}
+
