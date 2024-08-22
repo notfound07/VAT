@@ -1,0 +1,62 @@
+.dashboard-frame {
+    width: 100%;
+    background-color: #222b51;
+    height: 80px;
+    font-size: 22px;
+    border: none;
+    position: fixed;
+    font-family: Arial, sans-serif;
+    z-index: 999;
+    border-bottom: 3px solid transparent;
+    border-image: linear-gradient(to right, yellow, orange) 2 round;
+}
+
+.dashboard-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background: url('../Assets/lightfoot.png') no-repeat center center;
+    background-size: cover;
+    padding: 10px 20px;
+    position: relative;
+    cursor: pointer;
+}
+
+.company-dashboard-logo {
+    width: 60px;
+    height: 60px;
+}
+
+.dashboard-title {
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: bold;
+    font-size: xx-large;
+}
+
+.dashboard-main {
+    padding: 100px 20px 20px 20px;
+}
+
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.dashboard-card {
+    border: 2px solid white;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    border-radius: 10px;
+}
+
+.dashboard-details {
+    font-size: xx-large;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
