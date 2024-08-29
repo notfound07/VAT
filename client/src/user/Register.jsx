@@ -124,7 +124,6 @@ function Register() {
           </form>
         </div>
         <div className="signup-right">
-          <div>Image or color</div>
         </div>
         <Link to="/Home" className="signup-home-link">
           Home
