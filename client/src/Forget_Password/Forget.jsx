@@ -122,7 +122,7 @@ function Forget() {
           </div>
           <div>
             <p className="otp-p">Didn't receive code?</p>
-            <a
+            <a href='/#'
               className="resend"
               style={{
                 color: disable ? "gray" : "blue",

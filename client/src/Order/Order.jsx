@@ -8,7 +8,7 @@ import { RecoveryContext } from '../App';
 function Order() {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
-    const { email, setEmail } = useContext(RecoveryContext);
+    const { setEmail } = useContext(RecoveryContext);
     const [phoneNumber, setPhoneNumber] = useState("");
     const [address, setAddress] = useState("");
     const [pin, setPin] = useState("");

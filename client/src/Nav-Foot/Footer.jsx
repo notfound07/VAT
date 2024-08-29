@@ -28,10 +28,10 @@ function Footer() {
         <div className="footer-section-social">
           <h2>Follow US</h2>
           <div className="social-icons">
-            <a href='https://www.instagram.com/visionaryart.tech24/?hl=en' target="_blank" rel="noopener noreferrer" className="foot-button"><img className="footer-logo" src={instagram}/></a>
-            <a href='https://www.facebook.com/' target="_blank" rel="noopener noreferrer" className="foot-button"><img className="footer-logo" src={facebook}/></a>
-            <a href='https://x.com/technologies08' target="_blank" rel="noopener noreferrer" className="foot-button"><img className="footer-logo" src={twitter}/></a>
-            <a href='https://www.linkedin.com/in/visionary-artttechnology-a47b49320/' target="_blank" rel="noopener noreferrer" className="foot-button"><img className="footer-logo" src={linkedin}/></a>
+            <a href='https://www.instagram.com/visionaryart.tech24/?hl=en' target="_blank" rel="noopener noreferrer" className="foot-button"><img className="footer-logo" alt="Instagram" src={instagram}/></a>
+            <a href='https://www.facebook.com/' target="_blank" rel="noopener noreferrer" className="foot-button"><img className="footer-logo" alt="Facebook" src={facebook}/></a>
+            <a href='https://x.com/technologies08' target="_blank" rel="noopener noreferrer" className="foot-button"><img className="footer-logo" alt="Twitter" src={twitter}/></a>
+            <a href='https://www.linkedin.com/in/visionary-artttechnology-a47b49320/' target="_blank" rel="noopener noreferrer" className="foot-button"><img className="footer-logo" alt="Linkedin" src={linkedin}/></a>
           </div>
         </div>
       </div>

@@ -8,7 +8,7 @@ import './Contact.css';
 function Contact() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const { email, setEmail } = useContext(RecoveryContext);
+  const { setEmail } = useContext(RecoveryContext);
   const [phoneNumber, setPhoneNumber] = useState("");
   const [message, setMessage] = useState("");
   const LoggedUser = localStorage.getItem("LoggedUser");
