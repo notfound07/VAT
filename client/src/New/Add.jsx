@@ -88,7 +88,7 @@ const Add = () => {
             <button className='upnew-btn' type='submit'>
               <i className='fa-solid fa-shop'></i> New
             </button>
-            <button className='upnew-btn' type='button'>
+            <button className='upnew-btn' type='button' onClick={() => window.history.go(-1)}>
               Cancel
             </button>
           </div>
