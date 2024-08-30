@@ -7,6 +7,9 @@ import './Add.css';
 
 const Add = () => {
   const { title, setTitle, image, setImage, description, setDescription, video, setVideo } = useContext(RecoveryContext);
+  const apiUrl = process.env.NODE_ENV === "production"
+    ? process.env.REACT_APP_API_URL
+    : 'http://localhost:3001'; 
 
   const handleFileChange = (e) => {
     setImage(e.target.files[0]);
@@ -26,7 +29,7 @@ const Add = () => {
     formData.append('video', video);
   
     try {
-      const response = await axios.post('http://localhost:3001/vat/product', formData, {
+      const response = await axios.post(`${apiUrl}/vat/product`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

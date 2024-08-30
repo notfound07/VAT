@@ -10,6 +10,9 @@ const EmailInput = () => {
   const { email, setEmail, setOTP } = useContext(RecoveryContext);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false); // State to manage loading
+  const apiUrl = process.env.NODE_ENV === "production"
+    ? process.env.REACT_APP_API_URL
+    : 'http://localhost:3001'; 
 
   function navigateToOtp() {
     try {
@@ -18,7 +21,7 @@ const EmailInput = () => {
         const OTP = Math.floor(Math.random() * 9000 + 1000);
         console.log('Generated OTP:', OTP);
         setOTP(OTP);
-        axios.post("http://localhost:3001/send_recovery_email", {
+        axios.post(`${apiUrl}/send_recovery_email`, {
           OTP,
           recipient_email: email,
         }, {

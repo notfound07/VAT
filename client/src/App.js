@@ -12,12 +12,10 @@ import Detail from "./Product_Details/Detail.jsx";
 import Contact from "./Contact/Contact.jsx";
 import Forget from "./Forget_Password/Forget.jsx";
 import Recover from "./Forget_Password/Recover.jsx";
-import { products } from "./Resources/Products.js";
 import Cart from "./Cart/Cart.jsx";
 import { CartProvider } from "./Resources/CartContext.jsx";
 import useLocalStorage from './Resources/useLoaclStorage';
 import { createContext } from "react";
-import Order from "./Order/Order.jsx";
 import Add from "./New/Add.jsx";
 import Review from "./Product_Details/Review.jsx";
 import Dashboard from "./Dashboard/Dashboard.jsx";
@@ -64,7 +62,7 @@ function App() {
             <Route path="/Navbar" element={<Navbar />} />
             <Route path="/Footer" element={<Footer />} />
             <Route path="/Review" element={<Review />} />
-            <Route path="/Shopping"element={<Shopping products={products} />}/>
+            <Route path="/Shopping"element={<Shopping/>}/>
             <Route path='/Kiosk' element={<Kiosk/>}/>
             <Route path="/Add" element={<Add />} />
             <Route path="/Cart" element={<Cart />} />
@@ -75,7 +73,6 @@ function App() {
             <Route path="/EmailInput" element={<EmailInput/>}/>
             <Route path="/Forget" element={<Forget />} />
             <Route path="/Recover" element={<Recover />} />
-            <Route path="/Order" element={<Order />} />
             <Route path='/Dashboard' element={<Dashboard/>}/>
             <Route path='/workslider' element={<Workslider/>}/>
             <Route path='/customcarousel' element={<CustomCarousel/>}/>

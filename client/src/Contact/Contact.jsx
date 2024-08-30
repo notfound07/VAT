@@ -12,6 +12,9 @@ function Contact() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [message, setMessage] = useState("");
   const LoggedUser = localStorage.getItem("LoggedUser");
+  const apiUrl = process.env.NODE_ENV === "production"
+    ? process.env.REACT_APP_API_URL
+    : 'http://localhost:3001'; 
 
   const submitForm = async (e) => {
     e.preventDefault();
@@ -32,7 +35,7 @@ function Contact() {
 
 
     try {
-      const response = await axios.post("http://localhost:3001/vat/contact", payload);
+      const response = await axios.post(`${apiUrl}/vat/contact`, payload);
       if (response.status === 201) {
         window.alert("Feedback submitted successfully!");
         console.log("Response Data", response.data);

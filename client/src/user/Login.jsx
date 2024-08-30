@@ -13,33 +13,37 @@ function Login() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
+  const apiUrl = process.env.NODE_ENV === "production"
+    ? process.env.REACT_APP_API_URL
+    : 'http://localhost:3001'; 
+
   const togglePasswordVisibility = async () => {
     setShowPassword(!showPassword);
   }
 
   const submit = async (e) => {
     e.preventDefault();
-      try {
-        const response = await axios.get("http://localhost:3001/vat/login", {
-          params: {
-            email,
-            password
-          }
-        });
-        if (response.status === 200) {
-          const token = response.data.token;
-          const role = response.data.role; 
-          if(role === "admin"){
-            setShow(true);
-          }
-          localStorage.setItem("LoggedUser", email);
-          localStorage.setItem('authToken', token)
-          navigate('/Home');
+    try {
+      const response = await axios.get(`${apiUrl}/vat/login`, {
+        params: {
+          email,
+          password
         }
-      } catch (err) {
-        console.log(err);
-        window.alert('Login failed! Please check your email and password.');
+      });
+      if (response.status === 200) {
+        const token = response.data.token;
+        const role = response.data.role;
+        if (role === "admin") {
+          setShow(true);
+        }
+        localStorage.setItem("LoggedUser", email);
+        localStorage.setItem('authToken', token)
+        navigate('/Home');
       }
+    } catch (err) {
+      console.log(err);
+      window.alert('Login failed! Please check your email and password.');
+    }
   }
 
 

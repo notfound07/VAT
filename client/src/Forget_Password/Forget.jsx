@@ -11,11 +11,14 @@ function Forget() {
   const [OTPinput, setOTPinput] = useState(["", "", "", ""]);
   const [disable, setDisable] = useState(true);
   const navigate = useNavigate();
+  const apiUrl = process.env.NODE_ENV === "production"
+    ? process.env.REACT_APP_API_URL
+    : 'http://localhost:3001'; 
 
   function resendOTP() {
     if (disable) return;
     axios
-      .post("http://localhost:3001/send_recovery_email", {
+      .post(`${apiUrl}/send_recovery_email`, {
         OTP: otp,
         recipient_email: email,
       })
