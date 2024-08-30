@@ -181,21 +181,24 @@
     }
 
     .right {
-        height: 360px;
+        height: 400px;
+        border-radius: 10px;
         order: 2; /* Display .right (or .signup-right) second */
     } 
     .signup-right{
+        display: none;
         height: 200px;
     }
 
 
     .signup-left {
+        border-radius: 10px;
         height: 520px;
         order: 1; /* Display .left (or .signup-left) first */
     }
 
     .left{
-        height: 200px;
+        display: none;
         order: 1; /* Display .left (or .signup-left) first */
     }
 
@@ -225,20 +228,24 @@
     }
 
     .right {
-        height: 360px;
+        height: 400px;
+        border-radius: 10px;
         order: 2; /* Display .right (or .signup-right) second */
     } 
     .signup-right{
+        display: none;
         height: 200px;
     }
 
 
     .signup-left {
+        border-radius: 10px;
         height: 520px;
         order: 1; /* Display .left (or .signup-left) first */
     }
 
     .left{
+        display: none;
         height: 200px;
         order: 1; /* Display .left (or .signup-left) first */
     }

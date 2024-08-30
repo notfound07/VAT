@@ -39,9 +39,20 @@ function Recover() {
         navigate('/Login');
       }
     } catch (error) {
-      console.error("Error resetting password:", error);
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        console.error("Backend returned error response:", error.response.data);
+      } else if (error.request) {
+        // The request was made but no response was received
+        console.error("No response received:", error.request);
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.error("Error setting up request:", error.message);
+      }
     }
   };
+
 
   return (
     <div className="forget-container">
@@ -52,44 +63,44 @@ function Recover() {
           <h2>Recover Password</h2>
           <div className="recover-form-group">
             <form>
-            <input  defaultValue={email} disabled />
-            <label htmlFor="password">New Password</label>
-            <div className="password-wrapper">
-              <input
-                type={showPassword ? "text" : "password"}
-                id="password"
-                name="password"
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <button
-                type="button"
-                className="password-toggle"
-                onClick={togglePasswordVisibility}
-              >
-                <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
-              </button>
-            </div>
-            <label htmlFor="retypepassword">Retype Password</label>
-            <div className="password-wrapper">
-              <input
-                type={showConfirmPassword ? "text" : "password"}
-                id="retypepassword"
-                name="retypepassword"
-                onChange={(e) => setConfirmpassword(e.target.value)}
-              />
-              <button
-                type="button"
-                className="password-toggle"
-                onClick={toggleConfirmPasswordVisibility}
-              >
-                <FontAwesomeIcon
-                  icon={showConfirmPassword ? faEyeSlash : faEye}
+              <input defaultValue={email} disabled />
+              <label htmlFor="password">New Password</label>
+              <div className="password-wrapper">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  id="password"
+                  name="password"
+                  onChange={(e) => setPassword(e.target.value)}
                 />
+                <button
+                  type="button"
+                  className="password-toggle"
+                  onClick={togglePasswordVisibility}
+                >
+                  <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+                </button>
+              </div>
+              <label htmlFor="retypepassword">Retype Password</label>
+              <div className="password-wrapper">
+                <input
+                  type={showConfirmPassword ? "text" : "password"}
+                  id="retypepassword"
+                  name="retypepassword"
+                  onChange={(e) => setConfirmpassword(e.target.value)}
+                />
+                <button
+                  type="button"
+                  className="password-toggle"
+                  onClick={toggleConfirmPasswordVisibility}
+                >
+                  <FontAwesomeIcon
+                    icon={showConfirmPassword ? faEyeSlash : faEye}
+                  />
+                </button>
+              </div>
+              <button className="rec-btn" onClick={submit}>
+                Submit <i className="fa-solid fa-right-long"></i>
               </button>
-            </div>
-            <button className="rec-btn" onClick={submit}>
-              Submit <i className="fa-solid fa-right-long"></i>
-            </button>
             </form>
           </div>
         </div>

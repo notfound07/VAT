@@ -65,9 +65,9 @@ const EmailInput = () => {
               />
             </div>
             <br></br>
-            <a href="/#" className="verify_button" onClick={navigateToOtp} disabled={loading}>
+            <Link className="verify_button" onClick={navigateToOtp} disabled={loading}>
               {loading ? 'Sending OTP...' : 'Recover'} {/* Show loading text */}
-            </a>
+            </Link>
           </form>
         </div>
         <Link to="/Home" className="rec-home-link"><FaArrowLeft />Home</Link>

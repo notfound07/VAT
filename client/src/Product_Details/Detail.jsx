@@ -109,7 +109,7 @@ const Detail = () => {
                       <div className="slides">
                         <div className="slide">
                           {item.image ? (
-                            <img
+                            <img className="main-img"
                               src={`data:${item.image.contentType};base64,${Buffer.from(item.image.data.data).toString('base64')}`}
                               alt={item.title}
                             />
@@ -117,7 +117,7 @@ const Detail = () => {
                         </div>
                         {item.video && (
                           <div className="slide">
-                            <video autoPlay muted loop playsInline>
+                            <video  className="main-img" autoPlay muted loop playsInline>
                               <source
                                 src={`data:${item.video.contentType};base64,${Buffer.from(item.video.data.data).toString('base64')}`}
                                 type={item.video.contentType}
@@ -131,12 +131,10 @@ const Detail = () => {
                       {show ? (
                         <button className='delete-from-cart-btn' onClick={handleDelete}>Delete</button>
                       ) : (
-                        <div className="art-cart-buy-btn">
                           <button
                             className="buy-now-btn"
                             onClick={() => window.location.href = `/Contact`}>Order Now <i className="fa-solid fa-right-long"></i>
                           </button>
-                        </div>
                       )}
                     </div>
                   </div>
