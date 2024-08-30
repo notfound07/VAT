@@ -28,7 +28,7 @@ function Login() {
         });
         if (response.status === 200) {
           const token = response.data.token;
-          if(email==="visionaryart.tech24@gmail.com"){
+          if(response.data.role === "admin"){
             setShow(true);
           }
           localStorage.setItem("LoggedUser", email);
