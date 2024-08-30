@@ -39,7 +39,7 @@ function Contact() {
       }
     } catch (err) {
       if (err.response) {
-        window.alert("Failed to submit feedback. Please try again.");
+        window.alert("Failed to submit feedback. Please login to submit feedback.");
         console.log("Error Response Data", err.response.data);
       } else {
         window.alert("An error occurred. Please try again.");
