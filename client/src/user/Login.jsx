@@ -28,7 +28,8 @@ function Login() {
         });
         if (response.status === 200) {
           const token = response.data.token;
-          if(response.data.role === "admin"){
+          const role = response.data.role; 
+          if(role === "admin"){
             setShow(true);
           }
           localStorage.setItem("LoggedUser", email);
