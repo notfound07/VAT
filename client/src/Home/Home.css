@@ -262,7 +262,7 @@ body {
 .client-logo:hover, .client-logo1:hover {
   cursor: pointer;
   transform: translateY(-5px);
-  box-shadow: 8px 8px 8px 8px rgba(1, 10, 10, 0.897);
+  box-shadow: 4px 4px 4px 4px rgba(1, 10, 10, 0.897);
 }
 
 .logo-img1 {
