@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext,useEffect} from 'react';
 import Footer from '../Nav-Foot/Footer';
 import Navbar from '../Nav-Foot/Navbar';
 import axios from 'axios';
@@ -8,24 +8,17 @@ import './Contact.css';
 function Contact() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const { setEmail } = useContext(RecoveryContext);
+  const { email,setEmail } = useContext(RecoveryContext);
   const [phoneNumber, setPhoneNumber] = useState("");
   const [message, setMessage] = useState("");
-  const LoggedUser = localStorage.getItem("LoggedUser");
 
   const submitForm = async (e) => {
     e.preventDefault();
 
-    // Validation checks
-    if (!firstName || !lastName || !phoneNumber || !message) {
-      window.alert("Please fill in all fields.");
-      return;
-    }
-
     const payload = {
       firstName,
       lastName,
-      email: LoggedUser,
+      email,
       phoneNumber,
       commentMessage: message
     };
@@ -48,6 +41,13 @@ function Contact() {
       }
     }
   };
+  useEffect(() => {
+    // Retrieve the email from localStorage
+    const storedEmail = localStorage.getItem("LoggedUser");
+    if (storedEmail) {
+      setEmail(storedEmail);
+    }
+  }, []);
 
   return (
     <div>
@@ -78,10 +78,7 @@ function Contact() {
             <div className="form-group-contact">
               <label className='contact_label'>Email</label>
               <input
-                type="email"
-                name='email'
-                defaultValue={LoggedUser}
-                onChange={(e) => setEmail(e.target.value)}
+                defaultValue={email}
                 disabled
               />
             </div>

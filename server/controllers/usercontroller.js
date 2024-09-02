@@ -129,25 +129,19 @@ const contact = async (req, res) => {
       return res.status(400).json({ message: "All fields are required" });
     }
 
-    if (!validator.isEmail(email)) {
-      console.log("Validation error: Email is invalid");
-      return res.status(400).json({ message: "Email is invalid" });
-    }
-
     if (!validator.isMobilePhone(phoneNumber)) {
       console.log("Validation error: Phone Number is invalid");
       return res.status(400).json({ message: "Phone Number is invalid" });
     }
 
-    const newContact = new Feed({
+    const newContact = await Feed.create({
       firstName,
       lastName,
-      email,
+      email:email,
       phoneNumber,
       commentMessage,
     });
 
-    await newContact.save();
     console.log("Contact form saved successfully:", newContact);
     res.status(201).json({ message: "Contact form submitted successfully", data: newContact });
   } catch (err) {
