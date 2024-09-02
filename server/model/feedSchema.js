@@ -1,13 +1,31 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const feedSchema = new mongoose.Schema({
-    firstName: { type: String, required: true },
-    lastName: { type: String, required: true },
-    phoneNumber: { type: String, required: true },
-    email: { type: String, required: true, lowercase: true, unique: true },
-    commentMessage: { type: String, required: true },
+const feedSchema = new Schema({
+  firstName: {
+    type: String,
+    required: true
+  },
+  lastName: {
+    type: String,
+    required: true
+  },
+  email: {
+    type: String,
+    required: true
+  },
+  phoneNumber: {
+    type: String,
+    required: true
+  },
+  commentMessage: {
+    type: String,
+    required: true
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  }
 });
 
-Feed = mongoose.model("feed", feedSchema);
-
-module.exports = Feed;
+module.exports = mongoose.model('Feed', feedSchema);

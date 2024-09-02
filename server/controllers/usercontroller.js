@@ -121,15 +121,21 @@ const contact = async (req, res) => {
   try {
     const { firstName, lastName, email, phoneNumber, commentMessage } = req.body;
 
+    // Log the received data
+    console.log("Received data:", req.body);
+
     if (!firstName || !lastName || !email || !phoneNumber || !commentMessage) {
+      console.log("Validation error: All fields are required");
       return res.status(400).json({ message: "All fields are required" });
     }
 
     if (!validator.isEmail(email)) {
+      console.log("Validation error: Email is invalid");
       return res.status(400).json({ message: "Email is invalid" });
     }
 
     if (!validator.isMobilePhone(phoneNumber)) {
+      console.log("Validation error: Phone Number is invalid");
       return res.status(400).json({ message: "Phone Number is invalid" });
     }
 
@@ -142,16 +148,14 @@ const contact = async (req, res) => {
     });
 
     await newContact.save();
+    console.log("Contact form saved successfully:", newContact);
     res.status(201).json({ message: "Contact form submitted successfully", data: newContact });
   } catch (err) {
-    if (err.code === 11000) {
-      res.status(409).json({ message: "Email already exists" });
-    } else {
-      console.error(err.message);
-      res.status(500).json({ message: "Server error" });
-    }
+    console.error("Server error:", err.message);
+    res.status(500).json({ message: "Server error" });
   }
 };
+
 
 
 const getAllcontacts = async (req, res) => {
