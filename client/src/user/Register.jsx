@@ -17,10 +17,6 @@ function Register() {
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const apiUrl = process.env.NODE_ENV === "production"
-    ? process.env.REACT_APP_API_URL
-    : 'http://localhost:3001'; 
-
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -44,7 +40,7 @@ function Register() {
     }
 
     try {
-      const response = await axios.post(`${apiUrl}/vat/signup`, {
+      const response = await axios.post(`https://visionaryarttech.com/vat/signup`, {
         name,
         email,
         password,

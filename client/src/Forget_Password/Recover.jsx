@@ -27,7 +27,7 @@ function Recover() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3001/vat/reset",
+        "https://visionaryarttech.com/vat/reset",
         {
           email,
           password,

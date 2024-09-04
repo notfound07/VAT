@@ -13,10 +13,6 @@ function Login() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
-  const apiUrl = process.env.NODE_ENV === "production"
-    ? process.env.REACT_APP_API_URL
-    : 'http://localhost:3001'; 
-
   const togglePasswordVisibility = async () => {
     setShowPassword(!showPassword);
   }
@@ -24,7 +20,7 @@ function Login() {
   const submit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.get(`${apiUrl}/vat/login`, {
+      const response = await axios.get(`https://visionaryarttech.com/vat/login`, {
         params: {
           email,
           password

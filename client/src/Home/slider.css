@@ -69,7 +69,7 @@
 .slider__item {
   box-sizing: border-box;
   min-width: 100%;
-  height: auto;
+  height: 100%;
   overflow: hidden;
   object-fit: cover;
   transform: translateX(0);
@@ -100,7 +100,8 @@
 
 .slider__item img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Media Queries for responsiveness */
@@ -116,6 +117,11 @@
     width: 50px;
     height: 50px;
   }
+  .slider__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
 /* Slightly smaller screens */
@@ -124,6 +130,11 @@
   .slider__btn-prev {
     width: 45px;
     height: 45px;
+  }
+  .slider__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 }
 
@@ -138,6 +149,11 @@
   .container__slider {
     height: 70vh;
   }
+  .slider__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
 /* Smaller screens */
@@ -150,6 +166,11 @@
 
   .container__slider {
     height: 60vh;
+  }
+  .slider__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 }
 
@@ -173,6 +194,11 @@
     width: 6px;
     height: 6px;
   }
+  .slider__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
 /* Very small screens */
@@ -195,6 +221,11 @@
     width: 5px;
     height: 5px;
   }
+  .slider__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
 /* Extra extra small screens */
@@ -216,5 +247,10 @@
   .container__slider__links-small {
     width: 4px;
     height: 4px;
+  }
+  .slider__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 }

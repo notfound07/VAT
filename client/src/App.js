@@ -42,7 +42,7 @@ function App() {
   useEffect(() => {
     const fetchAllResponses = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/vat/getAllProducts");
+        const response = await axios.get("https://visionaryarttech.com/vat/getAllProducts");
         if (response.status === 200) {
           setOrder(response.data);
         }

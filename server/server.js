@@ -86,14 +86,14 @@ app.post("/send_recovery_email", (req, res) => {
     .then((response) => res.send(response.message))
     .catch((error) => res.status(500).send(error.message));
 });
-const PORT = 3001;
 
-app.listen(PORT, async () => {
-  try {
-    await connectedDB();
-    console.log(`Server running on port ${PORT}`);
-  } catch (err) {
-    console.log("Something went wrong");
-    process.exit(1);
-  }
+const PORT = 3001;
+app.listen(PORT, 'localhost', async () => {
+    try {
+        await connectedDB();
+        console.log(`Server running on port ${PORT}`);
+    } catch (err) {
+        console.log("Something went wrong");
+        process.exit(1);
+    }
 });

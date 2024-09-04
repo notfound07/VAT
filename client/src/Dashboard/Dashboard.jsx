@@ -7,14 +7,11 @@ const Dashboard = () => {
   const [allCont, setCont] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const apiUrl = process.env.NODE_ENV === "production"
-    ? process.env.REACT_APP_API_URL
-    : 'http://localhost:3001'; 
 
   useEffect(() => {
     const fetchAll = async () => {
       try {
-        const response = await axios.get(`${apiUrl}/vat/getAllcontacts`);
+        const response = await axios.get(`https://visionaryarttech.com/vat/getAllcontacts`);
         if (response.status === 200) {
           setCont(response.data);
           setLoading(false);
@@ -26,7 +23,7 @@ const Dashboard = () => {
       }
     };
     fetchAll();
-  }, [apiUrl]);
+  }, []);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
