@@ -16,11 +16,10 @@ const EmailInput = () => {
       if (email) {
         setLoading(true); // Start loading
         const OTP = Math.floor(Math.random() * 9000 + 1000);
-        console.log('Generated OTP:', OTP);
-        setOTP(OTP);
-        axios.post(`https://visionaryarttech.com/send_recovery_email`, {
-          OTP,
+       setOTP(OTP);
+        axios.post("http://localhost:3001/vat/send_recovery_email", {
           recipient_email: email,
+          OTP,
         }, {
           headers: {
             'Content-Type': 'application/json'
