@@ -12,6 +12,10 @@ function Login() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const baseURL =
+    window.location.hostname === "localhost"
+      ? "http://localhost:3001/vat"
+      : `${window.location.protocol}//visionaryarttech.com/vat`;
 
   const togglePasswordVisibility = async () => {
     setShowPassword(!showPassword);
@@ -20,7 +24,7 @@ function Login() {
   const submit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.get(`https://visionaryarttech.com/vat/login`, {
+      const response = await axios.get(`${baseURL}/login`, {
         params: {
           email,
           password

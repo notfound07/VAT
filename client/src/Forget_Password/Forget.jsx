@@ -11,11 +11,15 @@ function Forget() {
   const [OTPinput, setOTPinput] = useState(["", "", "", ""]);
   const [disable, setDisable] = useState(true);
   const navigate = useNavigate();
+  const baseURL =
+    window.location.hostname === "localhost"
+      ? "http://localhost:3001/vat"
+      : `${window.location.protocol}//visionaryarttech.com/vat`;
 
   function resendOTP() {
     if (disable) return;
     axios
-      .post(`https://visionaryarttech.com/send_recovery_email`, {
+      .post(`${baseURL}/send_recovery_email`, {
         OTP: otp,
         recipient_email: email,
       })

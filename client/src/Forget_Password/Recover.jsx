@@ -14,6 +14,10 @@ function Recover() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const navigate = useNavigate();
+  const baseURL =
+    window.location.hostname === "localhost"
+      ? "http://localhost:3001/vat"
+      : `${window.location.protocol}//visionaryarttech.com/vat`;
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -26,8 +30,7 @@ function Recover() {
   const submit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "https://visionaryarttech.com/vat/reset",
+      const response = await axios.post(`${baseURL}/reset`,
         {
           email,
           password,

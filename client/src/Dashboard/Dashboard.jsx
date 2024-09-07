@@ -7,11 +7,15 @@ const Dashboard = () => {
   const [allCont, setCont] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const baseURL =
+    window.location.hostname === "localhost"
+      ? "http://localhost:3001/vat"
+      : `${window.location.protocol}//visionaryarttech.com/vat`;
 
   useEffect(() => {
     const fetchAll = async () => {
       try {
-        const response = await axios.get(`https://visionaryarttech.com/vat/getAllcontacts`);
+        const response = await axios.get(`${baseURL}/getAllcontacts`);
         if (response.status === 200) {
           setCont(response.data);
           setLoading(false);
@@ -23,7 +27,7 @@ const Dashboard = () => {
       }
     };
     fetchAll();
-  }, []);
+  }, [baseURL]);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;

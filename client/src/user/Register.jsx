@@ -14,9 +14,12 @@ function Register() {
   const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
-
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const baseURL =
+    window.location.hostname === "localhost"
+      ? "http://localhost:3001/vat"
+      : `${window.location.protocol}//visionaryarttech.com/vat`;
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -40,7 +43,7 @@ function Register() {
     }
 
     try {
-      const response = await axios.post(`https://visionaryarttech.com/vat/signup`, {
+      const response = await axios.post(`${baseURL}/signup`, {
         name,
         email,
         password,

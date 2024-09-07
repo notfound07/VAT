@@ -7,6 +7,10 @@ import './Add.css';
 
 const Add = () => {
   const { title, setTitle, image, setImage, description, setDescription, video, setVideo } = useContext(RecoveryContext);
+  const baseURL =
+    window.location.hostname === "localhost"
+      ? "http://localhost:3001/vat"
+      : `${window.location.protocol}//visionaryarttech.com/vat`;
 
   const handleFileChange = (e) => {
     setImage(e.target.files[0]);
@@ -26,7 +30,7 @@ const Add = () => {
     formData.append('video', video);
   
     try {
-      const response = await axios.post(`https://visionaryarttech.com/vat/product`, formData, {
+      const response = await axios.post(`${baseURL}/product`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

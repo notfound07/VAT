@@ -10,6 +10,10 @@ const EmailInput = () => {
   const { email, setEmail, setOTP } = useContext(RecoveryContext);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false); // State to manage loading
+  const baseURL =
+    window.location.hostname === "localhost"
+      ? "http://localhost:3001/vat"
+      : `${window.location.protocol}//visionaryarttech.com/vat`;
 
   function navigateToOtp() {
     try {
@@ -17,7 +21,7 @@ const EmailInput = () => {
         setLoading(true); // Start loading
         const OTP = Math.floor(Math.random() * 9000 + 1000);
        setOTP(OTP);
-        axios.post("http://localhost:3001/vat/send_recovery_email", {
+        axios.post(`${baseURL}/send_recovery_email`, {
           recipient_email: email,
           OTP,
         }, {

@@ -17,6 +17,10 @@ const Detail = () => {
   const { show } = useContext(RecoveryContext);
   const [shuffledItems, setShuffledItems] = useState([]);
   const navigate = useNavigate();
+  const baseURL =
+    window.location.hostname === "localhost"
+      ? "http://localhost:3001/vat"
+      : `${window.location.protocol}//visionaryarttech.com/vat`;
 
 
   const handleEditClick = () => {
@@ -41,7 +45,7 @@ const Detail = () => {
 
   const handleSaveClick = async () => {
     try {
-      await axios.put(`https://visionaryarttech.com/vat/updateproduct/${id}`, { title: edittitle, description: editdescription });
+      await axios.put(`${baseURL}/updateproduct/${id}`, { title: edittitle, description: editdescription });
       setItem({ ...item, title: edittitle, description: editdescription });
       setEdit(false);
     } catch (error) {
@@ -51,7 +55,7 @@ const Detail = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`https://visionaryarttech.com/vat/deleteById/${id}`);
+      await axios.delete(`${baseURL}/deleteById/${id}`);
       navigate('/Shopping', { replace: true });
       window.location.reload();
     } catch (error) {
@@ -62,7 +66,7 @@ const Detail = () => {
   useEffect(() => {
     const fetchAllResponses = async () => {
       try {
-        const response = await axios.get(`https://visionaryarttech.com/vat/getById/${id}`);
+        const response = await axios.get(`${baseURL}/getById/${id}`);
         if (response.status === 200) {
           setItem(response.data);
         }
@@ -71,7 +75,7 @@ const Detail = () => {
       }
     };
     fetchAllResponses();
-  }, [id]);
+  }, [id, baseURL]);
 
   return (
     <div className='detail-page'>

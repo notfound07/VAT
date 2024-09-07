@@ -11,6 +11,10 @@ function Contact() {
   const { email,setEmail } = useContext(RecoveryContext);
   const [phoneNumber, setPhoneNumber] = useState("");
   const [message, setMessage] = useState("");
+  const baseURL =
+    window.location.hostname === "localhost"
+      ? "http://localhost:3001/vat"
+      : `${window.location.protocol}//visionaryarttech.com/vat`;
 
   const submitForm = async (e) => {
     e.preventDefault();
@@ -26,7 +30,7 @@ function Contact() {
     console.log("Sending data:", payload);  // Add this log
 
     try {
-      const response = await axios.post("https://visionaryarttech.com/vat/contact", payload);
+      const response = await axios.post(`${baseURL}/contact`, payload);
       if (response.status === 201) {
         window.alert("Feedback submitted successfully!");
         console.log("Response Data", response.data);
@@ -47,7 +51,7 @@ function Contact() {
     if (storedEmail) {
       setEmail(storedEmail);
     }
-  }, []);
+  }, [setEmail]);
 
   return (
     <div>
