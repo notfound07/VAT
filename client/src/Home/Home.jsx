@@ -10,6 +10,7 @@ import VLogo2 from '../Assets/V-Logo2.jpg';
 import VLogo3 from '../Assets/V-Logo3.png';
 import mission from '../Assets/mission.png';
 import machine from '../Assets/machine.png';
+import logo from '../Assets/logo.png';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Buffer } from 'buffer';
@@ -19,6 +20,7 @@ import CustomCarousel, { images } from './slider';
 const Home = () => {
   const { orders } = useContext(RecoveryContext);
   const [shuffledItems, setShuffledItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(true); // Loading state
 
   const shuffleArray = (array) => {
     const shuffledArray = array.slice();
@@ -30,7 +32,11 @@ const Home = () => {
   };
 
   useEffect(() => {
-    setShuffledItems(shuffleArray(orders).slice(0, 4));
+    if (orders.length) {
+      setIsLoading(true); // Set loading to true
+      setShuffledItems(shuffleArray(orders).slice(0, 4));
+      setIsLoading(false); // Set loading to false once items are set
+    }
   }, [orders]);
 
   return (
@@ -47,28 +53,37 @@ const Home = () => {
 
       <div className='item-display'>
         <div className="item-showcase">
-          {shuffledItems.map((item) => (
-            <div
-              className="item-card"
-              key={item._id}
-              onClick={() => window.location.href = `/Details/${item._id}`}
-              role="button"
-              tabIndex={0}
-              onKeyPress={() => window.location.href = `/Details/${item._id}`}
-            >
-              <div className="item-image-wrapper">
-                <img
-                  src={`data:${item.image.contentType};base64,${Buffer.from(item.image.data).toString('base64')}`}
-                  alt={item.title}
-                  className="item-image"
-                />
-                <div className="overlay">
-                  <button className="view-details-button">View Details</button>
-                </div>
+          {isLoading ? (
+            <div className="load">
+              <div className="loader-load">
+                <img src={logo} alt="Logo" />
               </div>
-              <h3 className="item-title">{item.title}</h3>
+              <p>Loading...</p>
             </div>
-          ))}
+          ) : (
+            shuffledItems.map((item) => (
+              <div
+                className="item-card"
+                key={item._id}
+                onClick={() => window.location.href = `/Details/${item._id}`}
+                role="button"
+                tabIndex={0}
+                onKeyPress={() => window.location.href = `/Details/${item._id}`}
+              >
+                <div className="item-image-wrapper">
+                  <img
+                    src={`data:${item.image.contentType};base64,${Buffer.from(item.image.data).toString('base64')}`}
+                    alt={item.title}
+                    className="item-image"
+                  />
+                  <div className="overlay">
+                    <button className="view-details-button">View Details</button>
+                  </div>
+                </div>
+                <h3 className="item-title">{item.title}</h3>
+              </div>
+            ))
+          )}
         </div>
       </div>
       {/* 

@@ -47,6 +47,7 @@ body {
   display: flex;
   gap: 20px;
   margin-top: 20px;
+  margin-bottom: 20px;
   flex-wrap: wrap;
   justify-content: center;
   /* Center items horizontally */
@@ -151,7 +152,8 @@ body {
   font-size: xxx-large;
   text-align: center;
   background-color: #7b888d;
-  text-shadow: 5px 5px rgba(5, 58, 102, 0.897);;
+  text-shadow: 5px 5px rgba(5, 58, 102, 0.897);
+  ;
   color: rgb(255, 255, 249);
   padding: 5px;
   margin: 0;
@@ -247,6 +249,7 @@ body {
   padding: 10px;
   box-shadow: 0px 0px 2px 2px rgba(5, 58, 102, 0.897);
 }
+
 .client-logo1 {
   width: 100%;
   border-radius: 10px;
@@ -262,7 +265,8 @@ body {
 }
 
 
-.client-logo:hover, .client-logo1:hover {
+.client-logo:hover,
+.client-logo1:hover {
   cursor: pointer;
   transform: translateY(-5px);
   box-shadow: 4px 4px 4px 4px rgba(1, 10, 10, 0.897);
@@ -292,12 +296,73 @@ body {
   color: rgb(255, 255, 255);
 }
 
+.loader-load {
+  margin-bottom: 5px;
+  animation: spin 2s linear infinite;
+}
+
+.loader-load img {
+  width: 50px;
+  height: auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.load {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+
+.load p {
+  text-align: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: transparent;
+  background: linear-gradient(90deg, blue, lightblue, red);
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-size: 200% 100%;
+  animation: gradientMove 2s linear infinite;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 0%;
+  }
+
+  50% {
+    background-position: 100% 0%;
+  }
+
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+
+
+
+
 /* Responsive Styles */
 @media (max-width: 1920px) {
   .item-card {
     flex: 1 1 30%;
   }
-  
+
 }
 
 @media (max-width: 1600px) {

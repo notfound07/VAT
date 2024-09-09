@@ -10,8 +10,8 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 function Login() {
   const { email, setEmail, setShow } = useContext(RecoveryContext);
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
   const baseURL =
     window.location.hostname === "localhost"
       ? "http://localhost:3001/vat"
@@ -23,6 +23,17 @@ function Login() {
 
   const submit = async (e) => {
     e.preventDefault();
+
+    // Validate fields
+    if (!email) {
+      window.alert("Email is required.");
+      return;
+    }
+    if (!password) {
+      window.alert("Password is required.");
+      return;
+    }
+
     try {
       const response = await axios.get(`${baseURL}/login`, {
         params: {
@@ -46,7 +57,6 @@ function Login() {
     }
   }
 
-
   return (
     <div className="parent-container">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></link>
@@ -58,7 +68,12 @@ function Login() {
           <form>
             <div className="form-group">
               <label htmlFor="email">Email</label>
-              <input type="email" id="email" name="email" onChange={(e) => setEmail(e.target.value)} />
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </div>
             <div className="form-group">
               <label htmlFor="password">Password</label>

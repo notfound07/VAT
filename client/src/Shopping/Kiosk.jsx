@@ -19,7 +19,7 @@ const Kiosk = () => {
                             (
                                 <div
                                     className="art-card"
-                                    key={item._id}
+                                    key={item._id} onClick={() => window.location.href = item.title === "Kiosk" ? '/Kiosk' : `/Details/${item._id}`}
                                 >
                                     <div className="art-image-wrapper">
                                         <img
@@ -28,7 +28,6 @@ const Kiosk = () => {
                                             className="art-image"
                                         />
                                         <div className="overlay">
-
                                             <button className="view-details-button" onClick={() => window.location.href = `/Details/${item._id}`}>View Details</button>
                                         </div>
                                     </div>
