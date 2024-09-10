@@ -336,87 +336,6 @@ const optimizeVideoBuffer = (videoBuffer) => {
       .on('error', (err) => reject(err));
   });
 };
-// const product = async (req, res) => {
-//   try {
-//     const { title, description } = req.body;
-
-//     if (!title || !description) {
-//       return res.status(400).json({ message: "Title and description are required" });
-//     }
-
-//     if (!req.files || (!req.files.image && !req.files.video)) {
-//       return res.status(400).json({ message: "At least one media file (image or video) is required" });
-//     }
-
-//     let image, video;
-//     if (req.files.image) {
-//       image = await optimizeImageBuffer(req.files.image[0].buffer);
-//     }
-
-//     if (req.files.video) {
-//       video = await optimizeVideoBuffer(req.files.video[0].buffer);
-//     }
-
-//     const newProduct = new Product({
-//       title,
-//       description,
-//       image: image
-//         ? {
-//             data: image,
-//             contentType: req.files.image[0].mimetype,
-//           }
-//         : undefined,
-//       video: video
-//         ? {
-//             data: video,
-//             contentType: req.files.video[0].mimetype,
-//           }
-//         : undefined,
-//     });
-
-//     const savedProduct = await newProduct.save();
-//     res.status(201).json(savedProduct);
-//   } catch (error) {
-//     console.error('Error creating product:', error.message);
-//     res.status(500).json({ message: "Failed to create product" });
-//   }
-// };
-productQueue.process(async (job) => {
-  const { title, description, image, video } = job.data;
-  try {
-    let optimizedImage, optimizedVideo;
-    
-    if (image) {
-      optimizedImage = await optimizeImageBuffer(image);
-    }
-
-    if (video) {
-      optimizedVideo = await optimizeVideoBuffer(video);
-    }
-
-    const newProduct = new Product({
-      title,
-      description,
-      image: optimizedImage
-        ? {
-            data: optimizedImage,
-            contentType: 'image/jpeg',
-          }
-        : undefined,
-      video: optimizedVideo
-        ? {
-            data: optimizedVideo,
-            contentType: 'video/mp4',
-          }
-        : undefined,
-    });
-
-    return await newProduct.save();
-  } catch (error) {
-    throw new Error(`Failed to process product: ${error.message}`);
-  }
-});
-
 const product = async (req, res) => {
   try {
     const { title, description } = req.body;
@@ -429,23 +348,40 @@ const product = async (req, res) => {
       return res.status(400).json({ message: "At least one media file (image or video) is required" });
     }
 
-    const image = req.files.image ? req.files.image[0].buffer : null;
-    const video = req.files.video ? req.files.video[0].buffer : null;
+    let image, video;
+    if (req.files.image) {
+      image = await optimizeImageBuffer(req.files.image[0].buffer);
+    }
 
-    // Add job to queue
-    await productQueue.add({
+    if (req.files.video) {
+      video = await optimizeVideoBuffer(req.files.video[0].buffer);
+    }
+
+    const newProduct = new Product({
       title,
       description,
-      image,
-      video
+      image: image
+        ? {
+            data: image,
+            contentType: req.files.image[0].mimetype,
+          }
+        : undefined,
+      video: video
+        ? {
+            data: video,
+            contentType: req.files.video[0].mimetype,
+          }
+        : undefined,
     });
 
-    res.status(202).json({ message: "Product processing started" });
+    const savedProduct = await newProduct.save();
+    res.status(201).json(savedProduct);
   } catch (error) {
     console.error('Error creating product:', error.message);
     res.status(500).json({ message: "Failed to create product" });
   }
 };
+
 const media = async (req, res) => {
   const { type } = req.query;
 
