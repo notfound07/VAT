@@ -48,11 +48,11 @@ const Shopping = () => {
                                 .map((item) => (
                                     <div className="art-card" key={item._id} onClick={() => window.location.href = item.title === "Kiosk" ? '/Kiosk' : `/Details/${item._id}`}>
                                         <div className="art-image-wrapper">
-                                            <img
-                                                src={`data:${item.image.contentType};base64,${Buffer.from(item.image.data).toString('base64')}`}
-                                                alt={item.title}
-                                                className="art-image"
-                                            />
+                                                <img
+                                                    src={`data:${item.image.contentType};base64,${Buffer.from(item.image.data).toString('base64')}`}
+                                                    alt={item.title}
+                                                    className="art-image"
+                                                />
                                             <div className="overlay">
                                                 <button className="view-details-button">
                                                     {item.title === "Kiosk" ? "View All Products" : "View Details"}

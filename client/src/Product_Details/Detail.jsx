@@ -19,11 +19,11 @@ const Detail = () => {
   const [shuffledItems, setShuffledItems] = useState([]);
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true); // Loading state
+  const [isLoadingSuggestions, setIsLoadingSuggestions] = useState(true); // Loading state for suggestions
   const baseURL =
     window.location.hostname === "localhost"
       ? "http://localhost:3001/vat"
       : `${window.location.protocol}//visionaryarttech.com/vat`;
-
 
   const handleEditClick = () => {
     setEditTitle(item.title);
@@ -43,9 +43,10 @@ const Detail = () => {
   // Update shuffled items when orders change
   useEffect(() => {
     if (orders.length) {
-      setIsLoading(true); // Set loading to true
-      setShuffledItems(shuffleArray(orders).slice(0, 4));
-      setIsLoading(false); // Set loading to false once items are set
+      setIsLoadingSuggestions(true); // Set loading to true for suggestions
+      const shuffled = shuffleArray(orders).slice(0, 4);
+      setShuffledItems(shuffled);
+      setIsLoadingSuggestions(false); // Set loading to false once items are set
     }
   }, [orders]);
 
@@ -196,39 +197,41 @@ const Detail = () => {
             </div>
           )}
         <div className='suggetion-display'>
-          <div className="suggetion-showcase">
-            {isLoading ? (
-              <div className="load">
-                <div className="loader-load">
-                  <img src={logo} alt="Logo" />
-                </div>
-                <p>Loading...</p>
-              </div>
-            ) : (
-              shuffledItems.map((suggestedItem) => (
-                <div
-                  className="suggetion-card"
-                  key={suggestedItem._id}
-                  onClick={() => window.location.href = `/Details/${suggestedItem._id}`}
-                  role="button"
-                  tabIndex={0}
-                  onKeyPress={() => window.location.href = `/Details/${suggestedItem._id}`}
-                >
-                  <div className="suggetion-image-wrapper">
-                    <img
-                      src={`data:${suggestedItem.image.contentType};base64,${Buffer.from(suggestedItem.image.data).toString('base64')}`}
-                      alt={suggestedItem.title}
-                      className="suggetion-image"
-                    />
-                    <div className="overlay">
-                      <button className="suggetion-details-button">View Details</button>
-                    </div>
+          {isLoading ? null : (
+            <div className="suggetion-showcase">
+              {isLoadingSuggestions ? (
+                <div className="load">
+                  <div className="loader-load">
+                    <img src={logo} alt="Logo" />
                   </div>
-                  <h3 className="suggetion-title">{suggestedItem.title}</h3>
+                  <p>Loading...</p>
                 </div>
-              ))
-            )}
-          </div>
+              ) : (
+                shuffledItems.map((suggestedItem) => (
+                  <div
+                    className="suggetion-card"
+                    key={suggestedItem._id}
+                    onClick={() => window.location.href = `/Details/${suggestedItem._id}`}
+                    role="button"
+                    tabIndex={0}
+                    onKeyPress={() => window.location.href = `/Details/${suggestedItem._id}`}
+                  >
+                    <div className="suggetion-image-wrapper">
+                        <img
+                          src={`data:${suggestedItem.image.contentType};base64,${Buffer.from(suggestedItem.image.data).toString('base64')}`}
+                          alt={suggestedItem.title}
+                          className="suggetion-image"
+                        />
+                      <div className="overlay">
+                        <button className="suggetion-details-button">View Details</button>
+                      </div>
+                    </div>
+                    <h3 className="suggetion-title">{suggestedItem.title}</h3>
+                  </div>
+                ))
+              )}
+            </div>
+          )}
         </div>
       </div>
       <Footer />

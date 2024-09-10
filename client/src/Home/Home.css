@@ -191,6 +191,11 @@ body {
   margin-bottom: 20px;
 }
 
+.desc-list {
+  color: black;
+  font-size: large;
+}
+
 .info-img {
   width: 300px;
   height: 300px;
@@ -305,6 +310,80 @@ body {
   width: 50px;
   height: auto;
 }
+
+.whatwedo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 50px;
+  width: 100%;
+  padding: 20px 40px 40px 40px;
+  background-color: #7b888d;
+}
+
+.whatwedo2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+  padding: 0px 40px 40px 40px;
+  background-color: #7b888d;
+}
+.whatwedotwo2{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 0px 40px 40px 40px;
+  background-color: #7b888d;
+}
+
+.whatwedomu {
+  width: 400px;
+  height: 300px;
+  border-radius: 30px;
+  padding: 20px 0px;
+}
+.whatwedotwoob{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.whatwedotwolaser{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  border-radius: 20%;
+}
+.whatwedomuob{
+  width: 280px;
+  height: 200px;
+  border-radius: 30px;
+  padding: 20px 0px;
+}
+
+.desc-whatwedo {
+  color: black;
+  font-size: large;
+  margin-bottom: 20px;
+}
+
+
+.whatwedotwo{
+  width: 600px;
+  display: flex;
+  flex-direction: column; 
+}
+
+
+.whatwedotwo h2{
+  padding-bottom: 20px;
+}
+
 
 @keyframes spin {
   0% {
