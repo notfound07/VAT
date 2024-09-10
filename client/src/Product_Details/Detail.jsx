@@ -105,7 +105,7 @@ const Detail = () => {
                       <div className="thumbnails">
                         <label htmlFor="slide1">
                           {item.image ? (
-                            <img className="thumbnail"
+                            <img className="thumbnail" loading="lazy"
                               src={`data:${item.image.contentType};base64,${Buffer.from(item.image.data.data).toString('base64')}`}
                               alt={item.title}
                             />
@@ -113,7 +113,7 @@ const Detail = () => {
                         </label>
                         {item.video && (
                           <label htmlFor="slide2">
-                            <video className="thumbnail" autoPlay muted loop playsInline>
+                            <video className="thumbnail" autoPlay muted loop playsInline loading="lazy">
                               <source
                                 src={`data:${item.video.contentType};base64,${Buffer.from(item.video.data.data).toString('base64')}`}
                                 type={item.video.contentType}
@@ -129,7 +129,7 @@ const Detail = () => {
                           <div className="slides">
                             <div className="slide">
                               {item.image ? (
-                                <img className="main-img"
+                                <img className="main-img" loading="lazy"
                                   src={`data:${item.image.contentType};base64,${Buffer.from(item.image.data.data).toString('base64')}`}
                                   alt={item.title}
                                 />
@@ -137,7 +137,7 @@ const Detail = () => {
                             </div>
                             {item.video && (
                               <div className="slide">
-                                <video className="main-img" autoPlay muted loop playsInline>
+                                <video className="main-img" autoPlay muted loop playsInline loading="lazy">
                                   <source
                                     src={`data:${item.video.contentType};base64,${Buffer.from(item.video.data.data).toString('base64')}`}
                                     type={item.video.contentType}

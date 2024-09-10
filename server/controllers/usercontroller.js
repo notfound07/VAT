@@ -8,7 +8,14 @@ const bcrypt = require("bcryptjs");
 const jwt = require('jsonwebtoken');
 require("dotenv").config({ path: '../.env' });
 const nodemailer = require("nodemailer");
+const sharp = require('sharp');
+const ffmpeg = require('fluent-ffmpeg');
+const ffmpegPath = require('ffmpeg-static');
+const { PassThrough } = require('stream');
+const Bull = require('bull');
+const productQueue = new Bull('productQueue', 'redis://127.0.0.1:6379');
 
+ffmpeg.setFfmpegPath(ffmpegPath);
 
 const JWT_SECRET = "your_secret_key";
 
@@ -296,48 +303,149 @@ const Allbooking = async (req, res) => {
   }
 };
 
+const optimizeImageBuffer = async (imageBuffer) => {
+  try {
+    // Resize and compress image
+    const optimizedBuffer = await sharp(imageBuffer)
+      .resize(800, 600) // Resize to 800x600
+      .jpeg({ quality: 80 }) // Compress and convert to JPEG
+      .toBuffer();
+    return optimizedBuffer;
+  } catch (error) {
+    console.error('Error optimizing image:', error);
+    throw error;
+  }
+};
+const optimizeVideoBuffer = (videoBuffer) => {
+  return new Promise((resolve, reject) => {
+    const inputStream = new PassThrough();
+    inputStream.end(videoBuffer);
+
+    const outputStream = new PassThrough();
+    const chunks = [];
+
+    outputStream.on('data', (chunk) => chunks.push(chunk));
+    outputStream.on('end', () => resolve(Buffer.concat(chunks)));
+
+    ffmpeg()
+      .input(inputStream)
+      .videoCodec('libx264')
+      .audioCodec('aac')
+      .outputOptions('-crf 23')
+      .pipe(outputStream, { end: true })
+      .on('error', (err) => reject(err));
+  });
+};
+// const product = async (req, res) => {
+//   try {
+//     const { title, description } = req.body;
+
+//     if (!title || !description) {
+//       return res.status(400).json({ message: "Title and description are required" });
+//     }
+
+//     if (!req.files || (!req.files.image && !req.files.video)) {
+//       return res.status(400).json({ message: "At least one media file (image or video) is required" });
+//     }
+
+//     let image, video;
+//     if (req.files.image) {
+//       image = await optimizeImageBuffer(req.files.image[0].buffer);
+//     }
+
+//     if (req.files.video) {
+//       video = await optimizeVideoBuffer(req.files.video[0].buffer);
+//     }
+
+//     const newProduct = new Product({
+//       title,
+//       description,
+//       image: image
+//         ? {
+//             data: image,
+//             contentType: req.files.image[0].mimetype,
+//           }
+//         : undefined,
+//       video: video
+//         ? {
+//             data: video,
+//             contentType: req.files.video[0].mimetype,
+//           }
+//         : undefined,
+//     });
+
+//     const savedProduct = await newProduct.save();
+//     res.status(201).json(savedProduct);
+//   } catch (error) {
+//     console.error('Error creating product:', error.message);
+//     res.status(500).json({ message: "Failed to create product" });
+//   }
+// };
+productQueue.process(async (job) => {
+  const { title, description, image, video } = job.data;
+  try {
+    let optimizedImage, optimizedVideo;
+    
+    if (image) {
+      optimizedImage = await optimizeImageBuffer(image);
+    }
+
+    if (video) {
+      optimizedVideo = await optimizeVideoBuffer(video);
+    }
+
+    const newProduct = new Product({
+      title,
+      description,
+      image: optimizedImage
+        ? {
+            data: optimizedImage,
+            contentType: 'image/jpeg',
+          }
+        : undefined,
+      video: optimizedVideo
+        ? {
+            data: optimizedVideo,
+            contentType: 'video/mp4',
+          }
+        : undefined,
+    });
+
+    return await newProduct.save();
+  } catch (error) {
+    throw new Error(`Failed to process product: ${error.message}`);
+  }
+});
 
 const product = async (req, res) => {
   try {
     const { title, description } = req.body;
 
-    // Check if title and description are provided
     if (!title || !description) {
       return res.status(400).json({ message: "Title and description are required" });
     }
 
-    // Check if at least one media file (image or video) is provided
     if (!req.files || (!req.files.image && !req.files.video)) {
       return res.status(400).json({ message: "At least one media file (image or video) is required" });
     }
 
-    // Construct the product object
-    const newProduct = new Product({
+    const image = req.files.image ? req.files.image[0].buffer : null;
+    const video = req.files.video ? req.files.video[0].buffer : null;
+
+    // Add job to queue
+    await productQueue.add({
       title,
       description,
-      image: req.files.image
-        ? {
-            data: req.files.image[0].buffer,
-            contentType: req.files.image[0].mimetype,
-          }
-        : undefined,
-      video: req.files.video
-        ? {
-            data: req.files.video[0].buffer,
-            contentType: req.files.video[0].mimetype,
-          }
-        : undefined,
+      image,
+      video
     });
 
-    // Save the product to the database
-    const savedProduct = await newProduct.save();
-    res.status(201).json(savedProduct);
+    res.status(202).json({ message: "Product processing started" });
   } catch (error) {
-    console.error("Error creating product:", error.message);
+    console.error('Error creating product:', error.message);
     res.status(500).json({ message: "Failed to create product" });
   }
 };
-
 const media = async (req, res) => {
   const { type } = req.query;
 
@@ -386,14 +494,34 @@ const getAllProducts = async (req, res) => {
   }
 };
 
-//details
 const getById = async (req, res) => {
   try {
-    const productbyid = await Product.findById(req.params.id);
-    if (!productbyid) {
+    const productById = await Product.findById(req.params.id);
+    if (!productById) {
       return res.status(404).json({ message: "Product not found" });
     }
-    res.json(productbyid);
+
+    // Check if product has a media key and generate a signed URL if it does
+    if (productById.mediaKey) {
+      const params = {
+        Bucket: process.env.AWS_S3_BUCKET_NAME,
+        Key: productById.mediaKey
+      };
+
+      s3.getSignedUrl('getObject', params, (err, url) => {
+        if (err) {
+          console.error('Error generating signed URL for media:', err);
+          return res.status(500).json({ message: "Error generating media URL" });
+        }
+
+        // Attach the media URL to the product object
+        productById.mediaUrl = url;
+        res.json(productById);
+      });
+    } else {
+      // No media key, return the product as is
+      res.json(productById);
+    }
   } catch (error) {
     console.error(error.message);
     res.status(500).json({ message: "Server error" });

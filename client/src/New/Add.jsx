@@ -35,7 +35,6 @@ const Add = () => {
           'Content-Type': 'multipart/form-data',
         },
       });
-      console.log(response.data);
       alert('Product added successfully!');
     } catch (error) {
       console.error('Error adding product:', error);
