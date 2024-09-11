@@ -100,78 +100,93 @@ const Home = () => {
         <div className='slogan-section'>
           <p className='slogan'>What we do?</p>
         </div>
-        <div className='whatwedotwo'>
-          <img className="whatwedomu" src={museum} alt="mission" />
-          <p className='desc-info'>Each of our product is custom made in accordance with the customer requirement the collection and objects that they want to display since all the objects are made for different material, the need different environments for optimum protection and preservation.<br />
-            Our manufactured units provide standards for climate control, humidity control light control, safety, opening mechanism. We try to incorporate these features with the best of design, style, form and performance.<br />
-            Our designs are in accordance with the exterior, interior and the usage of the space. According to that criterion we filter through placement design, opening type, orientation and mechanism of the display cases.<br />
-            Airtightness and micro environment management with Free standing as well as wall  mounted systems. Our designs include free standing, wall mounted, table, modular exhibition display cases. All of these display cases are airtight and with a microenvironment control and a microenvironment tracker</p>
-        </div>
-        <div className='whatwedotwo'>
-          <div className='whatpad'>
-            <h2>Attributes of our Display cases</h2>
-            <li className='desc-list'>Controlled RH (relative humidity)</li>
-            <li className='desc-list'>Light control</li>
-            <li className='desc-list'>Positive air pressure</li>
-            <li className='desc-list'>Minimum air exchange</li>
-            <li className='desc-list'>Temperature control</li>
-            <li className='desc-list'>Real time data</li>
+        <div className='product-section'>
+          <div className='product-info'>
+            <img className="product-image" src={museum} alt="mission" />
+            <p className='product-description'>
+              Each of our products is custom-made in accordance with customer requirements and the collection of objects they want to display. Since all objects are made of different materials, they need different environments for optimum protection and preservation.<br />
+              Our manufactured units provide standards for climate control, humidity control, light control, safety, and opening mechanisms. We incorporate these features with the best of design, style, form, and performance.<br />
+              Our designs align with the exterior, interior, and intended use of the space. Based on these criteria, we filter through placement design, opening type, orientation, and mechanism of the display cases.<br />
+              Airtightness and micro-environment management with free-standing as well as wall-mounted systems. Our designs include free-standing, wall-mounted, table, and modular exhibition display cases. All of these display cases are airtight, with micro-environment control and a tracker.
+            </p>
           </div>
-          <img className="whatwedomu" src={museum2} alt="mission" />
-        </div>
-        <div className='whatwedotwo'>
-          <img className="whatwedomu" src={museum1} alt="mission" />
-          <div className='whatpadtwo'>
-            <h2>Our Storage Cubicals</h2>
-            <li className='desc-list'>Controlled RH (relative humidity)</li>
-            <li className='desc-list'>Light control</li>
-            <li className='desc-list'>Positive air pressure</li>
-            <li className='desc-list'>Minimum air exchange</li>
-            <li className='desc-list'>Temperature control</li>
-            <li className='desc-list'>Real time data</li>
+
+          <div className='display-attributes'>
+            <div className='attribute-center'>
+              <div className='attribute-info'>
+                <h2>Attributes of our Display Cases</h2>
+                <ul>
+                  <li className='attribute-list'>Controlled RH (relative humidity)</li>
+                  <li className='attribute-list'>Light control</li>
+                  <li className='attribute-list'>Positive air pressure</li>
+                  <li className='attribute-list'>Minimum air exchange</li>
+                  <li className='attribute-list'>Temperature control</li>
+                  <li className='attribute-list'>Real-time data</li>
+                </ul>
+              </div>
+            </div>
+            <img className="attribute-image" src={museum2} alt="mission" />
+          </div>
+
+          <div className='storage-cubicals'>
+            <img className="storage-image" src={museum1} alt="mission" />
+            <div className='storage-center'>
+              <div className='storage-info'>
+                <h2>Our Storage Cubicals</h2>
+                <ul>
+                  <li className='storage-list'>Controlled RH (relative humidity)</li>
+                  <li className='storage-list'>Light control</li>
+                  <li className='storage-list'>Positive air pressure</li>
+                  <li className='storage-list'>Minimum air exchange</li>
+                  <li className='storage-list'>Temperature control</li>
+                  <li className='storage-list'>Real-time data</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
+
       </div>
       <div>
         <div className="slogan_client">
           About Company
         </div>
-        <div className='whatwedo'>
-          <div className='whatwedotwotwo'>
+        <div className='services-section'>
+          <div className='services-objective'>
             <h2>Objective</h2>
-            <p className='desc-list'>Tansforms our work culture to
-              make things better and helps to
-              engage long lasting relationship.
-              VisionaryArt.aims to offer high
-              quality and precision turned
-              components with all types of
-              material at competitive price to
-              meet the market demand. </p>
-            <div className='whatwedotwoob'>
-              <img className="whatwedomuob" src={objectiv} alt="mission" />
+            <p className='objective-description'>
+              Transforms our work culture to make things better and helps to engage long-lasting relationships.
+              VisionaryArt aims to offer high quality and precision-turned components with all types of material
+              at competitive prices to meet the market demand.
+            </p>
+            <div className='image-container'>
+              <img className="image-objective" src={objectiv} alt="mission" />
             </div>
-            <h3 className='desc-list'>“We understand the
-              value of asset and
-              timeline”</h3>
-            <div className='whatwedotwoob'>
-              <img className="whatwedomuob" src={objectiv1} alt="mission" />
+            <h3 className='quote'>
+              “We understand the value of asset and timeline”
+            </h3>
+            <div className='image-container'>
+              <img className="image-objective" src={objectiv1} alt="mission" />
             </div>
-            <h3 className='desc-list'>Examples of Machine</h3>
+            <h3 className='machine-title'>Examples of Machines</h3>
           </div>
-          <div className='whatwedotwotwo'>
-            <h2>Building
-              Technology</h2>
-            <p className='desc-whatwedo'>We emphasize on Smart Work rather than hard work.<br />
-              Our Experienced and Skilled Labor assist by utilizing their potential.<br />
-              Quality Machines also plays equally important role in this complete format.</p>
-            <h3 className='desc-whatwedo'>Crafting
-              Excellence, Building
-              Tomorrow</h3>
-            <div className='whatwedot'>
+
+          <div className='services-technology'>
+            <h2>Building Technology</h2>
+            <p className='technology-description'>
+              We emphasize Smart Work rather than hard work. <br />
+              Our experienced and skilled labor assist by utilizing their potential. <br />
+              Quality machines also play an equally important role in this complete format.
+            </p>
+            <h3 className='technology-quote'>
+              Crafting Excellence, Building Tomorrow
+            </h3>
+            <div className='image-wrapper'>
               <img src={laser} alt="mission" />
             </div>
           </div>
         </div>
+
       </div>
 
       <div className='slogan-section'>
@@ -204,17 +219,18 @@ const Home = () => {
       <div className="slogan_client">
         Clients Corner
       </div>
-      <div className='heading-client'>
-        <div className='client-logo'>
-          <img className="logo-img1" src={VLogo2} alt="Client Logo" />
+      <div className='client-header'>
+        <div className='client-item'>
+          <img className="client-img" src={VLogo2} alt="Client Logo" />
         </div>
-        <div className='client-logo' onClick={() => window.location.href = 'https://vishalaakshiconsultants.com/'}>
-          <img className="logo-img1" src={VLogo} alt="Client Logo" />
+        <div className='client-item' onClick={() => window.location.href = 'https://vishalaakshiconsultants.com/'}>
+          <img className="client-img" src={VLogo} alt="Client Logo" />
         </div>
-        <div className='client-logo'>
-          <img className="logo-img1" src={VLogo3} alt="Client Logo" />
+        <div className='client-item'>
+          <img className="client-img" src={VLogo3} alt="Client Logo" />
         </div>
       </div>
+
       <Footer />
     </div>
   );
