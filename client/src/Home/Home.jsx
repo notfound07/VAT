@@ -13,6 +13,7 @@ import machine from '../Assets/machine.png';
 import logo from '../Assets/logo.png';
 import museum from '../Assets/MuseumDisplay.jpeg';
 import museum1 from '../Assets/MuseumDisplay1.jpeg';
+import museum2 from '../Assets/MuseumDisplay2.png';
 import objectiv from '../Assets/objectiv0.png';
 import objectiv1 from '../Assets/objectiv1.png';
 import laser from '../Assets/LaserEtching.png';
@@ -99,9 +100,15 @@ const Home = () => {
         <div className='slogan-section'>
           <p className='slogan'>What we do?</p>
         </div>
-        <div className='whatwedo'>
-          <div className='whatwedotwo'>
-            <img className="whatwedomu" src={museum} alt="mission" />
+        <div className='whatwedotwo'>
+          <img className="whatwedomu" src={museum} alt="mission" />
+          <p className='desc-info'>Each of our product is custom made in accordance with the customer requirement the collection and objects that they want to display since all the objects are made for different material, the need different environments for optimum protection and preservation.<br />
+            Our manufactured units provide standards for climate control, humidity control light control, safety, opening mechanism. We try to incorporate these features with the best of design, style, form and performance.<br />
+            Our designs are in accordance with the exterior, interior and the usage of the space. According to that criterion we filter through placement design, opening type, orientation and mechanism of the display cases.<br />
+            Airtightness and micro environment management with Free standing as well as wall  mounted systems. Our designs include free standing, wall mounted, table, modular exhibition display cases. All of these display cases are airtight and with a microenvironment control and a microenvironment tracker</p>
+        </div>
+        <div className='whatwedotwo'>
+          <div className='whatpad'>
             <h2>Attributes of our Display cases</h2>
             <li className='desc-list'>Controlled RH (relative humidity)</li>
             <li className='desc-list'>Light control</li>
@@ -110,12 +117,11 @@ const Home = () => {
             <li className='desc-list'>Temperature control</li>
             <li className='desc-list'>Real time data</li>
           </div>
-          <p className='desc-info'>Each of our product is custom made in accordance with the customer requirement the collection and objects that they want to display since all the objects are made for different material, the need different environments for optimum protection and preservation
-            Our manufactured units provide standards for climate control, humidity control light control, safety, opening mechanism. We try to incorporate these features with the best of design, style, form and performance.
-            Our designs are in accordance with the exterior, interior and the usage of the space. According to that criterion we filter through placement design, opening type, orientation and mechanism of the display cases.
-            Airtightness and micro environment management with Free standing as well as wall  mounted systems.
-            Our designs include free standing, wall mounted, table, modular exhibition display cases. All of these display cases are airtight and with a microenvironment control and a microenvironment tracker</p>
-          <div className='whatwedotwo'>
+          <img className="whatwedomu" src={museum2} alt="mission" />
+        </div>
+        <div className='whatwedotwo'>
+          <img className="whatwedomu" src={museum1} alt="mission" />
+          <div className='whatpadtwo'>
             <h2>Our Storage Cubicals</h2>
             <li className='desc-list'>Controlled RH (relative humidity)</li>
             <li className='desc-list'>Light control</li>
@@ -123,7 +129,6 @@ const Home = () => {
             <li className='desc-list'>Minimum air exchange</li>
             <li className='desc-list'>Temperature control</li>
             <li className='desc-list'>Real time data</li>
-            <img className="whatwedomu" src={museum1} alt="mission" />
           </div>
         </div>
       </div>
@@ -131,8 +136,8 @@ const Home = () => {
         <div className="slogan_client">
           About Company
         </div>
-        <div className='whatwedo2'>
-          <div className='whatwedotwo2'>
+        <div className='whatwedo'>
+          <div className='whatwedotwotwo'>
             <h2>Objective</h2>
             <p className='desc-list'>Tansforms our work culture to
               make things better and helps to
@@ -153,18 +158,18 @@ const Home = () => {
             </div>
             <h3 className='desc-list'>Examples of Machine</h3>
           </div>
-          <div className='whatwedotwo2'>
+          <div className='whatwedotwotwo'>
             <h2>Building
               Technology</h2>
             <p className='desc-whatwedo'>We emphasize on Smart Work rather than hard work.<br />
               Our Experienced and Skilled Labor assist by utilizing their potential.<br />
               Quality Machines also plays equally important role in this complete format.</p>
-            <div className='whatwedotwoob'>
-              <img className="whatwedomulaser" src={laser} alt="mission" />
-            </div>
             <h3 className='desc-whatwedo'>Crafting
               Excellence, Building
               Tomorrow</h3>
+            <div className='whatwedot'>
+              <img src={laser} alt="mission" />
+            </div>
           </div>
         </div>
       </div>
@@ -203,7 +208,7 @@ const Home = () => {
         <div className='client-logo'>
           <img className="logo-img1" src={VLogo2} alt="Client Logo" />
         </div>
-        <div className='client-logo1' onClick={() => window.location.href = 'https://vishalaakshiconsultants.com/'}>
+        <div className='client-logo' onClick={() => window.location.href = 'https://vishalaakshiconsultants.com/'}>
           <img className="logo-img1" src={VLogo} alt="Client Logo" />
         </div>
         <div className='client-logo'>
