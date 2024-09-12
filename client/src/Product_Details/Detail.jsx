@@ -43,10 +43,24 @@ const Detail = () => {
   // Update shuffled items when orders change
   useEffect(() => {
     if (orders.length) {
-      setIsLoadingSuggestions(true); // Set loading to true for suggestions
-      const shuffled = shuffleArray(orders).slice(0, 4);
-      setShuffledItems(shuffled);
-      setIsLoadingSuggestions(false); // Set loading to false once items are set
+      setIsLoadingSuggestions(true);
+
+      // Filter out the specific item you want to include in the shuffle (e.g., "Kiosk")
+      const specificItem = orders.find(item => /Kiosks?$/i.test(item.title));
+
+      // Filter out the other items
+      const filteredOrders = orders.filter(item => !/Kiosks?$/i.test(item.title));
+
+      // Combine the specific item with the other items
+      const combinedOrders = specificItem ? [specificItem, ...filteredOrders] : filteredOrders;
+
+      // Shuffle the combined list
+      const shuffledItems = shuffleArray(combinedOrders).slice(0, 4); // Adjust the slice value if needed
+
+      // Set the shuffled items to state
+      setShuffledItems(shuffledItems);
+
+      setIsLoadingSuggestions(false);
     }
   }, [orders]);
 
@@ -90,112 +104,112 @@ const Detail = () => {
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></link>
       <Navbar />
       <div className="detail-container">
-          {isLoading ? (
-            <div className="load-shop">
-              <div className="loader-load-shop">
-                <img src={logo} alt="Logo" />
-              </div>
-              <p>Loading...</p>
+        {isLoading ? (
+          <div className="load-shop">
+            <div className="loader-load-shop">
+              <img src={logo} alt="Logo" />
             </div>
-          ) : (
-            <div className="main-column">
-              {item && (
-                <div className="art-item">
-                  <div className='art-img-container'>
-                    <div className="art-scroll-handle">
-                      <div className="thumbnails">
-                        <label htmlFor="slide1">
-                          {item.image ? (
-                            <img className="thumbnail" loading="lazy"
-                              src={`data:${item.image.contentType};base64,${Buffer.from(item.image.data.data).toString('base64')}`}
-                              alt={item.title}
+            <p>Loading...</p>
+          </div>
+        ) : (
+          <div className="main-column">
+            {item && (
+              <div className="art-item">
+                <div className='art-img-container'>
+                  <div className="art-scroll-handle">
+                    <div className="thumbnails">
+                      <label htmlFor="slide1">
+                        {item.image ? (
+                          <img className="thumbnail" loading="lazy"
+                            src={`data:${item.image.contentType};base64,${Buffer.from(item.image.data.data).toString('base64')}`}
+                            alt={item.title}
+                          />
+                        ) : null}
+                      </label>
+                      {item.video && (
+                        <label htmlFor="slide2">
+                          <video className="thumbnail" autoPlay muted loop playsInline loading="lazy">
+                            <source
+                              src={`data:${item.video.contentType};base64,${Buffer.from(item.video.data.data).toString('base64')}`}
+                              type={item.video.contentType}
                             />
-                          ) : null}
+                          </video>
                         </label>
-                        {item.video && (
-                          <label htmlFor="slide2">
-                            <video className="thumbnail" autoPlay muted loop playsInline loading="lazy">
-                              <source
-                                src={`data:${item.video.contentType};base64,${Buffer.from(item.video.data.data).toString('base64')}`}
-                                type={item.video.contentType}
+                      )}
+                    </div>
+                    <div className="slider-buttons">
+                      <div className="slider-container">
+                        <input type="radio" name="slider" id="slide1" checked />
+                        {item.video && <input type="radio" name="slider" id="slide2" />}
+                        <div className="slides">
+                          <div className="slide">
+                            {item.image ? (
+                              <img className="main-img" loading="lazy"
+                                src={`data:${item.image.contentType};base64,${Buffer.from(item.image.data.data).toString('base64')}`}
+                                alt={item.title}
                               />
-                            </video>
-                          </label>
-                        )}
-                      </div>
-                      <div className="slider-buttons">
-                        <div className="slider-container">
-                          <input type="radio" name="slider" id="slide1" checked />
-                          {item.video && <input type="radio" name="slider" id="slide2" />}
-                          <div className="slides">
-                            <div className="slide">
-                              {item.image ? (
-                                <img className="main-img" loading="lazy"
-                                  src={`data:${item.image.contentType};base64,${Buffer.from(item.image.data.data).toString('base64')}`}
-                                  alt={item.title}
-                                />
-                              ) : null}
-                            </div>
-                            {item.video && (
-                              <div className="slide">
-                                <video className="main-img" autoPlay muted loop playsInline loading="lazy">
-                                  <source
-                                    src={`data:${item.video.contentType};base64,${Buffer.from(item.video.data.data).toString('base64')}`}
-                                    type={item.video.contentType}
-                                  />
-                                </video>
-                              </div>
-                            )}
+                            ) : null}
                           </div>
-                        </div>
-                        <div>
-                          {show ? (
-                            <button className='delete-from-cart-btn' onClick={handleDelete}>Delete</button>
-                          ) : (
-                            <button
-                              className="buy-now-btn"
-                              onClick={() => window.location.href = `/Contact`}>Order Now <i className="fa-solid fa-right-long"></i>
-                            </button>
+                          {item.video && (
+                            <div className="slide">
+                              <video className="main-img" autoPlay muted loop playsInline loading="lazy">
+                                <source
+                                  src={`data:${item.video.contentType};base64,${Buffer.from(item.video.data.data).toString('base64')}`}
+                                  type={item.video.contentType}
+                                />
+                              </video>
+                            </div>
                           )}
                         </div>
+                      </div>
+                      <div>
+                        {show ? (
+                          <button className='delete-from-cart-btn' onClick={handleDelete}>Delete</button>
+                        ) : (
+                          <button
+                            className="buy-now-btn"
+                            onClick={() => window.location.href = `/Contact`}>Order Now <i className="fa-solid fa-right-long"></i>
+                          </button>
+                        )}
                       </div>
                     </div>
                   </div>
                 </div>
-              )}
-            </div>
-          )}
-          {item && (
-            <div className='art-details-text'>
-              {edit ? (
-                <div>
-                  <input
-                    className="art-name"
-                    value={edittitle}
-                    onChange={(e) => setEditTitle(e.target.value)}
-                  />
-                  <h3>Description</h3>
-                  <textarea
-                    rows="20"
-                    className="description-edit"
-                    value={editdescription}
-                    onChange={(e) => setEditDescription(e.target.value)}
-                  />
-                  <div className='edit-flex-buttons'>
-                    <button onClick={handleSaveClick} className="save-from-btn">Save</button>
-                    <button className='cancel-to-btn' onClick={() => setEdit(false)}>Cancel</button>
-                  </div>
+              </div>
+            )}
+          </div>
+        )}
+        {item && (
+          <div className='art-details-text'>
+            {edit ? (
+              <div>
+                <input
+                  className="art-name"
+                  value={edittitle}
+                  onChange={(e) => setEditTitle(e.target.value)}
+                />
+                <h3>Description</h3>
+                <textarea
+                  rows="20"
+                  className="description-edit"
+                  value={editdescription}
+                  onChange={(e) => setEditDescription(e.target.value)}
+                />
+                <div className='edit-flex-buttons'>
+                  <button onClick={handleSaveClick} className="save-from-btn">Save</button>
+                  <button className='cancel-to-btn' onClick={() => setEdit(false)}>Cancel</button>
                 </div>
-              ) : (
-                <div className='art-details-text'>
-                  <div className="art-name">{item.title}</div>
-                  <h3>Description</h3>
-                  <div className="art-description">{item.description}</div>
-                  {show && <button onClick={handleEditClick} className="add-to-cart-btn">Edit</button>}
-                </div>
-              )}
-            </div>
-          )}
+              </div>
+            ) : (
+              <div className='art-details-text'>
+                <div className="art-name">{item.title}</div>
+                <h3>Description</h3>
+                <div className="art-description">{item.description}</div>
+                {show && <button onClick={handleEditClick} className="add-to-cart-btn">Edit</button>}
+              </div>
+            )}
+          </div>
+        )}
         <div className='suggetion-display'>
           {isLoading ? null : (
             <div className="suggetion-showcase">
@@ -207,26 +221,28 @@ const Detail = () => {
                   <p>Loading...</p>
                 </div>
               ) : (
-                shuffledItems.map((suggestedItem) => (
+                shuffledItems.map((item) => (
                   <div
                     className="suggetion-card"
-                    key={suggestedItem._id}
-                    onClick={() => window.location.href = `/Details/${suggestedItem._id}`}
+                    key={item._id}
+                    onClick={() => window.location.href = item.title === "Kiosk" ? '/Kiosk' : `/Details/${item._id}`}
                     role="button"
                     tabIndex={0}
-                    onKeyPress={() => window.location.href = `/Details/${suggestedItem._id}`}
+                    onKeyPress={() => window.location.href = item.title === "Kiosk" ? '/Kiosk' : `/Details/${item._id}`}
                   >
                     <div className="suggetion-image-wrapper">
-                        <img
-                          src={`data:${suggestedItem.image.contentType};base64,${Buffer.from(suggestedItem.image.data).toString('base64')}`}
-                          alt={suggestedItem.title}
-                          className="suggetion-image"
-                        />
+                      <img
+                        src={`data:${item.image.contentType};base64,${Buffer.from(item.image.data).toString('base64')}`}
+                        alt={item.title}
+                        className="suggetion-image"
+                      />
                       <div className="overlay">
-                        <button className="suggetion-details-button">View Details</button>
+                        <button className="suggetion-details-button">
+                          {item.title === "Kiosk" ? "View All Products" : "View Details"}
+                        </button>
                       </div>
                     </div>
-                    <h3 className="suggetion-title">{suggestedItem.title}</h3>
+                    <h3 className="suggetion-title">{item.title}</h3>
                   </div>
                 ))
               )}

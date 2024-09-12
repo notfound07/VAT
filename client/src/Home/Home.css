@@ -403,16 +403,20 @@ body {
   height: auto;
   border-radius: 10px;
 }
+.storage-info,.attribute-info h2{
+  text-align: center;
+}
 
 /* List Styling */
 ul {
+  text-align: center;
   list-style-type: none;
   padding: 0;
 }
 
 li {
   padding: 5px 0;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 @keyframes spin {

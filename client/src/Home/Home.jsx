@@ -39,9 +39,24 @@ const Home = () => {
 
   useEffect(() => {
     if (orders.length) {
-      setIsLoading(true); // Set loading to true
-      setShuffledItems(shuffleArray(orders).slice(0, 4));
-      setIsLoading(false); // Set loading to false once items are set
+      setIsLoading(true);
+
+      // Filter out the specific item you want to include in the shuffle (e.g., "Kiosk")
+      const specificItem = orders.find(item => /Kiosks?$/i.test(item.title));
+
+      // Filter out the other items
+      const filteredOrders = orders.filter(item => !/Kiosks?$/i.test(item.title));
+
+      // Combine the specific item with the other items
+      const combinedOrders = specificItem ? [specificItem, ...filteredOrders] : filteredOrders;
+
+      // Shuffle the combined list
+      const shuffledItems = shuffleArray(combinedOrders).slice(0, 4); // Adjust the slice value if needed
+
+      // Set the shuffled items to state
+      setShuffledItems(shuffledItems);
+
+      setIsLoading(false);
     }
   }, [orders]);
 
@@ -71,10 +86,10 @@ const Home = () => {
               <div
                 className="item-card"
                 key={item._id}
-                onClick={() => window.location.href = `/Details/${item._id}`}
+                onClick={() => window.location.href = item.title === "Kiosk" ? '/Kiosk' : `/Details/${item._id}`}
                 role="button"
                 tabIndex={0}
-                onKeyPress={() => window.location.href = `/Details/${item._id}`}
+                onKeyPress={() => window.location.href = item.title === "Kiosk" ? '/Kiosk' : `/Details/${item._id}`}
               >
                 <div className="item-image-wrapper">
                   <img
@@ -83,7 +98,9 @@ const Home = () => {
                     className="item-image"
                   />
                   <div className="overlay">
-                    <button className="view-details-button">View Details</button>
+                    <button className="view-details-button">
+                      {item.title === "Kiosk" ? "View All Products" : "View Details"}
+                    </button>
                   </div>
                 </div>
                 <h3 className="item-title">{item.title}</h3>
