@@ -4,8 +4,6 @@
     align-items: center;
     height: 100vh;
     width: 100%;
-    max-height: 100vh; /* Restrict height to ensure content is scrollable */
-    overflow-y: hidden;
 }
 
 .parent-signup-container {
@@ -14,8 +12,6 @@
     align-items: center;
     height: 100vh;
     width: 100%;
-    max-height: 100vh; /* Restrict height to ensure content is scrollable */
-    overflow-y: hidden;
 }
 
 .container, .signup-container {
@@ -172,89 +168,96 @@
   }
 
   
- /* Styles for screens below 350px */
-@media (max-width: 339px) {
-    .container, .signup-container {
-        flex-direction: column;
-        width: 280px; /* Adjust width as needed */
-        margin: 10px auto; /* Center container horizontally */
-        position: relative; /* Adjust positioning if needed */
-    }
-
-    .right, .left, .signup-right, .signup-left {
-        width: 100%;
-    }
-
-    .right {
-        height: 350px;
-        order: 2; /* Display .right (or .signup-right) second */
-    } 
-    .signup-right {
-        height: 180px;
-    }
-
-    .signup-left {
-        height: 520px;
-        order: 1; /* Display .left (or .signup-left) first */
-    }
-
-    .left {
-        height: 180px;
-        padding: 0px;
-        order: 1; /* Display .left (or .signup-left) first */
-    }
-
-    .login-home-link, .signup-home-link {
-        bottom: 10px;
-        font-size: 12px;
-    }
-
-    .log-res {
-        font-size: 12px;
-    }
-
-    .links a, .signup-links a {
-        font-size: 10px;
-    }
-}
- 
-.popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
   
-  .popup-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  .popup-close-btn {
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-/* Responsive Styles */
-
-
+  .popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    
+    .popup-content {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .popup-close-btn {
+        margin-top: 10px;
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    /* Responsive Styles */
+    
+    
+    /* Styles for screens below 350px */
+   @media (max-width: 339px) {
+        .parent-container, .parent-signup-container{
+            max-height: 100vh; /* Restrict height to ensure content is scrollable */
+            overflow-y: hidden;
+        }
+       .container, .signup-container {
+           flex-direction: column;
+           width: 280px; /* Adjust width as needed */
+           margin: 10px auto; /* Center container horizontally */
+           position: relative; /* Adjust positioning if needed */
+       }
+   
+       .right, .left, .signup-right, .signup-left {
+           width: 100%;
+       }
+   
+       .right {
+           height: 350px;
+           order: 2; /* Display .right (or .signup-right) second */
+       } 
+       .signup-right {
+           height: 180px;
+       }
+   
+       .signup-left {
+           height: 520px;
+           order: 1; /* Display .left (or .signup-left) first */
+       }
+   
+       .left {
+           height: 180px;
+           padding: 0px;
+           order: 1; /* Display .left (or .signup-left) first */
+       }
+   
+       .login-home-link, .signup-home-link {
+           bottom: 10px;
+           font-size: 12px;
+       }
+   
+       .log-res {
+           font-size: 12px;
+       }
+   
+       .links a, .signup-links a {
+           font-size: 10px;
+       }
+   }
 
 /* Styles for screens between 349px and 599px */
 @media (max-width: 599px) and (min-width: 349px) {
-    
+    .parent-container, .parent-signup-container{
+        max-height: 100vh; /* Restrict height to ensure content is scrollable */
+        overflow-y: hidden;
+    }    
 
     .container, .signup-container {
         flex-direction: column;
