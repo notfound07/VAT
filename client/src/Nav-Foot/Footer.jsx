@@ -21,8 +21,8 @@ function Footer() {
           <p><i className="fa-solid fa-location-pin"></i> KH NO.-745 GALI NO.-12,SADDIQ<br/>
           <span className="spaced">NAGAR, GHAZIABAD, U.P.-201017 (INDIA)</span>
           </p>
-          <p className='number'><IoCall /> 8800026077</p>
-          <p className='number'><IoCall /> 999222303</p>
+          <p className='number'><IoCall /> +91 8800026077</p>
+          <p className='number'><IoCall /> +91 9999222303</p>
           <p><MdOutlineAlternateEmail /> visionart.tech24@gmail.com</p>
         </div>
         <div className="footer-section-social">

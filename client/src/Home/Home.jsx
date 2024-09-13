@@ -150,7 +150,7 @@ const Home = () => {
             <div className='storage-center'>
               <div className='storage-info'>
                 <h2>Our Storage Cubicals</h2>
-                <ul>
+                <ul >
                   <li className='storage-list'>Controlled RH (relative humidity)</li>
                   <li className='storage-list'>Light control</li>
                   <li className='storage-list'>Positive air pressure</li>
@@ -185,7 +185,6 @@ const Home = () => {
             <div className='image-container'>
               <img className="image-objective" src={objectiv1} alt="mission" />
             </div>
-            <h3 className='machine-title'>Examples of Machines</h3>
           </div>
 
           <div className='services-technology'>
