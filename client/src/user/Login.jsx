@@ -49,7 +49,7 @@ function Login() {
         }
         localStorage.setItem("LoggedUser", email);
         localStorage.setItem('authToken', token)
-        navigate('/Home');
+        navigate('/');
       }
     } catch (err) {
       console.log(err);
@@ -96,7 +96,7 @@ function Login() {
               <a href="/EmailInput">Forget Password?</a>
             </div>
           </form>
-          <Link to="/Home" className="login-home-link"><FaArrowLeft />Home</Link>
+          <Link to="/" className="login-home-link"><FaArrowLeft />Home</Link>
         </div>
       </div>
     </div>

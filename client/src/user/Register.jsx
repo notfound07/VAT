@@ -150,7 +150,7 @@ function Register() {
           </form>
         </div>
         <div className="signup-right"></div>
-        <Link to="/Home" className="signup-home-link">
+        <Link to="/" className="signup-home-link">
           Home
           <FaArrowRight />
         </Link>

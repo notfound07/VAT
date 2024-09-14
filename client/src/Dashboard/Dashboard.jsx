@@ -36,7 +36,7 @@ const Dashboard = () => {
     <div>
       <div className="dashboard-frame">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-        <div className="dashboard-nav" onClick={() => window.location.href = '/Home'}>
+        <div className="dashboard-nav" onClick={() => window.location.href = '/'}>
           <img className="company-dashboard-logo" src={logo} alt="Company Logo" />
           <p className='dashboard-title'>Dashboard</p>
         </div>

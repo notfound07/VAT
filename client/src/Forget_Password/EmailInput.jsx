@@ -73,7 +73,7 @@ const EmailInput = () => {
             </Link>
           </form>
         </div>
-        <Link to="/Home" className="rec-home-link"><FaArrowLeft />Home</Link>
+        <Link to="/" className="rec-home-link"><FaArrowLeft />Home</Link>
       </div>
     </div>
   );
