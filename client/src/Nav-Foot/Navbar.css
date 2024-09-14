@@ -44,8 +44,14 @@
 
 .nav-link:hover,
 .nav-button-link:hover {
-    color: #408EA7;
+    color: #3498db;
 }
+
+.nav-link.active {
+    font-weight: bold;
+    color: #3498db; /* Or any highlight color you prefer */
+}
+
 
 .nav-link-drop {
     color: white;
@@ -192,6 +198,8 @@
         border-bottom: none;
     }
 }
+
+
 
 @media screen and (max-width: 599px) {
     .frame {

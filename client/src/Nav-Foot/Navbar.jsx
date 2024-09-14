@@ -1,23 +1,48 @@
 import './Navbar.css';
 import logo from '../Assets/logo.png';
-import { useState, useEffect, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect, useContext, useRef } from 'react';
+import { Link, useLocation } from 'react-router-dom'; // Import useLocation
 import { RecoveryContext } from '../App';
-import { jwtDecode } from 'jwt-decode'
+import { jwtDecode } from 'jwt-decode';
+
 function Navbar() {
     const { show, setShow } = useContext(RecoveryContext);
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [userDropdownVisible, setUserDropdownVisible] = useState(false);
+    const dropdownRef = useRef(null); 
+    const userDropdownRef = useRef(null);
     const LoggedUser = localStorage.getItem("LoggedUser");
     const userNameInitial = LoggedUser ? LoggedUser.charAt(0).toUpperCase() : '';
 
+    const location = useLocation(); // Get the current location
+
     const toggleDropdown = () => {
-        setDropdownVisible(!dropdownVisible);
+        setDropdownVisible(prevState => !prevState);
+    };
+
+    const handleDropdownLinkClick = () => {
+        setDropdownVisible(false);
     };
 
     const toggleUserDropdown = () => {
-        setUserDropdownVisible(!userDropdownVisible);
+        setUserDropdownVisible(prevState => !prevState);
     };
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setDropdownVisible(false);
+            }
+            if (userDropdownRef.current && !userDropdownRef.current.contains(event.target)) {
+                setUserDropdownVisible(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
 
     useEffect(() => {
         const handleResize = () => {
@@ -38,40 +63,43 @@ function Navbar() {
         setShow(false);
         window.location.href = '/Home';
     };
+
     useEffect(() => {
-        // Check if the user is already logged in by checking for the auth token
         const authToken = localStorage.getItem('authToken');
         if (authToken) {
             const decodedToken = jwtDecode(authToken);
-            const currentTime = Date.now() / 1000; // Current time in seconds
+            const currentTime = Date.now() / 1000;
 
             if (decodedToken.exp > currentTime) {
-                const timeLeft = (decodedToken.exp * 1000) - Date.now(); // Time left until token expires
-                setTimeout(handleLogout, timeLeft); // Set a timeout to log out the user when the token expires
+                const timeLeft = (decodedToken.exp * 1000) - Date.now();
+                setTimeout(handleLogout, timeLeft);
             } else {
-                handleLogout(); // If the token has expired, log out the user immediately
+                handleLogout();
             }
         }
     }, []);
+
+    // Function to check if a route is active
+    const isActiveLink = (path) => location.pathname === path ? 'active' : '';
 
     return (
         <div className="frame">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></link>
             <div className="nav-parent">
                 <div className='nav-space'>
-                    <img className="company-logo" onClick={() => window.location.href = '/Home'} src={logo} alt="" />
+                    <img className="company-logo" onClick={() => window.location.href = '/Home'} src={logo} alt="Company Logo" />
                     <p className='company-name'>VisionaryArt Technologies Pvt Ltd</p>
                 </div>
                 <div className="nav-child">
-                    {show ? <Link to="/Dashboard" className='nav-link'><i className="fa-solid fa-table-columns"></i>Dashboard</Link> : null}
-                    <Link to="/Home" className="nav-link"><i className="fa-solid fa-circle-info"></i>Who we are</Link>
-                    <Link to='/Shopping' className="nav-link"><i className="fa-solid fa-store"></i>Product</Link>
-                    <Link to="/Design" className='nav-link'><i class="fa-solid fa-pencil"></i>Design</Link>
-                    <Link to="/Contact" className="nav-link"><i className="fa-solid fa-users"></i>ContactUs</Link>
+                    {show ? <Link to="/Dashboard" className={`nav-link ${isActiveLink("/Dashboard")}`}><i className="fa-solid fa-table-columns"></i>Dashboard</Link> : null}
+                    <Link to="/Home" className={`nav-link ${isActiveLink("/Home")}`}><i className="fa-solid fa-circle-info"></i>Who we are</Link>
+                    <Link to="/Shopping" className={`nav-link ${isActiveLink("/Shopping")}`}><i className="fa-solid fa-store"></i>Product</Link>
+                    <Link to="/Design" className={`nav-link ${isActiveLink("/Design")}`}><i className="fa-solid fa-pencil"></i>Design</Link>
+                    <Link to="/Contact" className={`nav-link ${isActiveLink("/Contact")}`}><i className="fa-solid fa-users"></i>ContactUs</Link>
                     <div className="get-in">
                         {LoggedUser === null ?
-                            <Link to='/Login' className='nav-link'><i className="fa-solid fa-right-to-bracket"></i>SignIn</Link> :
-                            <div className="user-dropdown">
+                            <Link to='/Login' className={`nav-link ${isActiveLink("/Login")}`}><i className="fa-solid fa-right-to-bracket"></i>SignIn</Link> :
+                            <div className="user-dropdown" ref={userDropdownRef}>
                                 <div className="user-icon" onClick={toggleUserDropdown}>{userNameInitial}</div>
                                 <div className={`user-dropdown-menu ${userDropdownVisible ? 'show' : ''}`}>
                                     <p className="userlogo" style={{ backgroundColor: 'blue', color: 'white', paddingRight: "3px", paddingLeft: "3px", fontSize: "20px", fontFamily: 'Times New Roman' }}>Hello, {LoggedUser.split("@").reverse().pop()}</p>
@@ -82,18 +110,20 @@ function Navbar() {
                     </div>
                 </div>
                 <button className="nav-toggle-button" onClick={toggleDropdown}><i className="fa-solid fa-bars"></i></button>
-                <div className={`nav-dropdown ${dropdownVisible ? 'show' : ''}`}>
-                    {LoggedUser === null ? <Link to='/Login' className='nav-link'><i className="fa-solid fa-right-to-bracket"></i>SignIn</Link> :
+                <div ref={dropdownRef} className={`nav-dropdown ${dropdownVisible ? 'show' : ''}`}>
+                    {LoggedUser === null ? <Link to='/Login' className='nav-link' onClick={handleDropdownLinkClick}><i className="fa-solid fa-right-to-bracket"></i>SignIn</Link> :
                         <div className="user-dropdown">
                             <p className="userlogo" style={{ backgroundColor: 'blue', color: 'white', paddingRight: "3px", paddingLeft: "3px", fontSize: "20px", fontFamily: 'Times New Roman' }}>Hello, {LoggedUser.split("@").reverse().pop()}</p>
-                            <Link to="/Home" className='nav-link-li' onClick={handleLogout}><li><i className="fa-solid fa-right-from-bracket"></i>SignOut</li></Link>
+                            <Link to="/Home" className='nav-link-li' onClick={() => { handleLogout(); handleDropdownLinkClick(); }}>
+                                <li><i className="fa-solid fa-right-from-bracket"></i>SignOut</li>
+                            </Link>
                         </div>
                     }
-                    {show ? <Link to="/Dashboard" className='nav-link'><i className="fa-solid fa-table-columns"></i>Dashboard</Link> : null}
-                    <Link to="/Home" className="nav-link"><i className="fa-solid fa-circle-info"></i>Who we are</Link>
-                    <Link to="/Shopping" className="nav-link"><i className="fa-solid fa-store"></i>Product</Link>
-                    <Link to="/Design" className='nav-link'><i class="fa-solid fa-pencil"></i>Design</Link>
-                    <Link to="/Contact" className="nav-link"><i className="fa-solid fa-users"></i>ContactUs</Link>
+                    {show ? <Link to="/Dashboard" className={`nav-link ${isActiveLink("/Dashboard")}`} onClick={handleDropdownLinkClick}><i className="fa-solid fa-table-columns"></i>Dashboard</Link> : null}
+                    <Link to="/Home" className={`nav-link ${isActiveLink("/Home")}`} onClick={handleDropdownLinkClick}><i className="fa-solid fa-circle-info"></i>Who we are</Link>
+                    <Link to="/Shopping" className={`nav-link ${isActiveLink("/Shopping")}`} onClick={handleDropdownLinkClick}><i className="fa-solid fa-store"></i>Product</Link>
+                    <Link to="/Design" className={`nav-link ${isActiveLink("/Design")}`} onClick={handleDropdownLinkClick}><i className="fa-solid fa-pencil"></i>Design</Link>
+                    <Link to="/Contact" className={`nav-link ${isActiveLink("/Contact")}`} onClick={handleDropdownLinkClick}><i className="fa-solid fa-users"></i>ContactUs</Link>
                 </div>
             </div>
         </div>

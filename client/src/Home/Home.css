@@ -358,7 +358,6 @@ body {
 
 .product-section {
   padding: 20px 20px 0px 20px;
-  margin: 0px 30px 0px 30px;
 }
 
 /* Default Row Layout for .product-info */
@@ -404,25 +403,28 @@ body {
   height: auto;
   border-radius: 10px;
 }
-.storage-info h2,.attribute-info h2{
+
+.storage-info h2,
+.attribute-info h2 {
   text-align: center;
   text-decoration: underline;
 }
 
 /* List Styling */
-.storage-info ul{
+.storage-info ul,
+.attribute-info ul {
   text-align: left;
-  padding-left:40px ;
-}
-ul {
-  text-align: left;
-  padding-left:17px ;
+  padding-left: 50px;
+
 }
 
-li {
+.storage-info li,
+.attribute-info li {
   padding: 5px 0;
   font-size: 18px;
 }
+
+
 
 @keyframes spin {
   0% {
@@ -477,6 +479,7 @@ li {
   .item-card {
     flex: 1 1 30%;
   }
+
   .display-attributes,
   .storage-cubicals {
     margin: 10px 100px;
@@ -563,6 +566,14 @@ li {
 
 }
 
+@media (max-width: 920px) {
+  .attribute-info h2 span::after {
+    content: '\A';
+    white-space: pre;
+  }
+
+}
+
 @media (max-width: 768px) {
   .item-card {
     flex: 1 1 100%;
@@ -643,6 +654,10 @@ li {
     order: -1;
 
   }
+  .attribute-info h2 span::after {
+    content: '\A';
+    white-space: normal;
+  }
 
   .storage-image {
     width: 100%;
@@ -718,6 +733,13 @@ li {
     padding: 8px 12px;
   }
 
+}
+
+@media (max-width: 461px) {
+  .attribute-info h2 span::after {
+    content: '\A';
+    white-space: pre;
+  }
 }
 
 @media (max-width: 350px) {

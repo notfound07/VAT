@@ -131,7 +131,7 @@ const Home = () => {
           <div className='display-attributes'>
             <div className='attribute-center'>
               <div className='attribute-info'>
-                <h2>Attributes of our Display Cases</h2>
+                <h2><span>Attributes</span> of our Display Cases</h2>
                 <ul>
                   <li className='attribute-list'>Controlled RH (relative humidity)</li>
                   <li className='attribute-list'>Light control</li>
