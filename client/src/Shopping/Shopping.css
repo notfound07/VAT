@@ -159,6 +159,7 @@ body {
     height: 100%;
     width: 100%;
     text-align: center;
+    padding-top: 50px;
 }
 
 .load-shop p {
@@ -299,7 +300,14 @@ body {
     }
 }
 
-@media (max-width: 660px) and (min-width: 340px) {
+@media (max-width: 660px) and (min-width: 480px) {
+    .load-shop {
+        padding-top: 50px;
+    }
+    
+}
+
+@media (max-width: 480px) and (min-width: 340px) {
     .art-showcase {
         grid-template-columns: repeat(1, 1fr);
     }
