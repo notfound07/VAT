@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./slider.css";
 import img1 from '../Assets/front2.jpeg';
 import img2 from '../Assets/front1.jpg';
@@ -7,6 +7,8 @@ function CustomCarousel({ children }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [slideDone, setSlideDone] = useState(true);
   const [timeID, setTimeID] = useState(null);
+  const startX = useRef(0);
+  const containerRef = useRef(null);
 
   const slideNext = () => {
     setActiveIndex((val) => {
@@ -39,7 +41,6 @@ function CustomCarousel({ children }) {
       );
     }
   }, [slideDone, children.length]);
-  
 
   const AutoPlayStop = () => {
     if (timeID > 0) {
@@ -54,20 +55,49 @@ function CustomCarousel({ children }) {
     }
   };
 
+  const onTouchStart = (e) => {
+    startX.current = e.touches[0].clientX;
+    AutoPlayStop();
+  };
+
+  const onTouchMove = (e) => {
+    const currentX = e.touches[0].clientX;
+    const diffX = startX.current - currentX;
+
+    if (Math.abs(diffX) > 30) {  // Adjust sensitivity here
+      if (diffX > 0) {
+        slideNext();
+      } else {
+        slidePrev();
+      }
+      startX.current = currentX; // Update startX for continuous sliding
+    }
+  };
+
+  const onTouchEnd = () => {
+    AutoPlayStart();
+  };
+
   return (
     <div
       className="container__slider"
+      ref={containerRef}
       onMouseEnter={AutoPlayStop}
       onMouseLeave={AutoPlayStart}
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
     >
-      {children.map((item, index) => (
-        <div
-          className={"slider__item slider__item-active-" + (activeIndex + 1)}
-          key={index}
-        >
-          {item}
-        </div>
-      ))}
+      <div className="slider__wrapper">
+        {children.map((item, index) => (
+          <div
+            className={`slider__item ${activeIndex === index ? 'slide-active' : ''}`}
+            key={index}
+          >
+            {item}
+          </div>
+        ))}
+      </div>
 
       <div className="container__slider__links">
         {children.map((item, index) => (
