@@ -5,7 +5,6 @@
     font-size: 22px;
     border: none;
     position: fixed;
-    font-family: Arial, sans-serif;
     z-index: 999;
     border-bottom: 3px solid transparent;
     border-image: linear-gradient(to right, yellow, orange) 2 round;
