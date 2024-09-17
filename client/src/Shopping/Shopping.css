@@ -130,12 +130,12 @@ body {
     background-color: #e60000;
 }
 
-.loader-load-shop {
+.loader-load-shop-shop {
     margin-bottom: 10px;
     animation: spin 2s linear infinite;
 }
 
-.loader-load-shop img {
+.loader-load-shop-shop img {
     width: 100px;
     height: auto;
 }
@@ -150,7 +150,7 @@ body {
     }
 }
 
-.load-shop {
+.load-shop-shop {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -158,10 +158,9 @@ body {
     height: 100%;
     width: 100%;
     text-align: center;
-    padding-top: 50px;
 }
 
-.load-shop p {
+.load-shop-shop p {
     text-align: center;
     align-items: center;
     font-size: 24px;
@@ -299,13 +298,6 @@ body {
     }
 }
 
-@media (max-width: 660px) and (min-width: 480px) {
-    .load-shop {
-        padding-top: 50px;
-    }
-    
-}
-
 @media (max-width: 480px) and (min-width: 340px) {
     .art-showcase {
         grid-template-columns: repeat(1, 1fr);
@@ -313,8 +305,5 @@ body {
     .art-image-wrapper {
         width: 280px;
         height: 250px;
-    }
-    .load-shop {
-        padding-top: 50px;
     }
 }

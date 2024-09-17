@@ -36,8 +36,8 @@ const Shopping = () => {
                 </div>
                 <div className='art-grid'>
                     {isLoading ? (
-                        <div className="load-shop">
-                            <div className="loader-load-shop">
+                        <div className="load-shop-shop">
+                            <div className="loader-load-shop-shop">
                                 <img src={logo} alt="Logo" />
                             </div>
                             <p>Loading...</p>
