@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./slider.css";
 import img1 from '../Assets/front2.jpeg';
 import img2 from '../Assets/front1.jpg';
@@ -7,6 +7,9 @@ function CustomCarousel({ children }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [slideDone, setSlideDone] = useState(true);
   const [timeID, setTimeID] = useState(null);
+
+  const startPos = useRef(0); // Track starting position
+  const endPos = useRef(0); // Track ending position
 
   const slideNext = () => {
     setActiveIndex((val) => {
@@ -39,7 +42,6 @@ function CustomCarousel({ children }) {
       );
     }
   }, [slideDone, children.length]);
-  
 
   const AutoPlayStop = () => {
     if (timeID > 0) {
@@ -54,11 +56,37 @@ function CustomCarousel({ children }) {
     }
   };
 
+  // Handle swipe or drag start (combined handler)
+  const handleStart = (e) => {
+    startPos.current = e.touches ? e.touches[0].clientX : e.clientX;
+  };
+
+  // Handle swipe or drag move (combined handler)
+  const handleMove = (e) => {
+    endPos.current = e.touches ? e.touches[0].clientX : e.clientX;
+  };
+
+  // Handle swipe or drag end
+  const handleEnd = () => {
+    if (startPos.current - endPos.current > 50) {
+      slideNext(); // Swipe left
+    }
+    if (startPos.current - endPos.current < -50) {
+      slidePrev(); // Swipe right
+    }
+  };
+
   return (
     <div
       className="container__slider"
       onMouseEnter={AutoPlayStop}
       onMouseLeave={AutoPlayStart}
+      onTouchStart={handleStart}
+      onTouchMove={handleMove}
+      onTouchEnd={handleEnd}
+      onMouseDown={handleStart}
+      onMouseMove={handleMove}
+      onMouseUp={handleEnd}
     >
       {children.map((item, index) => (
         <div
@@ -111,11 +139,11 @@ function CustomCarousel({ children }) {
 export const images = [
   {
     imgURL: img2,
-    imgAlt: "img-1"
+    imgAlt: "img-1",
   },
   {
     imgURL: img1,
-    imgAlt: "img-2"
+    imgAlt: "img-2",
   },
 ];
 
