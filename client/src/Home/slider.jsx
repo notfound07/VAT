@@ -4,30 +4,30 @@ import img1 from '../Assets/front2.jpeg';
 import img2 from '../Assets/front1.jpg';
 
 function CustomCarousel({ children }) {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [slideDone, setSlideDone] = useState(true);
-  const [timeID, setTimeID] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(0); // Current active index
+  const [slideDone, setSlideDone] = useState(true);  // To handle auto-play
+  const [timeID, setTimeID] = useState(null);        // Timer ID for auto-play
+  const startPos = useRef(0);   // Track starting position
+  const endPos = useRef(0);     // Track ending position
+  const isDragging = useRef(false); // Track if dragging is occurring
 
-  const startPos = useRef(0); // Track starting position
-  const endPos = useRef(0); // Track ending position
-
+  // Move to the next slide if not at the last one
   const slideNext = () => {
     setActiveIndex((val) => {
-      if (val >= children.length - 1) {
-        return 0;
-      } else {
+      if (val < children.length - 1) {
         return val + 1;
       }
+      return val; // Stay at the last slide if already there
     });
   };
 
+  // Move to the previous slide if not at the first one
   const slidePrev = () => {
     setActiveIndex((val) => {
-      if (val <= 0) {
-        return children.length - 1;
-      } else {
+      if (val > 0) {
         return val - 1;
       }
+      return val; // Stay at the first slide if already there
     });
   };
 
@@ -36,9 +36,9 @@ function CustomCarousel({ children }) {
       setSlideDone(false);
       setTimeID(
         setTimeout(() => {
-          setActiveIndex((val) => (val >= children.length - 1 ? 0 : val + 1));
+          setActiveIndex((val) => (val < children.length - 1 ? val + 1 : val));
           setSlideDone(true);
-        }, 10000)
+        }, 10000) // Auto-play interval
       );
     }
   }, [slideDone, children.length]);
@@ -56,24 +56,40 @@ function CustomCarousel({ children }) {
     }
   };
 
-  // Handle swipe or drag start (combined handler)
+  // Handle the start of drag/swipe
   const handleStart = (e) => {
     startPos.current = e.touches ? e.touches[0].clientX : e.clientX;
+    isDragging.current = true; // Mark as dragging
   };
 
-  // Handle swipe or drag move (combined handler)
+  // Handle the dragging/swiping motion
   const handleMove = (e) => {
+    if (!isDragging.current) return; // If not dragging, return
     endPos.current = e.touches ? e.touches[0].clientX : e.clientX;
   };
 
-  // Handle swipe or drag end
+  // Handle the end of drag/swipe
   const handleEnd = () => {
-    if (startPos.current - endPos.current > 50) {
-      slideNext(); // Swipe left
+    if (!isDragging.current) return; // If no drag occurred, return
+    const difference = startPos.current - endPos.current;
+
+    // Swipe threshold: Avoid accidental tiny swipes
+    const swipeThreshold = 50;
+
+    if (difference > swipeThreshold) {
+      // Swiped left (Next) but only if not at the last slide
+      slideNext();
+    } else if (difference < -swipeThreshold) {
+      // Swiped right (Previous) but only if not at the first slide
+      slidePrev();
     }
-    if (startPos.current - endPos.current < -50) {
-      slidePrev(); // Swipe right
-    }
+    isDragging.current = false; // Reset dragging state
+  };
+
+  // Prevent unwanted dragging on button clicks
+  const handleClick = (e, index) => {
+    e.preventDefault();
+    setActiveIndex(index);
   };
 
   return (
@@ -88,6 +104,7 @@ function CustomCarousel({ children }) {
       onMouseMove={handleMove}
       onMouseUp={handleEnd}
     >
+      {/* Slide Items */}
       {children.map((item, index) => (
         <div
           className={"slider__item slider__item-active-" + (activeIndex + 1)}
@@ -97,6 +114,7 @@ function CustomCarousel({ children }) {
         </div>
       ))}
 
+      {/* Navigation Dots */}
       <div className="container__slider__links">
         {children.map((item, index) => (
           <button
@@ -106,20 +124,19 @@ function CustomCarousel({ children }) {
                 ? "container__slider__links-small container__slider__links-small-active"
                 : "container__slider__links-small"
             }
-            onClick={(e) => {
-              e.preventDefault();
-              setActiveIndex(index);
-            }}
+            onClick={(e) => handleClick(e, index)}
           ></button>
         ))}
       </div>
 
+      {/* Next and Previous Buttons */}
       <button
         className="slider__btn-next"
         onClick={(e) => {
           e.preventDefault();
-          slideNext();
+          slideNext(); // Call slideNext but respect boundary conditions
         }}
+        disabled={activeIndex === children.length - 1} // Disable button if on the last slide
       >
         <i className="fa-solid fa-greater-than"></i>
       </button>
@@ -127,8 +144,9 @@ function CustomCarousel({ children }) {
         className="slider__btn-prev"
         onClick={(e) => {
           e.preventDefault();
-          slidePrev();
+          slidePrev(); // Call slidePrev but respect boundary conditions
         }}
+        disabled={activeIndex === 0} // Disable button if on the first slide
       >
         <i className="fa-solid fa-less-than"></i>
       </button>

@@ -5,25 +5,26 @@
     align-items: center;
     height: 100vh;
     width: 100%;
+
 }
 
 .fr-container {
     display: flex;
     margin: 20px;
     flex-direction: column;
-    width: 100%;
-    max-width: 400px;
+    width: 60vh;
     height: auto;
     background-color: white;
     border-radius: 10px;
-    box-shadow: 10px 10px 20px #204d60, -10px 10px 20px #204d60, 10px -10px 20px #204d60, -10px -10px 20px #204d60;
+    box-shadow: 10px 10px 20px #122a35, -10px 10px 20px #204d60, 10px -10px 20px #204d60, -10px -10px 20px #204d60;
 
 }
-.otp-p{
+
+.otp-p {
     margin-top: 10px;
     font-size: large;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
 .Otp-box {
     display: flex;
     margin-top: 20px;
@@ -46,6 +47,7 @@
     border: 2px solid #219ebc;
     box-shadow: 0 0 10px rgba(34, 27, 88, 0.6);
 }
+
 .verify_button {
     margin-top: 40px;
     background-color: #2666c5;
@@ -63,6 +65,7 @@
 .verify_button:hover {
     background-color: #8ecae6;
 }
+
 .middel {
     padding: 30px;
     text-align: center;
@@ -70,7 +73,6 @@
 
 .middel h2 {
     text-align: center;
-    padding: 30px 0;
 }
 
 .rec-btn {
@@ -102,18 +104,22 @@
     justify-content: center;
     align-items: center;
 }
-.recover-form-group, .forget-form-group {
+
+.recover-form-group,
+.forget-form-group {
     margin-bottom: 15px;
 }
 
-.recover-form-group label, .forget-form-group label {
+.recover-form-group label,
+.forget-form-group label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
     text-align: left;
 }
 
-.recover-form-group input, .forget-form-group input {
+.recover-form-group input,
+.forget-form-group input {
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
@@ -137,406 +143,122 @@
     display: flex;
     align-items: center;
     position: relative;
-  }
-  
-  .password-wrapper input {
+}
+
+.password-wrapper input {
     flex: 1;
-    padding-right: 40px; /* Adjust padding to make room for the icon */
-  }
-  
-  .password-toggle {
+    padding-right: 40px;
+    /* Adjust padding to make room for the icon */
+}
+
+.password-toggle {
     position: absolute;
     right: 10px;
     top: 10px;
     background: transparent;
     border: none;
     cursor: pointer;
-  }
-  
-  .password-toggle svg {
-    font-size: 1rem; /* Adjust icon size */
-  }
-  
-
-/* Responsive styles */
-@media (max-width: 1200px) {
-    .fr-container {
-        margin: 15px;
-    }
-    .middel {
-        padding: 25px;
-    }
-    .middel h2 {
-        padding: 25px 0;
-    }
-    .rec-btn {
-        width: 50%;
-    }
 }
 
-@media (max-width: 992px) {
-    .fr-container {
-        margin: 15px;
-    }
-    .middel {
-        padding: 20px;
-    }
-    .middel h2 {
-        padding: 20px 0;
-    }
-    .rec-btn {
-        width: 60%;
-    }
+.password-toggle svg {
+    font-size: 1rem;
+    /* Adjust icon size */
 }
 
-@media (max-width: 768px) {
+
+/* For screens larger than 1200px (optional breakpoint for very large screens) */
+@media (min-width: 1200px) {
     .fr-container {
+        max-width: 500px;
+    }
+
+    .otp-input {
+        width: 80px;
+        height: 80px;
+    }
+
+    .verify_button {
+        font-size: large;
+    }
+
+
+}
+
+/* For screens between 768px and 1200px */
+@media (max-width: 1200px) and (min-width: 768px) {
+    .fr-container {
+        max-width: 450px;
+    }
+
+    .otp-input {
+        width: 70px;
+        height: 70px;
+    }
+
+    .verify_button {
+        font-size: medium;
+    }
+
+
+}
+
+/* For screens between 600px and 768px */
+@media (max-width: 768px) and (min-width: 600px) {
+    .fr-container {
+        max-width: 400px;
+    }
+
+    .otp-input {
+        width: 60px;
+        height: 60px;
+    }
+
+    .verify_button {
+        font-size: small;
+    }
+
+}
+
+/* For screens between 349px and 600px */
+@media (max-width: 600px) and (min-width: 480px) {
+    .fr-container {
+        max-width: 90%;
         margin: 10px;
     }
-    .middel {
-        padding: 15px;
+
+    .otp-input {
+        width: 50px;
+        height: 50px;
     }
-    .middel h2 {
-        padding: 15px 0;
+
+    .verify_button {
+        font-size: small;
+        padding: 12px;
     }
-    .rec-btn {
-        width: 70%;
+
+}
+
+/* For screens smaller than 349px */
+@media (max-width: 480px) and (min-width: 349px) {
+    .forget-container {
+        max-height: 85vh;
+        /* Restrict height to ensure content is scrollable */
+        overflow-y: hidden;
     }
-}
 
-@media (max-width: 576px) {
-    /* Base styles */
-.forget-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100%;
-}
-
-.fr-container {
-    display: flex;
-    margin: 20px;
-    flex-direction: column;
-    width: 100%;
-    max-width: 400px;
-    height: auto;
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.208);
-}
-
-.middel {
-    padding: 30px;
-    text-align: center;
-}
-
-.middel h2 {
-    text-align: center;
-    padding: 30px 0;
-}
-
-.rec-btn {
-    width: 40%;
-    padding: 10px;
-    background-color: #2666c5;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.rec-btn:hover {
-    background-color: #0056b3;
-}
-
-.forget-company-logo {
-    width: 100px;
-    height: 100px;
-    justify-content: center;
-    align-items: center;
-}
-
-.recover-form-group, .forget-form-group {
-    margin-bottom: 15px;
-}
-
-.recover-form-group label, .forget-form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    text-align: left;
-}
-
-.recover-form-group input, .forget-form-group input {
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 20px;
-}
-
-.rec-home-link {
-    position: relative;
-    bottom: 15px;
-    left: 20px;
-    color: #2666c5;
-    text-decoration: none;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-}
-
-/* Responsive styles */
-@media (max-width: 1200px) {
     .fr-container {
-        margin: 15px;
+        max-width: 85%;
+        margin: 5px;
     }
-    .middel {
-        padding: 25px;
+
+    .otp-input {
+        width: 40px;
+        height: 40px;
     }
-    .middel h2 {
-        padding: 25px 0;
-    }
-    .rec-btn {
-        width: 50%;
-    }
-}
 
-@media (max-width: 992px) {
-    .fr-container {
-        margin: 15px;
-    }
-    .middel {
-        padding: 20px;
-    }
-    .middel h2 {
-        padding: 20px 0;
-    }
-    .rec-btn {
-        width: 60%;
-    }
-}
-
-@media (max-width: 768px) {
-    /* Base styles */
-.forget-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100%;
-}
-
-.fr-container {
-    display: flex;
-    margin: 20px;
-    flex-direction: column;
-    width: 100%;
-    max-width: 400px;
-    height: auto;
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.208);
-}
-
-.middel {
-    padding: 30px;
-    text-align: center;
-}
-
-.middel h2 {
-    text-align: center;
-    padding: 30px 0;
-}
-
-.rec-btn {
-    width: 40%;
-    padding: 10px;
-    background-color: #2666c5;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.rec-btn:hover {
-    background-color: #0056b3;
-}
-
-.forget-company-logo {
-    width: 100px;
-    height: 100px;
-    justify-content: center;
-    align-items: center;
-}
-
-.recover-form-group, .forget-form-group {
-    margin-bottom: 15px;
-}
-
-.recover-form-group label, .forget-form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    text-align: left;
-}
-
-.recover-form-group input, .forget-form-group input {
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 20px;
-}
-
-.rec-home-link {
-    position: relative;
-    bottom: 15px;
-    left: 20px;
-    color: #2666c5;
-    text-decoration: none;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-}
-
-/* Responsive styles */
-@media (max-width: 1200px) {
-    .fr-container {
-        margin: 20px;
-    }
-    .middel {
+    .verify_button {
+        font-size: small;
         padding: 10px;
     }
-    .middel h2 {
-        padding: 30px 0;
-    }
-    .rec-btn {
-        width: 40%;
-    }
-}
 
-@media (max-width: 992px) {
-    .fr-container {
-        margin: 20px;
-    }
-    .middel {
-        padding: 10px;
-    }
-    .middel h2 {
-        padding: 30px 0;
-    }
-    .rec-btn {
-        width: 40%;
-    }
-}
-
-@media (max-width: 768px) {
-    .fr-container {
-        margin: 20px;
-    }
-    .middel {
-        padding: 10px;
-    }
-    .middel h2 {
-        padding: 30px 0;
-    }
-    .rec-btn {
-        width: 40%;
-    }
-}
-
-@media (max-width: 576px) {
-    .fr-container {
-        margin: 20px;
-    }
-    .middel {
-        padding: 10px;
-    }
-    .middel h2 {
-        padding: 30px 0;
-    }
-    .rec-btn {
-        width: 40%;
-    }
-}
-
-@media (max-width: 400px) {
-    .fr-container {
-        margin: 20px;
-    }
-    .middel {
-        padding: 10px;
-    }
-    .middel h2 {
-        padding: 30px 0;
-    }
-    .rec-btn {
-        width: 40%;
-    }
-    .rec-home-link {
-        left: 10px;
-        font-size: 14px;
-    }
-}
-
-}
-
-@media (max-width: 576px) {
-    .fr-container {
-        margin: 20px;
-    }
-    .middel {
-        padding: 10px;
-    }
-    .middel h2 {
-        padding: 30px 0;
-    }
-    .rec-btn {
-        width: 40%;
-    }
-}
-
-@media (max-width: 400px) {
-    .fr-container {
-        margin: 20px;
-    }
-    .middel {
-        padding: 10px;
-    }
-    .middel h2 {
-        padding: 30px 0;
-    }
-    .rec-btn {
-        width: 40%;
-    }
-    .rec-home-link {
-        bottom: 10px;
-        left: 10px;
-    }
-}
-
-}
-
-@media (max-width: 400px) {
-    .fr-container {
-        margin: 20px;
-    }
-    .middel {
-        padding: 10px;
-    }
-    .middel h2 {
-        padding: 30px 0;
-    }
-    .rec-btn {
-        width: 40%;
-    }
-    .rec-home-link {
-        bottom: 5px;
-        left: 5px;
-        font-size: 14px;
-    }
 }

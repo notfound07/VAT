@@ -16,8 +16,9 @@ function Navbar() {
 
     const location = useLocation(); // Get the current location
 
-    const toggleDropdown = () => {
-        setDropdownVisible(prevState => !prevState);
+    const toggleDropdown = (event) => {
+        event.stopPropagation(); // Prevent click from bubbling to the document
+        setDropdownVisible(prevState => !prevState); // Toggle dropdown visibility
     };
 
     const handleDropdownLinkClick = () => {
@@ -30,6 +31,7 @@ function Navbar() {
 
     useEffect(() => {
         const handleClickOutside = (event) => {
+            // Close dropdown if clicked outside of the dropdown or button
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
                 setDropdownVisible(false);
             }
@@ -38,9 +40,10 @@ function Navbar() {
             }
         };
 
-        document.addEventListener('mousedown', handleClickOutside);
+        // Changed 'mousedown' to 'click' for proper dropdown behavior
+        document.addEventListener('click', handleClickOutside);
         return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
+            document.removeEventListener('click', handleClickOutside);
         };
     }, []);
 
