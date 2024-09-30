@@ -69,6 +69,7 @@
     display: inline-block;
     font-family: var(--font-times-new-roman);
     background: radial-gradient(50% 50% at 50% 50%, #d3d3d3, #858484 51.5%, #dcdcdc);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-align: center;
