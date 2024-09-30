@@ -1,187 +1,136 @@
 .footer {
     width: 100%;
     background: radial-gradient(51.73% 67.14% at 50% 54.6%, #00428F 0%, #001329 100%), #B2D5FF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Add this to ensure the content stays on top of the background */
+}
+
+.footer-background {
+    position: relative; /* Ensure it's relative to the footer */
+    width: 100%;
+    height: 450px; /* Set the height for the background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 40px;
+    z-index: 1; /* Lower z-index to put it behind the content */
+}
+
+.footer-background-image {
+    width: 300px;
+    height: 300px;
+    opacity: 0.4;
+    z-index: 1; /* Ensure the image stays behind the content */
 }
 
 .footer-content {
+    position: absolute; /* Make it absolute to overlay it over the background */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjusts the centering */
+    width: 100%;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    padding-left: 50px;
-    padding-right: 50px;
+    color: #FFF;
+    z-index: 2; /* Ensure the content is above the background */
+    text-align: center;
+    gap: 40px;
 }
 
-.footer-company-logo {
-    width: 200px;
-    height: 200px;
+.footer-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+    z-index: 0; /* Lower z-index so it's behind the content */
 }
 
-.spaced {
-    padding-left: 16px;
+.footer-section-contact {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .footer-section-contact h2 {
-    margin-bottom: 10px;
+    width: 100%;
+    position: relative;
+    font-size: 48px;
+    line-height: 120%;
+    display: inline-block;
+    font-family: var(--font-times-new-roman);
+    background: radial-gradient(50% 50% at 50% 50%, #d3d3d3, #858484 51.5%, #dcdcdc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
 }
 
-.footer-section-contact p {
-    margin: 5px 0;
+.footer-section-text {
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    gap: 12px;
+}
+
+.footer-section-text p {
+    text-align: left;
+    /* Align text to the left */
+}
+
+.footer-section-text span {
+    display: block;
+    /* Makes the span a block element to ensure it takes a full line */
+}
+
+.align-icon-text {
+    display: flex;
+    align-items: center;
+    /* Align icons and text vertically */
+    gap: 12px;
+}
+
+.align-icon-text p {
+    margin: 0;
+    /* Remove default margin from paragraphs */
+}
+
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between; /* Spread the content across the row */
+    align-items: center; /* Vertically center the items */
+    width: 100%; /* Make the footer take the full width */
+    padding: 0 40px; /* Add some padding for better spacing */
+}
+
+.footer-bottom p {
+    flex: 1; /* Make the text take up available space */
+    text-align: center; /* Center the text */
+    margin: 0; /* Remove default margin */
+    font-size: 20px;
+}
+
+.footer-section-social {
+    display: flex;
+    justify-content: flex-end; /* Push social icons to the right */
 }
 
 .social-icons {
     display: flex;
-    gap: 16px;
-    justify-content: center;
+    gap: 16px; /* Space between social icons */
 }
 
-.footer-bottom {
-    text-align: center;
-    margin-top: 20px;
+.footer-logo {
+    height: 48px;
+    width: 48px;
 }
 
-.foot-button {
-    color: white;
-    font-size: 30px;
-}
-.footer-logo{
-    height: 50px;
-    width: 50px;
-}
-
-/* Media Queries for Responsiveness */
-@media (max-width: 1200px) {
-    .footer-content {
-        padding-left: 30px;
-        padding-right: 30px;
-    }
-
-    .footer-company-logo {
-        width: 180px;
-        height: 180px;
-    }
-    .footer {
-        width: 100%;
-    }
-}
-
-@media (max-width: 992px) {
-    .footer-content {
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-
-    .footer-company-logo {
-        width: 150px;
-        height: 150px;
-    }
-    .footer {
-        width: 100%;
-    }
-}
-
-@media (max-width: 768px) {
-    .footer-content {
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-
-    .footer-company-logo {
-        width: 120px;
-        height: 120px;
-    }
-    .footer {
-        width: 100%;
-    }
-}
-
-@media (max-width: 699px) {
-    .footer-content {
-        flex-direction: column;
-        align-items: center;
-        padding: 0 10px;
-        text-align: center;
-    }
-
-    .footer-company-logo {
-        width: 100px;
-        height: 100px;
-        margin-bottom: 10px;
-    }
-
-    .footer-section-contact h2 {
-        font-size: 18px;
-    }
-
-    .footer-section-contact p {
-        font-size: 14px;
-    }
-
-    .social-icons {
-        gap: 10px;
-    }
-
-    .foot-button {
-        font-size: 20px;
-    }
-    .footer {
-        width: 100%;
-    }
-}
-
-@media (max-width: 576px) {
-    .footer-content {
-        padding-left: 5px;
-        padding-right: 5px;
-    }
-
-    .footer-company-logo {
-        width: 80px;
-        height: 80px;
-    }
-
-    .footer-section-contact h2 {
-        font-size: 16px;
-    }
-
-    .footer-section-contact p {
-        font-size: 12px;
-    }
-
-    .foot-button {
-        font-size: 18px;
-    }
-    .footer {
-        width: 100%;
-    }
-}
-
-@media (max-width: 350px) {
-    .footer-content {
-        padding: 0 5px;
-    }
-
-    .footer-company-logo {
-        width: 60px;
-        height: 60px;
-        margin-bottom: 5px;
-    }
-
-    .footer-section-contact h2 {
-        font-size: 14px;
-    }
-
-    .footer-section-contact p {
-        font-size: 10px;
-    }
-
-    .social-icons {
-        gap: 8px;
-    }
-
-    .foot-button {
-        font-size: 16px;
-    }
-    .footer {
-        width: 100%;
-    }
-}

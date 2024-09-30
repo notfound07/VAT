@@ -30,7 +30,7 @@ const Add = () => {
     formData.append('video', video);
   
     try {
-      const response = await axios.post(`${baseURL}/product`, formData, {
+       await axios.post(`${baseURL}/product`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
