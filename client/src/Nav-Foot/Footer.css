@@ -1,12 +1,6 @@
 .footer {
-    background-color: #1D2951;
-    padding: 20px;
-    color: #FFFFFF;
     width: 100%;
-    background: url('../Assets/lightfoot.png') no-repeat center center;
-    background-size: cover;
-    border-top: 3px solid transparent;
-    border-image: linear-gradient(to right, yellow, orange) 2 round;
+    background: radial-gradient(51.73% 67.14% at 50% 54.6%, #00428F 0%, #001329 100%), #B2D5FF;
 }
 
 .footer-content {

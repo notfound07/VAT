@@ -246,7 +246,6 @@ const Home = () => {
           <img className="client-img" src={VLogo3} alt="Client Logo" />
         </div>
       </div>
-
       <Footer />
     </div>
   );

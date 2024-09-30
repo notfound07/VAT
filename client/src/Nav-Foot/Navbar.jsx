@@ -9,7 +9,7 @@ function Navbar() {
     const { show, setShow } = useContext(RecoveryContext);
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [userDropdownVisible, setUserDropdownVisible] = useState(false);
-    const dropdownRef = useRef(null); 
+    const dropdownRef = useRef(null);
     const userDropdownRef = useRef(null);
     const LoggedUser = localStorage.getItem("LoggedUser");
     const userNameInitial = LoggedUser ? LoggedUser.charAt(0).toUpperCase() : '';
@@ -99,37 +99,47 @@ function Navbar() {
                     <Link to="/Shopping" className={`nav-link ${isActiveLink("/Shopping")}`}><i className="fa-solid fa-store"></i>Product</Link>
                     <Link to="/Design" className={`nav-link ${isActiveLink("/Design")}`}><i className="fa-solid fa-pencil"></i>Design</Link>
                     <Link to="/Contact" className={`nav-link ${isActiveLink("/Contact")}`}><i className="fa-solid fa-users"></i>ContactUs</Link>
-                    <div className="get-in">
-                        {LoggedUser === null ?
-                            <Link to='/Login' className={`nav-link ${isActiveLink("/Login")}`}><i className="fa-solid fa-right-to-bracket"></i>SignIn</Link> :
+                </div>
+                <div className="get-in">
+                    {LoggedUser === null ?
+                        (
+                            <div className='User-link'>
+                                < Link to='/Register' className={`user-new-nav-link ${isActiveLink("/Register")}`}><i className="fa-solid fa-user"></i>NewUser</Link>
+                                <Link to='/Login' className={`user-nav-link ${isActiveLink("/Login")}`}><i className="fa-solid fa-right-to-bracket"></i>SignIn</Link>
+                            </div>
+                        ) : (
                             <div className="user-dropdown" ref={userDropdownRef}>
                                 <div className="user-icon" onClick={toggleUserDropdown}>{userNameInitial}</div>
                                 <div className={`user-dropdown-menu ${userDropdownVisible ? 'show' : ''}`}>
-                                    <p className="userlogo" style={{ backgroundColor: 'blue', color: 'white', paddingRight: "3px", paddingLeft: "3px", fontSize: "20px", fontFamily: 'Times New Roman' }}>Hello, {LoggedUser.split("@").reverse().pop()}</p>
+                                    <p className="userlogo" >Hello, {LoggedUser.split("@").reverse().pop()}</p>
                                     <Link to="/" className='nav-link-drop' onClick={handleLogout}><i className="fa-solid fa-right-from-bracket"></i>SignOut</Link>
                                 </div>
                             </div>
-                        }
-                    </div>
+                        )}
                 </div>
                 <button className="nav-toggle-button" onClick={toggleDropdown}><i className="fa-solid fa-bars"></i></button>
                 <div ref={dropdownRef} className={`nav-dropdown ${dropdownVisible ? 'show' : ''}`}>
-                    {LoggedUser === null ? <Link to='/Login' className='nav-link' onClick={handleDropdownLinkClick}><i className="fa-solid fa-right-to-bracket"></i>SignIn</Link> :
+                    {LoggedUser === null ? (
+                        <>
+                            <Link to='/Login' className={`drop-nav-link ${isActiveLink("/Login")}`}><i className="fa-solid fa-right-to-bracket"></i>SignIn</Link>
+                            < Link to='/Register' className={`drop-nav-link ${isActiveLink("/Register")}`}><i className="fa-solid fa-user"></i>NewUser</Link>
+                        </>
+                    ) : (
                         <div className="user-dropdown">
-                            <p className="userlogo" style={{ backgroundColor: 'blue', color: 'white', paddingRight: "3px", paddingLeft: "3px", fontSize: "20px", fontFamily: 'Times New Roman' }}>Hello, {LoggedUser.split("@").reverse().pop()}</p>
-                            <Link to="/" className='nav-link-li' onClick={() => { handleLogout(); handleDropdownLinkClick(); }}>
+                            <p className="drop-nav-name">Hello, {LoggedUser.split("@").reverse().pop()}</p>
+                            <Link to="/" className='drop-nav-nav-link' onClick={() => { handleLogout(); handleDropdownLinkClick(); }}>
                                 <li><i className="fa-solid fa-right-from-bracket"></i>SignOut</li>
                             </Link>
                         </div>
-                    }
-                    {show ? <Link to="/Dashboard" className={`nav-link ${isActiveLink("/Dashboard")}`} onClick={handleDropdownLinkClick}><i className="fa-solid fa-table-columns"></i>Dashboard</Link> : null}
-                    <Link to="/" className={`nav-link ${isActiveLink("/")}`} onClick={handleDropdownLinkClick}><i className="fa-solid fa-circle-info"></i>Who we are</Link>
-                    <Link to="/Shopping" className={`nav-link ${isActiveLink("/Shopping")}`} onClick={handleDropdownLinkClick}><i className="fa-solid fa-store"></i>Product</Link>
-                    <Link to="/Design" className={`nav-link ${isActiveLink("/Design")}`} onClick={handleDropdownLinkClick}><i className="fa-solid fa-pencil"></i>Design</Link>
-                    <Link to="/Contact" className={`nav-link ${isActiveLink("/Contact")}`} onClick={handleDropdownLinkClick}><i className="fa-solid fa-users"></i>ContactUs</Link>
+                    )}
+                    {show ? <Link to="/Dashboard" className={`drop-nav-link ${isActiveLink("/Dashboard")}`} onClick={handleDropdownLinkClick}><i className="fa-solid fa-table-columns"></i>Dashboard</Link> : null}
+                    <Link to="/" className={`drop-nav-link ${isActiveLink("/")}`} onClick={handleDropdownLinkClick}><i className="fa-solid fa-circle-info"></i>Who we are</Link>
+                    <Link to="/Shopping" className={`drop-nav-link ${isActiveLink("/Shopping")}`} onClick={handleDropdownLinkClick}><i className="fa-solid fa-store"></i>Product</Link>
+                    <Link to="/Design" className={`drop-nav-link ${isActiveLink("/Design")}`} onClick={handleDropdownLinkClick}><i className="fa-solid fa-pencil"></i>Design</Link>
+                    <Link to="/Contact" className={`drop-nav-link ${isActiveLink("/Contact")}`} onClick={handleDropdownLinkClick}><i className="fa-solid fa-users"></i>ContactUs</Link>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
 
