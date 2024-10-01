@@ -4,8 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import Navbar from '../Nav-Foot/Navbar';
 import Footer from '../Nav-Foot/Footer';
 import { RecoveryContext } from '../App';
-// import Workslider from './workslider';
-// import { Link, Element } from 'react-scroll';
 import VLogo from '../Assets/V-Logo.png';
 import VLogo2 from '../Assets/V-Logo2.jpg';
 import VLogo3 from '../Assets/V-Logo3.png';
@@ -205,9 +203,7 @@ const Home = () => {
               “We understand the value of asset and timeline”
             </h3>
             <p className='objective-description'>
-              Transforms our work culture to make things better and helps to engage long-lasting relationships.
-              VisionaryArt aims to offer high quality and precision-turned components with all types of material
-              at competitive prices to meet the market demand.
+              Transforms our work culture to make things better and helps to engage long-lasting relationships. VisionaryArt aims to offer high quality and precision-turned components with all types of material at competitive prices to meet the market demand.
             </p>
           </div>
           <div className='services-technology'>
@@ -219,9 +215,7 @@ const Home = () => {
               Crafting Excellence, Building Tomorrow
             </h3>
             <p className='technology-description'>
-              We emphasize Smart Work rather than hard work. <br />
-              Our experienced and skilled labor assist by utilizing their potential. <br />
-              Quality machines also play an equally important role in this complete format.
+              We emphasize Smart Work rather than hard work. Our experienced and skilled labor assist by utilizing their potential. Quality machines also play an equally important role in this complete format.
             </p>
           </div>
         </div>

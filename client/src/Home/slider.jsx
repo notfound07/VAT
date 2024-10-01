@@ -121,21 +121,6 @@ function CustomCarousel({ children }) {
         </div>
       ))}
 
-      {/* Navigation Dots */}
-      <div className="container__slider__links">
-        {children.map((item, index) => (
-          <button
-            key={index}
-            className={
-              activeIndex === index
-                ? "container__slider__links-small container__slider__links-small-active"
-                : "container__slider__links-small"
-            }
-            onClick={(e) => handleClick(e, index)}
-          ></button>
-        ))}
-      </div>
-
       {/* Next and Previous Buttons */}
       <button
         className="slider__btn-next"
