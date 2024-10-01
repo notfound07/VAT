@@ -10,6 +10,11 @@ body {
   line-height: 1.6;
 }
 
+.home-page-pad{
+  width: 100%;
+  padding: 0px 80px;
+}
+
 /* Custom Carousel Section */
 .custom-carousel-section {
   padding-top: 80px;
@@ -115,26 +120,57 @@ body {
 }
 
 /* Slogan Section */
-.slogan {
-  font-size: xxx-large;
-  text-align: center;
-  background-color: #a3a3a3;
-  background: url('../Assets/slogan_bg.jpg') center center;
-  text-shadow: 2px 2px yellow;
-  color: rgb(255, 255, 249);
-  padding: 5px;
-  margin: 0;
-  border-radius: 5px;
+
+.center-slogan{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.slogan_client {
-  font-size: xxx-large;
+.slogan {
+  width: 35%;
   text-align: center;
-  text-shadow: 5px 5px rgba(5, 58, 102, 0.897);
-  ;
-  color: rgb(255, 255, 249);
-  padding: 5px;
-  margin: 0;
+  background: radial-gradient(51.73% 67.14% at 50% 54.6%, #00428F 0%, #001329 100%), #B2D5FF;
+  padding: 20px;
+  color: white;
+  position: relative;
+  display: inline-block;
+  clip-path: polygon(15% 0%, 100% 0, 85% 100%, 0% 100%);
+  border-radius: 0;
+}
+.slogan-cust{
+  width: 70%;
+  text-align: center;
+  background: radial-gradient(51.73% 67.14% at 50% 54.6%, #00428F 0%, #001329 100%), #B2D5FF;
+  padding: 20px;
+  color: white;
+  position: relative;
+  display: inline-block;
+  clip-path: polygon(15% 0%, 100% 0, 85% 100%, 0% 100%);
+}
+
+.slogan-company {
+  line-height: 120%;
+  background: radial-gradient(50% 50% at 50% 50%, #d3d3d3, #858484 51.5%, #dcdcdc);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 42px;
+}
+
+
+.slogan_client {
+  text-align: center;
+  font-family: "Times New Roman";
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%;
+  background: radial-gradient(50% 50% at 50% 50%, #000, #858484 51.5%, #000);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* Custom Showcase */
@@ -206,37 +242,34 @@ body {
 }
 
 /* Client Section */
-.client-header {
+.client-header{
+  width: 100%;
   display: flex;
-  gap: 20px;
-  justify-content: center;
-  padding: 10px;
-  text-align: center;
+  justify-content: space-between;
   align-items: center;
-  font-size: xx-large;
+  padding: 20px 0px;
 }
 
 .client-item {
-  width: 100%;
-  height: 250px;
+  width: 335px;
+  height: 335px;
+  flex-shrink: 0;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: wheat;
   font-size: 1em;
   font-weight: bold;
-  padding: 10px;
-  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.897);
+  box-shadow: 17px 236px 66px 0px rgba(0, 0, 0, 0.00), 11px 151px 61px 0px rgba(0, 0, 0, 0.01), 6px 85px 51px 0px rgba(0, 0, 0, 0.05), 1px 9px 21px 0px rgba(0, 0, 0, 0.10);
 }
 
 .client-item:hover {
   cursor: pointer;
   transform: translateY(-5px);
-  box-shadow: 4px 4px 4px 4px rgba(1, 10, 10, 0.897);
 }
 
 .client-img {
+  border-radius: 10px;
   height: 100%;
   width: 100%;
 }
@@ -588,8 +621,9 @@ body {
   .services-section {
     flex-direction: column;
     align-items: center;
-    padding: 20px;
+    margin-top: 80px;
     gap: 20px;
+    border: #000 2px solid;
   }
 
   .services-objective,
@@ -625,6 +659,7 @@ body {
     order: -1;
 
   }
+
   .attribute-info h2 span::after {
     content: '\A';
     white-space: normal;

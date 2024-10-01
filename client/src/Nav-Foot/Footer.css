@@ -5,39 +5,49 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative; /* Add this to ensure the content stays on top of the background */
+    position: relative;
+    /* Add this to ensure the content stays on top of the background */
 }
 
 .footer-background {
-    position: relative; /* Ensure it's relative to the footer */
+    position: relative;
+    /* Ensure it's relative to the footer */
     width: 100%;
-    height: 450px; /* Set the height for the background */
+    height: 450px;
+    /* Set the height for the background */
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px 40px;
-    z-index: 1; /* Lower z-index to put it behind the content */
+    z-index: 1;
+    /* Lower z-index to put it behind the content */
 }
 
 .footer-background-image {
     width: 300px;
     height: 300px;
     opacity: 0.4;
-    z-index: 1; /* Ensure the image stays behind the content */
+    z-index: 1;
+    /* Ensure the image stays behind the content */
 }
 
 .footer-content {
-    position: absolute; /* Make it absolute to overlay it over the background */
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Adjusts the centering */
+    position: absolute;
+    /* Make it absolute to overlay it over the background */
+    top: 50%;
+    /* Center vertically */
+    left: 50%;
+    /* Center horizontally */
+    transform: translate(-50%, -50%);
+    /* Adjusts the centering */
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     color: #FFF;
-    z-index: 2; /* Ensure the content is above the background */
+    z-index: 2;
+    /* Ensure the content is above the background */
     text-align: center;
     gap: 40px;
 }
@@ -48,8 +58,10 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
-    z-index: 0; /* Lower z-index so it's behind the content */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Semi-transparent overlay */
+    z-index: 0;
+    /* Lower z-index so it's behind the content */
 }
 
 .footer-section-contact {
@@ -62,7 +74,7 @@
 }
 
 .footer-section-contact h2 {
-    width: 100%;
+    width: 353px;
     position: relative;
     font-size: 48px;
     line-height: 120%;
@@ -72,7 +84,7 @@
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-align: center;
+    text-align: left;
 }
 
 .footer-section-text {
@@ -107,27 +119,37 @@
 
 .footer-bottom {
     display: flex;
-    justify-content: space-between; /* Spread the content across the row */
-    align-items: center; /* Vertically center the items */
-    width: 100%; /* Make the footer take the full width */
-    padding: 0 40px; /* Add some padding for better spacing */
+    justify-content: space-between;
+    /* Spread the content across the row */
+    align-items: center;
+    /* Vertically center the items */
+    width: 100%;
+    /* Make the footer take the full width */
+    padding: 0 40px 0px 32ch;
+    /* Add some padding for better spacing */
 }
 
 .footer-bottom p {
-    flex: 1; /* Make the text take up available space */
-    text-align: center; /* Center the text */
-    margin: 0; /* Remove default margin */
+    flex: 1;
+    /* Make the text take up available space */
+    text-align: center;
+    /* Center the text */
+    margin: 0;
+    /* Remove default margin */
     font-size: 20px;
 }
 
 .footer-section-social {
     display: flex;
-    justify-content: flex-end; /* Push social icons to the right */
+    justify-content: flex-end;
+    /* Push social icons to the right */
+    padding-top: 5px;
 }
 
 .social-icons {
     display: flex;
-    gap: 16px; /* Space between social icons */
+    gap: 16px;
+    /* Space between social icons */
 }
 
 .footer-logo {
@@ -135,3 +157,37 @@
     width: 40px;
 }
 
+
+@media (max-width: 1039px) {
+
+    .footer-content {
+        gap: 20px;
+    }
+
+    .footer-background {
+        height: 500px;
+        /* Set the height for the background */
+    }
+
+    .footer-section-text p {
+        font-size: 18px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        /* Stack footer bottom elements vertically */
+        padding: 20px;
+        /* Add padding for mobile */
+        gap: 20px;
+        /* Space between items */
+    }
+
+    .footer-bottom p {
+        order: 1;
+    }
+
+    .footer-section-social {
+        justify-content: center;
+        /* Center the social icons */
+    }
+}
