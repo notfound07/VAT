@@ -17,7 +17,7 @@ function CustomCarousel({ children }) {
       if (val < children.length - 1) {
         return val + 1;
       }
-      return val; // Stay at the last slide if already there
+      return 0; // Loop back to the first slide
     });
   };
 
@@ -27,7 +27,7 @@ function CustomCarousel({ children }) {
       if (val > 0) {
         return val - 1;
       }
-      return val; // Stay at the first slide if already there
+      return children.length - 1; // Loop back to the last slide
     });
   };
 
@@ -36,15 +36,22 @@ function CustomCarousel({ children }) {
       setSlideDone(false);
       setTimeID(
         setTimeout(() => {
-          setActiveIndex((val) => (val < children.length - 1 ? val + 1 : val));
+          setActiveIndex((val) => (val < children.length - 1 ? val + 1 : 0)); // Auto-loop to the first slide after the last one
           setSlideDone(true);
-        }, 10000) // Auto-play interval
+        }, 5000) // Auto-play interval set to 5 seconds
       );
     }
+
+    // Clean up the timeout on component unmount or dependencies change
+    return () => {
+      if (timeID) {
+        clearTimeout(timeID);
+      }
+    };
   }, [slideDone, children.length]);
 
   const AutoPlayStop = () => {
-    if (timeID > 0) {
+    if (timeID) {
       clearTimeout(timeID);
       setSlideDone(false);
     }
@@ -77,10 +84,10 @@ function CustomCarousel({ children }) {
     const swipeThreshold = 50;
 
     if (difference > swipeThreshold) {
-      // Swiped left (Next) but only if not at the last slide
+      // Swiped left (Next)
       slideNext();
     } else if (difference < -swipeThreshold) {
-      // Swiped right (Previous) but only if not at the first slide
+      // Swiped right (Previous)
       slidePrev();
     }
     isDragging.current = false; // Reset dragging state
