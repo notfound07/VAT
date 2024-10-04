@@ -41,7 +41,7 @@ const Home = () => {
       setIsLoading(true);
 
       // Filter out the specific item you want to include in the shuffle (e.g., "Kiosk")
-      const specificItem = orders.find(item => /Kiosks?$/i.test(item.title));
+      const specificItem = orders.find(item => /Kiosk?$/i.test(item.title));
 
       // Filter out the other items
       const filteredOrders = orders.filter(item => !/Kiosks?$/i.test(item.title));
@@ -115,53 +115,47 @@ const Home = () => {
               <b className='slogan-company '>What We Do?</b>
             </div>
           </div>
-          <div className='display-attributes'>
-            <img className="attribute-image" src={museum2} alt="mission" />
-            <div className='attribute-center'>
+            <div className='display-attributes'>
+              <img className="attribute-image" src={museum2} alt="mission" />
               <div className='attribute-info'>
                 <h2>Custom Display Cases for Preservation</h2>
                 <ul className='attribute-list'>
-                  <li >Tailored to Customer Requirements</li>
-                  <li >Material-Specific Preservation</li>
-                  <li >Comprehensive Environmental Control</li>
-                  <li >Integrated Safety and Accessibility Features</li>
+                  <li >Tailored Solutions</li>
+                  <li >Material Preservation</li>
+                  <li >Environmental Control</li>
+                  <li >Safety & Accessibility</li>
                   <li >Design Harmony</li>
-                  <li >Airtight and Micro-Environment Management</li>
+                  <li >Airtight Management</li>
                 </ul>
               </div>
             </div>
-          </div>
-          <div className='display-attributes'>
-            <div className='attribute-center'>
-              <div className='attribute-info'>
+            <div className='display-attributes'>
+              <div className='attribute-info-reverse'>
                 <h2>Key Features of Our Display Cases</h2>
                 <ul className='attribute-list'>
-                  <li >Optimized Relative Humidity Control</li>
-                  <li >Light Management System</li>
-                  <li >Positive Air Pressure Maintenance</li>
-                  <li >Minimal Air Exchange Rate</li>
-                  <li >Temperature Regulation</li>
-                  <li >Real-Time Monitoring System</li>
+                  <li >Humidity Control</li>
+                  <li >Light Management</li>
+                  <li >Air Pressure Maintenance</li>
+                  <li >Minimal Air Exchange</li>
+                  <li >Temperature Control</li>
+                  <li >Real-Time Monitoring</li>
                 </ul>
               </div>
+              <img className="attribute-image" src={museum1} alt="mission" />
             </div>
-            <img className="attribute-image" src={museum1} alt="mission" />
-          </div>
-          <div className='display-attributes'>
-            <img className="attribute-image" src={museum} alt="mission" />
-            <div className='attribute-center'>
+            <div className='display-attributes'>
+              <img className="attribute-image" src={museum} alt="mission" />
               <div className='attribute-info'>
                 <h2>Advanced Features of Storage Cubicals</h2>
                 <ul className='attribute-list'>
-                  <li >Advanced Humidity Regulation</li>
-                  <li >Enhanced Light Control</li>
-                  <li >Positive Pressure Design</li>
-                  <li >Low Air Exchange Design</li>
-                  <li >Temperature Control Mechanism</li>
+                  <li >Humidity Regulation</li>
+                  <li >Light Control</li>
+                  <li >Positive Pressure</li>
+                  <li >Low Air Exchange</li>
+                  <li >Temperature Control</li>
                   <li >Continuous Data Logging</li>
                 </ul>
               </div>
-            </div>
           </div>
         </div>
 

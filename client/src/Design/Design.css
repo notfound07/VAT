@@ -22,19 +22,24 @@
   width: 100%;
   height: 80vh;
   position: relative;
-  overflow: hidden; /* Ensure the zoomed image stays within the container */
+  overflow: hidden;
+  /* Ensure the zoomed image stays within the container */
 }
 
 .design-container img {
   width: 100%;
   height: 100%;
-  transition: transform 0.3s ease; /* Smooth transition for zoom effect */
-  cursor: zoom-in; /* Change cursor to indicate zoom action */
+  transition: transform 0.3s ease;
+  /* Smooth transition for zoom effect */
+  cursor: zoom-in;
+  /* Change cursor to indicate zoom action */
 }
 
 .design-container img.zoomed {
-  transform: scale(2); /* Zoom in by scaling the image */
-  cursor: zoom-out; /* Change cursor to indicate zoom out action */
+  transform: scale(2);
+  /* Zoom in by scaling the image */
+  cursor: zoom-out;
+  /* Change cursor to indicate zoom out action */
 }
 
 .design-container::before {
@@ -53,6 +58,19 @@
   pointer-events: none;
   z-index: 1;
   margin: 0;
+}
+
+.overlay-design h1 {
+  text-align: center;
+  font-family: "Times New Roman";
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%;
+  background: radial-gradient(80% 80% at 50% 80%, #000, #858484 51.5%, #000);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* Responsive styles (no changes needed, already handled) */
@@ -77,8 +95,10 @@
   .overlay-design {
     margin: 100px 20px 20px 20px;
   }
+
   .design-container {
-    height: 60vh; /* Adjust height for smaller screens */
+    height: 60vh;
+    /* Adjust height for smaller screens */
   }
 }
 
@@ -87,8 +107,10 @@
   .overlay-design {
     margin: 100px 20px 20px 20px;
   }
+
   .design-container {
-    height: 50vh; /* Adjust height for smaller screens */
+    height: 50vh;
+    /* Adjust height for smaller screens */
   }
 }
 
@@ -97,7 +119,15 @@
   .overlay-design {
     margin: 100px 20px 20px 20px;
   }
+
   .design-container {
-    height: 40vh; /* Adjust height for smaller screens */
+    height: 40vh;
+    /* Adjust height for smaller screens */
+  }
+}
+
+@media (max-width: 410px) {
+  .overlay-design h1 {
+    font-size: 36px;
   }
 }

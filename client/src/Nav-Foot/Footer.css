@@ -191,3 +191,28 @@
         /* Center the social icons */
     }
 }
+
+
+@media (max-width: 400px) {
+
+    .footer-section-contact h2 {
+        font-size: 46px;
+    }
+
+    
+    .footer-section-text p {
+        font-size: 16px;
+    }
+
+    .footer-bottom p {
+        font-size: 16px;
+    }
+
+    .footer-logo {
+        height: 36px;
+        width: 36px;        
+    }
+    .footer-content{
+        gap: 40px;
+    }
+  }

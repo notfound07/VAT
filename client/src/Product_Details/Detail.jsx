@@ -39,6 +39,7 @@ const Detail = () => {
     }
     return shuffledArray;
   };
+  
 
   // Update shuffled items when orders change
   useEffect(() => {

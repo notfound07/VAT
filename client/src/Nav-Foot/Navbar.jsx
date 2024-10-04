@@ -82,6 +82,11 @@ function Navbar() {
         }
     }, []);
 
+    // Scroll to top when the route changes
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [location]);
+
     // Function to check if a route is active
     const isActiveLink = (path) => location.pathname === path ? 'active' : '';
 
@@ -104,7 +109,7 @@ function Navbar() {
                     {LoggedUser === null ?
                         (
                             <div className='User-link'>
-                                < Link to='/Register' className={`user-new-nav-link ${isActiveLink("/Register")}`}><i className="fa-solid fa-user"></i>NewUser</Link>
+                                <Link to='/Register' className={`user-new-nav-link ${isActiveLink("/Register")}`}><i className="fa-solid fa-user"></i>NewUser</Link>
                                 <Link to='/Login' className={`user-nav-link ${isActiveLink("/Login")}`}><i className="fa-solid fa-right-to-bracket"></i>SignIn</Link>
                             </div>
                         ) : (

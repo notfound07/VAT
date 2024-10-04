@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FaArrowRight } from "react-icons/fa";
+import { FaArrowRight , FaArrowLeft } from "react-icons/fa";
 import axios from "axios";
 import { RecoveryContext } from "../App";
 import "./Style.css";
@@ -151,8 +151,8 @@ function Register() {
         </div>
         <div className="signup-right"></div>
         <Link to="/" className="signup-home-link">
-          Home
-          <FaArrowRight />
+        <FaArrowLeft className="left-arrow" /> Home
+          <FaArrowRight  className="right-arrow"/>
         </Link>
       </div>
 

@@ -18,14 +18,10 @@
 .art-item {
   position: sticky;
   top: 50px;
-  /* Adjust sticky position */
   padding: 20px 0;
-  /* Vertical padding */
   width: 100%;
   max-width: 100%;
-  /* Prevents overflow beyond the container */
   box-sizing: border-box;
-  /* Include padding in width calculation */
   transition: top 0.5s ease;
 }
 
@@ -124,8 +120,13 @@ input[type="radio"] {
 }
 
 .art-details-text {
-  border-radius: 10px;
+  position: sticky;
+  top: 80px;
+  padding: 20px 0;
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  transition: top 0.5s ease;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -135,15 +136,21 @@ input[type="radio"] {
 }
 
 .art-name {
-  margin-top: 50px;
-  font-size: 24px;
-  font-weight: bold;
-  color: rgba(0, 0, 0, 0.69);
+  margin-top: 20px;
+  font-family: "Times New Roman";
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%;
+  background: radial-gradient(80% 80% at 50% 80%, #000, #858484 51.5%, #000);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .art-description {
   font-size: large;
-  color: rgba(0, 0, 0, 0.69);
+  color: #333;
 }
 
 .description-edit {
@@ -228,7 +235,6 @@ input[type="radio"] {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #7b888d;
   color: #333;
 }
 
@@ -242,15 +248,12 @@ input[type="radio"] {
 
 .suggetion-card {
   width: 220px;
-  height: 280px;
+  height: 240px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
   background-color: #fff;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1), -1px -1px 5px #fff;
-  text-align: center;
-  font-size: small;
-  padding: 20px;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3), -1px -1px 10px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   cursor: pointer;
   transition: transform 0.3s, box-shadow 0.3s;
@@ -264,11 +267,10 @@ input[type="radio"] {
 
 .suggetion-image-wrapper {
   position: relative;
-  width: 200px;
-  height: 180px;
+  width: 220px;
+  height: 100%;
   overflow: hidden;
-  border-radius: 10px;
-  margin-bottom: 15px;
+  border-radius: 10px 10px 0px 0px;
 }
 
 .suggetion-image {
@@ -315,9 +317,13 @@ input[type="radio"] {
 }
 
 .suggetion-title {
-  font-size: 1.2em;
-  margin: 10px 0;
-  color: #333;
+  color: #2D3648;
+  font-family: "Times New Roman";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%;
+  margin: 15px;
 }
 
 .loader-load-shop {

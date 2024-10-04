@@ -7,7 +7,16 @@
 }
 
 .contact-container h1 {
-  margin-bottom: 20px;
+    text-align: center;
+    font-family: "Times New Roman";
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    background: radial-gradient(80% 80% at 50% 80%, #000, #858484 51.5%, #000);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .form-wrapper {

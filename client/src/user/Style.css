@@ -14,77 +14,100 @@
     width: 100%;
 }
 
-.container, .signup-container {
+.container,
+.signup-container {
     display: flex;
     flex-direction: column;
     width: 90%;
     max-width: 800px;
     height: auto;
-    box-shadow: 10px 10px 20px #204d60, -10px 10px 20px #204d60, 10px -10px 20px #204d60, -10px -10px 20px #204d60;
     position: relative;
     margin: 20px;
     border-radius: 10px;
+    box-shadow:
+        0 15px 20px rgba(0, 0, 0, 0.25),
+        /* Stronger shadow when lifted */
+        0 6px 8px rgba(0, 0, 0, 0.15),
+        0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.left, .right, .signup-left, .signup-right {
+
+.left,
+.right,
+.signup-left,
+.signup-right {
     padding: 20px;
     text-align: center;
     width: 100%;
     box-sizing: border-box;
-    
-    
+
+
 }
 
-.right{
+.right {
     border-radius: 0px 10px 10px 0px;
 }
 
-.signup-left{
+.signup-left {
     border-radius: 10px 0px 0px 10px;
 }
 
-.signup-right{
-    background: url('../Assets/collage.png') no-repeat center center;
+.signup-right {
+    background: url('../Assets/First.jpeg') no-repeat center center;
     background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 0px 10px 10px 0px;
+    border-radius: 100px 10px 10px 100px;
 }
 
 .left {
-    background: url('../Assets/collage.png') no-repeat center center;
+    background: url('../Assets/First.jpeg') no-repeat center center;
     background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 10px 0px 0px 10px;
+    border-radius: 10px 100px 100px 10px;
 }
 
-.right, .signup-left {
+.right,
+.signup-left {
     background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.right h2, .signup-left h2 {
+.right h2,
+.signup-left h2 {
     margin-bottom: 20px;
-    color: #333;
+    text-align: center;
+    font-family: "Times New Roman";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    background: radial-gradient(50% 50% at 50% 50%, #000, #858484 51.5%, #000);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-.form-group, .signup-form-group {
+.form-group,
+.signup-form-group {
     margin-bottom: 5px;
 }
 
-.form-group label, .signup-form-group label {
+.form-group label,
+.signup-form-group label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
     text-align: left;
 }
 
-.form-group input, .signup-form-group input {
+.form-group input,
+.signup-form-group input {
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
@@ -114,167 +137,224 @@
     justify-content: space-between;
     margin-top: 15px;
 }
-.signup-links{
-    padding-top: 20px ;
+
+.signup-links {
+    padding-top: 20px;
 }
 
-.links a, .signup-links a {
+.links a,
+.signup-links a {
     color: #2666c5;
     text-decoration: none;
     font-size: 14px;
 }
 
-.links a:hover, .signup-links a:hover {
+.links a:hover,
+.signup-links a:hover {
     text-decoration: underline;
 }
 
-.login-home-link, .signup-home-link {
+.login-home-link,
+.signup-home-link {
     position: absolute;
-    bottom: 15px;
-    left: 20px;
+    top: 15px;
+    left: 15px;
     color: #2666c5;
     text-decoration: none;
     font-size: 16px;
     display: flex;
     align-items: center;
+    cursor: pointer;
+    gap: 5px;
 }
 
 .signup-home-link {
-    right: 20px;
+    right: 15px;
     left: auto;
+}
+
+.signup-home-link .left-arrow {
+    display: none;
+    /* Hide the left arrow by default */
 }
 
 .password-wrapper {
     display: flex;
     align-items: center;
     position: relative;
-  }
-  
-  .password-wrapper input {
+}
+
+.password-wrapper input {
     flex: 1;
-    padding-right: 40px; /* Adjust padding to make room for the icon */
-  }
-  
-  .password-toggle {
+    padding-right: 40px;
+    /* Adjust padding to make room for the icon */
+}
+
+.password-toggle {
     position: absolute;
     right: 10px;
     background: transparent;
     border: none;
     cursor: pointer;
-  }
-  
-  .password-toggle svg {
-    font-size: 1rem; /* Adjust icon size */
-  }
+}
 
-  
-  
-  .popup {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: rgba(0, 0, 0, 0.5);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
+.password-toggle svg {
+    font-size: 1rem;
+    /* Adjust icon size */
+}
+
+
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.popup-close-btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+
+/* Responsive Styles */
+
+
+/* Styles for screens below 350px */
+@media (max-width: 339px) {
+
+    .parent-container,
+    .parent-signup-container {
+        max-height: 85vh;
+        /* Restrict height to ensure content is scrollable */
+        overflow-y: hidden;
     }
-    
-    .popup-content {
-        background-color: white;
-        padding: 20px;
-        border-radius: 8px;
-        text-align: center;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+
+    .container,
+    .signup-container {
+        flex-direction: column;
+        width: 280px;
+        /* Adjust width as needed */
+        margin: 10px auto;
+        /* Center container horizontally */
+        position: relative;
+        /* Adjust positioning if needed */
     }
-    
-    .popup-close-btn {
-        margin-top: 10px;
-        padding: 10px 20px;
-        background-color: #4caf50;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
+
+    .right,
+    .left,
+    .signup-right,
+    .signup-left {
+        width: 100%;
     }
-    /* Responsive Styles */
-    
-    
-    /* Styles for screens below 350px */
-   @media (max-width: 339px) {
-        .parent-container, .parent-signup-container{
-            max-height: 85vh; /* Restrict height to ensure content is scrollable */
-            overflow-y: hidden;
-        }
-       .container, .signup-container {
-           flex-direction: column;
-           width: 280px; /* Adjust width as needed */
-           margin: 10px auto; /* Center container horizontally */
-           position: relative; /* Adjust positioning if needed */
-       }
-   
-       .right, .left, .signup-right, .signup-left {
-           width: 100%;
-       }
-   
-       .right {
-           height: 350px;
-           order: 2; /* Display .right (or .signup-right) second */
-       } 
-       .signup-right {
-           height: 180px;
-       }
-   
-       .signup-left {
-           height: 520px;
-           order: 1; /* Display .left (or .signup-left) first */
-       }
-   
-       .left {
-           height: 180px;
-           padding: 0px;
-           order: 1; /* Display .left (or .signup-left) first */
-       }
-   
-       .login-home-link, .signup-home-link {
-           bottom: 10px;
-           font-size: 12px;
-       }
-   
-       .log-res {
-           font-size: 12px;
-       }
-   
-       .links a, .signup-links a {
-           font-size: 10px;
-       }
-   }
+
+    .right {
+        height: 350px;
+        order: 2;
+        /* Display .right (or .signup-right) second */
+    }
+
+    .signup-right {
+        height: 180px;
+    }
+
+    .signup-left {
+        height: 520px;
+        order: 1;
+        /* Display .left (or .signup-left) first */
+    }
+
+    .left {
+        height: 180px;
+        padding: 0px;
+        order: 1;
+        /* Display .left (or .signup-left) first */
+    }
+
+    .login-home-link,
+    .signup-home-link {
+        top: 10px;
+        font-size: 12px;
+    }
+
+    .signup-home-link {
+        left: 10px;
+    }
+
+    .signup-home-link .right-arrow {
+        display: none;
+    }
+
+    .signup-home-link .left-arrow {
+        display: inline;
+    }
+
+    .log-res {
+        font-size: 12px;
+    }
+
+    .links a,
+    .signup-links a {
+        font-size: 10px;
+    }
+}
 
 /* Styles for screens between 349px and 599px */
 @media (max-width: 599px) and (min-width: 349px) {
-    .parent-container, .parent-signup-container{
-        max-height: 85vh; /* Restrict height to ensure content is scrollable */
-        overflow-y: hidden;
-    }    
 
-    .container, .signup-container {
-        flex-direction: column;
-        width: 300px; /* Adjust width as needed */
-        margin: 10px auto; /* Center container horizontally */
-        position: relative; /* Adjust positioning if needed */
+    .parent-container,
+    .parent-signup-container {
+        max-height: 85vh;
+        /* Restrict height to ensure content is scrollable */
+        overflow-y: hidden;
     }
 
-    .right, .left, .signup-right, .signup-left {
+    .container,
+    .signup-container {
+        flex-direction: column;
+        width: 300px;
+        /* Adjust width as needed */
+        margin: 10px auto;
+        /* Center container horizontally */
+        position: relative;
+        /* Adjust positioning if needed */
+    }
+
+    .right,
+    .left,
+    .signup-right,
+    .signup-left {
         width: 100%;
     }
 
     .right {
         height: 400px;
         border-radius: 10px;
-        order: 2; /* Display .right (or .signup-right) second */
-    } 
+        order: 2;
+        /* Display .right (or .signup-right) second */
+    }
+
     .signup-right {
         display: none;
         height: 200px;
@@ -283,74 +363,108 @@
     .signup-left {
         border-radius: 10px;
         height: 520px;
-        order: 1; /* Display .left (or .signup-left) first */
+        order: 1;
+        /* Display .left (or .signup-left) first */
     }
 
     .left {
         display: none;
         height: 200px;
-        order: 1; /* Display .left (or .signup-left) first */
+        order: 1;
+        /* Display .left (or .signup-left) first */
     }
 
-    .login-home-link, .signup-home-link {
-        bottom: 10px;
+    .login-home-link,
+    .signup-home-link {
+        top: 10px;
         font-size: 14px;
+    }
+
+    .signup-home-link {
+        left: 10px;
+    }
+
+    .signup-home-link .left-arrow {
+        display: inline;
+    }
+
+    .signup-home-link .right-arrow {
+        display: none;
     }
 
     .log-res {
         font-size: 14px;
     }
 
-    .links a, .signup-links a {
+    .links a,
+    .signup-links a {
         font-size: 12px;
     }
 }
 
 
 @media (min-width: 600px) {
-    .container, .signup-container {
+
+    .container,
+    .signup-container {
         flex-direction: row;
         width: 550px;
         height: 500px;
     }
 
-    .left, .right, .signup-left, .signup-right {
+    .left,
+    .right,
+    .signup-left,
+    .signup-right {
         width: 50%;
     }
 
-    .login-home-link, .signup-home-link {
+    .login-home-link,
+    .signup-home-link {
         font-size: 16px;
     }
 }
 
 @media (min-width: 900px) and (max-width: 1199px) {
-    .container, .signup-container {
+
+    .container,
+    .signup-container {
         flex-direction: row;
         width: 700px;
         height: 500px;
     }
 
-    .left, .right, .signup-left, .signup-right {
+    .left,
+    .right,
+    .signup-left,
+    .signup-right {
         width: 50%;
     }
 
-    .login-home-link, .signup-home-link {
+    .login-home-link,
+    .signup-home-link {
         font-size: 16px;
     }
 }
 
 @media (min-width: 1200px) {
-    .container, .signup-container {
+
+    .container,
+    .signup-container {
         flex-direction: row;
         width: 800px;
         height: 500px;
     }
 
-    .left, .right, .signup-left, .signup-right {
+    .left,
+    .right,
+    .signup-left,
+    .signup-right {
         width: 50%;
     }
 
-    .login-home-link, .signup-home-link {
+    .login-home-link,
+    .signup-home-link {
         font-size: 16px;
     }
 }
