@@ -75,8 +75,6 @@ input[type="radio"]:checked+.thumbnail {
 .slider-container video {
   width: 100%;
   height: 500px;
-  object-fit: cover;
-  border-radius: 10px;
 }
 
 input[type="radio"] {
@@ -621,7 +619,7 @@ input[type="radio"] {
   }
 }
 
-@media (max-width: 643px) and (min-width: 349px) {
+@media (max-width: 643px) and (min-width: 480px) {
   .detail-container {
     flex-direction: column;
     align-items: center;
@@ -673,6 +671,141 @@ input[type="radio"] {
 
   .art-name {
     margin-top: 20px;
+  }
+
+}
+
+@media (max-width: 480px) and (min-width: 418px) {
+  .detail-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 10px 20px 10px;
+  }
+
+  .main-column,
+  .side-column {
+    width: 100%;
+    order: unset;
+  }
+
+  .art-item {
+    top: 0;
+    padding: 15px 5px;
+  }
+
+  .art-image-detail {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  .art-details-text {
+    position: relative;
+    top: 0;
+    margin-top: 0px;
+    padding: 10px;
+  }
+
+  .art-scroll-handle {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .thumbnails {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .slider-container {
+    width: 100%;
+    height: 500px;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .art-name {
+    margin-top: 20px;
+  }
+
+  .slider-container {
+    height: 450px;
+  }
+
+  .slider-container img {
+    height: 450px;
+  }
+  
+  .slider-container video {
+    height: 450px;
+  }
+}
+
+@media (max-width: 418px) and (min-width: 349px) {
+  .detail-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 10px 20px 10px;
+  }
+
+  .main-column,
+  .side-column {
+    width: 100%;
+    order: unset;
+  }
+
+  .art-item {
+    top: 0;
+    padding: 15px 5px;
+  }
+
+  .art-image-detail {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  .art-details-text {
+    position: relative;
+    top: 0;
+    margin-top: 0px;
+    padding: 10px;
+  }
+
+  .art-scroll-handle {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .thumbnails {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .slider-container {
+    width: 100%;
+    height: 500px;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .art-name {
+    margin-top: 20px;
+  }
+
+  .slider-container {
+    height: 400px;
+  }
+
+  .slider-container img {
+    height: 400px;
+  }
+  
+  .slider-container video {
+    height: 400px;
   }
 
 }
