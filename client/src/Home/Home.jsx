@@ -132,10 +132,10 @@ const Home = () => {
             <div className='display-attributes'>
               <div className='attribute-info-reverse'>
                 <h2>Key Features of Our Display Cases</h2>
-                <ul className='attribute-list'>
+                <ul className='attribute-list-list'>
                   <li >Humidity Control</li>
                   <li >Light Management</li>
-                  <li >Air Pressure Maintenance</li>
+                  <li >Pressure Maintenance</li>
                   <li >Minimal Air Exchange</li>
                   <li >Temperature Control</li>
                   <li >Real-Time Monitoring</li>

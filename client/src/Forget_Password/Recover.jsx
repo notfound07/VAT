@@ -1,16 +1,16 @@
-import './Forget.css';
-import React, { useState, useContext } from 'react';
-import logo from '../Assets/logo.png'; // Import the image
+import React, { useState, useContext, useEffect } from 'react';
+import logo from '../Assets/logo.png';
 import { RecoveryContext } from "../App";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import './Forget.css';
 
 function Recover() {
   const { email } = useContext(RecoveryContext);
-  const [password, setPassword] = useState();
-  const [confirmpassword, setConfirmpassword] = useState();
+  const [password, setPassword] = useState("");
+  const [confirmpassword, setConfirmpassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const navigate = useNavigate();
@@ -18,6 +18,13 @@ function Recover() {
     window.location.hostname === "localhost"
       ? "http://localhost:3001/vat"
       : `${window.location.protocol}//visionaryarttech.com/vat`;
+
+  // Protect the route to ensure users have a valid email before accessing this page
+  useEffect(() => {
+    if (!email) {
+      navigate('/'); // Redirect to home if email is missing
+    }
+  }, [email, navigate]);
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -29,37 +36,30 @@ function Recover() {
 
   const submit = async (e) => {
     e.preventDefault();
+    if (password !== confirmpassword) {
+      alert("Passwords do not match.");
+      return;
+    }
+    
     try {
-      const response = await axios.post(`${baseURL}/reset`,
-        {
-          email,
-          password,
-          confirmpassword,
-        }
-      );
+      const response = await axios.post(`${baseURL}/reset`, {
+        email,
+        password,
+        confirmpassword,
+      });
+      
       if (response.status === 200) {
-        console.log("Reset successful");
+        console.log("Password reset successful");
         navigate('/Login');
       }
     } catch (error) {
-      if (error.response) {
-        // The request was made and the server responded with a status code
-        // that falls out of the range of 2xx
-        console.error("Backend returned error response:", error.response.data);
-      } else if (error.request) {
-        // The request was made but no response was received
-        console.error("No response received:", error.request);
-      } else {
-        // Something happened in setting up the request that triggered an Error
-        console.error("Error setting up request:", error.message);
-      }
+      console.error("Error during password reset:", error.response || error.message);
+      alert("Failed to reset password. Please try again.");
     }
   };
 
-
   return (
     <div className="forget-container">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></link>
       <div className="fr-container">
         <div className="middel">
           <img className="forget-company-logo" src={logo} alt="Company Logo" />
@@ -96,9 +96,7 @@ function Recover() {
                   className="password-toggle"
                   onClick={toggleConfirmPasswordVisibility}
                 >
-                  <FontAwesomeIcon
-                    icon={showConfirmPassword ? faEyeSlash : faEye}
-                  />
+                  <FontAwesomeIcon icon={showConfirmPassword ? faEyeSlash : faEye} />
                 </button>
               </div>
               <button className="rec-btn" onClick={submit}>

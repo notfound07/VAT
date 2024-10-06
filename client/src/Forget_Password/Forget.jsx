@@ -1,13 +1,13 @@
-import './Forget.css';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { RecoveryContext } from "../App";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import logo from '../Assets/logo.png'; // Import the image
+import logo from '../Assets/logo.png';
+import './Forget.css';
 
 function Forget() {
   const { email, otp } = useContext(RecoveryContext);
-  const [timerCount, setTimer] = React.useState(60);
+  const [timerCount, setTimer] = useState(60);
   const [OTPinput, setOTPinput] = useState(["", "", "", ""]);
   const [disable, setDisable] = useState(true);
   const navigate = useNavigate();
@@ -15,6 +15,13 @@ function Forget() {
     window.location.hostname === "localhost"
       ? "http://localhost:3001/vat"
       : `${window.location.protocol}//visionaryarttech.com/vat`;
+
+  // Route protection
+  useEffect(() => {
+    if (!email) {
+      navigate('/'); // Redirect if email is not present
+    }
+  }, [email, navigate]);
 
   function resendOTP() {
     if (disable) return;
@@ -32,19 +39,15 @@ function Forget() {
   function verifyOTP() {
     if (parseInt(OTPinput.join("")) === otp) {
       navigate('/Recover');
-      return;
+    } else {
+      alert("The code you have entered is not correct, try again or re-send the link.");
     }
-    alert(
-      "The code you have entered is not correct, try again or re-send the link"
-    );
-    return;
   }
 
   const handleChange = (e, index) => {
     const value = e.target.value;
     const newOTP = [...OTPinput];
 
-    // If the key pressed is Backspace and the input is empty, move focus to the previous field
     if (e.nativeEvent.inputType === "deleteContentBackward" && !value && index > 0) {
       document.getElementById(`otp-${index - 1}`).focus();
     }
@@ -53,29 +56,25 @@ function Forget() {
       newOTP[index] = value;
       setOTPinput(newOTP);
 
-      // Automatically move to the next input if the value is entered and it is not the last field
       if (value && index < 3) {
         document.getElementById(`otp-${index + 1}`).focus();
       }
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     let interval = setInterval(() => {
       setTimer((lastTimerCount) => {
         lastTimerCount <= 1 && clearInterval(interval);
         if (lastTimerCount <= 1) setDisable(false);
-        if (lastTimerCount <= 0) return lastTimerCount;
-        return lastTimerCount - 1;
+        return lastTimerCount <= 0 ? lastTimerCount : lastTimerCount - 1;
       });
-    }, 1000); // each count lasts for a second
-    // cleanup the interval on complete
+    }, 1000);
     return () => clearInterval(interval);
   }, [disable]);
 
   return (
     <div className="forget-container">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></link>
       <div className="fr-container">
         <div className="middel">
           <img className="forget-company-logo" src={logo} alt="" />
@@ -126,7 +125,8 @@ function Forget() {
           </div>
           <div>
             <p className="otp-p">Didn't receive code?</p>
-            <a href='/#'
+            <a
+              href="/#"
               className="resend"
               style={{
                 color: disable ? "gray" : "blue",

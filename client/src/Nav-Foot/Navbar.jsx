@@ -96,7 +96,7 @@ function Navbar() {
             <div className="nav-parent">
                 <div className='nav-space'>
                     <img className="company-logo" onClick={() => window.location.href = '/'} src={logo} alt="Company Logo" />
-                    <p className='company-name'>VisionaryArt Technologies Pvt Ltd</p>
+                    <p className='company-name'>VisionaryArt Technologies</p>
                 </div>
                 <div className="nav-child">
                     {show ? <Link to="/Dashboard" className={`nav-link ${isActiveLink("/Dashboard")}`}><i className="fa-solid fa-table-columns"></i>Dashboard</Link> : null}

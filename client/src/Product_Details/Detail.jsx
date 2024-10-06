@@ -47,7 +47,7 @@ const Detail = () => {
       setIsLoadingSuggestions(true);
 
       // Filter out the specific item you want to include in the shuffle (e.g., "Kiosk")
-      const specificItem = orders.find(item => /Kiosks?$/i.test(item.title));
+      const specificItem = orders.find(item => /Kiosk?$/i.test(item.title));
 
       // Filter out the other items
       const filteredOrders = orders.filter(item => !/Kiosks?$/i.test(item.title));

@@ -192,11 +192,8 @@ body {
 
 .info-container {
   width: 100%;
-  /* Full width */
   aspect-ratio: 1;
-  /* Maintain square aspect ratio */
   max-width: 494px;
-  /* Set a maximum width */
   position: relative;
   display: inline-block;
   border: 6px solid #FFF;
@@ -496,7 +493,26 @@ body {
   padding: 0px 10px;
 }
 
+.attribute-list-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #000;
+  font-family: "Times New Roman";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  gap: 16px;
+  padding: 0px 10px;
+}
+
 .attribute-list li {
+  text-align: left;
+  align-items: flex-start;
+}
+
+.attribute-list-list li {
   text-align: left;
   align-items: flex-start;
 }
@@ -604,7 +620,6 @@ body {
 
 @media (max-width: 768px) {
 
-  /* Further reduction of padding and card sizes */
   .home-page-pad {
     padding: 0px 40px;
   }
@@ -622,25 +637,22 @@ body {
 @media (max-width: 756px) {
   .slogan {
     padding: 20px;
-    /* Optional: adjust padding for smaller screens */
     width: 90%;
-    /* Optional: use more screen width */
     display: block;
-    /* Ensures block display to allow for wrapping */
   }
 
   .slogan-cust {
     padding: 20px;
-    /* Optional: adjust padding for smaller screens */
     width: 100%;
-    /* Optional: use more screen width */
     display: block;
-    /* Ensures block display to allow for wrapping */
   }
 }
 
 @media (max-width: 576px) {
-  /* Switch to column layout for smaller screens */
+
+  .home-page-pad {
+    padding: 0px 20px;
+  }
 
   .services-technology,
   .services-objective {
@@ -657,31 +669,51 @@ body {
 
 }
 
-@media (max-width: 410px) {
+@media (max-width: 480px) {
 
   .slogan-company {
     font-size: 28px;
   }
+
+  .attribute-list {
+    padding-left: 50px;
+  }
+  .attribute-list-list {
+    padding-left: 65px;
+  }
+  .image-objective {
+    width: 90%;
+  }
+}
+@media (max-width: 434px) {
+  .services-objective b,
+.services-technology b {
+  font-size: 26px;
+}
+
+.quote,
+.technology-quote {
+  font-size: 20px;
+}
+
+.objective-description,
+.technology-description {
+  font-size: 18px;
+}
 
 }
 
 @media (max-width: 386px) {
   .slogan {
     padding: 20px;
-    /* Optional: adjust padding for smaller screens */
     width: 100%;
-    /* Optional: use more screen width */
     display: block;
-    /* Ensures block display to allow for wrapping */
   }
 
   .slogan-cust {
     padding: 20px;
-    /* Optional: adjust padding for smaller screens */
     width: 100%;
-    /* Optional: use more screen width */
     display: block;
-    /* Ensures block display to allow for wrapping */
   }
 
   .slogan-company {
@@ -701,7 +733,36 @@ body {
     font-size: 18px;
   }
 
+  .attribute-list-list {
+    font-size: 18px;
+  }
+
   .desc-info {
+    top: 45%;
     font-size: 20px;
+  }
+
+  .image-objective {
+    width: 100%;
+  }
+  .services-objective b,
+  .services-technology b {
+    font-size: 22px;
+  }
+  
+  .quote,
+  .technology-quote {
+    font-size: 16px;
+  }
+  
+  .objective-description,
+  .technology-description {
+    font-size: 14px;
+  }
+
+  .services-technology,
+  .services-objective {
+    width: 100%;
+    gap: 20px;
   }
 }
