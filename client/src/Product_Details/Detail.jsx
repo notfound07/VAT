@@ -7,6 +7,8 @@ import { RecoveryContext } from '../App';
 import axios from 'axios';
 import { Buffer } from 'buffer';
 import logo from '../Assets/logo.png';
+import AOS from 'aos'; // Import AOS
+import 'aos/dist/aos.css'; // Import AOS CSS
 
 const Detail = () => {
   const [item, setItem] = useState(null);
@@ -20,6 +22,7 @@ const Detail = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true); // Loading state
   const [isLoadingSuggestions, setIsLoadingSuggestions] = useState(true); // Loading state for suggestions
+
   const baseURL =
     window.location.hostname === "localhost"
       ? "http://localhost:3001/vat"
@@ -39,28 +42,18 @@ const Detail = () => {
     }
     return shuffledArray;
   };
-  
 
   // Update shuffled items when orders change
   useEffect(() => {
     if (orders.length) {
       setIsLoadingSuggestions(true);
 
-      // Filter out the specific item you want to include in the shuffle (e.g., "Kiosk")
       const specificItem = orders.find(item => /Kiosk?$/i.test(item.title));
-
-      // Filter out the other items
       const filteredOrders = orders.filter(item => !/Kiosks?$/i.test(item.title));
-
-      // Combine the specific item with the other items
       const combinedOrders = specificItem ? [specificItem, ...filteredOrders] : filteredOrders;
-
-      // Shuffle the combined list
       const shuffledItems = shuffleArray(combinedOrders).slice(0, 4); // Adjust the slice value if needed
 
-      // Set the shuffled items to state
       setShuffledItems(shuffledItems);
-
       setIsLoadingSuggestions(false);
     }
   }, [orders]);
@@ -98,6 +91,11 @@ const Detail = () => {
       }
     };
     fetchAllResponses();
+    
+    // Initialize AOS
+    AOS.init({
+      duration: 1000, // Animation duration
+    });
   }, [id, baseURL]);
 
   return (
@@ -115,7 +113,7 @@ const Detail = () => {
         ) : (
           <div className="main-column">
             {item && (
-              <div className="art-item">
+              <div className="art-item" data-aos="fade-right">
                 <div className='art-img-container'>
                   <div className="art-scroll-handle">
                     <div className="thumbnails">
@@ -181,7 +179,7 @@ const Detail = () => {
           </div>
         )}
         {item && (
-          <div className='art-details-text'>
+          <div className='art-details-text' data-aos="fade-up">
             {edit ? (
               <div>
                 <input
@@ -213,7 +211,7 @@ const Detail = () => {
         )}
         <div className='suggetion-display'>
           {isLoading ? null : (
-            <div className="suggetion-showcase">
+            <div className="suggetion-showcase" data-aos="fade-left">
               {isLoadingSuggestions ? (
                 <div className="load">
                   <div className="loader-load">

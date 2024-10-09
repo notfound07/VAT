@@ -3,6 +3,8 @@ import Footer from '../Nav-Foot/Footer';
 import Navbar from '../Nav-Foot/Navbar';
 import axios from 'axios';
 import { RecoveryContext } from '../App';
+import AOS from 'aos'; // Import AOS
+import 'aos/dist/aos.css'; // Import AOS styles
 import './Contact.css';
 
 function Contact() {
@@ -88,6 +90,10 @@ function Contact() {
     if (storedEmail) {
       setEmail(storedEmail);
     }
+    
+    AOS.init({
+      duration: 1000, // Animation duration
+    });
   }, [setEmail]);
 
   const closePopup = () => {
@@ -100,11 +106,11 @@ function Contact() {
     <div>
       <Navbar />
       <div className="contact-container">
-        <h1>Contact Us</h1>
+        <h1 data-aos="fade-up">Contact Us</h1>
         <div className="form-wrapper">
-          <div className="contact-image"></div>
-          <form className="contact-form" onSubmit={submitForm}>
-            <div className="form-group-contact">
+          <div className="contact-image" data-aos="fade-right"></div>
+          <form className="contact-form" onSubmit={submitForm} data-aos="fade-left">
+            <div className="form-group-contact" data-aos="zoom-in">
               <label className="contact_label">Full Name</label>
               <div className="name-fields">
                 <input
@@ -113,6 +119,7 @@ function Contact() {
                   value={firstName} // Bind value to state
                   placeholder="First"
                   onChange={(e) => setFirstName(e.target.value)}
+                  data-aos="fade-up"
                 />
                 <input
                   type="text"
@@ -120,30 +127,33 @@ function Contact() {
                   value={lastName} // Bind value to state
                   placeholder="Last"
                   onChange={(e) => setLastName(e.target.value)}
+                  data-aos="fade-up"
                 />
               </div>
             </div>
-            <div className="form-group-contact">
+            <div className="form-group-contact" data-aos="zoom-in">
               <label className="contact_label">Email</label>
               <input value={email} disabled />
             </div>
-            <div className="form-group-contact">
+            <div className="form-group-contact" data-aos="zoom-in">
               <label className="contact_label">Mobile Number</label>
               <input
                 name="phoneNumber"
                 value={phoneNumber} // Bind value to state
                 onChange={(e) => setPhoneNumber(e.target.value)}
+                data-aos="fade-up"
               />
             </div>
-            <div className="form-group-contact">
+            <div className="form-group-contact" data-aos="zoom-in">
               <label className="contact_label">Comment Message</label>
               <textarea
                 name="commentMessage"
                 value={message} // Bind value to state
                 onChange={(e) => setMessage(e.target.value)}
+                data-aos="fade-up"
               ></textarea>
             </div>
-            <button className="submit-btn" type="submit">
+            <button className="submit-btn" type="submit" >
               Submit
             </button>
           </form>
@@ -153,7 +163,7 @@ function Contact() {
       {/* Success Popup */}
       {isSubmitted && (
         <div className="popup">
-          <div className="popup-content">
+          <div className="popup-content" data-aos="zoom-in">
             <h2>Success</h2>
             <p>Your message has been submitted!</p>
             <button className="popup-close-btn" onClick={closePopup}>
@@ -166,7 +176,7 @@ function Contact() {
       {/* Login Required Popup */}
       {loginRequired && (
         <div className="popup">
-          <div className="popup-content">
+          <div className="popup-content" data-aos="zoom-in">
             <h2>Login Required</h2>
             <p>You need to be logged in to submit feedback.</p>
             <button className="popup-close-btn" onClick={closePopup}>

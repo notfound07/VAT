@@ -6,6 +6,8 @@ import { RecoveryContext } from '../App';
 import { useNavigate } from 'react-router-dom';
 import { Buffer } from 'buffer';
 import logo from '../Assets/logo.png';
+import AOS from 'aos'; // Import AOS
+import 'aos/dist/aos.css'; // Import AOS styles
 
 const Shopping = () => {
     const { show, orders } = useContext(RecoveryContext);
@@ -13,6 +15,9 @@ const Shopping = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
+        AOS.init({
+            duration: 1000, // Animation duration
+          });
         if (orders.length > 0) {
             setIsLoading(false); // Set loading to false when orders are available
         }
@@ -23,7 +28,7 @@ const Shopping = () => {
             <Navbar />
             <div className="gallery-container">
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></link>
-                <div className="new-product">
+                <div className="new-product" data-aos="fade-up">
                     {show && (
                         <>
                             <h1>Manufacturing Unit</h1>
@@ -46,13 +51,18 @@ const Shopping = () => {
                         <div className="art-showcase">
                             {orders.filter(item => !/Kiosks$/i.test(item.title))
                                 .map((item) => (
-                                    <div className="art-card" key={item._id} onClick={() => window.location.href = item.title === "Kiosk" ? '/Kiosk' : `/Details/${item._id}`}>
+                                    <div 
+                                        className="art-card" 
+                                        key={item._id} 
+                                        onClick={() => window.location.href = item.title === "Kiosk" ? '/Kiosk' : `/Details/${item._id}`}
+                                        data-aos="fade-up" // Add AOS animation here
+                                    >
                                         <div className="art-image-wrapper">
-                                                <img
-                                                    src={`data:${item.image.contentType};base64,${Buffer.from(item.image.data).toString('base64')}`}
-                                                    alt={item.title}
-                                                    className="art-image"
-                                                />
+                                            <img
+                                                src={`data:${item.image.contentType};base64,${Buffer.from(item.image.data).toString('base64')}`}
+                                                alt={item.title}
+                                                className="art-image"
+                                            />
                                             <div className="overlay">
                                                 <button className="view-details-button">
                                                     {item.title === "Kiosk" ? "View All Products" : "View Details"}

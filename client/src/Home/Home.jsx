@@ -19,7 +19,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Buffer } from 'buffer';
 import CustomCarousel, { images } from './slider';
-
+import AOS from 'aos'; // Import AOS
+import 'aos/dist/aos.css'; // Import AOS CSS
 
 const Home = () => {
   const { orders } = useContext(RecoveryContext);
@@ -35,6 +36,17 @@ const Home = () => {
     }
     return shuffledArray;
   };
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Animation duration
+      offset: 100, // Offset (in px) from the original trigger point
+    });
+    if (orders.length > 0) {
+      setIsLoading(false); // Set loading to false when orders are available
+    }
+  }, [orders]);
+
 
   useEffect(() => {
     if (orders.length) {
@@ -57,13 +69,17 @@ const Home = () => {
 
       setIsLoading(false);
     }
+
+    AOS.init({
+      duration: 1000, // Animation duration
+    });
   }, [orders]);
 
   return (
     <div className='home-page'>
       <Navbar />
       {/* CustomCarousel Slider Integration */}
-      <div className="custom-carousel-section">
+      <div className="custom-carousel-section" data-aos="fade-down">
         <CustomCarousel>
           {images.map((image, index) => (
             <img key={index} src={image.imgURL} alt={image.imgAlt} />
@@ -89,6 +105,8 @@ const Home = () => {
                   role="button"
                   tabIndex={0}
                   onKeyPress={() => window.location.href = item.title === "Kiosk" ? '/Kiosk' : `/Details/${item._id}`}
+                  data-aos="fade-up" // AOS animation
+                  data-aos-duration="1000" // Animation duration
                 >
                   <div className="item-image-wrapper">
                     <img
@@ -110,85 +128,85 @@ const Home = () => {
         </div>
 
         <div>
-          <div className='center-slogan'>
+          <div className='center-slogan' data-aos="fade-up">
             <div className='slogan'>
               <b className='slogan-company '>What We Do?</b>
             </div>
           </div>
-            <div className='display-attributes'>
-              <img className="attribute-image" src={museum2} alt="mission" />
-              <div className='attribute-info'>
-                <h2>Custom Display Cases for Preservation</h2>
-                <ul className='attribute-list'>
-                  <li >Tailored Solutions</li>
-                  <li >Material Preservation</li>
-                  <li >Environmental Control</li>
-                  <li >Safety & Accessibility</li>
-                  <li >Design Harmony</li>
-                  <li >Airtight Management</li>
-                </ul>
-              </div>
+          <div className='display-attributes'>
+            <img className="attribute-image" src={museum2} alt="mission" data-aos="fade-right" />
+            <div className='attribute-info' data-aos="fade-left">
+              <h2>Custom Display Cases for Preservation</h2>
+              <ul className='attribute-list'>
+                <li>Tailored Solutions</li>
+                <li>Material Preservation</li>
+                <li>Environmental Control</li>
+                <li>Safety & Accessibility</li>
+                <li>Design Harmony</li>
+                <li>Airtight Management</li>
+              </ul>
             </div>
-            <div className='display-attributes'>
-              <div className='attribute-info-reverse'>
-                <h2>Key Features of Our Display Cases</h2>
-                <ul className='attribute-list-list'>
-                  <li >Humidity Control</li>
-                  <li >Light Management</li>
-                  <li >Pressure Maintenance</li>
-                  <li >Minimal Air Exchange</li>
-                  <li >Temperature Control</li>
-                  <li >Real-Time Monitoring</li>
-                </ul>
-              </div>
-              <img className="attribute-image" src={museum1} alt="mission" />
+          </div>
+          <div className='display-attributes'>
+            <div className='attribute-info-reverse' data-aos="fade-right">
+              <h2>Key Features of Our Display Cases</h2>
+              <ul className='attribute-list-list'>
+                <li>Humidity Control</li>
+                <li>Light Management</li>
+                <li>Pressure Maintenance</li>
+                <li>Minimal Air Exchange</li>
+                <li>Temperature Control</li>
+                <li>Real-Time Monitoring</li>
+              </ul>
             </div>
-            <div className='display-attributes'>
-              <img className="attribute-image" src={museum} alt="mission" />
-              <div className='attribute-info'>
-                <h2>Advanced Features of Storage Cubicals</h2>
-                <ul className='attribute-list'>
-                  <li >Humidity Regulation</li>
-                  <li >Light Control</li>
-                  <li >Positive Pressure</li>
-                  <li >Low Air Exchange</li>
-                  <li >Temperature Control</li>
-                  <li >Continuous Data Logging</li>
-                </ul>
-              </div>
+            <img className="attribute-image" src={museum1} alt="mission" data-aos="fade-left" />
+          </div>
+          <div className='display-attributes'>
+            <img className="attribute-image" src={museum} alt="mission" data-aos="fade-right" />
+            <div className='attribute-info' data-aos="fade-left">
+              <h2>Advanced Features of Storage Cubicals</h2>
+              <ul className='attribute-list'>
+                <li>Humidity Regulation</li>
+                <li>Light Control</li>
+                <li>Positive Pressure</li>
+                <li>Low Air Exchange</li>
+                <li>Temperature Control</li>
+                <li>Continuous Data Logging</li>
+              </ul>
+            </div>
           </div>
         </div>
 
-        <div className='center-slogan'>
+        <div className='center-slogan' data-aos="fade-up">
           <div className='slogan-cust'>
             <b className='slogan-company'>We Customize Your Design For Yourself</b>
           </div>
         </div>
         <div className="custom-showcase">
-          <div class="info-container">
-            <img class="info-img" src={machine} alt="Machine" />
-            <p class="desc-info">
+          <div className="info-container" data-aos="zoom-in">
+            <img className="info-img" src={machine} alt="Machine" />
+            <p className="desc-info">
               We are offering Furnished Turned Components in all sizes, Threading, Drilling, Slotting, Milling etc.
             </p>
-            <button className='info-button' onClick={() => { window.scrollTo(0, 0); navigate('/Contact'); }}><i class="fa-solid fa-arrow-right"></i></button>
+            <button className='info-button' onClick={() => { window.scrollTo(0, 0); navigate('/Contact'); }}><i className="fa-solid fa-arrow-right"></i></button>
           </div>
 
-          <div class="info-container">
-            <img class="info-img" src={mission} alt="Mission" />
-            <p class="desc-info">
+          <div className="info-container" data-aos="zoom-in">
+            <img className="info-img" src={mission} alt="Mission" />
+            <p className="desc-info">
               A mission to associate ourselves with prestigious companies who have a good reputation like you.
             </p>
-            <button className='info-button' onClick={() => { window.scrollTo(0, 0); navigate('/Design'); }}><i class="fa-solid fa-arrow-right"></i></button>
+            <button className='info-button' onClick={() => { window.scrollTo(0, 0); navigate('/Design'); }}><i className="fa-solid fa-arrow-right"></i></button>
           </div>
         </div>
 
-        <div className='center-slogan'>
-          <div class="slogan">
-            <b class="slogan-company">About Company</b>
+        <div className='center-slogan' data-aos="fade-up">
+          <div className="slogan">
+            <b className="slogan-company">About Company</b>
           </div>
         </div>
         <div className='services-section'>
-          <div className='services-objective'>
+          <div className='services-objective' data-aos="fade-right">
             <b>Objective</b>
             <div className="image-objective">
               <img src={objectiv} alt="mission" />
@@ -200,7 +218,7 @@ const Home = () => {
               Transforms our work culture to make things better and helps to engage long-lasting relationships. VisionaryArt aims to offer high quality and precision-turned components with all types of material at competitive prices to meet the market demand.
             </p>
           </div>
-          <div className='services-technology'>
+          <div className='services-technology' data-aos="fade-left">
             <b>Building Technology</b>
             <div className="image-objective">
               <img src={laser} alt="mission" />
@@ -214,15 +232,15 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="slogan_client">Clients Corner</div>
+        <div className="slogan_client" data-aos="fade-up">Clients Corner</div>
         <div className='client-header'>
-          <div className='client-item'>
+          <div className='client-item' data-aos="fade-up" data-aos-delay="100">
             <img className="client-img" src={VLogo2} alt="Client Logo" />
           </div>
-          <div className='client-item' onClick={() => window.location.href = 'https://vishalaakshiconsultants.com/'}>
+          <div className='client-item' onClick={() => window.location.href = 'https://vishalaakshiconsultants.com/'} data-aos="fade-up" data-aos-delay="200">
             <img className="client-img" src={VLogo} alt="Client Logo" />
           </div>
-          <div className='client-item'>
+          <div className='client-item' data-aos="fade-up" data-aos-delay="300">
             <img className="client-img" src={VLogo3} alt="Client Logo" />
           </div>
         </div>

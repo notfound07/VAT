@@ -1,21 +1,29 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react';
 import Navbar from '../Nav-Foot/Navbar';
 import Footer from '../Nav-Foot/Footer';
 import { RecoveryContext } from '../App';
 import { Buffer } from 'buffer';
 import './Shopping.css';
 import logo from '../Assets/logo.png';
-
+import AOS from 'aos'; // Import AOS
+import 'aos/dist/aos.css'; // Import AOS CSS
 
 const Kiosk = () => {
     const { orders } = useContext(RecoveryContext);
     const [isLoading, setIsLoading] = useState(true); // Loading state
 
     useEffect(() => {
+        // Initialize AOS
+        AOS.init({
+            duration: 1000, // Animation duration
+        });
+        
+        // Set loading to false when orders are available
         if (orders.length > 0) {
-            setIsLoading(false); // Set loading to false when orders are available
+            setIsLoading(false); 
         }
     }, [orders]);
+
     return (
         <div>
             <Navbar />
@@ -31,11 +39,13 @@ const Kiosk = () => {
                     ) : (
                         <div className="art-showcase">
                             {orders.filter(item => /Kiosks$/i.test(item.title))
-                                .map((item) =>
-                                (
+                                .map((item) => (
                                     <div
                                         className="art-card"
-                                        key={item._id} onClick={() => window.location.href = item.title === "Kiosk" ? '/Kiosk' : `/Details/${item._id}`}
+                                        key={item._id} 
+                                        onClick={() => window.location.href = item.title === "Kiosk" ? '/Kiosk' : `/Details/${item._id}`}
+                                        data-aos="fade-up" // AOS animation
+                                        data-aos-duration="1000" // Animation duration
                                     >
                                         <div className="art-image-wrapper">
                                             <img
@@ -49,15 +59,14 @@ const Kiosk = () => {
                                         </div>
                                         <h3 className="art-title">{item.title}</h3>
                                     </div>
-                                )
-                                )}
+                                ))}
                         </div>
                     )}
                 </div>
             </div>
             <Footer />
-        </div >
+        </div>
     )
 }
 
-export default Kiosk
+export default Kiosk;

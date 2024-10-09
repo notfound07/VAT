@@ -1,11 +1,13 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FaArrowRight , FaArrowLeft } from "react-icons/fa";
+import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import axios from "axios";
 import { RecoveryContext } from "../App";
 import "./Style.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import AOS from 'aos'; // Import AOS
+import 'aos/dist/aos.css'; // Import AOS CSS
 
 function Register() {
   const [name, setName] = useState("");
@@ -30,58 +32,64 @@ function Register() {
   };
 
   const submit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  if (!name) {
-    window.alert("Name is required.");
-    return;
-  }
-
-  if (!email) {
-    window.alert("Email is required.");
-    return;
-  }
-
-  if (!password) {
-    window.alert("Password is required.");
-    return;
-  }
-
-  if (!confirmpassword) {
-    window.alert("Confirm Password is required.");
-    return;
-  }
-
-  if (password !== confirmpassword) {
-    window.alert("Passwords do not match.");
-    return;
-  }
-
-  try {
-    const response = await axios.post(`${baseURL}/signup`, {
-      name,
-      email,
-      password,
-      confirmpassword,
-    });
-
-    if (response.status === 201) {
-      setIsPopupVisible(true); // Show the success popup
+    if (!name) {
+      window.alert("Name is required.");
+      return;
     }
-  } catch (err) {
-    if (err.response && err.response.status === 409) {
-      window.alert("Email already exists. Please use a different email.");
-    } else {
-      window.alert("Registration failed. Please try again.");
-    }
-  }
-};
 
+    if (!email) {
+      window.alert("Email is required.");
+      return;
+    }
+
+    if (!password) {
+      window.alert("Password is required.");
+      return;
+    }
+
+    if (!confirmpassword) {
+      window.alert("Confirm Password is required.");
+      return;
+    }
+
+    if (password !== confirmpassword) {
+      window.alert("Passwords do not match.");
+      return;
+    }
+
+    try {
+      const response = await axios.post(`${baseURL}/signup`, {
+        name,
+        email,
+        password,
+        confirmpassword,
+      });
+
+      if (response.status === 201) {
+        setIsPopupVisible(true); // Show the success popup
+      }
+    } catch (err) {
+      if (err.response && err.response.status === 409) {
+        window.alert("Email already exists. Please use a different email.");
+      } else {
+        window.alert("Registration failed. Please try again.");
+      }
+    }
+  };
 
   const closePopup = () => {
     setIsPopupVisible(false); // Close the popup
     navigate('/login'); // Navigate to login page
   };
+
+  useEffect(() => {
+    // Initialize AOS
+    AOS.init({
+      duration: 1000, // Animation duration
+    });
+  }, []);
 
   return (
     <div className="parent-signup-container">
@@ -90,7 +98,7 @@ function Register() {
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
       ></link>
       <div className="signup-container">
-        <div className="signup-left">
+        <div className="signup-left" data-aos="fade-right">
           <h2>Sign Up</h2>
           <form>
             <div className="signup-form-group">
@@ -149,10 +157,10 @@ function Register() {
             </div>
           </form>
         </div>
-        <div className="signup-right"></div>
-        <Link to="/" className="signup-home-link">
-        <FaArrowLeft className="left-arrow" /> Home
-          <FaArrowRight  className="right-arrow"/>
+        <div className="signup-right" data-aos="fade-left"></div>
+        <Link to="/" className="signup-home-link" data-aos="fade-left">
+          <FaArrowLeft className="left-arrow" /> Home
+          <FaArrowRight className="right-arrow" />
         </Link>
       </div>
 

@@ -8,6 +8,8 @@ import design2 from '../Assets/Cnc2.jpg';
 import design3 from '../Assets/Cnc3.jpg';
 import design4 from '../Assets/Cnc4.jpg';
 import design5 from '../Assets/Cnc5.jpg';
+import AOS from 'aos'; // Import AOS
+import 'aos/dist/aos.css'; // Import AOS CSS
 
 class Design extends Component {
   constructor(props) {
@@ -18,6 +20,10 @@ class Design extends Component {
     };
   }
 
+  componentDidMount() {
+    AOS.init({ duration: 1000}); // Initialize AOS with options
+  }
+
   handleDoubleClick = (event, id) => {
     const rect = event.target.getBoundingClientRect();
     const x = event.clientX - rect.left; // X-coordinate relative to the image
@@ -25,7 +31,7 @@ class Design extends Component {
 
     this.setState((prevState) => ({
       zoomedImageId: prevState.zoomedImageId === id ? null : id,
-      zoomPosition: { x, y }
+      zoomPosition: { x, y },
     }));
   };
 
@@ -37,7 +43,7 @@ class Design extends Component {
         <Navbar />
         <div className="design-page">
           <div className='overlay-design'>
-            <h1>Cnc Pannel, Frame & Design Drawing</h1>
+            <h1 data-aos="fade-up">CNC Panel, Frame & Design Drawing</h1>
             {[
               { src: design5, id: 'design5' },
               { src: design, id: 'design' },
@@ -45,11 +51,13 @@ class Design extends Component {
               { src: design2, id: 'design2' },
               { src: design3, id: 'design3' },
               { src: design4, id: 'design4' },
-            ].map((image) => (
+            ].map((image, index) => (
               <div
                 key={image.id}
                 className="design-container"
                 onDoubleClick={(event) => this.handleDoubleClick(event, image.id)}
+                data-aos="zoom-in" // AOS animation for image containers
+                data-aos-delay={index * 100} // Stagger animations
               >
                 <img
                   src={image.src}

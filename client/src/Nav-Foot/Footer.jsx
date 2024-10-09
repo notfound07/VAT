@@ -6,11 +6,17 @@ import facebook from '../Assets/facebook.png';
 import twitter from '../Assets/twitter.png';
 import instagram from '../Assets/instagram.png';
 import { MdOutlineAlternateEmail } from "react-icons/md";
-import React from 'react';
-
+import React, { useEffect } from 'react';
+import AOS from 'aos'; // Import AOS
+import 'aos/dist/aos.css'; // Import AOS CSS
 function Footer() {
+  useEffect(() => {
+    AOS.init({
+        duration: 1000, // Animation duration
+    });
+  }, []);
   return (
-    <footer className="footer">
+    <footer className="footer" data-aos="fade-up">
       <div className="footer-background">
         <img src={logo} alt="Background" className="footer-background-image" />
         <div className="footer-overlay"></div>

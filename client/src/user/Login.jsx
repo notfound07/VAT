@@ -1,11 +1,13 @@
 import './Style.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa';
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { RecoveryContext } from '../App';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import AOS from 'aos'; // Import AOS
+import 'aos/dist/aos.css'; // Import AOS CSS
 
 function Login() {
   const { email, setEmail, setShow } = useContext(RecoveryContext);
@@ -57,21 +59,28 @@ function Login() {
     }
   }
 
+  useEffect(() => {
+    // Initialize AOS
+    AOS.init({
+      duration: 1000, // Animation duration
+    });
+  }, []);
+
   return (
     <div className="parent-container">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></link>
       <div className="container">
-        <div className="left">
+        <div className="left" data-aos="fade-right">
         </div>
-        <div className="right">
+        <div className="right" data-aos="fade-left">
           <h2>Login</h2>
           <form>
             <div className="form-group">
               <label htmlFor="email">Email</label>
-              <input 
-                type="email" 
-                id="email" 
-                name="email" 
+              <input
+                type="email"
+                id="email"
+                name="email"
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
@@ -96,8 +105,8 @@ function Login() {
               <a href="/EmailInput">Forget Password?</a>
             </div>
           </form>
-          <Link to="/" className="login-home-link"><FaArrowLeft />Home</Link>
         </div>
+        <Link to="/" className="login-home-link" data-aos="fade-right"><FaArrowLeft />Home</Link>
       </div>
     </div>
   );

@@ -17,7 +17,6 @@ import { CartProvider } from "./Resources/CartContext.jsx";
 import useLocalStorage from './Resources/useLoaclStorage';
 import { createContext } from "react";
 import Add from "./New/Add.jsx";
-import Review from "./Product_Details/Review.jsx";
 import Dashboard from "./Dashboard/Dashboard.jsx";
 import Workslider from "./Home/workslider.jsx";
 import CustomCarousel from "./Home/slider.jsx";
@@ -66,7 +65,6 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/Navbar" element={<Navbar />} />
             <Route path="/Footer" element={<Footer />} />
-            <Route path="/Review" element={<Review />} />
             <Route path="/Shopping" element={<Shopping />} />
             <Route path='/Kiosk' element={<Kiosk />} />
             <Route path="/Add" element={<Add />} />

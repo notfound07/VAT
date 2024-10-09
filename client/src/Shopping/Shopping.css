@@ -7,32 +7,39 @@ body {
 .new-product {
     text-align: center;
     padding: 0 20px 20px 20px;
+    transition: 0.3s; /* Added */
 }
 
 .new-product h1 {
     margin-bottom: 10px;
+    transition: 0.3s; /* Added */
 }
 
 .new-product h4 {
     margin-bottom: 20px;
+    transition: 0.3s; /* Added */
 }
 
 .gallery-container {
     padding: 100px 80px 40px 80px;
+    transition: 0.3s; /* Added */
 }
 
 .art-grid {
     display: grid;
     grid-template-rows: auto 1fr;
     justify-content: center;
+    transition: 0.3s; /* Added */
 }
 
 .art-showcase {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    grid-auto-flow: dense; /* Fill in gaps */
     gap: 40px;
     margin-top: 20px;
     width: 100%;
+    transition: 0.3s; /* Added */
 }
 
 .art-card {
@@ -44,7 +51,7 @@ body {
     box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3), -1px -1px 10px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s, 0.3s; /* Added */
     width: 300px;
     height: 320px;
 }
@@ -60,12 +67,13 @@ body {
     height: 100%;
     overflow: hidden;
     border-radius: 10px 10px 0px 0px;
+    transition: 0.3s; /* Added */
 }
 
 .art-image {
     width: 100%;
     height: 100%;
-    transition: transform 0.3s;
+    transition: transform 0.3s, 0.3s; /* Added */
 }
 
 .art-card:hover .art-image {
@@ -83,7 +91,7 @@ body {
     justify-content: center;
     align-items: center;
     opacity: 0;
-    transition: opacity 0.3s;
+    transition: opacity 0.3s, 0.3s; /* Added */
 }
 
 .art-card:hover .overlay {
@@ -98,7 +106,7 @@ body {
     border-radius: 5px;
     font-size: 1em;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, 0.3s; /* Added */
 }
 
 .view-details-button:hover {
@@ -113,6 +121,7 @@ body {
     font-weight: 700;
     line-height: 140%;
     margin: 15px;
+    transition: 0.3s; /* Added */
 }
 
 .art-add {
@@ -123,7 +132,7 @@ body {
     border-radius: 5px;
     font-size: 1em;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, 0.3s; /* Added */
 }
 
 .art-add:hover {
@@ -171,6 +180,7 @@ body {
     -webkit-background-clip: text;
     background-size: 200% 100%;
     animation: gradientMove 2s linear infinite;
+    transition: 0.3s; /* Added */
 }
 
 @keyframes gradientMove {
@@ -189,7 +199,6 @@ body {
 
 /* Media Queries for responsiveness */
 
-/* Larger screens (Desktop) */
 @media (max-width: 1920px) and (min-width: 1375px) {
     .art-showcase {
         grid-template-columns: repeat(4, 1fr);
@@ -233,8 +242,6 @@ body {
         column-gap: 20px;
     }
 }
-
-
 
 /* Medium screens */
 @media (max-width: 995px) and (min-width: 968px) {
@@ -285,5 +292,4 @@ body {
     .art-showcase {
         grid-template-columns: repeat(1, 1fr);
     }
-
 }
