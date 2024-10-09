@@ -1,8 +1,12 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { RecoveryContext } from "../App";
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { FaArrowLeft } from 'react-icons/fa';
 import axios from 'axios';
 import logo from '../Assets/logo.png';
+import AOS from 'aos'; // Import AOS
+import 'aos/dist/aos.css'; // Import AOS styles
 import './Forget.css';
 
 function Forget() {
@@ -22,6 +26,15 @@ function Forget() {
       navigate('/'); // Redirect if email is not present
     }
   }, [email, navigate]);
+
+  // Initialize AOS
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Animation duration in milliseconds
+      easing: 'ease-in-out', // Easing function
+      once: true, // Whether the animation should happen only once
+    });
+  }, []);
 
   function resendOTP() {
     if (disable) return;
@@ -74,13 +87,14 @@ function Forget() {
   }, [disable]);
 
   return (
-    <div className="forget-container">
-      <div className="fr-container">
-        <div className="middel">
-          <img className="forget-company-logo" src={logo} alt="" />
+    <div className="forget-container" data-aos="fade-up"> {/* Add AOS animation */}
+      <div className="fr-container" data-aos="zoom-in"> {/* Add AOS animation */}
+        <Link to="/" className="rec-home-link" data-aos="fade-left"><FaArrowLeft />Home</Link> {/* Add AOS animation */}
+        <div className="middel" data-aos="fade-in"> {/* Add AOS animation */}
+          <img className="forget-company-logo" src={logo} alt="" data-aos="fade-down" /> {/* Add AOS animation */}
           <h2>Recover Pin</h2>
           <p className="otp-p">We have sent a code to your email {email}</p>
-          <div className="Otp-box">
+          <div className="Otp-box" data-aos="flip-up"> {/* Add AOS animation */}
             <div className="Otp-input">
               <input
                 maxLength="1"

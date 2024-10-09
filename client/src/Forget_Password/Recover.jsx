@@ -5,6 +5,10 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
+import { FaArrowLeft } from 'react-icons/fa';
+import AOS from 'aos'; // Import AOS
+import 'aos/dist/aos.css'; // Import AOS styles
 import './Forget.css';
 
 function Recover() {
@@ -25,6 +29,15 @@ function Recover() {
       navigate('/'); // Redirect to home if email is missing
     }
   }, [email, navigate]);
+
+  // Initialize AOS
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Animation duration in milliseconds
+      easing: 'ease-in-out', // Easing function
+      once: true, // Whether the animation should happen only once
+    });
+  }, []);
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -59,12 +72,13 @@ function Recover() {
   };
 
   return (
-    <div className="forget-container">
-      <div className="fr-container">
-        <div className="middel">
-          <img className="forget-company-logo" src={logo} alt="Company Logo" />
+    <div className="forget-container" data-aos="fade-up"> {/* Add AOS animation */}
+      <div className="fr-container" data-aos="zoom-in"> {/* Add AOS animation */}
+        <Link to="/" className="rec-home-link" data-aos="fade-left"><FaArrowLeft />Home</Link> {/* Add AOS animation */}
+        <div className="middel" data-aos="fade-in"> {/* Add AOS animation */}
+          <img className="forget-company-logo" src={logo} alt="Company Logo" data-aos="fade-down" /> {/* Add AOS animation */}
           <h2>Recover Password</h2>
-          <div className="recover-form-group">
+          <div className="recover-form-group" data-aos="fade-up"> {/* Add AOS animation */}
             <form>
               <input defaultValue={email} disabled />
               <label htmlFor="password">New Password</label>

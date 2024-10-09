@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Dashboard.css';
 import logo from '../Assets/logo.png';
+import AOS from 'aos'; // Import AOS
+import 'aos/dist/aos.css'; // Import AOS styles
 
 const Dashboard = () => {
   const [allCont, setCont] = useState([]);
@@ -29,7 +31,24 @@ const Dashboard = () => {
     fetchAll();
   }, [baseURL]);
 
-  if (loading) return <p>Loading...</p>;
+  useEffect(() => {
+    AOS.init({ // Initialize AOS
+      duration: 1000, // Animation duration
+      once: true, // Animation should happen only once
+    });
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="load">
+        <div className="loader-load">
+          <img src={logo} alt="Logo" />
+        </div>
+        <p>Loading...</p>
+      </div>
+    );
+  }
+
   if (error) return <p>Error: {error.message}</p>;
 
   return (
@@ -42,10 +61,10 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="dashboard-main">
-        <div className='dashboard-details'>Customer Order Details</div>
+        <div className='dashboard-details' data-aos="fade-down">Customer Order Details</div>
         <div className='dashboard-cards'>
           {allCont.map((value) => (
-            <div className="dashboard-card" key={value._id}>
+            <div className="dashboard-card" key={value._id} data-aos="fade-up">
               <h1>{value.firstName}</h1>
               <p>{value.email}</p>
               <p>{value.phoneNumber}</p>
