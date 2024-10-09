@@ -1,8 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Footer from '../Nav-Foot/Footer';
 import axios from 'axios';
 import { RecoveryContext } from '../App';
 import Navbar from '../Nav-Foot/Navbar';
+import AOS from 'aos'; // Import AOS
+import 'aos/dist/aos.css'; // Import AOS CSS
 import './Add.css';
 
 const Add = () => {
@@ -41,23 +43,28 @@ const Add = () => {
       alert('Failed to add product');
     }
   };
-  
+
+  // Initialize AOS on component mount
+  useEffect(() => {
+    AOS.init({ duration: 1000 }); // You can adjust duration and other options here
+  }, []);
 
   return (
     <div>
       <Navbar />
-      <div className='add-container'>
+      <div className='add-container' data-aos="fade-up">
         <form className='add-form' onSubmit={handleSubmit}>
-          <h1>Add New Product</h1>
-          <h3>Title</h3>
+          <h1 >Add New Product</h1>
+          <h3 >Title</h3>
           <input
             className='upload-title'
             type='text'
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+            
           />
-          <h3>Image</h3>
-          <div className='upload-box'>
+          <h3 >Image</h3>
+          <div className='upload-box' >
             <div className='file-upload'>
               <input
                 className='upload-file'
@@ -68,8 +75,8 @@ const Add = () => {
               />
             </div>
           </div>
-          <h3>Video</h3>
-          <div className='upload-box'>
+          <h3 >Video</h3>
+          <div className='upload-box' >
             <div className='file-upload'>
               <input
                 className='upload-file'
@@ -80,12 +87,13 @@ const Add = () => {
               />
             </div>
           </div>
-          <h3>Description</h3>
+          <h3 >Description</h3>
           <textarea
             type='text'
             className='description'
             value={description}
             onChange={(e) => setDescription(e.target.value)}
+            
           />
           <div className='new-btn'>
             <button className='upnew-btn' type='submit'>

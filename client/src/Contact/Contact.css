@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   padding-top: 100px;
+  overflow: hidden; /* Added */
 }
 
 .contact-container h1 {
@@ -17,6 +18,7 @@
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    overflow: hidden; /* Added */
 }
 
 .form-wrapper {
@@ -25,6 +27,7 @@
   padding: 20px;
   width: 70%;
   gap: 20px;
+  overflow: hidden; /* Added */
 }
 
 .contact-image {
@@ -32,11 +35,13 @@
   background-size: cover;
   display: flex;
   width: 100%;
+  overflow: hidden; /* Added */
 }
 
 .contact-logo {
   width: 100%;
   height: 100%;
+  overflow: hidden; /* Added */
 }
 
 .image-placeholder {
@@ -45,6 +50,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden; /* Added */
 }
 
 .contact-form {
@@ -52,20 +58,25 @@
   padding: 10px;
   display: flex;
   flex-direction: column;
+  overflow: hidden; /* Added */
 }
 
 .form-group-contact {
   margin-bottom: 15px;
+  overflow: hidden; /* Added */
 }
 
 .name-fields {
   display: flex;
   gap: 10px;
+  overflow: hidden; /* Added */
 }
 
-.contact_label{
+.contact_label {
   font-weight: bold;
+  overflow: hidden; /* Added */
 }
+
 .name-fields input[type="text"],
 .form-group-contact input[type="email"],
 .form-group-contact input {
@@ -75,6 +86,7 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   background-color: white;
+  overflow: hidden; /* Added */
 }
 
 .form-group-contact textarea {
@@ -85,6 +97,7 @@
   border-radius: 4px;
   resize: vertical;
   height: 100px;
+  overflow: hidden; /* Added */
 }
 
 .submit-btn {
@@ -94,10 +107,12 @@
   color: white;
   border-radius: 4px;
   cursor: pointer;
+  overflow: hidden; /* Added */
 }
 
 .submit-btn:hover {
   background-color: #0056b3;
+  overflow: hidden; /* Added */
 }
 
 .popup {
@@ -111,6 +126,7 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  overflow: hidden; /* Added */
 }
 
 .popup-content {
@@ -119,6 +135,7 @@
   border-radius: 8px;
   text-align: center;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  overflow: hidden; /* Added */
 }
 
 .popup-close-btn {
@@ -129,23 +146,26 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  overflow: hidden; /* Added */
 }
-
 
 /* Media Queries */
 @media (min-width: 1920px) {
   .form-wrapper {
     width: 60%;
+    overflow: hidden; /* Added */
   }
 
   .image-placeholder {
     height: 400px;
+    overflow: hidden; /* Added */
   }
 }
 
 @media (max-width: 1200px) {
   .form-wrapper {
     width: 70%;
+    overflow: hidden; /* Added */
   }
 }
 
@@ -153,19 +173,23 @@
   .form-wrapper {
     flex-direction: column;
     width: 80%;
+    overflow: hidden; /* Added */
   }
 
   .contact-form,
   .contact-image {
     width: 100%;
+    overflow: hidden; /* Added */
   }
 
   .contact-form {
     margin-top: 20px;
+    overflow: hidden; /* Added */
   }
 
   .image-placeholder {
     height: 350px;
+    overflow: hidden; /* Added */
   }
 }
 
@@ -173,40 +197,49 @@
   .contact-container {
     padding-top: 100px;
     padding-bottom: 20px;
+    overflow: hidden; /* Added */
   }
 
   .form-wrapper {
     padding: 15px;
+    overflow: hidden; /* Added */
   }
 
   .image-placeholder {
     height: 300px;
+    overflow: hidden; /* Added */
   }
 
   .submit-btn {
     padding: 8px 16px;
+    overflow: hidden; /* Added */
   }
 }
 
 @media (max-width: 576px) {
   .form-wrapper {
     padding: 10px;
+    overflow: hidden; /* Added */
   }
 
   .image-placeholder {
     height: 250px;
+    overflow: hidden; /* Added */
   }
 
   .contact-container h1 {
     margin-bottom: 10px;
+    overflow: hidden; /* Added */
   }
 
-  .contact-form{
+  .contact-form {
     margin-top: 10px;
+    overflow: hidden; /* Added */
   }
 
   .submit-btn {
     padding: 6px 12px;
+    overflow: hidden; /* Added */
   }
 
   .form-group-contact input[type="text"],
@@ -214,6 +247,7 @@
   .form-group-contact input[type="tel"],
   .form-group-contact textarea {
     padding: 8px;
+    overflow: hidden; /* Added */
   }
 }
 
@@ -221,22 +255,27 @@
   .contact-container {
     padding-top: 100px;
     padding-bottom: 20px;
+    overflow: hidden; /* Added */
   }
 
   .contact-container h1 {
     margin-bottom: 5px;
+    overflow: hidden; /* Added */
   }
 
-  .contact-form{
+  .contact-form {
     margin-top: 5px;
+    overflow: hidden; /* Added */
   }
 
   .image-placeholder {
     height: 150px;
+    overflow: hidden; /* Added */
   }
 
   .submit-btn {
     padding: 5px 10px;
+    overflow: hidden; /* Added */
   }
 
   .form-group-contact input[type="text"],
@@ -244,5 +283,6 @@
   .form-group-contact input[type="tel"],
   .form-group-contact textarea {
     padding: 6px;
+    overflow: hidden; /* Added */
   }
 }

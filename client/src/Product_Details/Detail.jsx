@@ -102,7 +102,7 @@ const Detail = () => {
     <div className='detail-page'>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></link>
       <Navbar />
-      <div className="detail-container">
+      <div className="detail-container" data-aos="fade-right">
         {isLoading ? (
           <div className="load-shop">
             <div className="loader-load-shop">
@@ -113,7 +113,7 @@ const Detail = () => {
         ) : (
           <div className="main-column">
             {item && (
-              <div className="art-item" data-aos="fade-right">
+              <div className="art-item">
                 <div className='art-img-container'>
                   <div className="art-scroll-handle">
                     <div className="thumbnails">
@@ -179,7 +179,7 @@ const Detail = () => {
           </div>
         )}
         {item && (
-          <div className='art-details-text' data-aos="fade-up">
+          <div className='art-details-text'>
             {edit ? (
               <div>
                 <input

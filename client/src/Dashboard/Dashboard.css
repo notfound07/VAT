@@ -68,3 +68,14 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+
+@media (max-width: 599px) {
+    .dashboard-title {
+        font-size: 36px;
+    }
+
+    .dashboard-details {
+        font-size: 32px;
+    }
+}

@@ -155,13 +155,10 @@ function Register() {
             <div className="signup-links">
               <a href="/Login">Already have an account?</a>
             </div>
+            <Link to="/" className="login-home-link"><FaArrowLeft />Home</Link>
           </form>
         </div>
         <div className="signup-right" data-aos="fade-left"></div>
-        <Link to="/" className="signup-home-link" data-aos="fade-left">
-          <FaArrowLeft className="left-arrow" /> Home
-          <FaArrowRight className="right-arrow" />
-        </Link>
       </div>
 
       {/* Popup Modal */}

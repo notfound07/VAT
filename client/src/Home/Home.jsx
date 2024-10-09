@@ -72,6 +72,7 @@ const Home = () => {
 
     AOS.init({
       duration: 1000, // Animation duration
+      offset: 100, // Offset (in px) from the original trigger point
     });
   }, [orders]);
 

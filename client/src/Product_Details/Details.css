@@ -7,6 +7,7 @@
   flex-direction: row;
   width: 100%;
   padding: 100px 20px 20px 20px;
+  overflow: hidden;
 }
 
 .main-column {
@@ -725,10 +726,6 @@ input[type="radio"] {
     overflow: hidden;
   }
 
-  .art-name {
-    margin-top: 20px;
-  }
-
   .slider-container {
     height: 450px;
   }
@@ -786,26 +783,18 @@ input[type="radio"] {
 
   .slider-container {
     width: 100%;
-    height: 500px;
+    height: 380px;
     position: relative;
     border-radius: 10px;
     overflow: hidden;
   }
 
-  .art-name {
-    margin-top: 20px;
-  }
-
-  .slider-container {
-    height: 400px;
-  }
-
   .slider-container img {
-    height: 400px;
+    height: 380px;
   }
   
   .slider-container video {
-    height: 400px;
+    height: 380px;
   }
 
 }

@@ -78,8 +78,22 @@
     justify-content: center;
 }
 
-.right h2,
+.right h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: "Times New Roman";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    background: radial-gradient(50% 50% at 50% 50%, #000, #858484 51.5%, #000);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 .signup-left h2 {
+    margin-top: 20px;
     margin-bottom: 20px;
     text-align: center;
     font-family: "Times New Roman";
@@ -154,8 +168,7 @@
     text-decoration: underline;
 }
 
-.login-home-link,
-.signup-home-link {
+.login-home-link {
     position: absolute;
     top: 15px;
     left: 15px;
@@ -166,16 +179,6 @@
     align-items: center;
     cursor: pointer;
     gap: 5px;
-}
-
-.signup-home-link {
-    right: 15px;
-    left: auto;
-}
-
-.signup-home-link .left-arrow {
-    display: none;
-    /* Hide the left arrow by default */
 }
 
 .password-wrapper {
@@ -292,22 +295,9 @@
         /* Display .left (or .signup-left) first */
     }
 
-    .login-home-link,
-    .signup-home-link {
+    .login-home-link {
         top: 10px;
         font-size: 12px;
-    }
-
-    .signup-home-link {
-        left: 10px;
-    }
-
-    .signup-home-link .right-arrow {
-        display: none;
-    }
-
-    .signup-home-link .left-arrow {
-        display: inline;
     }
 
     .log-res {
@@ -374,22 +364,9 @@
         /* Display .left (or .signup-left) first */
     }
 
-    .login-home-link,
-    .signup-home-link {
+    .login-home-link {
         top: 10px;
         font-size: 14px;
-    }
-
-    .signup-home-link {
-        left: 10px;
-    }
-
-    .signup-home-link .left-arrow {
-        display: inline;
-    }
-
-    .signup-home-link .right-arrow {
-        display: none;
     }
 
     .log-res {
@@ -419,8 +396,7 @@
         width: 50%;
     }
 
-    .login-home-link,
-    .signup-home-link {
+    .login-home-link {
         font-size: 16px;
     }
 }
@@ -441,8 +417,7 @@
         width: 50%;
     }
 
-    .login-home-link,
-    .signup-home-link {
+    .login-home-link{
         font-size: 16px;
     }
 }
@@ -463,8 +438,7 @@
         width: 50%;
     }
 
-    .login-home-link,
-    .signup-home-link {
+    .login-home-link {
         font-size: 16px;
     }
 }

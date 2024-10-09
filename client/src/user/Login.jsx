@@ -104,9 +104,9 @@ function Login() {
               <a href="/Register">New user?</a>
               <a href="/EmailInput">Forget Password?</a>
             </div>
+            <Link to="/" className="login-home-link"><FaArrowLeft />Home</Link>
           </form>
         </div>
-        <Link to="/" className="login-home-link" data-aos="fade-right"><FaArrowLeft />Home</Link>
       </div>
     </div>
   );
