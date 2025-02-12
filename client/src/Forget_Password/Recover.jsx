@@ -20,7 +20,7 @@ function Recover() {
   const navigate = useNavigate();
   const baseURL =
     window.location.hostname === "localhost"
-      ? "http://localhost:3001/vat"
+      ? "http://localhost:3002/vat"
       : `${window.location.protocol}//visionaryarttech.com/vat`;
 
   // Protect the route to ensure users have a valid email before accessing this page
